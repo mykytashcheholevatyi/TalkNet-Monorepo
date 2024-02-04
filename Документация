@@ -86,7 +86,9 @@ User=root
 WantedBy=multi-user.target
 --конец--
 
-
+Настройте автозапуск службы
+sudo systemctl daemon-reload
+sudo systemctl enable reddit-clone.service
 
 
 
