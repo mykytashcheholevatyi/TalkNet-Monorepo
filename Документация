@@ -80,17 +80,17 @@ cd /var/www/TalkNet-Monorepo/reddit-clone
 ./update_and_restart.sh
 
 
-
 Создадим демон в /etc/systemd/system/
 sudo nano /etc/systemd/system/reddit-clone.service
 --начало--
 [Unit]
 Description=Reddit Clone React App
+After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/var/www/reddit-clone
-ExecStart=/bin/bash /var/www/reddit-clone/update_and_restart.sh
+WorkingDirectory=/var/www/TalkNet-Monorepo/reddit-clone
+ExecStart=/bin/bash /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
 Restart=always
 
 [Install]
@@ -100,6 +100,7 @@ WantedBy=multi-user.target
 Настройте автозапуск службы
 sudo systemctl daemon-reload
 sudo systemctl enable reddit-clone.service
+sudo systemctl start reddit-clone.service
 
 Дайте права 
 chmod +x update_and_restart.sh
