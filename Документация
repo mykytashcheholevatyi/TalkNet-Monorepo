@@ -18,6 +18,99 @@ sudo apt install -y libauthen-pam-perl libio-pty-perl apt-show-versions perl
 Установите Webmin, решив зависимости:
 sudo apt install ./webmin_1.984_all.deb -y
 
+Помещаем фронтент на реакте на сервер
+cd /var/www/
+sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git
+sudo mv reddit-clone /var/www/
+cd /var/www/reddit-clone
+
+Устанавливаем нпм
+sudo apt-get install npm
+
+И зависимости проекта
+npm install
+
+Можем запускать
+npm start
+
+Получаем фронт на порту 
+http://85.215.65.78:3000/
+
+Делаем автообновление React-проекта 
+в настройках репа добавляем Webhooks
+http://85.215.65.78:3000/webhook типа application/json
+
+Создаем скрипт update_and_restart.sh
+--начало--
+#!/bin/bash
+
+# Перейти в директорию монорепозитория
+cd /var/www/TalkNet-Monorepo
+
+# Обновить код из монорепозитория
+git pull
+
+# Создать бекап текущей версии проекта (если необходимо)
+# sudo mv /var/www/reddit-clone /var/www/reddit-clone-backup
+
+# Переместить папку с React-проектом из монорепозитория в текущую директорию
+sudo cp -r reddit-clone /var/www/
+
+# Перейти в директорию проекта reddit-clone
+cd /var/www/reddit-clone
+
+# Установить зависимости
+npm install
+
+# Перезапустить проект (предполагается, что вы используете npm start)
+npm restart
+--конец--
+
+Настройте права
+chmod +x /var/www/reddit-clone/update_and_restart.sh
+
+Создадим демон в /etc/systemd/system/
+sudo nano /etc/systemd/system/reddit-clone.service
+--начало--
+[Unit]
+Description=Reddit Clone React App Auto Update and Restart
+
+[Service]
+Type=simple
+ExecStart=/var/www/reddit-clone/update_and_restart.sh
+Restart=always
+WorkingDirectory=/var/www/reddit-clone
+User=root
+
+[Install]
+WantedBy=multi-user.target
+--конец--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
