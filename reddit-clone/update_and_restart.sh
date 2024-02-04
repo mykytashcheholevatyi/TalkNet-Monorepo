@@ -12,6 +12,9 @@ git pull
 # Перейти в директорию проекта reddit-clone
 cd reddit-clone
 
+# Установить права на выполнение скрипта (если необходимо)
+chmod +x update_and_restart.sh
+
 # Установить зависимости
 npm install
 
