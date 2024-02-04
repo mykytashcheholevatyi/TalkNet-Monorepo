@@ -66,9 +66,6 @@ npm install
 npm restart
 --конец--
 
-Настройте права
-chmod +x /var/www/reddit-clone/update_and_restart.sh
-
 Создадим демон в /etc/systemd/system/
 sudo nano /etc/systemd/system/reddit-clone.service
 --начало--
@@ -90,8 +87,9 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable reddit-clone.service
 
-
-
+Дайте права 
+chmod +x update_and_restart.sh
+chmod +x /var/www/reddit-clone/update_and_restart.sh
 
 
 
