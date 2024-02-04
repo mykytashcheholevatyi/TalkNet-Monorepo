@@ -51,17 +51,27 @@ cd /var/www/TalkNet-Monorepo
 git pull
 
 # Перейти в директорию проекта reddit-clone
-cd /var/www/reddit-clone
+cd reddit-clone
 
 # Установить зависимости
 npm install
 
-# Перезапустить проект (предполагается, что вы используете npm start)
-npm restart
+# Проверить, используется ли порт 3000
+if lsof -i :3000; then
+    # Если порт 3000 уже используется, завершить процесс, использующий порт
+    kill -9 $(lsof -t -i:3000)
+fi
+
+# Запустить проект
+npm start
 --конец--
 
 Сделаем скрипт исполняемым
 chmod +x /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
+
+Запустим скрипт вручную
+cd /var/www/TalkNet-Monorepo/reddit-clone
+./update_and_restart.sh
 
 
 
