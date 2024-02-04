@@ -60,6 +60,11 @@ npm install
 npm restart
 --конец--
 
+Сделаем скрипт исполняемым
+chmod +x /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
+
+
+
 Создадим демон в /etc/systemd/system/
 sudo nano /etc/systemd/system/reddit-clone.service
 --начало--
@@ -88,7 +93,7 @@ chmod +x /var/www/reddit-clone/update_and_restart.sh
 
 check
  2
-
+3
 
 
 
