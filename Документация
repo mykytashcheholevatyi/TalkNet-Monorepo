@@ -79,6 +79,9 @@ chmod +x /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
 cd /var/www/TalkNet-Monorepo/reddit-clone
 ./update_and_restart.sh
 
+Дайте права 
+chmod +x update_and_restart.sh
+chmod +x /var/www/reddit-clone/update_and_restart.sh
 
 Создадим демон в /etc/systemd/system/
 sudo nano /etc/systemd/system/reddit-clone.service
@@ -89,6 +92,7 @@ After=network.target
 
 [Service]
 User=root
+Environment=NODE_ENV=production
 WorkingDirectory=/var/www/TalkNet-Monorepo/reddit-clone
 ExecStart=/bin/bash /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
 Restart=always
@@ -101,17 +105,6 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable reddit-clone.service
 sudo systemctl start reddit-clone.service
-
-Дайте права 
-chmod +x update_and_restart.sh
-chmod +x /var/www/reddit-clone/update_and_restart.sh
-
-
-
-check
- 2
-3а
-
 
 
 
