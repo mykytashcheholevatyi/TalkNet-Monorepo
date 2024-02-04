@@ -30,6 +30,40 @@ function App() {
           </nav>
         </header>
 
+        <main>
+          <h1>Welcome to Forulink!</h1>
+          <p>The community-driven forum where you can share your thoughts, ideas, and discussions.</p>
+
+          <section className="welcome-section">
+            <h2>Get Started</h2>
+            <p>Join our community to start engaging in lively discussions, share your expertise, or just browse the latest topics.</p>
+          </section>
+
+          <section className="categories-section">
+            <h2>Categories</h2>
+            <ul className="categories-list">
+              <li>Technology & Gadgets</li>
+              <li>Health & Wellness</li>
+              <li>Travel & Adventure</li>
+              <li>Food & Cuisine</li>
+              {/* Добавьте другие категории по вашему выбору */}
+            </ul>
+          </section>
+
+          <section className="recent-discussions">
+            <h2>Recent Discussions</h2>
+            <div className="discussion">
+              <h3>What's the best programming language for beginners?</h3>
+              <p>Started by Alice123 - 2 hours ago</p>
+            </div>
+            <div className="discussion">
+              <h3>Your favorite travel destinations?</h3>
+              <p>Started by TravelBug - 1 day ago</p>
+            </div>
+            {/* Добавьте другие обсуждения по вашему выбору */}
+          </section>
+        </main>
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create-post" element={<PostCreationPage />} />
