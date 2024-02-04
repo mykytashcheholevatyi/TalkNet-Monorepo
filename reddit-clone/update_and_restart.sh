@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Define variables for paths
 MONOREPO_DIR="/var/www/TalkNet-Monorepo"
 FRONTEND_DIR="/var/www/reddit-clone"
 BACKUP_DIR="/var/www/reddit-clone-backup"
@@ -55,6 +54,12 @@ cd "$FRONTEND_DIR" || exit
 if ! npm install; then
   echo "Failed to install npm dependencies. Restoring backup."
   mv "$BACKUP_DIR" "$FRONTEND_DIR"
+  exit 1
+fi
+
+# Check if package.json exists
+if [ ! -f "package.json" ]; then
+  echo "package.json not found. Exiting."
   exit 1
 fi
 
