@@ -2,8 +2,6 @@
 
 домен forulink.com
 запасной forum.online
-21 евро в год за 2 домена
-за 70 лет 1500 евро за домены
 
 Подключения к серверу из терминала
 ssh -i C:\Users\Administrator\SSHKeys\server_key root@85.215.65.78
@@ -86,10 +84,39 @@ cd /var/www/TalkNet-Monorepo/reddit-clone
 Установим pm2 для автоматического запуска обработчика Webhook
 npm install pm2 -g
 
+Создадим обработчик 
+--начало--
+const express = require('express');
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
+const app = express();
+const port = 9000; // Изменим порт на 9000
+
+app.use(bodyParser.json());
+
+app.post('/webhook', (req, res) => {
+  // Здесь можно добавить проверку секрета из webhook для безопасности
+  exec('/var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Server error');
+    }
+    console.log(stdout);
+    res.status(200).send('OK');
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Webhook handler running on port ${port}`);
+});
+--конец--
+
 Запустим наш обработчик
 pm2 start /var/www/TalkNet-Monorepo/webhook-handler/index.js --name webhook-handler
 pm2 startup
 pm2 save
+
+
 
 
 
