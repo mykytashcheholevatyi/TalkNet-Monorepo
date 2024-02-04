@@ -117,6 +117,9 @@ pm2 save
 
 ДЕВОПС ФРОНТЕНДА НА ЭТОМ ГОТОВ
 
+ставим вебсокет реакту
+cd /var/www/TalkNet-Monorepo/reddit-clone
+npm install ws --save
 
 
 

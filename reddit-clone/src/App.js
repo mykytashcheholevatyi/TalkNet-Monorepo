@@ -23,14 +23,16 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <Link to="/" className="App-link">Welcome</Link>
-          <Link to="/en" className="App-link">EN</Link>
-          <Link to="/ru" className="App-link">RU</Link>
-          <Link to="/ua" className="App-link">UA</Link>
-          {/* Добавьте ссылки на другие языки */}
+          <nav className="App-nav">
+            <Link to="/" className="App-link">Welcome</Link>
+            <Link to="/en" className="App-link">EN</Link>
+            <Link to="/ru" className="App-link">RU</Link>
+            <Link to="/ua" className="App-link">UA</Link>
+            {/* Добавьте ссылки на другие языки */}
+          </nav>
         </header>
 
-        <main>
+        <main className="App-main">
           <Routes>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/en" element={<HomePageEN />} />
