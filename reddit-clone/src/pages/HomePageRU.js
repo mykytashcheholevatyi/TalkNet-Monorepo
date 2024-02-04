@@ -10,4 +10,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomePageRU;
