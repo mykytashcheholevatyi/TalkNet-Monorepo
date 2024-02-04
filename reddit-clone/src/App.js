@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,19 +27,19 @@ function App() {
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">Learn React</a>
         </header>
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/create-post" component={PostCreationPage} />
-          <Route path="/create-community" component={CommunityCreationPage} />
-          <Route path="/community/:id" component={CommunityPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/post/:id" component={PostPage} />
-          <Route path="/profile/:id" component={ProfilePage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/search" component={SearchResultsPage} />
-          <Route path="/settings" component={SettingsPage} />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/create-post" element={<PostCreationPage />} />
+          <Route path="/create-community" element={<CommunityCreationPage />} />
+          <Route path="/community/:id" element={<CommunityPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/search" element={<SearchResultsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
           {/* Дополнительные маршруты могут быть добавлены здесь */}
-        </Switch>
+        </Routes>
       </div>
     </Router>
   );
