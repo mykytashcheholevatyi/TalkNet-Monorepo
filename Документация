@@ -83,9 +83,13 @@ chmod +x /var/www/reddit-clone/update_and_restart.sh
 cd /var/www/TalkNet-Monorepo/reddit-clone
 ./update_and_restart.sh
 
-pm2 для автоматического запуска обработчика Webhook
+Установим pm2 для автоматического запуска обработчика Webhook
 npm install pm2 -g
 
+Запустим наш обработчик
+pm2 start /var/www/TalkNet-Monorepo/webhook-handler/index.js --name webhook-handler
+pm2 startup
+pm2 save
 
 
 
