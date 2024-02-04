@@ -3,8 +3,9 @@ import React from 'react';
 function SettingsPage() {
   return (
     <div>
-      <h1>Settings Page</h1>
-      <p>Adjust your settings here.</p>
+      <h1>Settings</h1>
+      <p>Adjust your forum preferences and account settings here.</p>
+      {/* Добавьте настройки аккаунта и предпочтений пользователя */}
     </div>
   );
 }

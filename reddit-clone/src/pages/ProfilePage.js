@@ -3,8 +3,9 @@ import React from 'react';
 function ProfilePage() {
   return (
     <div>
-      <h1>Profile Page</h1>
-      <p>This is your profile.</p>
+      <h1>User Profile</h1>
+      <p>View and edit your profile information.</p>
+      {/* Добавьте информацию и настройки профиля пользователя */}
     </div>
   );
 }

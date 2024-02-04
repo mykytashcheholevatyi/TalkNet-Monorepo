@@ -1,11 +1,11 @@
-// В файле src/pages/HomePage.js
 import React from 'react';
 
-function HomePage() {
+function HomePageEN() {
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the Home Page of Forulink!</p>
+      <h1>Welcome to Forulink</h1>
+      <p>This is the English version of the forum. Join our community and start sharing!</p>
+      {/* Добавьте содержимое для английской главной страницы */}
     </div>
   );
 }

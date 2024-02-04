@@ -3,8 +3,9 @@ import React from 'react';
 function PostCreationPage() {
   return (
     <div>
-      <h1>Post Creation Page</h1>
-      <p>This is where you can create a new post.</p>
+      <h1>Create a New Post</h1>
+      <p>Share your thoughts and ideas with the community.</p>
+      {/* Добавьте форму создания поста */}
     </div>
   );
 }
