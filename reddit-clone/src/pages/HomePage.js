@@ -1,4 +1,4 @@
-// В файле HomePage.js
+// В файле src/pages/HomePage.js
 import React from 'react';
 
 function HomePage() {
