@@ -19,8 +19,7 @@ sudo apt install ./webmin_1.984_all.deb -y
 Помещаем фронтент на реакте на сервер
 cd /var/www/
 sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git
-sudo mv reddit-clone /var/www/
-cd /var/www/reddit-clone
+cd /var/www/TalkNet-Monorepo/reddit-clone
 
 Устанавливаем нпм
 sudo apt-get install npm
@@ -36,7 +35,7 @@ http://85.215.65.78:3000/
 
 Делаем автообновление React-проекта 
 в настройках репа добавляем Webhooks
-http://85.215.65.78:3000/webhook типа application/json
+http://85.215.65.78:9000/webhook типа application/json
 
 Создаем скрипт update_and_restart.sh
 --начало--
