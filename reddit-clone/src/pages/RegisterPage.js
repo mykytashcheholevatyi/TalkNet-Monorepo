@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import './RegisterPage.css'; // Предполагается, что стили сохранены в этом файле
 
 function RegisterPage() {
-  // Состояния для полей ввода и обработки ошибок
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -10,22 +10,14 @@ function RegisterPage() {
   });
   const [errors, setErrors] = useState({});
 
-  // Обработчик изменения полей ввода
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Обработчик отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Проверка наличия ошибок валидации (добавьте свою логику валидации)
     const validationErrors = {};
-
     if (!formData.username) {
       validationErrors.username = 'Введите имя пользователя';
     }
@@ -39,13 +31,10 @@ function RegisterPage() {
       validationErrors.confirmPassword = 'Пароли не совпадают';
     }
 
-    // Если есть ошибки валидации, установите их в состояние
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Отправка данных на сервер (добавьте свою логику отправки)
       console.log('Данные успешно отправлены:', formData);
-      // Сброс состояния формы и ошибок
       setFormData({
         username: '',
         email: '',
@@ -57,11 +46,11 @@ function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className="register-page">
       <h1>Register</h1>
       <p>Create a new account to join the community.</p>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -69,10 +58,12 @@ function RegisterPage() {
             name="username"
             value={formData.username}
             onChange={handleInputChange}
+            className={errors.username ? 'error-input' : ''}
           />
           {errors.username && <p className="error">{errors.username}</p>}
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -80,10 +71,12 @@ function RegisterPage() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
+            className={errors.email ? 'error-input' : ''}
           />
           {errors.email && <p className="error">{errors.email}</p>}
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -91,10 +84,12 @@ function RegisterPage() {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
+            className={errors.password ? 'error-input' : ''}
           />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
@@ -102,10 +97,12 @@ function RegisterPage() {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleInputChange}
+            className={errors.confirmPassword ? 'error-input' : ''}
           />
           {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
         </div>
-        <button type="submit">Register</button>
+
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
     </div>
   );
