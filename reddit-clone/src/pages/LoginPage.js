@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import './LoginPage.css'; // Предполагается, что стили сохранены в этом файле
 
 function LoginPage() {
-  // Состояние для хранения данных формы
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
-  // Обработчик изменения полей формы
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -16,40 +15,39 @@ function LoginPage() {
     });
   };
 
-  // Обработчик отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Отправка данных на сервер для аутентификации
-    // Вместо этого места, вы должны добавить код для отправки данных на сервер
     console.log('Отправка данных:', formData);
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h1>Login</h1>
       <p>Please log in to access the forum.</p>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
             name="email"
+            className="form-input"
             value={formData.email}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password:</label>
           <input
             type="password"
             name="password"
+            className="form-input"
             value={formData.password}
             onChange={handleInputChange}
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
     </div>
   );
