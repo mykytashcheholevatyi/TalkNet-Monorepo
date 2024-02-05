@@ -1,0 +1,23 @@
+/* Стили для WelcomePageRU.js */
+div {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+div a {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #007BFF;
+}
