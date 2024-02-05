@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream
 Документация Forulink 
 
 домен forulink.com
 запасной forum.online
+=======
+Документация  Forulink
+>>>>>>> Stashed changes
 
 Подключения к серверу из терминала
 ssh -i C:\Users\Administrator\SSHKeys\server_key root@85.215.65.78
@@ -16,6 +20,7 @@ sudo apt install -y libauthen-pam-perl libio-pty-perl apt-show-versions perl
 Установите Webmin, решив зависимости:
 sudo apt install ./webmin_1.984_all.deb -y
 
+<<<<<<< Updated upstream
 Помещаем фронтент на реакте на сервер
 cd /var/www/
 sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git
@@ -139,6 +144,11 @@ npm install axios jsonwebtoken --save
 
 
 
+=======
+Старт вебмина
+sudo /etc/webmin/start
+sudo systemctl restart webmin
+>>>>>>> Stashed changes
 
 
 
