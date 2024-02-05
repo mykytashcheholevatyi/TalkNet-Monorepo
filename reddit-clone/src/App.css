@@ -1,41 +1,55 @@
-/* Общие стили для всего приложения */
+
+/* Global Styles */
+body, html {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App Layout */
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background-color: #f9f9f9;
 }
 
-/* Стили для шапки */
+/* Header */
 .App-header {
-  background-color: #282c34;
+  background-color: #212121;
   width: 100%;
-  padding: 20px 0;
+  padding: 16px 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
 }
 
 .App-nav {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: center;
+  width: 80%;
+  max-width: 1200px;
 }
 
 .App-link {
   color: #61dafb;
   text-decoration: none;
   font-size: 18px;
-  margin-right: 20px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
 }
 
-/* Стили для контента */
-.App-main {
-  width: 80%;
-  max-width: 1200px;
+.App-link:hover {
+  color: #9bdeff;
 }
 
-/* Анимация для логотипа */
+/* Header Logo Animation */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     height: 40vmin;
@@ -53,46 +67,31 @@
   }
 }
 
-/* Общие стили для текста */
-body {
-  font-family: Arial, sans-serif;
-}
 
-/* Стили для ссылок */
-a {
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
-}
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* Global Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
+/* Main Content */
+.App-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Forum Styles */
 .forum {
   max-width: 800px;
-  margin: 0 auto;
-  background: white;
+  margin: 20px;
+  background: #ffffff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .forum-buttons a {
+  display: inline-block;
   background-color: #007bff;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 20px;
+  margin: 0 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
@@ -108,37 +107,152 @@ body {
 .message {
   background: #f9f9f9;
   margin-bottom: 10px;
-  padding: 10px;
-  border-left: 3px solid #007bff;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
+.message:hover {
+  background-color: #f1f1f1;
+}
+
+/* Input Form */
 .message-input {
   margin-top: 20px;
 }
 
 .message-input h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .message-input input,
 .message-input textarea {
   width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.message-input input:focus,
+.message-input textarea:focus {
+  border-color: #007bff;
 }
 
 .message-input button {
   width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .message-input button:hover {
   background-color: #218838;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-nav {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .forum {
+    margin: 20px 10px;
+    width: auto;
+  }
+
+  .forum-buttons a {
+    padding: 10px;
+    margin: 0 5px;
+  }
+
+  .message-input input,
+  .message-input textarea,
+  .message-input button {
+    padding: 10px;
+  }
+}
+
+/* Animations and Transitions */
+.message-input input::placeholder,
+.message-input textarea::placeholder {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.message-input input:focus::placeholder,
+.message-input textarea:focus::placeholder {
+  color: #007bff;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  max-width: 80%;
+}
+
+
