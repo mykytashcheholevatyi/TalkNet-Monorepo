@@ -30,6 +30,10 @@ function App() {
             <Link to="/ua" className="App-link">UA</Link>
             {/* Добавьте ссылки на другие языки */}
           </nav>
+          <div className="login-register">
+            <Link to="/login" className="App-link">Login</Link>
+            <Link to="/register" className="App-link">Register</Link>
+          </div>
         </header>
 
         <main className="App-main">
