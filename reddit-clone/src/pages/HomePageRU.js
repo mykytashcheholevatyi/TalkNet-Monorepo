@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 // Импорт компонентов страниц
 import WelcomePage from './WelcomePage';
@@ -12,6 +12,7 @@ import ProfilePage from './ProfilePage';
 import RegisterPage from './RegisterPage';
 import SearchResultsPage from './SearchResultsPage';
 import SettingsPage from './SettingsPage';
+
 function Forum() {
   // Эмуляция списка сообщений на форуме
   const [messages, setMessages] = useState([
@@ -49,28 +50,32 @@ function Forum() {
   };
 
   return (
-    <Router>
-      <div className="forum">
-        <h1>Форум</h1>
-        <div className="message-list">
-          {renderMessages()}
-        </div>
-        <div className="message-input">
-          <h2>Добавить новое сообщение:</h2>
-          <input type="text" placeholder="Имя автора" id="author" />
-          <textarea placeholder="Текст сообщения" id="content" />
-          <button onClick={() => {
-            const author = document.getElementById('author').value;
-            const content = document.getElementById('content').value;
-            if (author && content) {
-              addMessage(author, content);
-              document.getElementById('author').value = '';
-              document.getElementById('content').value = '';
-            }
-          }}>Отправить</button>
-        </div>
+    <div className="forum">
+      <h1>Форум</h1>
+      <div className="forum-buttons">
+        <Link to="/community/create">Создать сообщество</Link>
+        <Link to="/post/create">Создать пост</Link>
+        <Link to="/profile/:id">Мой профиль</Link>
+        <Link to="/settings">Настройки</Link>
       </div>
-    </Router>
+      <div className="message-list">
+        {renderMessages()}
+      </div>
+      <div className="message-input">
+        <h2>Добавить новое сообщение:</h2>
+        <input type="text" placeholder="Имя автора" id="author" />
+        <textarea placeholder="Текст сообщения" id="content" />
+        <button onClick={() => {
+          const author = document.getElementById('author').value;
+          const content = document.getElementById('content').value;
+          if (author && content) {
+            addMessage(author, content);
+            document.getElementById('author').value = '';
+            document.getElementById('content').value = '';
+          }
+        }}>Отправить</button>
+      </div>
+    </div>
   );
 }
 
