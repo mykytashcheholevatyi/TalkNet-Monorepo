@@ -255,4 +255,72 @@ body, html {
   max-width: 80%;
 }
 
+/* Register Page Styles */
+.register-page {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.register-page h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+.register-page p {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-group .error {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.register-page button {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-page button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for Register Page */
+@media (max-width: 768px) {
+  .register-page {
+    margin: 20px;
+    width: auto;
+  }
+}
 
