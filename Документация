@@ -121,6 +121,11 @@ pm2 save
 cd /var/www/TalkNet-Monorepo/reddit-clone
 npm install ws --save
 
+ставим аксиос для токенов в реакт
+cd /var/www/TalkNet-Monorepo/reddit-clone
+npm install axios jsonwebtoken --save
+
+
 
 
 
