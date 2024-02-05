@@ -1,0 +1,16 @@
+установите ПМ2 
+npm install pm2@latest -g
+
+Настройка pm2 для вашего приложения
+
+Создайте файл обработчика веб-хука для бэкенда
+pm2 start /srv/TalkNet-Monorepo/webhook-handler/backend_webhook_handler.js --name backend-webhook-handler
+pm2 save
+pm2 startup
+
+
+cd /srv/TalkNet-Monorepo/backend  # Уточните путь, если структура в репозитории другая
+pm2 start server.js --name "talknet-backend"
+
+Настройте веб-хук на GitHub
+http://85.215.65.78:9001/backend-webhook
