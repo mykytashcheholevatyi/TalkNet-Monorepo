@@ -4,7 +4,7 @@ git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 
 # Перейдите к скриптам бэкенда и установите права на выполнение для скрипта обновления
 cd /srv/talknet/backend/scripts
-chmod +x full_deploy_backend.sh.sh
+chmod +x full_deploy_backend.sh
 
 Добавьте джисон хук на гитхабе
 http://85.215.65.78:9001/backend-webhook
@@ -28,6 +28,10 @@ pm2 save
 # Настройте pm2 на автозапуск при старте системы
 pm2 startup systemd
 
+Запуск скрипта вручную
+cd /srv/talknet/backend/scripts
+chmod +x full_deploy_backend.sh
+./full_deploy_backend.sh
 
 
 

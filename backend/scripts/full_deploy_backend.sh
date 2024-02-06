@@ -9,7 +9,7 @@ DB_NAME="talknetDB"
 MONGO_USER="talknetAdmin"
 MONGO_PASS="SecurePa$$w0rd"
 SCRIPT_DIR="$BACKEND_DIR/scripts"
-SCRIPT_NAME="update_and_restart.sh"
+SCRIPT_NAME="full_deploy_backend.sh"
 SCRIPT_PATH="$SCRIPT_DIR/$SCRIPT_NAME"
 
 # Установка прав на выполнение для скрипта
