@@ -11,6 +11,8 @@ pm2 list
 
 Добавьте джисон хук на гитхабе
 http://85.215.65.78:9001/backend-webhook
+с секретом 
+your_webhook_secret
 
 Если скрипт обновляется
 chmod +x /srv/talknet/backend/scripts/update_and_restart.sh
