@@ -2,6 +2,21 @@
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 
+
+
+
+Ставим веб сервер гуникорн
+pip install gunicorn
+
+Создаем gunicorn_config.py в папке бекенда
+command = '/srv/talknet/venv/bin/gunicorn'
+pythonpath = '/srv/talknet/backend'
+bind = '0.0.0.0:8000'  # Убедитесь, что этот порт свободен
+workers = 3
+user = 'www-data'
+
+
+
 # Перейдите к скриптам бэкенда и установите права на выполнение для скрипта обновления
 cd /srv/talknet/backend/scripts
 chmod +x full_deploy_backend.sh
@@ -32,6 +47,5 @@ pm2 startup systemd
 cd /srv/talknet/backend/scripts
 chmod +x full_deploy_backend.sh
 ./full_deploy_backend.sh
-
 
 
