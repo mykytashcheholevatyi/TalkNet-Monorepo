@@ -1,3 +1,19 @@
+Клонирование репозитория и настройка скрипта 
+cd /srv
+git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+cd /srv/talknet/backend/scripts
+chmod +x update_and_restart.sh
+pm2 start update_and_restart.sh --name backend-update
+pm2 save
+pm2 startup systemd
+pm2 list
+
+
+Если скрипт обновляется
+chmod +x /srv/talknet/backend/scripts/update_and_restart.sh
+pm2 restart backend-update
+
+
 установите ПМ2 
 npm install pm2@latest -g
 
