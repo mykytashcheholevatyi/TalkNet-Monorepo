@@ -9,6 +9,9 @@ pm2 startup systemd
 pm2 list
 
 
+Добавьте хук на гитхабе
+http://85.215.65.78:9001/backend-webhook
+
 Если скрипт обновляется
 chmod +x /srv/talknet/backend/scripts/update_and_restart.sh
 pm2 restart backend-update
@@ -27,6 +30,3 @@ pm2 startup
 
 cd /srv/TalkNet-Monorepo/backend  # Уточните путь, если структура в репозитории другая
 pm2 start server.js --name "talknet-backend"
-
-Настройте веб-хук на GitHub
-http://85.215.65.78:9001/backend-webhook
