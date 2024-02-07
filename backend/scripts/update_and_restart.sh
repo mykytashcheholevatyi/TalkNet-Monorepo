@@ -115,13 +115,18 @@ install_python_packages() {
     echo "Установка пакетов Python..."
     if pip install --upgrade pip && [ -f "$APP_DIR/requirements.txt" ]; then
         pip install --upgrade -r "$APP_DIR/requirements.txt"
+        # Добавляем установку Flask-Cors
+        pip install Flask-Cors
         echo "Зависимости Python успешно обновлены."
     else
         echo "Ошибка при обновлении зависимостей Python. Попытка установки снова..."
         pip install --upgrade pip
         pip install --upgrade -r "$APP_DIR/requirements.txt"
+        # Добавляем установку Flask-Cors
+        pip install Flask-Cors
     fi
 }
+
 
 # Выполнение миграции базы данных
 run_database_migration() {
