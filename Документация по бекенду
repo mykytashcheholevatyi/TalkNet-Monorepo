@@ -15,18 +15,13 @@ pm2 start backend_webhook_server.js --name backend_webhook_server
 pm2 startup
 pm2 save
 
-
 # Перейдите в директорию /srv и клонируйте монорепозиторий
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 
-
-
-
 Ставим веб сервер гуникорн
 pip install gunicorn
 gunicorn -c gunicorn_config.py myproject.wsgi:application
-
 
 Создаем gunicorn_config.py в папке бекенда
 command = '/srv/talknet/venv/bin/gunicorn'
@@ -35,18 +30,14 @@ bind = '0.0.0.0:8000'  # Убедитесь, что этот порт свобо
 workers = 3
 user = 'www-data'
 
-
-
 # Перейдите к скриптам бэкенда и установите права на выполнение для скрипта деплоя и обновления
 cd /srv/talknet/backend/scripts
 chmod +x full_deploy_backend.sh
 cd /srv/talknet/backend/scripts
 chmod +x update_and_restart.sh
 
-
 Запуск обновления
 /srv/talknet/backend/scripts/update_and_restart.sh
-
 
 Добавьте джисон хук на гитхабе
 http://85.215.65.78:9001/backend-webhook
@@ -74,5 +65,24 @@ pm2 startup systemd
 cd /srv/talknet/backend/scripts
 chmod +x full_deploy_backend.sh
 ./full_deploy_backend.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
