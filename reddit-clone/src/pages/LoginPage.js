@@ -1,53 +1,56 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; // Предполагается, что стили сохранены в этом файле
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Отправка данных:', formData);
+    try {
+      const response = await fetch('http://85.215.65.78:8000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Login successful:', data);
+        navigate('/debug-number'); // Redirect to the debug number page on successful login
+      } else {
+        console.error('Login failed:', data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
     <div className="login-page">
       <h1>Login</h1>
-      <p>Please log in to access the forum.</p>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            className="form-input"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            className="form-input"
-            value={formData.password}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+      <form onSubmit={handleSubmit}>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          required
+        />
+        <button type="submit">Login</button>
       </form>
     </div>
   );
