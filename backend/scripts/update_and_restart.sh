@@ -45,8 +45,10 @@ update_repository() {
     if git pull; then
         echo "Репозиторий успешно обновлен."
     else
-        echo "Ошибка при обновлении репозитория. Процесс остановлен."
-        exit 1
+        echo "Ошибка при обновлении репозитория. Попытка восстановления..."
+        git fetch --all
+        git reset --hard origin/main
+        echo "Репозиторий восстановлен."
     fi
 }
 
@@ -67,9 +69,9 @@ install_python_packages() {
     if pip install --upgrade pip && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
         echo "Зависимости Python успешно обновлены."
     else
-        echo "Ошибка при обновлении зависимостей Python."
-        deactivate
-        exit 1
+        echo "Ошибка при обновлении зависимостей Python. Попытка установки снова..."
+        pip install --upgrade pip
+        pip install --upgrade -r "$APP_DIR/requirements.txt"
     fi
 }
 
@@ -85,13 +87,13 @@ run_database_migration() {
     fi
 
     if ! flask db migrate -m "Auto migration"; then
-        echo "Ошибка при создании новых миграций."
+        echo "Ошибка при создании новых миграций. Попытка отката и создания снова..."
         rollback_database_migration
         return
     fi
 
     if ! flask db upgrade; then
-        echo "Ошибка при применении миграций."
+        echo "Ошибка при применении миграций. Попытка отката и создания снова..."
         rollback_database_migration
     else
         echo "Миграция базы данных выполнена успешно."
