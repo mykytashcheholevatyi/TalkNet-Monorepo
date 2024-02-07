@@ -1,40 +1,57 @@
 #!/bin/bash
 
-# Настройка переменных
-REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
-APP_DIR="/srv/talknet/backend/auth-service"  # Изменено на правильный путь
-VENV_DIR="$APP_DIR/venv"
-LOG_DIR="/var/log/talknet"
-
-# Установка PostgreSQL
+# Обновление списка пакетов и установка необходимых компонентов
 sudo apt-get update
-sudo apt-get install -y postgresql postgresql-contrib
+sudo apt-get install -y python3 python3-pip python3-venv git postgresql postgresql-contrib nginx
 
-# Создание пользователя и базы данных для производственной среды
-sudo -u postgres createuser --interactive --pwprompt
-sudo -u postgres createdb -O username prod_db  # Замените 'username' и 'prod_db' на ваши значения
+# Проверка и установка PostgreSQL
+if ! command -v psql > /dev/null; then
+    echo "Установка PostgreSQL..."
+    sudo apt-get install -y postgresql postgresql-contrib
+fi
 
-# Создание структуры каталогов
-sudo mkdir -p $APP_DIR $LOG_DIR
-sudo chown -R $USER:$USER $APP_DIR $LOG_DIR
+# Настройка PostgreSQL: создание пользователя и базы данных
+PG_USER="your_username"  # Измените на ваше имя пользователя
+PG_DB="your_database_name"  # Измените на название вашей базы данных
+echo "Настройка PostgreSQL..."
+sudo -u postgres createuser --no-createdb --no-superuser --no-createrole --login $PG_USER
+sudo -u postgres createdb --owner=$PG_USER $PG_DB
 
-# Клонирование репозитория
-git clone $REPO_URL /srv/talknet
+# Клонирование репозитория, если он ещё не склонирован
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
+APP_DIR="/srv/talknet"
+if [ ! -d "$APP_DIR" ]; then
+    echo "Клонирование репозитория..."
+    git clone $REPO_URL $APP_DIR
+else
+    echo "Репозиторий уже склонирован. Обновление..."
+    cd $APP_DIR
+    git pull
+fi
 
-# Настройка виртуального окружения и установка зависимостей
-python3 -m venv $VENV_DIR
+# Установка и настройка Python виртуального окружения
+echo "Настройка Python виртуального окружения..."
+VENV_DIR="$APP_DIR/backend/auth-service/venv"
+if [ ! -d "$VENV_DIR" ]; then
+    python3 -m venv $VENV_DIR
+fi
 source $VENV_DIR/bin/activate
-pip install -r $APP_DIR/requirements.txt  # Убедитесь, что файл requirements.txt находится в /backend/auth-service/
 
-# Настройка переменных окружения
-export FLASK_APP=$APP_DIR/app.py
+# Установка зависимостей Python
+echo "Установка зависимостей Python..."
+pip install -r $APP_DIR/backend/auth-service/requirements.txt
+
+# Настройка и запуск приложения
+echo "Настройка и запуск приложения..."
+export FLASK_APP=$APP_DIR/backend/auth-service/app.py
 export FLASK_ENV=production
-export DATABASE_URL='postgresql://username:password@localhost/prod_db'
+export DATABASE_URL="postgresql://$PG_USER:@localhost/$PG_DB"
 
-# Инициализация базы данных (при необходимости)
-python $APP_DIR/app.py  # Убедитесь, что в app.py присутствует логика инициализации БД
+# Инициализация и миграция базы данных, если требуется
+# flask db upgrade  # Раскомментируйте, если используете Flask-Migrate
 
-# Запуск приложения в фоне с логированием
-gunicorn --bind 0.0.0.0:8000 app:app --chdir $APP_DIR --daemon --log-file=$LOG_DIR/gunicorn.log --access-logfile=$LOG_DIR/access.log
+# Запуск приложения через Gunicorn
+echo "Запуск приложения через Gunicorn..."
+gunicorn --bind 0.0.0.0:8000 app:app --chdir $APP_DIR/backend/auth-service --daemon
 
 echo "Приложение успешно развернуто и запущено."
