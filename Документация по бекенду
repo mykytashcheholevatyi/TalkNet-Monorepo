@@ -1,97 +1,120 @@
-Создайте виртуальное окружение
-python3 -m venv venv
-source venv/bin/activate
-pip install Flask Flask-SQLAlchemy psycopg2-binary
+#!/bin/bash
 
-Запуск настройки
-/srv/talknet/backend/scripts/initial_deploy.sh
+set -e
 
-Запуск обновы
-/srv/talknet/backend/scripts/update_and_restart.sh
+echo "Начало обновления: $(date)"
 
-Установите обновленную версию blinker
-pip install --upgrade --user blinker
+APP_DIR="/srv/talknet/backend/auth-service"
+VENV_DIR="$APP_DIR/venv"
+LOG_DIR="/var/log/talknet"
+BACKUP_DIR="/srv/talknet/backups"
+PG_DB="prod_db"
 
+# Функция для создания бэкапа базы данных
+create_database_backup() {
+    echo "Создание бэкапа базы данных..."
+    mkdir -p "$BACKUP_DIR"
+    if sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"; then
+        echo "Бэкап базы данных создан успешно."
+    else
+        echo "Ошибка при создании бэкапа базы данных. Процесс остановлен."
+        exit 1
+    fi
+}
 
-В папке /backend/scripts 
-npm install pm2 -g
-pm2 start backend_webhook_server.js --name backend_webhook_server
-pm2 startup
-pm2 save
+# Функция для обновления репозитория из Git
+update_repository() {
+    echo "Получение обновлений из репозитория..."
+    cd "$APP_DIR"
+    if git pull; then
+        echo "Репозиторий успешно обновлен."
+    else
+        echo "Ошибка при обновлении репозитория. Процесс остановлен."
+        exit 1
+    fi
+}
 
-# Перейдите в директорию /srv и клонируйте монорепозиторий
-cd /srv
-git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+# Функция для активации виртуального окружения
+activate_virtualenv() {
+    echo "Активация виртуального окружения..."
+    if [ -d "$VENV_DIR" ]; then
+        . "$VENV_DIR/bin/activate"
+    else
+        echo "Виртуальное окружение не найдено. Создание нового виртуального окружения..."
+        python3 -m venv "$VENV_DIR"
+        . "$VENV_DIR/bin/activate"
+        echo "Виртуальное окружение создано."
+        python -m ensurepip --upgrade
+    fi
+}
 
-Ручное обновление
-cd /srv/talknet
-git checkout main
-git pull
+# Функция для установки пакетов Python
+install_python_packages() {
+    echo "Установка пакетов Python..."
+    if pip install flask_login && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
+        echo "Зависимости Python успешно обновлены."
+    else
+        echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
+        deactivate
+        exit 1
+    fi
+}
 
-Ставим веб сервер гуникорн
-pip install gunicorn
-gunicorn -c gunicorn_config.py myproject.wsgi:application
+# Функция для выполнения миграции базы данных
+run_database_migration() {
+    echo "Миграция базы данных..."
+    export FLASK_APP=app.py
+    export FLASK_ENV=production
 
-Создаем gunicorn_config.py в папке бекенда
-command = '/srv/talknet/venv/bin/gunicorn'
-pythonpath = '/srv/talknet/backend'
-bind = '0.0.0.0:8000'  # Убедитесь, что этот порт свободен
-workers = 3
-user = 'www-data'
+    if [ ! -d "$APP_DIR/migrations" ]; then
+        flask db init
+        echo "Миграционный репозиторий инициализирован."
+    fi
 
-# Перейдите к скриптам бэкенда и установите права на выполнение для скрипта деплоя и обновления
-cd /srv/talknet/backend/scripts
-chmod +x full_deploy_backend.sh
-cd /srv/talknet/backend/scripts
-chmod +x update_and_restart.sh
+    if ! flask db migrate -m "New migration"; then
+        rollback_database_migration
+        return
+    fi
 
-Запуск обновления
-/srv/talknet/backend/scripts/update_and_restart.sh
+    if flask db upgrade; then
+        echo "Миграция базы данных выполнена успешно."
+    else
+        echo "Ошибка при миграции базы данных. Процесс остановлен."
+        rollback_database_migration
+    fi
+}
 
-Добавьте джисон хук на гитхабе
-http://85.215.65.78:9001/backend-webhook
-с секретом 
-your_webhook_secret
+# Функция для сброса миграции базы данных в случае ошибки
+rollback_database_migration() {
+    echo "Сброс миграции базы данных..."
+    if flask db downgrade base; then
+        echo "Миграция базы данных отменена. Пожалуйста, проверьте миграционные скрипты."
+    else
+        echo "Ошибка при отмене миграций. Требуется вмешательство."
+    fi
+    deactivate
+    exit 1
+}
 
-# Создайте директорию для Express-приложения обработчика веб-хуков бэкенда
-mkdir /srv/talknet/backend-webhook-handler
-cd /srv/talknet/backend-webhook-handler
+# Функция для деактивации виртуального окружения
+deactivate_virtualenv() {
+    echo "Деактивация виртуального окружения..."
+    deactivate
+}
 
-# Инициализируйте новый Node.js проект и установите Express
-npm init -y
-npm install express
+# Функция для перезапуска приложения через Gunicorn
+restart_application() {
+    echo "Перезапуск приложения через Gunicorn..."
+    pkill gunicorn || true
+    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+    echo "Приложение успешно обновлено и перезапущено."
+}
 
-# Создайте файл Express-приложения, например, backend_update_server.js, и добавьте в него код обработчика веб-хука
-
-# Запустите Express-приложение через pm2
-pm2 start /srv/talknet/backend-webhook-handler/backend_update_server.js --name backend-webhook-handler
-pm2 save
-
-# Настройте pm2 на автозапуск при старте системы
-pm2 startup systemd
-
-Запуск скрипта вручную
-cd /srv/talknet/backend/scripts
-chmod +x full_deploy_backend.sh
-./full_deploy_backend.sh
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Основной скрипт
+create_database_backup
+update_repository
+activate_virtualenv
+install_python_packages
+run_database_migration
+deactivate_virtualenv
+restart_application
