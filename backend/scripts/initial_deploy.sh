@@ -33,7 +33,7 @@ ensure_package_installed nginx
 
 # Настройка PostgreSQL
 PG_USER="your_username"
-PG_DB="your_database_name"
+PG_DB="prod_db"
 PG_PASSWORD="your_password"
 
 echo "Настройка PostgreSQL..."
