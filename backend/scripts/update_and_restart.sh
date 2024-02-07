@@ -32,12 +32,7 @@ trap 'error_exit' ERR
 create_database_backup() {
     echo "Создание бэкапа базы данных..."
     mkdir -p "$BACKUP_DIR"
-    if sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"; then
-        echo "Бэкап базы данных создан успешно."
-    else
-        echo "Ошибка при создании бэкапа базы данных. Процесс остановлен."
-        exit 1
-    fi
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
 # Очистка текущей установки
@@ -55,7 +50,7 @@ setup() {
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
-    pip install -r requirements.txt
+    pip install -r "$APP_DIR/requirements.txt"
 }
 
 # Восстановление базы данных (опционально)
@@ -139,11 +134,8 @@ restart_application() {
     echo "Приложение перезапущено."
 }
 
-# Логика скрипта
+# Последовательное выполнение функций с логированием
 create_database_backup || error_exit
-cleanup || error_exit
-setup || error_exit
-restore_database || error_exit # Уберите этот шаг, если не нужно восстанавливать базу данных из бэкапа
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
@@ -152,4 +144,4 @@ deactivate_virtualenv || error_exit
 restart_application || error_exit
 
 # Завершение обновления
-echo "Обновление и восстановление проекта успешно завершены: $(date)"
+echo "Обновление успешно завершено: $(date)"
