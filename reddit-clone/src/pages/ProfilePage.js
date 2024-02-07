@@ -4,7 +4,7 @@ function ProfilePage() {
   return (
     <div>
       <h1>User Profile</h1>
-      <p>View and edit your profile information.</p>
+      <p>View And edit your profile information.</p>
       {/* Добавьте информацию и настройки профиля пользователя */}
     </div>
   );

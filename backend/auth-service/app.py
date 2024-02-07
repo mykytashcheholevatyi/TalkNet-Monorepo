@@ -43,7 +43,7 @@ def get_users():
 # Главная страница
 @app.route('/')
 def index():
-    return '<h1>Welcome ТЕСТ to the Flask App!</h1><p>Go to <a href="/users">/users</a> to see the list of users.</p>'
+    return '<h1>Welcome to the Flask App!</h1><p>Go to <a href="/users">/users</a> to see the list of users.</p>'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
