@@ -1,3 +1,21 @@
+Создайте виртуальное окружение
+python3 -m venv venv
+source venv/bin/activate
+
+Создание проекта Django
+pip install django djangorestframework
+django-admin startproject myredditbackend .
+python manage.py startapp users
+
+Добавьте приложение и Django REST framework в INSTALLED_APPS 
+ 'rest_framework',
+ 'users',
+
+
+
+
+
+
 # Перейдите в директорию /srv и клонируйте монорепозиторий
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
@@ -7,6 +25,8 @@ git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 
 Ставим веб сервер гуникорн
 pip install gunicorn
+gunicorn -c gunicorn_config.py myproject.wsgi:application
+
 
 Создаем gunicorn_config.py в папке бекенда
 command = '/srv/talknet/venv/bin/gunicorn'
