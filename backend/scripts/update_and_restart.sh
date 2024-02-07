@@ -10,7 +10,6 @@ LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
 PG_DB="prod_db"
 
-# Функция для создания бэкапа базы данных
 create_database_backup() {
     echo "Создание бэкапа базы данных..."
     mkdir -p "$BACKUP_DIR"
@@ -22,7 +21,6 @@ create_database_backup() {
     fi
 }
 
-# Функция для обновления репозитория из Git
 update_repository() {
     echo "Получение обновлений из репозитория..."
     cd "$APP_DIR"
@@ -34,33 +32,29 @@ update_repository() {
     fi
 }
 
-# Функция для активации виртуального окружения
 activate_virtualenv() {
     echo "Активация виртуального окружения..."
     if [ -d "$VENV_DIR" ]; then
         . "$VENV_DIR/bin/activate"
     else
-        echo "Виртуальное окружение не найдено. Создание нового виртуального окружения..."
+        echo "Виртуальное окружение не найдено. Создание..."
         python3 -m venv "$VENV_DIR"
         . "$VENV_DIR/bin/activate"
-        echo "Виртуальное окружение создано."
         python -m ensurepip --upgrade
     fi
 }
 
-# Функция для установки пакетов Python
 install_python_packages() {
     echo "Установка пакетов Python..."
-    if pip install flask_login && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
+    if pip install --upgrade pip && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
         echo "Зависимости Python успешно обновлены."
     else
-        echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
+        echo "Ошибка при обновлении зависимостей Python."
         deactivate
         exit 1
     fi
 }
 
-# Функция для выполнения миграции базы данных
 run_database_migration() {
     echo "Миграция базы данных..."
     export FLASK_APP=app.py
@@ -68,49 +62,46 @@ run_database_migration() {
 
     if [ ! -d "$APP_DIR/migrations" ]; then
         flask db init
-        echo "Миграционный репозиторий инициализирован."
+        echo "Миграционный репозиторий создан."
     fi
 
-    if ! flask db migrate -m "New migration"; then
+    if ! flask db migrate -m "Auto migration"; then
+        echo "Ошибка при создании новых миграций."
         rollback_database_migration
         return
     fi
 
-    if flask db upgrade; then
-        echo "Миграция базы данных выполнена успешно."
-    else
-        echo "Ошибка при миграции базы данных. Процесс остановлен."
+    if ! flask db upgrade; then
+        echo "Ошибка при применении миграций."
         rollback_database_migration
+    else
+        echo "Миграция базы данных выполнена успешно."
     fi
 }
 
-# Функция для сброса миграции базы данных в случае ошибки
 rollback_database_migration() {
     echo "Сброс миграции базы данных..."
     if flask db downgrade base; then
-        echo "Миграция базы данных отменена. Пожалуйста, проверьте миграционные скрипты."
+        echo "Миграция отменена. Проверьте миграционные скрипты."
     else
-        echo "Ошибка при отмене миграций. Требуется вмешательство."
+        echo "Ошибка при отмене миграций."
     fi
     deactivate
     exit 1
 }
 
-# Функция для деактивации виртуального окружения
 deactivate_virtualenv() {
     echo "Деактивация виртуального окружения..."
     deactivate
 }
 
-# Функция для перезапуска приложения через Gunicorn
 restart_application() {
-    echo "Перезапуск приложения через Gunicorn..."
+    echo "Перезапуск приложения..."
     pkill gunicorn || true
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Приложение успешно обновлено и перезапущено."
+    echo "Приложение перезапущено."
 }
 
-# Основной скрипт
 create_database_backup
 update_repository
 activate_virtualenv
