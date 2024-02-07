@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 set -e
@@ -109,3 +110,4 @@ install_python_packages
 run_database_migration
 deactivate_virtualenv
 restart_application
+```
