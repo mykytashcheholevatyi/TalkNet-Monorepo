@@ -34,19 +34,18 @@ update_repository() {
 
 activate_virtualenv() {
     echo "Активация виртуального окружения..."
-    if [ -d "$VENV_DIR" ]; then
-        . "$VENV_DIR/bin/activate"
-    else
-        echo "Виртуальное окружение не найдено. Создание..."
+    if [ ! -d "$VENV_DIR" ]; then
         python3 -m venv "$VENV_DIR"
         . "$VENV_DIR/bin/activate"
         python -m ensurepip --upgrade
+        pip install --upgrade pip
     fi
+    . "$VENV_DIR/bin/activate"
 }
 
 install_python_packages() {
     echo "Установка пакетов Python..."
-    if pip install --upgrade pip && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
+    if pip install --upgrade -r "$APP_DIR/requirements.txt"; then
         echo "Зависимости Python успешно обновлены."
     else
         echo "Ошибка при обновлении зависимостей Python."
@@ -60,9 +59,9 @@ run_database_migration() {
     export FLASK_APP=app.py
     export FLASK_ENV=production
 
-    if [ ! -d "$APP_DIR/migrations" ]; then
-        flask db init
-        echo "Миграционный репозиторий создан."
+    if ! flask db init; then
+        echo "Ошибка при создании миграционного репозитория."
+        exit 1
     fi
 
     if ! flask db migrate -m "Auto migration"; then
@@ -81,18 +80,12 @@ run_database_migration() {
 
 rollback_database_migration() {
     echo "Сброс миграции базы данных..."
-    if flask db downgrade base; then
-        echo "Миграция отменена. Проверьте миграционные скрипты."
-    else
+    if ! flask db downgrade base; then
         echo "Ошибка при отмене миграций."
+    else
+        echo "Миграция отменена. Проверьте миграционные скрипты."
     fi
-    deactivate
     exit 1
-}
-
-deactivate_virtualenv() {
-    echo "Деактивация виртуального окружения..."
-    deactivate
 }
 
 restart_application() {
@@ -102,12 +95,12 @@ restart_application() {
     echo "Приложение перезапущено."
 }
 
-create_database_backup
-update_repository
-activate_virtualenv
-install_python_packages
-run_database_migration
-deactivate_virtualenv
+# Последовательное выполнение функций с обработкой ошибок
+create_database_backup || exit 1
+update_repository || exit 1
+activate_virtualenv || exit 1
+install_python_packages || exit 1
+run_database_migration || exit 1
 restart_application
 
 echo "Обновление успешно завершено: $(date)"
