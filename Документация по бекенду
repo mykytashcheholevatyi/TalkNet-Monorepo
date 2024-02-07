@@ -1,76 +1,92 @@
-Создайте виртуальное окружение
-python3 -m venv venv
-source venv/bin/activate
-pip install Flask Flask-SQLAlchemy psycopg2-binary
+#!/bin/bash
 
-Запуск настройки
-/srv/talknet/backend/scripts/initial_deploy.sh
+# Установка строгого режима: немедленное прекращение при ошибках, перенаправление в лог
+set -Eeo pipefail
+LOG_FILE="/var/log/talknet/update-$(date +%Y-%m-%d_%H-%M-%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
 
-Запуск обновы
-/srv/talknet/backend/scripts/update_and_restart.sh
+# Обработчик ошибок, запускаемый при любой ошибке
+error_exit() {
+    echo "Произошла ошибка. Проверьте лог файл для получения дополнительной информации."
+    flask db downgrade
+    restart_application
+    exit 1
+}
 
-Установите обновленную версию blinker
-pip install --upgrade --user blinker
+trap 'error_exit' ERR
 
+# Переменные
+APP_DIR="/srv/talknet/backend/auth-service"
+VENV_DIR="$APP_DIR/venv"
+BACKUP_DIR="/srv/talknet/backups"
+PG_DB="prod_db"
 
-В папке /backend/scripts 
-npm install pm2 -g
-pm2 start backend_webhook_server.js --name backend_webhook_server
-pm2 startup
-pm2 save
+# Функции
+create_database_backup() {
+    echo "Создание бэкапа базы данных..."
+    mkdir -p "$BACKUP_DIR"
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
+    echo "Бэкап базы данных создан."
+}
 
-# Перейдите в директорию /srv и клонируйте монорепозиторий
-cd /srv
-git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+update_repository() {
+    echo "Получение обновлений из репозитория..."
+    cd "$APP_DIR" || exit
+    git pull origin main
+    echo "Репозиторий обновлен."
+}
 
-Ручное обновление
-cd /srv/talknet
-git checkout main
-git pull
+activate_virtualenv() {
+    echo "Активация виртуального окружения..."
+    if [[ ! -d "$VENV_DIR" ]]; then
+        python3 -m venv "$VENV_DIR"
+    fi
+    source "$VENV_DIR/bin/activate"
+    python -m ensurepip --upgrade
+    echo "Виртуальное окружение активировано."
+}
 
-Ставим веб сервер гуникорн
-pip install gunicorn
-gunicorn -c gunicorn_config.py myproject.wsgi:application
+install_python_packages() {
+    echo "Установка пакетов Python..."
+    pip install --upgrade pip
+    pip install --upgrade -r "$APP_DIR/requirements.txt"
+    echo "Зависимости Python успешно обновлены."
+}
 
-Создаем gunicorn_config.py в папке бекенда
-command = '/srv/talknet/venv/bin/gunicorn'
-pythonpath = '/srv/talknet/backend'
-bind = '0.0.0.0:8000'  # Убедитесь, что этот порт свободен
-workers = 3
-user = 'www-data'
+run_database_migration() {
+    echo "Выполнение миграции базы данных..."
+    export FLASK_APP=app.py
+    export FLASK_ENV=production
+    flask db upgrade
+    echo "Миграция базы данных выполнена."
+}
 
-# Перейдите к скриптам бэкенда и установите права на выполнение для скрипта деплоя и обновления
-cd /srv/talknet/backend/scripts
-chmod +x full_deploy_backend.sh
-cd /srv/talknet/backend/scripts
-chmod +x update_and_restart.sh
+rollback_database_migration() {
+    echo "Откат миграции базы данных..."
+    flask db downgrade
+    echo "Миграция базы данных откачена."
+}
 
-Запуск обновления
-/srv/talknet/backend/scripts/update_and_restart.sh
+deactivate_virtualenv() {
+    echo "Деактивация виртуального окружения..."
+    deactivate
+}
 
-Добавьте джисон хук на гитхабе
-http://85.215.65.78:9001/backend-webhook
-с секретом 
-your_webhook_secret
+restart_application() {
+    echo "Перезапуск приложения..."
+    pkill gunicorn || true # Игнорировать ошибки, если gunicorn не запущен
+    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon \
+    --log-file="/var/log/talknet/gunicorn.log" --access-logfile="/var/log/talknet/access.log"
+    echo "Приложение перезапущено."
+}
 
-# Создайте директорию для Express-приложения обработчика веб-хуков бэкенда
-mkdir /srv/talknet/backend-webhook-handler
-cd /srv/talknet/backend-webhook-handler
+# Основная логика
+create_database_backup
+update_repository
+activate_virtualenv
+install_python_packages
+run_database_migration
+restart_application
+deactivate_virtualenv
 
-# Инициализируйте новый Node.js проект и установите Express
-npm init -y
-npm install express
-
-# Создайте файл Express-приложения, например, backend_update_server.js, и добавьте в него код обработчика веб-хука
-
-# Запустите Express-приложение через pm2
-pm2 start /srv/talknet/backend-webhook-handler/backend_update_server.js --name backend-webhook-handler
-pm2 save
-
-# Настройте pm2 на автозапуск при старте системы
-pm2 startup systemd
-
-Запуск скрипта вручную
-cd /srv/talknet/backend/scripts
-chmod +x full_deploy_backend.sh
-./full_deploy_backend.sh
+echo "Обновление успешно завершено: $(date)"
