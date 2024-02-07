@@ -121,13 +121,13 @@ restart_application() {
 }
 
 # Последовательное выполнение функций с логированием
-create_database_backup
-update_repository
-activate_virtualenv
-install_python_packages
-run_database_migration
-deactivate_virtualenv
-restart_application
+create_database_backup || error_exit
+update_repository || error_exit
+activate_virtualenv || error_exit
+install_python_packages || error_exit
+run_database_migration || error_exit
+deactivate_virtualenv || error_exit
+restart_application || error_exit
 
 # Завершение обновления
 echo "Обновление успешно завершено: $(date)"
