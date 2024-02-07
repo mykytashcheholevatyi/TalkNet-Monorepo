@@ -1,47 +1,40 @@
 #!/bin/bash
 
+# Установка строгого режима выполнения скрипта
 set -euo pipefail
+
+# Определение функции для обработки непредвиденных ошибок
 trap "echo 'Error: Script failed.'" ERR
 
+# Вывод начального сообщения о начале процесса
 echo "Начало полной очистки, обновления и восстановления проекта: $(date)"
 
-# Конфигурация
-APP_DIR="/srv/talknet/backend/auth-service"
-VENV_DIR="$APP_DIR/venv"
-LOG_DIR="/var/log/talknet"
-BACKUP_DIR="/srv/talknet/backups"
-REQS_BACKUP_DIR="/tmp"
-PG_DB="prod_db"
-LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
-REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
-MAX_ATTEMPTS=3
-ATTEMPT=1
+# Определение основных переменных для конфигурации
+APP_DIR="/srv/talknet/backend/auth-service"  # Путь к директории приложения
+VENV_DIR="$APP_DIR/venv"  # Путь к виртуальной среде Python
+LOG_DIR="/var/log/talknet"  # Директория для логов
+BACKUP_DIR="/srv/talknet/backups"  # Директория для бэкапов базы данных
+REQS_BACKUP_DIR="/tmp"  # Временная директория для сохранения requirements.txt
+PG_DB="prod_db"  # Имя базы данных PostgreSQL
+LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Файл для записи лога текущего процесса обновления
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # URL Git репозитория
+MAX_ATTEMPTS=3  # Максимальное количество попыток для операций, требующих повторения
+ATTEMPT=1  # Начальное значение счетчика попыток
 
-# Обработчик ошибок
-error_exit() {
-    echo "Произошла критическая ошибка."
-    echo "Попытка откатить миграцию и перезапустить приложение..."
-    flask db downgrade || true
-    restart_application
-    exit 1
-}
-
-# Создание бэкапа базы данных
+# Функция для создания бэкапа базы данных
 create_database_backup() {
     echo "Создание бэкапа базы данных..."
     mkdir -p "$BACKUP_DIR"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
-# Очистка текущей установки с сохранением важных файлов
+# Функция для очистки текущей установки с сохранением важных файлов
 cleanup() {
     echo "Очистка текущей установки..."
-    # Сохранение requirements.txt
     if [ -f "$APP_DIR/requirements.txt" ]; then
         echo "Сохранение файла requirements.txt..."
         cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
     fi
-    # Сохранение app.py
     if [ -f "$APP_DIR/app.py" ]; then
         echo "Сохранение файла app.py..."
         cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
@@ -50,18 +43,15 @@ cleanup() {
     mkdir -p "$APP_DIR"
 }
 
-
-# Клонирование репозитория и установка зависимостей
+# Функция для клонирования репозитория и установки зависимостей
 setup() {
     echo "Клонирование репозитория и установка зависимостей..."
     git clone "$REPO_URL" "$APP_DIR"
     cd "$APP_DIR"
-    # Восстановление файла requirements.txt
     if [ -f "$REQS_BACKUP_DIR/requirements.txt" ]; then
         echo "Восстановление файла requirements.txt..."
         cp "$REQS_BACKUP_DIR/requirements.txt" "$APP_DIR"
     fi
-    # Восстановление файла app.py
     if [ -f "$REQS_BACKUP_DIR/app.py" ]; then
         echo "Восстановление файла app.py..."
         cp "$REQS_BACKUP_DIR/app.py" "$APP_DIR"
@@ -76,14 +66,13 @@ setup() {
     fi
 }
 
-
-# Восстановление базы данных (опционально)
+# Функция для восстановления базы данных (опционально)
 restore_database() {
     echo "Восстановление базы данных..."
     # Здесь должен быть код для восстановления базы данных из бэкапа
 }
 
-# Обновление репозитория
+# Функция для получения обновлений из репозитория
 update_repository() {
     echo "Получение обновлений из репозитория..."
     cd "$APP_DIR"
@@ -97,7 +86,7 @@ update_repository() {
     fi
 }
 
-# Активация виртуального окружения
+# Функция для активации виртуального окружения
 activate_virtualenv() {
     echo "Активация виртуального окружения..."
     if [ -d "$VENV_DIR" ]; then
@@ -110,37 +99,31 @@ activate_virtualenv() {
     fi
 }
 
-# Установка пакетов Python
+# Функция для установки пакетов Python
 install_python_packages() {
     echo "Установка пакетов Python..."
     if pip install --upgrade pip && [ -f "$APP_DIR/requirements.txt" ]; then
         pip install --upgrade -r "$APP_DIR/requirements.txt"
-        # Добавляем установку Flask-Cors
-        pip install Flask-Cors
+        pip install Flask-Cors  # Дополнительная установка Flask-Cors
         echo "Зависимости Python успешно обновлены."
     else
         echo "Ошибка при обновлении зависимостей Python. Попытка установки снова..."
         pip install --upgrade pip
         pip install --upgrade -r "$APP_DIR/requirements.txt"
-        # Добавляем установку Flask-Cors
-        pip install Flask-Cors
+        pip install Flask-Cors  # Дополнительная установка Flask-Cors
     fi
 }
 
-
-# Выполнение миграции базы данных
+# Функция для выполнения миграции базы данных
 run_database_migration() {
     while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
         echo "Попытка $ATTEMPT миграции базы данных..."
-        echo "Выполнение миграции базы данных..."
         export FLASK_APP=app.py
         export FLASK_ENV=production
-
         if [ ! -d "$APP_DIR/migrations" ]; then
             flask db init
             echo "Миграционный репозиторий создан."
         fi
-
         if ! flask db migrate -m "Auto migration"; then
             echo "Ошибка при создании новых миграций. Удаление старых миграций и создание заново..."
             flask db stamp head
@@ -150,18 +133,17 @@ run_database_migration() {
             echo "Миграция базы данных выполнена успешно."
             break
         fi
-
         ((ATTEMPT++))
     done
 }
 
-# Деактивация виртуального окружения
+# Функция для деактивации виртуального окружения
 deactivate_virtualenv() {
     echo "Деактивация виртуального окружения..."
     deactivate
 }
 
-# Перезапуск приложения
+# Функция для перезапуска приложения
 restart_application() {
     echo "Перезапуск приложения..."
     pkill gunicorn || true
@@ -169,11 +151,11 @@ restart_application() {
     echo "Приложение перезапущено."
 }
 
-# Последовательное выполнение функций с логированием
+# Последовательное выполнение всех функций с логированием
 create_database_backup || error_exit
 cleanup || error_exit
 setup || error_exit
-restore_database || true # Продолжить выполнение даже если восстановление не удалось
+restore_database || true  # Продолжить выполнение даже если восстановление не удалось
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
@@ -181,5 +163,5 @@ run_database_migration || error_exit
 deactivate_virtualenv || error_exit
 restart_application || error_exit
 
-# Завершение обновления
+# Вывод сообщения об успешном завершении обновления
 echo "Обновление успешно завершено: $(date)"
