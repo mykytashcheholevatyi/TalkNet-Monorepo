@@ -13,6 +13,8 @@ LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
 PG_DB="prod_db"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
+MAX_ATTEMPTS=3
+ATTEMPT=1
 
 # Обработчик ошибок
 error_exit() {
@@ -73,24 +75,29 @@ install_python_packages() {
 }
 
 run_database_migration() {
-    echo "Миграция базы данных..."
-    echo "Выполнение миграции базы данных..."
-    export FLASK_APP=app.py
-    export FLASK_ENV=production
+    while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
+        echo "Попытка $ATTEMPT миграции базы данных..."
+        echo "Выполнение миграции базы данных..."
+        export FLASK_APP=app.py
+        export FLASK_ENV=production
 
-    if [ ! -d "$APP_DIR/migrations" ]; then
-        flask db init
-        echo "Миграционный репозиторий создан."
-    fi
+        if [ ! -d "$APP_DIR/migrations" ]; then
+            flask db init
+            echo "Миграционный репозиторий создан."
+        fi
 
-    if ! flask db migrate -m "Auto migration"; then
-        echo "Ошибка при создании новых миграций. Удаление старых миграций и создание заново..."
-        flask db stamp head
-        flask db migrate
-        flask db upgrade
-    else
-        echo "Миграция базы данных выполнена успешно."
-    fi
+        if ! flask db migrate -m "Auto migration"; then
+            echo "Ошибка при создании новых миграций. Удаление старых миграций и создание заново..."
+            flask db stamp head
+            flask db migrate
+            flask db upgrade
+        else
+            echo "Миграция базы данных выполнена успешно."
+            break
+        fi
+
+        ((ATTEMPT++))
+    done
 }
 
 deactivate_virtualenv() {
