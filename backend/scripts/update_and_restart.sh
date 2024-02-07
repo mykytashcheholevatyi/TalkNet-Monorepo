@@ -40,13 +40,18 @@ activate_virtualenv() {
     if [ -d "$VENV_DIR" ]; then
         . "$VENV_DIR/bin/activate"
     else
-        echo "Виртуальное окружение не найдено. Процесс остановлен."
-        exit 1
+        echo "Виртуальное окружение не найдено. Создание нового виртуального окружения..."
+        python3 -m venv "$VENV_DIR"
+        . "$VENV_DIR/bin/activate"
+        echo "Виртуальное окружение создано."
+        echo "Установка pip..."
+        python -m ensurepip
     fi
 }
 
 # Функция для установки пакетов Python
 install_python_packages() {
+    echo "Установка пакетов Python..."
     echo "Установка пакета flask_login..."
     pip install flask_login
     echo "Обновление зависимостей Python..."
