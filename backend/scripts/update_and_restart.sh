@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Установка строгого режима выполнения скрипта
 set -Eeo pipefail
 
-# Определение переменных для директорий и файлов
 APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
@@ -12,75 +10,75 @@ PG_DB="prod_db"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 LOG_FILE="$LOG_DIR/update-$DATE.log"
 
-# Перенаправление вывода в лог-файл
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Функция для обработки ошибок
+trap 'error_exit' ERR
+
 error_exit() {
     echo "Произошла ошибка. См. лог: $LOG_FILE."
-    # Если возникла ошибка во время миграции, пытаемся откатиться
     if [[ "$FLASK_MIGRATE" = true ]]; then
         flask db downgrade
     fi
-    # Перезапуск приложения, чтобы оно продолжило работать после ошибки
     restart_application
     exit 1
 }
 
-trap 'error_exit' ERR
-
 create_database_backup() {
     echo "Создание бэкапа базы данных..."
     mkdir -p "$BACKUP_DIR"
-    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$DATE.sql"
-    echo "Бэкап базы данных создан в $BACKUP_DIR/db_backup_$DATE.sql."
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$DATE.sql" 2>>"$LOG_FILE" || {
+        echo "Ошибка при создании бэкапа базы данных."
+        return 1 # Возвращаем статус ошибки для обработчика trap
+    }
+    echo "Бэкап базы данных создан."
 }
 
 update_repository() {
-    echo "Обновление кода из репозитория..."
-    git -C "$APP_DIR" pull
+    echo "Обновление репозитория..."
+    git -C "$APP_DIR" pull origin main || {
+        echo "Ошибка при обновлении репозитория."
+        return 1
+    }
     echo "Репозиторий обновлен."
 }
 
 activate_virtualenv() {
     echo "Активация виртуального окружения..."
-    if [[ ! -d "$VENV_DIR" ]]; then
-        python3 -m venv "$VENV_DIR"
+    if ! source "$VENV_DIR/bin/activate"; then
+        echo "Ошибка активации виртуального окружения."
+        return 1
     fi
-    source "$VENV_DIR/bin/activate"
-    python -m ensurepip --upgrade
     echo "Виртуальное окружение активировано."
 }
 
 install_python_packages() {
-    echo "Установка зависимостей Python..."
-    pip install --upgrade pip
-    pip install --upgrade -r "$APP_DIR/requirements.txt"
-    echo "Зависимости Python установлены."
+    echo "Установка зависимостей..."
+    pip3 install --upgrade pip
+    pip3 install --upgrade -r "$APP_DIR/requirements.txt" || {
+        echo "Ошибка при установке зависимостей."
+        return 1
+    }
+    echo "Зависимости установлены."
 }
 
 run_database_migration() {
-    echo "Выполнение миграции базы данных..."
-    export FLASK_APP=app.py
-    export FLASK_ENV=production
-    flask db upgrade
-    FLASK_MIGRATE=true
+    echo "Миграция базы данных..."
+    FLASK_APP=app.py FLASK_ENV=production flask db upgrade || {
+        echo "Ошибка миграции базы данных."
+        FLASK_MIGRATE=true
+        return 1
+    }
     echo "Миграция базы данных выполнена."
-}
-
-rollback_database_migration() {
-    echo "Откат изменений базы данных..."
-    flask db downgrade
-    echo "Миграция откачена."
 }
 
 restart_application() {
     echo "Перезапуск приложения..."
-    # Убиваем текущие процессы gunicorn, если они есть
     pkill gunicorn || true
-    # Запускаем приложение снова с использованием gunicorn
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon \
-    --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+    --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log" || {
+        echo "Ошибка при перезапуске приложения."
+        return 1
+    }
     echo "Приложение перезапущено."
 }
 
@@ -91,6 +89,5 @@ activate_virtualenv
 install_python_packages
 run_database_migration
 restart_application
-deactivate_virtualenv
 
 echo "Обновление успешно завершено: $DATE"
