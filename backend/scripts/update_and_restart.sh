@@ -14,9 +14,6 @@ BACKUP_DIR="/srv/talknet/backups"
 PG_DB="prod_db"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 
-# Перенаправить вывод в лог файл
-exec > >(tee -a "$LOG_FILE") 2>&1
-
 # Обработчик ошибок
 error_exit() {
     echo "Произошла критическая ошибка."
