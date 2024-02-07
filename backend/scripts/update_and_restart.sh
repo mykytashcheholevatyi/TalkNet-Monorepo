@@ -84,28 +84,13 @@ run_database_migration() {
     fi
 
     if ! flask db migrate -m "Auto migration"; then
-        echo "Ошибка при создании новых миграций. Попытка отката и создания снова..."
-        rollback_database_migration
-        return
-    fi
-
-    if ! flask db upgrade; then
-        echo "Ошибка при применении миграций. Попытка отката и создания снова..."
-        rollback_database_migration
+        echo "Ошибка при создании новых миграций. Удаление старых миграций и создание заново..."
+        flask db stamp head
+        flask db migrate
+        flask db upgrade
     else
         echo "Миграция базы данных выполнена успешно."
     fi
-}
-
-rollback_database_migration() {
-    echo "Сброс миграции базы данных..."
-    if flask db downgrade base; then
-        echo "Миграция отменена. Проверьте миграционные скрипты."
-    else
-        echo "Ошибка при отмене миграций."
-    fi
-    deactivate
-    exit 1
 }
 
 deactivate_virtualenv() {
@@ -125,7 +110,7 @@ create_database_backup || error_exit
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
-run_database_migration || { echo "Ошибка при выполнении миграции. Попытка удаления старых миграций и создания заново..."; flask db stamp head; flask db migrate; flask db upgrade; }
+run_database_migration || error_exit
 deactivate_virtualenv || error_exit
 restart_application || error_exit
 
