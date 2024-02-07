@@ -20,15 +20,13 @@ sudo apt install ./webmin_1.984_all.deb -y
 sudo /etc/webmin/start
 sudo systemctl restart webmin
 
-
-
 Git будет автоматически кэшировать ваши учетные данные на один год после каждой авторизации, и эта настройка будет автоматически применяться при каждом включении системы.
 git config --global user.name "mykytashch"
 git config --global user.email "mikitosik777@gmail.com"
 git config --global credential.helper 'cache --timeout=31536000'
 
 
-
+После настройки автоматической интеграции фронта и бекенда
 
 
 

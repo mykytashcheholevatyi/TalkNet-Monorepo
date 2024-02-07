@@ -1,49 +1,42 @@
-from flask import Flask, jsonify, render_template_string
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate  # Импорт Flask-Migrate
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
 
 app = Flask(__name__)
-
-# Конфигурация базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)  # Инициализация Flask-Migrate
+app.config['SECRET_KEY'] = 'your_secret_key'
 
-# Модель пользователя
-class User(db.Model):
+db = SQLAlchemy(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(80), nullable=False)
 
-# HTML шаблон для отображения пользователей
-html_template = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Users List</title>
-</head>
-<body>
-    <h2>Registered Users</h2>
-    <ul>
-    {% for user in users %}
-        <li>{{ user.username }}</li>
-    {% else %}
-        <li>No users found.</li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
-"""
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-# Маршрут для отображения пользователей
-@app.route('/users', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    return render_template_string(html_template, users=users)
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.json
+    hashed_password = generate_password_hash(data['password'], method='sha256')
+    new_user = User(username=data['username'], password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({'message': 'Registration successful'})
 
-# Главная страница
-@app.route('/')
-def index():
-    return '<h1>Welcome to the Flask App!</h1><p>Go to <a href="/users">/users</a> to see the list of users.</p>'
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    user = User.query.filter_by(username=data['username']).first()
+    if user and check_password_hash(user.password, data['password']):
+        login_user(user)
+        return jsonify({'message': 'Login successful'})
+    return jsonify({'message': 'Invalid username or password'}), 401
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(debug=True)
