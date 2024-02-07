@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Обновление списка пакетов
-sudo apt-get update
+LOG_DIR="/var/log/talknet"
+mkdir -p $LOG_DIR
+LOG_FILE="$LOG_DIR/deploy.log"
+
+exec > >(tee -a $LOG_FILE) 2>&1
+
+echo "Начало развертывания: $(date)"
 
 # Функция для проверки и установки необходимых пакетов
 ensure_package_installed() {
@@ -14,6 +19,9 @@ ensure_package_installed() {
     fi
 }
 
+# Обновление списка пакетов
+sudo apt-get update
+
 # Проверка и установка необходимых компонентов
 ensure_package_installed python3
 ensure_package_installed python3-pip
@@ -24,19 +32,13 @@ ensure_package_installed postgresql-contrib
 ensure_package_installed nginx
 
 # Настройка PostgreSQL
-PG_USER="your_username"  # Замените на ваше имя пользователя
-PG_DB="your_database_name"  # Замените на название вашей базы данных
+PG_USER="your_username"
+PG_DB="your_database_name"
+PG_PASSWORD="your_password"
 
 echo "Настройка PostgreSQL..."
-if ! sudo -u postgres psql -c "\du" | cut -d \| -f 1 | grep -qw $PG_USER; then
-    sudo -u postgres createuser --no-createdb --no-superuser --no-createrole --login $PG_USER
-    echo "Пользователь $PG_USER создан."
-fi
-
-if ! sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw $PG_DB; then
-    sudo -u postgres createdb --owner=$PG_USER $PG_DB
-    echo "База данных $PG_DB создана."
-fi
+sudo -u postgres psql -c "SELECT 1 FROM pg_user WHERE usename = '$PG_USER';" | grep -q 1 || sudo -u postgres createuser -P $PG_USER
+sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = '$PG_DB';" | grep -q 1 || sudo -u postgres createdb -O $PG_USER $PG_DB
 
 # Клонирование или обновление репозитория
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
@@ -67,14 +69,20 @@ pip install -r $APP_DIR/backend/auth-service/requirements.txt
 # Настройка и запуск приложения
 export FLASK_APP=$APP_DIR/backend/auth-service/app.py
 export FLASK_ENV=production
-export DATABASE_URL="postgresql://$PG_USER:@localhost/$PG_DB"
+export DATABASE_URL="postgresql://$PG_USER:$PG_PASSWORD@localhost/$PG_DB"
+
+# Создание бэкапа базы данных перед обновлением
+BACKUP_DIR="/srv/talknet/backups"
+mkdir -p $BACKUP_DIR
+echo "Создание бэкапа базы данных..."
+sudo -u postgres pg_dump $PG_DB > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
+
+# Запуск миграций базы данных, если требуется
+# flask db upgrade  # Раскомментируйте, если используете Flask-Migrate
 
 # Запуск приложения через Gunicorn
-if ! command -v gunicorn > /dev/null; then
-    pip install gunicorn
-fi
-
 echo "Запуск приложения через Gunicorn..."
-gunicorn --bind 0.0.0.0:8000 app:app --chdir $APP_DIR/backend/auth-service --daemon --log-file=$APP_DIR/backend/auth-service/gunicorn.log --access-logfile=$APP_DIR/backend/auth-service/access.log
+pkill gunicorn || true  # Остановка текущего процесса Gunicorn, если он запущен
+gunicorn --bind 0.0.0.0:8000 app:app --chdir $APP_DIR/backend/auth-service --daemon --log-file=$LOG_DIR/gunicorn.log --access-logfile=$LOG_DIR/access.log
 
-echo "Приложение успешно развернуто и запущено."
+echo "Приложение успешно развернуто и запущено: $(date)"
