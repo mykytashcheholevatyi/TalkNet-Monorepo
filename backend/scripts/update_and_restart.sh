@@ -10,6 +10,7 @@ APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
+REQS_BACKUP_DIR="/tmp"
 PG_DB="prod_db"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
@@ -32,9 +33,13 @@ create_database_backup() {
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
-# Очистка текущей установки
+# Очистка текущей установки с сохранением requirements.txt
 cleanup() {
     echo "Очистка текущей установки..."
+    if [ -f "$APP_DIR/requirements.txt" ]; then
+        echo "Сохранение файла requirements.txt..."
+        cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
+    fi
     rm -rf "$APP_DIR"
     mkdir -p "$APP_DIR"
 }
@@ -44,6 +49,10 @@ setup() {
     echo "Клонирование репозитория и установка зависимостей..."
     git clone "$REPO_URL" "$APP_DIR"
     cd "$APP_DIR"
+    if [ -f "$REQS_BACKUP_DIR/requirements.txt" ]; then
+        echo "Восстановление файла requirements.txt..."
+        cp "$REQS_BACKUP_DIR/requirements.txt" "$APP_DIR"
+    fi
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
