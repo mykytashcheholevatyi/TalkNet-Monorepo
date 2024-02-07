@@ -1,8 +1,7 @@
 #!/bin/bash
 
-set -e
-# Настроить прерывание при ошибках и ловить их
-set -Eeo pipefail
+set -euo pipefail
+trap "echo 'Error: Script failed.'" ERR
 
 echo "Начало полной очистки, обновления и восстановления проекта: $(date)"
 
@@ -21,12 +20,10 @@ ATTEMPT=1
 error_exit() {
     echo "Произошла критическая ошибка."
     echo "Попытка откатить миграцию и перезапустить приложение..."
-    flask db downgrade
+    flask db downgrade || true
     restart_application
     exit 1
 }
-
-trap 'error_exit' ERR
 
 # Создание бэкапа базы данных
 create_database_backup() {
@@ -73,18 +70,20 @@ update_repository() {
     fi
 }
 
+# Активация виртуального окружения
 activate_virtualenv() {
     echo "Активация виртуального окружения..."
     if [ -d "$VENV_DIR" ]; then
-        . "$VENV_DIR/bin/activate"
+        source "$VENV_DIR/bin/activate"
     else
         echo "Виртуальное окружение не найдено. Создание..."
         python3 -m venv "$VENV_DIR"
-        . "$VENV_DIR/bin/activate"
+        source "$VENV_DIR/bin/activate"
         python -m ensurepip --upgrade
     fi
 }
 
+# Установка пакетов Python
 install_python_packages() {
     echo "Установка пакетов Python..."
     if pip install --upgrade pip && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
@@ -96,6 +95,7 @@ install_python_packages() {
     fi
 }
 
+# Выполнение миграции базы данных
 run_database_migration() {
     while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
         echo "Попытка $ATTEMPT миграции базы данных..."
@@ -122,11 +122,13 @@ run_database_migration() {
     done
 }
 
+# Деактивация виртуального окружения
 deactivate_virtualenv() {
     echo "Деактивация виртуального окружения..."
     deactivate
 }
 
+# Перезапуск приложения
 restart_application() {
     echo "Перезапуск приложения..."
     pkill gunicorn || true
@@ -136,6 +138,9 @@ restart_application() {
 
 # Последовательное выполнение функций с логированием
 create_database_backup || error_exit
+cleanup || error_exit
+setup || error_exit
+restore_database || true # Продолжить выполнение даже если восстановление не удалось
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
