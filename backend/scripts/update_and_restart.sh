@@ -44,18 +44,14 @@ activate_virtualenv() {
         python3 -m venv "$VENV_DIR"
         . "$VENV_DIR/bin/activate"
         echo "Виртуальное окружение создано."
-        echo "Установка pip..."
-        python -m ensurepip
+        python -m ensurepip --upgrade
     fi
 }
 
 # Функция для установки пакетов Python
 install_python_packages() {
     echo "Установка пакетов Python..."
-    echo "Установка пакета flask_login..."
-    pip install flask_login
-    echo "Обновление зависимостей Python..."
-    if pip install --upgrade -r "$APP_DIR/requirements.txt"; then
+    if pip install flask_login && pip install --upgrade -r "$APP_DIR/requirements.txt"; then
         echo "Зависимости Python успешно обновлены."
     else
         echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
@@ -70,30 +66,34 @@ run_database_migration() {
     export FLASK_APP=app.py
     export FLASK_ENV=production
 
-    # Проверка наличия папки миграций и инициализация миграций при необходимости
     if [ ! -d "$APP_DIR/migrations" ]; then
         flask db init
         echo "Миграционный репозиторий инициализирован."
     fi
 
-    # Создание новых миграций
-    flask db migrate -m "New migration" || rollback_database_migration
+    if ! flask db migrate -m "New migration"; then
+        rollback_database_migration
+        return
+    fi
 
-    # Применение миграций
     if flask db upgrade; then
         echo "Миграция базы данных выполнена успешно."
     else
         echo "Ошибка при миграции базы данных. Процесс остановлен."
-        deactivate
-        exit 1
+        rollback_database_migration
     fi
 }
 
 # Функция для сброса миграции базы данных в случае ошибки
 rollback_database_migration() {
     echo "Сброс миграции базы данных..."
-    flask db downgrade base
-    echo "Миграция базы данных отменена."
+    if flask db downgrade base; then
+        echo "Миграция базы данных отменена. Пожалуйста, проверьте миграционные скрипты."
+    else
+        echo "Ошибка при отмене миграций. Требуется вмешательство."
+    fi
+    deactivate
+    exit 1
 }
 
 # Функция для деактивации виртуального окружения
@@ -107,7 +107,6 @@ restart_application() {
     echo "Перезапуск приложения через Gunicorn..."
     pkill gunicorn || true
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-
     echo "Приложение успешно обновлено и перезапущено."
 }
 
