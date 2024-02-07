@@ -1,1 +1,4 @@
-pip freeze > requirements.txt
+Flask==x.x.x
+Flask-SQLAlchemy==x.x.x
+psycopg2-binary==x.x.x
+gunicorn==x.x.x

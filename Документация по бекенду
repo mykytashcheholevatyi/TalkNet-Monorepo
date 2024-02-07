@@ -1,17 +1,13 @@
 Создайте виртуальное окружение
 python3 -m venv venv
 source venv/bin/activate
+pip install Flask Flask-SQLAlchemy psycopg2-binary
 
-Создание проекта Django
-pip install django djangorestframework
-django-admin startproject myredditbackend .
-python manage.py startapp users
+Запуск настройки
+/srv/talknet/backend/scripts/initial_deploy.sh
 
-Добавьте приложение и Django REST framework в INSTALLED_APPS 
- 'rest_framework',
- 'users',
-
-
+Запуск обновы
+/srv/talknet/backend/scripts/update_and_restart.sh
 
 
 
