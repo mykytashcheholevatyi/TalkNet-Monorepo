@@ -12,6 +12,8 @@ pip install Flask Flask-SQLAlchemy psycopg2-binary
 В папке /backend/scripts 
 npm install pm2 -g
 pm2 start backend_webhook_server.js --name backend_webhook_server
+pm2 startup
+pm2 save
 
 
 # Перейдите в директорию /srv и клонируйте монорепозиторий
