@@ -3,3 +3,4 @@ Werkzeug>=2.0
 Flask-SQLAlchemy>=2.5.1
 psycopg2-binary>=2.9.9
 gunicorn>=21.2.0
+Flask-Migrate>=3.1.0  # Убедитесь, что добавили эту строку
