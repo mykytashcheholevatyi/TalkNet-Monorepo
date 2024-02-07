@@ -77,7 +77,7 @@ run_database_migration() {
     fi
 
     # Создание новых миграций
-    flask db migrate -m "New migration"
+    flask db migrate -m "New migration" || rollback_database_migration
 
     # Применение миграций
     if flask db upgrade; then
@@ -87,6 +87,13 @@ run_database_migration() {
         deactivate
         exit 1
     fi
+}
+
+# Функция для сброса миграции базы данных в случае ошибки
+rollback_database_migration() {
+    echo "Сброс миграции базы данных..."
+    flask db downgrade base
+    echo "Миграция базы данных отменена."
 }
 
 # Функция для деактивации виртуального окружения
