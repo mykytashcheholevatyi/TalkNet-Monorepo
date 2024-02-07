@@ -19,6 +19,11 @@ pm2 save
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 
+Ручное обновление
+cd /srv/talknet
+git checkout main
+git pull
+
 Ставим веб сервер гуникорн
 pip install gunicorn
 gunicorn -c gunicorn_config.py myproject.wsgi:application
