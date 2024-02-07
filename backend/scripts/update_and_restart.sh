@@ -125,7 +125,7 @@ create_database_backup || error_exit
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
-run_database_migration || error_exit
+run_database_migration || { echo "Ошибка при выполнении миграции. Попытка удаления старых миграций и создания заново..."; flask db stamp head; flask db migrate; flask db upgrade; }
 deactivate_virtualenv || error_exit
 restart_application || error_exit
 
