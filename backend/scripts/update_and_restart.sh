@@ -43,11 +43,15 @@ cleanup() {
 setup() {
     echo "Клонирование репозитория и установка зависимостей..."
     git clone "$REPO_URL" "$APP_DIR"
-    cd "$APP_DIR" || exit
+    cd "$APP_DIR"
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
-    pip install -r "requirements.txt"
+    if [ -f "$APP_DIR/requirements.txt" ]; then
+        pip install -r "$APP_DIR/requirements.txt"
+    else
+        echo "Файл requirements.txt не найден. Продолжение без установки зависимостей."
+    fi
 }
 
 # Восстановление базы данных (опционально)
@@ -59,7 +63,7 @@ restore_database() {
 # Обновление репозитория
 update_repository() {
     echo "Получение обновлений из репозитория..."
-    cd "$APP_DIR" || exit
+    cd "$APP_DIR"
     if git pull; then
         echo "Репозиторий успешно обновлен."
     else
@@ -86,12 +90,13 @@ activate_virtualenv() {
 # Установка пакетов Python
 install_python_packages() {
     echo "Установка пакетов Python..."
-    if pip install --upgrade pip && pip install --upgrade -r "requirements.txt"; then
+    if pip install --upgrade pip && [ -f "$APP_DIR/requirements.txt" ]; then
+        pip install --upgrade -r "$APP_DIR/requirements.txt"
         echo "Зависимости Python успешно обновлены."
     else
         echo "Ошибка при обновлении зависимостей Python. Попытка установки снова..."
         pip install --upgrade pip
-        pip install --upgrade -r "requirements.txt"
+        pip install --upgrade -r "$APP_DIR/requirements.txt"
     fi
 }
 
