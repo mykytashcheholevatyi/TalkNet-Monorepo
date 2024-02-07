@@ -5,6 +5,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import os
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -14,6 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.init_app(app)
+migrate = Migrate(app, db)  # Добавляем расширение Flask-Migrate
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
