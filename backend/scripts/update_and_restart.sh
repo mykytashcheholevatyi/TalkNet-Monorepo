@@ -4,7 +4,7 @@ set -e
 # Настроить прерывание при ошибках и ловить их
 set -Eeo pipefail
 
-echo "Начало обновления: $(date)"
+echo "Начало полной очистки, обновления и восстановления проекта: $(date)"
 
 # Конфигурация
 APP_DIR="/srv/talknet/backend/auth-service"
@@ -13,6 +13,7 @@ LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
 PG_DB="prod_db"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
+REPO_URL="https://github.com/your_username/your_repository"
 MAX_ATTEMPTS=3
 ATTEMPT=1
 
@@ -27,6 +28,7 @@ error_exit() {
 
 trap 'error_exit' ERR
 
+# Создание бэкапа базы данных
 create_database_backup() {
     echo "Создание бэкапа базы данных..."
     mkdir -p "$BACKUP_DIR"
@@ -38,6 +40,31 @@ create_database_backup() {
     fi
 }
 
+# Очистка текущей установки
+cleanup() {
+    echo "Очистка текущей установки..."
+    rm -rf "$APP_DIR"
+    mkdir -p "$APP_DIR"
+}
+
+# Клонирование репозитория и установка зависимостей
+setup() {
+    echo "Клонирование репозитория и установка зависимостей..."
+    git clone "$REPO_URL" "$APP_DIR"
+    cd "$APP_DIR"
+    python3 -m venv "$VENV_DIR"
+    source "$VENV_DIR/bin/activate"
+    pip install --upgrade pip
+    pip install -r requirements.txt
+}
+
+# Восстановление базы данных (опционально)
+restore_database() {
+    echo "Восстановление базы данных..."
+    # Здесь должен быть код для восстановления базы данных из бэкапа
+}
+
+# Обновление репозитория
 update_repository() {
     echo "Получение обновлений из репозитория..."
     cd "$APP_DIR"
@@ -112,8 +139,11 @@ restart_application() {
     echo "Приложение перезапущено."
 }
 
-# Последовательное выполнение функций с логированием
+# Логика скрипта
 create_database_backup || error_exit
+cleanup || error_exit
+setup || error_exit
+restore_database || error_exit # Уберите этот шаг, если не нужно восстанавливать базу данных из бэкапа
 update_repository || error_exit
 activate_virtualenv || error_exit
 install_python_packages || error_exit
@@ -122,4 +152,4 @@ deactivate_virtualenv || error_exit
 restart_application || error_exit
 
 # Завершение обновления
-echo "Обновление успешно завершено: $(date)"
+echo "Обновление и восстановление проекта успешно завершены: $(date)"
