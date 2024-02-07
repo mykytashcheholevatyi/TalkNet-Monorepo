@@ -33,25 +33,38 @@ create_database_backup() {
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
-# Очистка текущей установки с сохранением requirements.txt
+# Очистка текущей установки с сохранением важных файлов
 cleanup() {
     echo "Очистка текущей установки..."
+    # Сохранение requirements.txt
     if [ -f "$APP_DIR/requirements.txt" ]; then
         echo "Сохранение файла requirements.txt..."
         cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
     fi
+    # Сохранение app.py
+    if [ -f "$APP_DIR/app.py" ]; then
+        echo "Сохранение файла app.py..."
+        cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
+    fi
     rm -rf "$APP_DIR"
     mkdir -p "$APP_DIR"
 }
+
 
 # Клонирование репозитория и установка зависимостей
 setup() {
     echo "Клонирование репозитория и установка зависимостей..."
     git clone "$REPO_URL" "$APP_DIR"
     cd "$APP_DIR"
+    # Восстановление файла requirements.txt
     if [ -f "$REQS_BACKUP_DIR/requirements.txt" ]; then
         echo "Восстановление файла requirements.txt..."
         cp "$REQS_BACKUP_DIR/requirements.txt" "$APP_DIR"
+    fi
+    # Восстановление файла app.py
+    if [ -f "$REQS_BACKUP_DIR/app.py" ]; then
+        echo "Восстановление файла app.py..."
+        cp "$REQS_BACKUP_DIR/app.py" "$APP_DIR"
     fi
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
@@ -62,6 +75,7 @@ setup() {
         echo "Файл requirements.txt не найден. Продолжение без установки зависимостей."
     fi
 }
+
 
 # Восстановление базы данных (опционально)
 restore_database() {
