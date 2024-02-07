@@ -43,7 +43,7 @@ echo "Обновление зависимостей Python..."
 if pip install --upgrade -r requirements.txt; then
     echo "Зависимости Python успешно обновлены."
 else
-    echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
+    echo "Ошибка при обновлении зависимостей Python особенно blinker. Процесс остановлен."
     deactivate
     exit 1
 fi
