@@ -30,13 +30,21 @@ else
     exit 1
 fi
 
-source $VENV_DIR/bin/activate
+# Проверка наличия виртуального окружения
+if [ -d "$VENV_DIR" ]; then
+    echo "Активация виртуального окружения..."
+    source $VENV_DIR/bin/activate
+else
+    echo "Виртуальное окружение не найдено. Процесс остановлен."
+    exit 1
+fi
 
 echo "Обновление зависимостей Python..."
 if pip install --upgrade -r requirements.txt; then
     echo "Зависимости Python успешно обновлены."
 else
     echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
+    deactivate
     exit 1
 fi
 
@@ -59,8 +67,13 @@ if flask db upgrade; then
     echo "Миграция базы данных выполнена успешно."
 else
     echo "Ошибка при миграции базы данных. Процесс остановлен."
+    deactivate
     exit 1
 fi
+
+# Деактивация виртуального окружения
+echo "Деактивация виртуального окружения..."
+deactivate
 
 # Перезапуск приложения через Gunicorn
 echo "Перезапуск приложения через Gunicorn..."
@@ -68,5 +81,3 @@ pkill gunicorn || true
 gunicorn --bind 0.0.0.0:8000 app:app --chdir $APP_DIR --daemon --log-file=$LOG_DIR/gunicorn.log --access-logfile=$LOG_DIR/access.log
 
 echo "Приложение успешно обновлено и перезапущено."
-
-
