@@ -1,4 +1,4 @@
-Flask==x.x.x
-Flask-SQLAlchemy==x.x.x
-psycopg2-binary==x.x.x
-gunicorn==x.x.x
+Flask==2.0.1
+Flask-SQLAlchemy==2.5.1
+psycopg2-binary==2.9.1
+gunicorn==20.1.0
