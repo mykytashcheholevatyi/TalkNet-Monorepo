@@ -35,7 +35,7 @@ fi
 # Проверка наличия виртуального окружения
 if [ -d "$VENV_DIR" ]; then
     echo "Активация виртуального окружения..."
-    source $VENV_DIR/bin/activate
+    . $VENV_DIR/bin/activate
 else
     echo "Виртуальное окружение не найдено. Процесс остановлен."
     exit 1
