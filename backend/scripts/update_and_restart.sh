@@ -39,6 +39,9 @@ else
     exit 1
 fi
 
+echo "Установка пакета flask_login..."
+pip install flask_login
+
 echo "Обновление зависимостей Python..."
 if pip install --upgrade -r requirements.txt; then
     echo "Зависимости Python успешно обновлены."
