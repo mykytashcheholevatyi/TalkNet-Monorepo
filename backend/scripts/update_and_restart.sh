@@ -43,30 +43,7 @@ echo "Обновление зависимостей Python..."
 if pip install --upgrade -r requirements.txt; then
     echo "Зависимости Python успешно обновлены."
 else
-    echo "Ошибка при обновлении зависимостей Python особенно blinker. Процесс остановлен."
-    deactivate
-    exit 1
-fi
-
-# Создание и применение миграций
-echo "Миграция базы данных..."
-export FLASK_APP=app.py
-export FLASK_ENV=production
-
-# Проверка наличия папки миграций и инициализация миграций при необходимости
-if [ ! -d "migrations" ]; then
-    flask db init
-    echo "Миграционный репозиторий инициализирован."
-fi
-
-# Создание новых миграций
-flask db migrate -m "New migration"
-
-# Применение миграций
-if flask db upgrade; then
-    echo "Миграция базы данных выполнена успешно."
-else
-    echo "Ошибка при миграции базы данных. Процесс остановлен."
+    echo "Ошибка при обновлении зависимостей Python. Процесс остановлен."
     deactivate
     exit 1
 fi
