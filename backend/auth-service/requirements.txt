@@ -1,5 +1,5 @@
-Flask==2.0.2
-Werkzeug>=2.0  # Обновите до версии, совместимой с Flask 2.0.2
-Flask-SQLAlchemy==2.5.1
-psycopg2-binary==2.9.9
-gunicorn==21.2.0
+Flask>=2.0.2
+Werkzeug>=2.0
+Flask-SQLAlchemy>=2.5.1
+psycopg2-binary>=2.9.9
+gunicorn>=21.2.0
