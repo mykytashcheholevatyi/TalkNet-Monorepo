@@ -9,6 +9,10 @@ pip install Flask Flask-SQLAlchemy psycopg2-binary
 Запуск обновы
 /srv/talknet/backend/scripts/update_and_restart.sh
 
+Установите обновленную версию blinker
+pip install --upgrade --user blinker
+
+
 В папке /backend/scripts 
 npm install pm2 -g
 pm2 start backend_webhook_server.js --name backend_webhook_server
