@@ -20,7 +20,7 @@ app.post('/backend-webhook', (req, res) => {
     // Проверка на обновление ветки main
     const branch = req.body.ref;
     if(branch === 'refs/heads/main'){
-        exec('bash /srv/talknet/backend/scripts/full_deploy_backend.sh', (err, stdout, stderr) => {
+        exec('bash /srv/talknet/backend/scripts/update_and_restart.sh', (err, stdout, stderr) => { // Изменено на update_and_restart.sh
             if (err) {
                 console.error(`exec error: ${err}`);
                 return res.status(500).send('Server error');
