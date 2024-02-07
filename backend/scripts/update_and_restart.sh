@@ -13,7 +13,7 @@ LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
 PG_DB="prod_db"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
-REPO_URL="https://github.com/your_username/your_repository"
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
 MAX_ATTEMPTS=3
 ATTEMPT=1
 
