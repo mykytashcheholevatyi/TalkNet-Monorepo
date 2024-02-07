@@ -28,6 +28,15 @@ cd /srv/talknet
 git checkout main
 git pull
 
+Переустановка репа
+rm -rf /srv/talknet
+cd /srv
+git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+cd /srv/talknet
+git checkout main
+git pull
+
+
 Ставим веб сервер гуникорн
 pip install gunicorn
 gunicorn -c gunicorn_config.py myproject.wsgi:application
