@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Configuration
+# Configuration variables
 APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
@@ -9,48 +9,75 @@ PG_DB="talknet_user_service"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
 
-# Set strict mode for script execution
-set -euo pipefail
-trap 'echo "Error: Script failed." ; exit 1' ERR
+# Create necessary directories
+mkdir -p "$LOG_DIR" "$BACKUP_DIR" "$APP_DIR"
 
-# Backup the database
-echo "Creating database backup..."
-sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
+# Redirect all output to a log file
+exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Clean the current installation
-echo "Cleaning current installation..."
-rm -rf "$APP_DIR"/*
-mkdir -p "$APP_DIR"
+# Function to check and backup the database
+backup_database() {
+  echo "Checking for existing database..."
+  if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
+    echo "Database found. Creating backup..."
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
+  else
+    echo "Database $PG_DB does not exist. Skipping backup."
+  fi
+}
 
-# Clone the repository
-echo "Cloning the repository..."
-git clone "$REPO_URL" "$APP_DIR" --single-branch
+# Function to clean the current installation
+clean_installation() {
+  echo "Cleaning current installation..."
+  rm -rf "$APP_DIR"/*
+}
 
-# Set up Python virtual environment
-echo "Setting up virtual environment..."
-python3 -m venv "$VENV_DIR"
-source "$VENV_DIR/bin/activate"
+# Function to clone repository
+clone_repository() {
+  echo "Cloning repository..."
+  if git clone "$REPO_URL" "$APP_DIR"; then
+    echo "Repository cloned."
+  else
+    echo "Failed to clone repository. Exiting."
+    exit 1
+  fi
+}
 
-# Upgrade pip and install Python packages
-echo "Installing dependencies..."
-pip install --upgrade pip
-pip install -r "$APP_DIR/requirements.txt"
+# Function to set up Python virtual environment and install dependencies
+setup_python_env() {
+  echo "Setting up Python virtual environment..."
+  python3 -m venv "$VENV_DIR"
+  source "$VENV_DIR/bin/activate"
+  pip install --upgrade pip
+  if [ -f "$APP_DIR/requirements.txt" ]; then
+    pip install -r "$APP_DIR/requirements.txt"
+  else
+    echo "requirements.txt not found. Exiting."
+    exit 1
+  fi
+}
 
-# Check if the database exists, and create it if it does not
-echo "Setting up the database..."
-if ! sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
-    sudo -u postgres createdb "$PG_DB"
-fi
+# Function to apply database migrations
+apply_migrations() {
+  echo "Applying database migrations..."
+  export FLASK_APP="$APP_DIR/app.py"
+  flask db upgrade || true
+}
 
-# Apply database migrations
-echo "Applying database migrations..."
-export FLASK_APP="$APP_DIR/app.py"
-flask db upgrade
+# Function to restart the application
+restart_application() {
+  echo "Restarting application..."
+  pkill gunicorn || true
+  gunicorn --bind 0.0.0.0:8000 "app:app" --chdir "$APP_DIR" --daemon \
+           --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+}
 
-# Restart the application
-echo "Restarting the application..."
-pkill gunicorn || true
-gunicorn --bind 0.0.0.0:8000 "app:app" --chdir "$APP_DIR" --daemon \
-         --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+# Main execution flow
+backup_database
+clean_installation
+clone_repository
+setup_python_env
+apply_migrations
+restart_application
 
-echo "Deployment and database setup completed successfully: $(date)"
+echo "Deployment completed successfully: $(date)"
