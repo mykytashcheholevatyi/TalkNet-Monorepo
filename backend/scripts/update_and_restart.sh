@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Configuration variables
+# Script Configuration
 APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
@@ -9,15 +9,20 @@ PG_DB="talknet_user_service"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
 
+# Set strict mode for script execution
+set -euo pipefail
+trap 'echo "Error: Script failed." ; exit 1' ERR
+
 # Create necessary directories
 mkdir -p "$LOG_DIR" "$BACKUP_DIR" "$APP_DIR"
 
-# Redirect all output to a log file
+# Start logging
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Function to check and backup the database
+# Function Definitions
+
+# Backup the database if it exists
 backup_database() {
-  echo "Checking for existing database..."
   if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
     echo "Database found. Creating backup..."
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
@@ -26,24 +31,25 @@ backup_database() {
   fi
 }
 
-# Function to clean the current installation
+# Clean the current installation
 clean_installation() {
   echo "Cleaning current installation..."
-  rm -rf "$APP_DIR"/*
+  if [ -d "$APP_DIR" ]; then
+    rm -rf "$APP_DIR"
+  fi
+  mkdir -p "$APP_DIR"
 }
 
-# Function to clone repository
+# Clone the repository
 clone_repository() {
   echo "Cloning repository..."
-  if git clone "$REPO_URL" "$APP_DIR"; then
-    echo "Repository cloned."
-  else
+  git clone "$REPO_URL" "$APP_DIR" --single-branch || {
     echo "Failed to clone repository. Exiting."
     exit 1
-  fi
+  }
 }
 
-# Function to set up Python virtual environment and install dependencies
+# Set up Python virtual environment and install dependencies
 setup_python_env() {
   echo "Setting up Python virtual environment..."
   python3 -m venv "$VENV_DIR"
@@ -57,14 +63,18 @@ setup_python_env() {
   fi
 }
 
-# Function to apply database migrations
+# Apply database migrations
 apply_migrations() {
   echo "Applying database migrations..."
   export FLASK_APP="$APP_DIR/app.py"
-  flask db upgrade || true
+  if flask db current; then
+    flask db upgrade
+  else
+    echo "No migrations to apply."
+  fi
 }
 
-# Function to restart the application
+# Restart the application using gunicorn
 restart_application() {
   echo "Restarting application..."
   pkill gunicorn || true
@@ -72,7 +82,8 @@ restart_application() {
            --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
 }
 
-# Main execution flow
+# Main Execution Flow
+
 backup_database
 clean_installation
 clone_repository
