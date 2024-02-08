@@ -1,65 +1,56 @@
 #!/bin/bash
 
-set -euo pipefail
-trap 'echo "Error: Script failed." ; exit 1' ERR
-
-echo "Начало полной очистки, обновления и восстановления проекта: $(date)"
-
-# Конфигурация
+# Configuration
 APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
-REQS_FILE="requirements.txt"
-APP_FILE="app.py"
-PG_DB="prod_db"
+PG_DB="talknet_user_service"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
 
-# Создание директории для логов и бэкапа
-mkdir -p "$LOG_DIR" "$BACKUP_DIR"
-exec > >(tee -a "$LOG_FILE") 2>&1
+# Set strict mode for script execution
+set -euo pipefail
+trap 'echo "Error: Script failed." ; exit 1' ERR
 
-backup_database() {
-    echo "Создание бэкапа базы данных..."
-    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
-}
+# Backup the database
+echo "Creating database backup..."
+sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
 
-cleanup() {
-    echo "Очистка текущей установки..."
-    rm -rf "$APP_DIR"
-    mkdir -p "$APP_DIR"
-}
+# Clean the current installation
+echo "Cleaning current installation..."
+rm -rf "$APP_DIR"/*
+mkdir -p "$APP_DIR"
 
-clone_and_setup() {
-    echo "Клонирование репозитория и установка зависимостей..."
-    git clone "$REPO_URL" "$APP_DIR" --single-branch
-    cd "$APP_DIR"
-    python3 -m venv "$VENV_DIR"
-    source "$VENV_DIR/bin/activate"
-    pip install --upgrade pip
-    pip install -r "$REQS_FILE"
-}
+# Clone the repository
+echo "Cloning the repository..."
+git clone "$REPO_URL" "$APP_DIR" --single-branch
 
-apply_migrations() {
-    echo "Применение миграций базы данных..."
-    export FLASK_APP="$APP_FILE"
-    export FLASK_ENV=production
-    flask db upgrade
-}
+# Set up Python virtual environment
+echo "Setting up virtual environment..."
+python3 -m venv "$VENV_DIR"
+source "$VENV_DIR/bin/activate"
 
-restart_application() {
-    echo "Перезапуск приложения..."
-    pkill gunicorn || true
-    gunicorn --bind 0.0.0.0:8000 "app:app" --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Приложение перезапущено."
-}
+# Upgrade pip and install Python packages
+echo "Installing dependencies..."
+pip install --upgrade pip
+pip install -r "$APP_DIR/requirements.txt"
 
-# Шаги скрипта
-backup_database
-cleanup
-clone_and_setup
-apply_migrations
-restart_application
+# Check if the database exists, and create it if it does not
+echo "Setting up the database..."
+if ! sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
+    sudo -u postgres createdb "$PG_DB"
+fi
 
-echo "Обновление успешно завершено: $(date)"
+# Apply database migrations
+echo "Applying database migrations..."
+export FLASK_APP="$APP_DIR/app.py"
+flask db upgrade
+
+# Restart the application
+echo "Restarting the application..."
+pkill gunicorn || true
+gunicorn --bind 0.0.0.0:8000 "app:app" --chdir "$APP_DIR" --daemon \
+         --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+
+echo "Deployment and database setup completed successfully: $(date)"
