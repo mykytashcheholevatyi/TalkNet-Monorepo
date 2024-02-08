@@ -1,49 +1,58 @@
 #!/bin/bash
 
-# Script Configuration
+# Script configuration
 APP_DIR="/srv/talknet/backend/auth-service"
 VENV_DIR="$APP_DIR/venv"
 LOG_DIR="/var/log/talknet"
 BACKUP_DIR="/srv/talknet/backups"
+REQS_FILE="$APP_DIR/requirements.txt"
+APP_FILE="$APP_DIR/app.py"
 PG_DB="talknet_user_service"
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
+
+# Ensure running as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit
+fi
 
 # Set strict mode for script execution
 set -euo pipefail
 trap 'echo "Error: Script failed." ; exit 1' ERR
 
-# Create necessary directories
-mkdir -p "$LOG_DIR" "$BACKUP_DIR" "$APP_DIR"
+# Function definitions
 
-# Start logging
-exec > >(tee -a "$LOG_FILE") 2>&1
+# Check if PostgreSQL is running
+ensure_postgres_running() {
+  if ! pg_isready; then
+    echo "PostgreSQL is not running. Trying to start..."
+    systemctl start postgresql
+  fi
+}
 
-# Function Definitions
-
-# Backup the database if it exists
+# Create a backup of the database
 backup_database() {
+  ensure_postgres_running
   if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
-    echo "Database found. Creating backup..."
+    echo "Creating database backup..."
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
   else
     echo "Database $PG_DB does not exist. Skipping backup."
   fi
 }
 
-# Clean the current installation
+# Clean current installation
 clean_installation() {
   echo "Cleaning current installation..."
-  if [ -d "$APP_DIR" ]; then
-    rm -rf "$APP_DIR"
-  fi
+  rm -rf "$APP_DIR"
   mkdir -p "$APP_DIR"
 }
 
-# Clone the repository
+# Clone repository
 clone_repository() {
   echo "Cloning repository..."
-  git clone "$REPO_URL" "$APP_DIR" --single-branch || {
+  git clone "$REPO_URL" "$APP_DIR" || {
     echo "Failed to clone repository. Exiting."
     exit 1
   }
@@ -55,40 +64,46 @@ setup_python_env() {
   python3 -m venv "$VENV_DIR"
   source "$VENV_DIR/bin/activate"
   pip install --upgrade pip
-  if [ -f "$APP_DIR/requirements.txt" ]; then
-    pip install -r "$APP_DIR/requirements.txt"
-  else
-    echo "requirements.txt not found. Exiting."
-    exit 1
+  pip install -r "$REQS_FILE"
+}
+
+# Create or update the database
+create_or_update_db() {
+  ensure_postgres_running
+  if ! sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
+    echo "Creating database $PG_DB..."
+    sudo -u postgres createdb "$PG_DB"
   fi
 }
 
 # Apply database migrations
 apply_migrations() {
   echo "Applying database migrations..."
-  export FLASK_APP="$APP_DIR/app.py"
-  if flask db current; then
+  export FLASK_APP="$APP_FILE"
+  flask db upgrade || {
+    echo "Migrations failed. Attempting to initialize new migrations..."
+    flask db init
+    flask db migrate
     flask db upgrade
-  else
-    echo "No migrations to apply."
-  fi
+  }
 }
 
-# Restart the application using gunicorn
+# Restart the application
 restart_application() {
   echo "Restarting application..."
+  # Assuming gunicorn is used with Flask application
   pkill gunicorn || true
-  gunicorn --bind 0.0.0.0:8000 "app:app" --chdir "$APP_DIR" --daemon \
+  gunicorn --bind 0.0.0.0:8000 "app:create_app()" --chdir "$APP_DIR" --daemon \
            --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
 }
 
-# Main Execution Flow
-
+# Main execution flow
+echo "Starting backend setup: $(date)"
 backup_database
 clean_installation
 clone_repository
 setup_python_env
+create_or_update_db
 apply_migrations
 restart_application
-
-echo "Deployment completed successfully: $(date)"
+echo "Backend setup completed: $(date)"
