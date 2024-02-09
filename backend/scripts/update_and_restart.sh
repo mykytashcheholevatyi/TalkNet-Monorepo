@@ -96,8 +96,11 @@ install_python_packages() {
 # Запуск миграции базы данных
 run_database_migration() {
     echo "Запуск миграции базы данных..."
+    # Создать каталог миграций, если он не существует
+    mkdir -p "$APP_DIR/migrations"
     flask db upgrade || {
         echo "Миграция не удалась. Попытка создания новой миграции..."
+        flask db init
         flask db migrate
         flask db upgrade
     }
