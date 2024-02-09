@@ -20,3 +20,111 @@
 [2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1
 [2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1.
 [2024-02-09 16:38:16 +0000] [91620] [INFO] Booting worker with pid: 91620
+[2024-02-09 16:47:59 +0000] [91092] [INFO] Handling signal: term
+[2024-02-09 16:47:59 +0000] [92581] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:47:59 +0000] [92581] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:47:59 +0000] [92581] [ERROR] Retrying in 1 second.
+[2024-02-09 16:48:00 +0000] [92581] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:48:00 +0000] [92581] [ERROR] Retrying in 1 second.
+[2024-02-09 16:48:01 +0000] [91620] [INFO] Worker exiting (pid: 91620)
+[2024-02-09 16:48:01 +0000] [92581] [INFO] Listening at: http://0.0.0.0:8000 (92581)
+[2024-02-09 16:48:01 +0000] [92581] [INFO] Using worker: sync
+[2024-02-09 16:48:01 +0000] [92646] [INFO] Booting worker with pid: 92646
+[2024-02-09 16:48:02 +0000] [91092] [INFO] Shutting down: Master
+[2024-02-09 16:48:49 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:92646)
+[2024-02-09 16:48:49 +0000] [92646] [INFO] Worker exiting (pid: 92646)
+[2024-02-09 16:48:49 +0000] [92581] [ERROR] Worker (pid:92646) exited with code 1
+[2024-02-09 16:48:49 +0000] [92581] [ERROR] Worker (pid:92646) exited with code 1.
+[2024-02-09 16:48:49 +0000] [92812] [INFO] Booting worker with pid: 92812
+[2024-02-09 16:49:45 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:92812)
+[2024-02-09 16:49:45 +0000] [92812] [INFO] Worker exiting (pid: 92812)
+[2024-02-09 16:49:45 +0000] [92581] [ERROR] Worker (pid:92812) exited with code 1
+[2024-02-09 16:49:45 +0000] [92581] [ERROR] Worker (pid:92812) exited with code 1.
+[2024-02-09 16:49:45 +0000] [93082] [INFO] Booting worker with pid: 93082
+[2024-02-09 16:51:32 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:93082)
+[2024-02-09 16:51:32 +0000] [93082] [INFO] Worker exiting (pid: 93082)
+[2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1
+[2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1.
+[2024-02-09 16:51:32 +0000] [93483] [INFO] Booting worker with pid: 93483
+[2024-02-09 16:55:08 +0000] [92581] [INFO] Handling signal: term
+[2024-02-09 16:55:09 +0000] [94334] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:09 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:09 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:10 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:10 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:11 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:11 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:12 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:12 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:13 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:13 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:14 +0000] [94334] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-09 16:55:26 +0000] [94696] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:26 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:26 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:27 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:27 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:28 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:28 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:29 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:29 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:30 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:30 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:31 +0000] [94696] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-09 16:55:38 +0000] [92581] [INFO] Shutting down: Master
+[2024-02-09 16:55:42 +0000] [94953] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:42 +0000] [94953] [INFO] Listening at: http://0.0.0.0:8000 (94953)
+[2024-02-09 16:55:42 +0000] [94953] [INFO] Using worker: sync
+[2024-02-09 16:55:42 +0000] [94954] [INFO] Booting worker with pid: 94954
+[2024-02-09 16:55:55 +0000] [94953] [INFO] Handling signal: term
+[2024-02-09 16:55:55 +0000] [94954] [INFO] Worker exiting (pid: 94954)
+[2024-02-09 16:55:55 +0000] [94953] [ERROR] Worker (pid:94954) was sent SIGTERM!
+[2024-02-09 16:55:55 +0000] [94953] [INFO] Shutting down: Master
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Listening at: http://0.0.0.0:8000 (95160)
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Using worker: sync
+[2024-02-09 16:55:56 +0000] [95161] [INFO] Booting worker with pid: 95161
+[2024-02-09 16:56:10 +0000] [95161] [INFO] Worker exiting (pid: 95161)
+[2024-02-09 16:56:10 +0000] [95160] [INFO] Handling signal: term
+[2024-02-09 16:56:10 +0000] [95398] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:56:10 +0000] [95398] [INFO] Listening at: http://0.0.0.0:8000 (95398)
+[2024-02-09 16:56:10 +0000] [95398] [INFO] Using worker: sync
+[2024-02-09 16:56:10 +0000] [95399] [INFO] Booting worker with pid: 95399
+[2024-02-09 16:56:11 +0000] [95160] [INFO] Shutting down: Master
+[2024-02-09 16:56:28 +0000] [95398] [INFO] Handling signal: term
+[2024-02-09 16:56:28 +0000] [95399] [INFO] Worker exiting (pid: 95399)
+[2024-02-09 16:56:29 +0000] [95398] [INFO] Shutting down: Master
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Listening at: http://0.0.0.0:8000 (95659)
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Using worker: sync
+[2024-02-09 16:56:29 +0000] [95660] [INFO] Booting worker with pid: 95660
+[2024-02-09 16:56:46 +0000] [95660] [INFO] Worker exiting (pid: 95660)
+[2024-02-09 16:56:46 +0000] [95659] [INFO] Handling signal: term
+[2024-02-09 16:56:47 +0000] [95659] [INFO] Shutting down: Master
+[2024-02-09 16:56:47 +0000] [95883] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:56:47 +0000] [95883] [INFO] Listening at: http://0.0.0.0:8000 (95883)
+[2024-02-09 16:56:47 +0000] [95883] [INFO] Using worker: sync
+[2024-02-09 16:56:47 +0000] [95885] [INFO] Booting worker with pid: 95885
+[2024-02-09 16:57:02 +0000] [95883] [INFO] Handling signal: term
+[2024-02-09 16:57:02 +0000] [95885] [INFO] Worker exiting (pid: 95885)
+[2024-02-09 16:57:02 +0000] [95883] [ERROR] Worker (pid:95885) was sent SIGTERM!
+[2024-02-09 16:57:02 +0000] [95883] [INFO] Shutting down: Master
+[2024-02-09 16:57:02 +0000] [96111] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:57:02 +0000] [96111] [INFO] Listening at: http://0.0.0.0:8000 (96111)
+[2024-02-09 16:57:02 +0000] [96111] [INFO] Using worker: sync
+[2024-02-09 16:57:02 +0000] [96112] [INFO] Booting worker with pid: 96112
+[2024-02-09 16:57:18 +0000] [96111] [INFO] Handling signal: term
+[2024-02-09 16:57:18 +0000] [96112] [INFO] Worker exiting (pid: 96112)
+[2024-02-09 16:57:18 +0000] [96111] [ERROR] Worker (pid:96112) was sent SIGTERM!
+[2024-02-09 16:57:18 +0000] [96111] [INFO] Shutting down: Master
+[2024-02-09 16:57:19 +0000] [96356] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:57:19 +0000] [96356] [INFO] Listening at: http://0.0.0.0:8000 (96356)
+[2024-02-09 16:57:19 +0000] [96356] [INFO] Using worker: sync
+[2024-02-09 16:57:19 +0000] [96357] [INFO] Booting worker with pid: 96357
+[2024-02-09 16:57:34 +0000] [96357] [INFO] Worker exiting (pid: 96357)
+[2024-02-09 16:57:34 +0000] [96356] [INFO] Handling signal: term
+[2024-02-09 16:57:34 +0000] [96605] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:57:34 +0000] [96605] [INFO] Listening at: http://0.0.0.0:8000 (96605)
+[2024-02-09 16:57:34 +0000] [96605] [INFO] Using worker: sync
+[2024-02-09 16:57:34 +0000] [96356] [INFO] Shutting down: Master
+[2024-02-09 16:57:34 +0000] [96606] [INFO] Booting worker with pid: 96606
