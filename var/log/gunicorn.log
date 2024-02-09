@@ -2,3 +2,21 @@
 [2024-02-09 16:35:15 +0000] [90756] [INFO] Listening at: http://0.0.0.0:8000 (90756)
 [2024-02-09 16:35:15 +0000] [90756] [INFO] Using worker: sync
 [2024-02-09 16:35:15 +0000] [90761] [INFO] Booting worker with pid: 90761
+[2024-02-09 16:35:32 +0000] [90761] [INFO] Worker exiting (pid: 90761)
+[2024-02-09 16:35:32 +0000] [90756] [INFO] Handling signal: term
+[2024-02-09 16:35:32 +0000] [90756] [ERROR] Worker (pid:90761) was sent SIGTERM!
+[2024-02-09 16:35:32 +0000] [90756] [INFO] Shutting down: Master
+[2024-02-09 16:35:32 +0000] [91092] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:35:32 +0000] [91092] [INFO] Listening at: http://0.0.0.0:8000 (91092)
+[2024-02-09 16:35:32 +0000] [91092] [INFO] Using worker: sync
+[2024-02-09 16:35:32 +0000] [91093] [INFO] Booting worker with pid: 91093
+[2024-02-09 16:37:19 +0000] [91092] [CRITICAL] WORKER TIMEOUT (pid:91093)
+[2024-02-09 16:37:19 +0000] [91093] [INFO] Worker exiting (pid: 91093)
+[2024-02-09 16:37:19 +0000] [91092] [ERROR] Worker (pid:91093) exited with code 1
+[2024-02-09 16:37:19 +0000] [91092] [ERROR] Worker (pid:91093) exited with code 1.
+[2024-02-09 16:37:19 +0000] [91387] [INFO] Booting worker with pid: 91387
+[2024-02-09 16:38:16 +0000] [91092] [CRITICAL] WORKER TIMEOUT (pid:91387)
+[2024-02-09 16:38:16 +0000] [91387] [INFO] Worker exiting (pid: 91387)
+[2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1
+[2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1.
+[2024-02-09 16:38:16 +0000] [91620] [INFO] Booting worker with pid: 91620
