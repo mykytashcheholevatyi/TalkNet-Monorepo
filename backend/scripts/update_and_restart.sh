@@ -5,127 +5,87 @@ set -euo pipefail
 trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2' ERR
 
 # Define configuration variables
-APP_DIR="/srv/talknet/backend/auth-service"  # Path to the application directory
-VENV_DIR="$APP_DIR/venv"                    # Python virtual environment directory
-LOG_DIR="/var/log/talknet"                  # Log directory
-BACKUP_DIR="/srv/talknet/backups"           # Database backup directory
-PG_DB="prod_db"                              # PostgreSQL database name
-LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Log file for the current update process
-REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # Repository URL
-REQS_BACKUP_DIR="/tmp"                       # Temporary directory for requirements.txt backup
-
-# Create directories for logs and backups
-mkdir -p "$LOG_DIR" "$BACKUP_DIR"
-
-# Redirect script output to a log file
+LOG_DIR="/var/log/talknet"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Function to create a database backup
-create_database_backup() {
-    echo "Creating database backup..."
-    if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
-        sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
+echo "Script execution started: $(date)"
+
+# Function to install required packages
+install_dependencies() {
+    echo "Installing required packages..."
+    DEPS="python3 python3-pip python3-venv git postgresql postgresql-contrib nginx"
+    for dep in $DEPS; do
+        if ! dpkg -l | grep -qw $dep; then
+            echo "Installing $dep..."
+            sudo apt-get install -y $dep
+        else
+            echo "$dep is already installed."
+        fi
+    done
+}
+
+# Function to setup PostgreSQL
+setup_postgresql() {
+    PG_USER="your_username"
+    PG_DB="prod_db"
+    PG_PASSWORD="your_password"
+    echo "Setting up PostgreSQL..."
+    sudo -u postgres psql -c "SELECT 1 FROM pg_user WHERE usename = '$PG_USER';" | grep -q 1 || sudo -u postgres createuser -P "$PG_USER"
+    sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = '$PG_DB';" | grep -q 1 || sudo -u postgres createdb -O "$PG_USER" "$PG_DB"
+}
+
+# Function to clone or update the repository
+clone_or_update_repository() {
+    REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
+    APP_DIR="/srv/talknet"
+    echo "Cloning or updating the repository..."
+    if [ ! -d "$APP_DIR" ]; then
+        git clone "$REPO_URL" "$APP_DIR"
     else
-        echo "Database $PG_DB does not exist. Skipping backup."
+        cd "$APP_DIR" && git pull
     fi
 }
 
-# Function to cleanup the current installation while preserving important files
-cleanup() {
-    echo "Cleaning up the current installation..."
-    [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
-    [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
-    rm -rf "$APP_DIR"/*
-}
-
-# Function to clone the repository and install dependencies
-setup() {
-    echo "Cloning the repository and installing dependencies..."
-    # Clean up the application directory before cloning the repository
-    rm -rf "$APP_DIR"/*
-    mkdir -p "$APP_DIR"
-    cd "$APP_DIR"
-    git clone "$REPO_URL" .
-    # Restore the saved requirements.txt and app.py files, if they exist
-    [ -f "$REQS_BACKUP_DIR/requirements.txt" ] && cp "$REQS_BACKUP_DIR/requirements.txt" .
-    [ -f "$REQS_BACKUP_DIR/app.py" ] && cp "$REQS_BACKUP_DIR/app.py" .
-    # Set up the Python virtual environment
-    python3 -m venv "$VENV_DIR"
+# Function to setup Python virtual environment and install dependencies
+setup_python_environment() {
+    VENV_DIR="$APP_DIR/backend/auth-service/venv"
+    echo "Setting up Python environment..."
+    if [ ! -d "$VENV_DIR" ]; then
+        python3 -m venv "$VENV_DIR"
+    fi
     source "$VENV_DIR/bin/activate"
+    echo "Installing Python dependencies..."
     pip install --upgrade pip
-    # Check if requirements.txt exists before installing dependencies
-    if [ -f "requirements.txt" ]; then
-        pip install -r "requirements.txt"
-    else
-        echo "File requirements.txt not found. Unable to install Python dependencies."
-        return 1
-    fi
+    pip install -r "$APP_DIR/backend/auth-service/requirements.txt"
 }
 
-
-# Function to restore the database from backup
-restore_database() {
-    echo "Restoring the database from backup..."
-    if [ -f "$BACKUP_DIR/db_backup_latest.sql" ]; then
-        sudo -u postgres psql -d "$PG_DB" -f "$BACKUP_DIR/db_backup_latest.sql"
-    else
-        echo "No database backup found. Skipping database restoration."
-    fi
+# Function to backup the database
+backup_database() {
+    BACKUP_DIR="/srv/talknet/backups"
+    mkdir -p "$BACKUP_DIR"
+    echo "Creating database backup..."
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
-# Function to update the repository
-update_repository() {
-    echo "Updating the repository..."
-    cd "$APP_DIR"
-    git pull || {
-        echo "Attempting to restore the repository due to an error..."
-        git fetch --all
-        git reset --hard origin/main
-    }
-}
-
-# Function to activate the Python virtual environment
-activate_virtualenv() {
-    echo "Activating the Python virtual environment..."
-    source "$VENV_DIR/bin/activate"
-}
-
-# Function to run database migrations
-run_database_migration() {
-    echo "Running database migrations..."
-    flask db upgrade || {
-        echo "Migration failed. Attempting to create a new migration..."
-        flask db init
-        flask db migrate
-        flask db upgrade
-    }
-}
-
-# Function to deactivate the Python virtual environment
-deactivate_virtualenv() {
-    echo "Deactivating the Python virtual environment..."
-    deactivate || true
-}
-
-# Function to restart the Flask application
-restart_application() {
-    echo "Restarting the Flask application..."
+# Function to start the Flask application
+start_flask_application() {
+    export FLASK_APP="$APP_DIR/backend/auth-service/app.py"
+    export FLASK_ENV=production
+    export DATABASE_URL="postgresql://$PG_USER:$PG_PASSWORD@localhost/$PG_DB"
+    echo "Starting the Flask application..."
     pkill gunicorn || true
-    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Application restarted."
+    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR/backend/auth-service" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
+    echo "Flask application started."
 }
 
 # Main execution sequence
-echo "Script execution started."
-create_database_backup
-cleanup
-setup
-restore_database
-update_repository
-activate_virtualenv
-run_database_migration
-deactivate_virtualenv
-restart_application
-echo "Script execution completed successfully."
+install_dependencies
+setup_postgresql
+clone_or_update_repository
+setup_python_environment
+backup_database
+start_flask_application
 
-# End of the script
+echo "Script execution completed successfully: $(date)"
