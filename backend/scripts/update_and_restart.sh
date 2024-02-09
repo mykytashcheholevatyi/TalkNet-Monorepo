@@ -54,7 +54,8 @@ clone_or_update_repository() {
     if [ ! -d "$APP_DIR" ]; then
         git clone "$REPO_URL" "$APP_DIR"
     else
-        cd "$APP_DIR" && git pull -f
+        cd "$APP_DIR"
+        git pull -f
     fi
 }
 
@@ -81,12 +82,18 @@ backup_database() {
 
 # Функция отправки изменений в Git репозиторий
 push_to_repository() {
-    echo "Отправка изменений в Git репозиторий..."
+    echo "Проверка изменений..."
     cd "$APP_DIR"
-    git add .
-    git commit -m "Автоматическое резервное копирование базы данных: $(date)"
-    git push origin main
-    echo "Изменения отправлены в Git репозиторий."
+    # Проверяем, есть ли изменения в файлах, кроме директории backups
+    if git status --porcelain | grep -v "^?? backups/" ; then
+        echo "Отправка изменений в Git репозиторий..."
+        git add .
+        git commit -m "Автоматическое резервное копирование базы данных: $(date)"
+        git push origin main
+        echo "Изменения отправлены в Git репозиторий."
+    else
+        echo "Изменения касаются только бекапов. Отправка в Git репозиторий пропущена."
+    fi
 }
 
 # Функция запуска Flask приложения
