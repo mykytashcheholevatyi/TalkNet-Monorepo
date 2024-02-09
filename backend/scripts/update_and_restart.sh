@@ -41,7 +41,8 @@ cleanup() {
 # Function to clone the repository and install dependencies
 setup() {
     echo "Cloning the repository and installing dependencies..."
-    # Clean up the application directory and clone the repository
+    # Clean up the application directory before cloning the repository
+    rm -rf "$APP_DIR"/*
     mkdir -p "$APP_DIR"
     cd "$APP_DIR"
     git clone "$REPO_URL" .
@@ -60,6 +61,7 @@ setup() {
         return 1
     fi
 }
+
 
 # Function to restore the database from backup
 restore_database() {
