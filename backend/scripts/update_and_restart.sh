@@ -5,138 +5,120 @@ set -euo pipefail
 trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2' ERR
 
 # Define configuration variables
-APP_DIR="/srv/talknet/backend/auth-service"  # Путь к каталогу приложения
-VENV_DIR="$APP_DIR/venv"                    # Каталог виртуальной среды Python
-LOG_DIR="/var/log/talknet"                   # Каталог журналов
-BACKUP_DIR="/srv/talknet/backups"            # Каталог резервных копий базы данных
-REQS_BACKUP_DIR="/tmp"                       # Временный каталог для резервной копии requirements.txt
-PG_DB="prod_db"                              # Имя базы данных PostgreSQL
-LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Файл журнала для текущего процесса обновления
-REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # URL репозитория
-MAX_ATTEMPTS=3                               # Максимальное количество попыток для повторяемых операций
-ATTEMPT=1                                    # Счетчик попыток
+APP_DIR="/srv/talknet/backend/auth-service"  # Path to the application directory
+VENV_DIR="$APP_DIR/venv"                    # Python virtual environment directory
+LOG_DIR="/var/log/talknet"                  # Log directory
+BACKUP_DIR="/srv/talknet/backups"           # Database backup directory
+PG_DB="prod_db"                              # PostgreSQL database name
+LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Log file for the current update process
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # Repository URL
 
-# Создание каталогов для журналов и резервных копий
+# Create directories for logs and backups
 mkdir -p "$LOG_DIR" "$BACKUP_DIR"
 
-# Перенаправление вывода скрипта в файл журнала
+# Redirect script output to a log file
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Создание резервной копии базы данных
+# Function to create a database backup
 create_database_backup() {
-    echo "Создание резервной копии базы данных..."
+    echo "Creating database backup..."
     if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
         sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
     else
-        echo "База данных $PG_DB не существует. Пропуск резервного копирования."
+        echo "Database $PG_DB does not exist. Skipping backup."
     fi
 }
 
-# Очистка текущей установки с сохранением важных файлов
+# Function to cleanup the current installation while preserving important files
 cleanup() {
-    echo "Очистка текущей установки..."
-    # Сохранить существующий requirements.txt и app.py, если они существуют
-    [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
-    [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
+    echo "Cleaning up the current installation..."
+    [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$BACKUP_DIR"
+    [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$BACKUP_DIR"
     rm -rf "$APP_DIR"
     mkdir -p "$APP_DIR"
 }
 
-# Клонирование репозитория и установка зависимостей
+# Function to clone the repository and install dependencies
 setup() {
-    echo "Клонирование репозитория и установка зависимостей..."
+    echo "Cloning the repository and installing dependencies..."
     git clone "$REPO_URL" "$APP_DIR"
     cd "$APP_DIR"
-    # Восстановить сохраненный requirements.txt и app.py
-    [ -f "$REQS_BACKUP_DIR/requirements.txt" ] && cp "$REQS_BACKUP_DIR/requirements.txt" "$APP_DIR"
-    [ -f "$REQS_BACKUP_DIR/app.py" ] && cp "$REQS_BACKUP_DIR/app.py" "$APP_DIR"
-    # Настройка виртуальной среды Python
+    [ -f "$BACKUP_DIR/requirements.txt" ] && cp "$BACKUP_DIR/requirements.txt" "$APP_DIR"
+    [ -f "$BACKUP_DIR/app.py" ] && cp "$BACKUP_DIR/app.py" "$APP_DIR"
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
-    # Проверить, существует ли requirements.txt, перед установкой
     if [ -f "requirements.txt" ]; then
         pip install -r "requirements.txt"
     else
-        echo "Файл requirements.txt не найден. Невозможно установить зависимости Python."
+        echo "File requirements.txt not found. Unable to install Python dependencies."
         return 1
     fi
 }
 
-# Опционально восстановить базу данных из резервной копии
+# Function to restore the database from backup
 restore_database() {
-    echo "Восстановление базы данных из резервной копии..."
-    # Здесь должны содержаться команды для восстановления базы данных, если это необходимо
+    echo "Restoring the database from backup..."
+    if [ -f "$BACKUP_DIR/db_backup_latest.sql" ]; then
+        sudo -u postgres psql -d "$PG_DB" -f "$BACKUP_DIR/db_backup_latest.sql"
+    else
+        echo "No database backup found. Skipping database restoration."
+    fi
 }
 
-# Обновление репозитория
+# Function to update the repository
 update_repository() {
-    echo "Получение обновлений из репозитория..."
+    echo "Updating the repository..."
     cd "$APP_DIR"
     git pull || {
-        echo "Попытка восстановления репозитория из-за ошибки..."
+        echo "Attempting to restore the repository due to an error..."
         git fetch --all
         git reset --hard origin/main
     }
 }
 
-# Активация виртуальной среды
+# Function to activate the Python virtual environment
 activate_virtualenv() {
-    echo "Активация виртуальной среды..."
+    echo "Activating the Python virtual environment..."
     source "$VENV_DIR/bin/activate"
 }
 
-# Установка пакетов Python
-install_python_packages() {
-    echo "Установка пакетов Python..."
-    pip install --upgrade pip
-    pip install -r "requirements.txt"
-}
-
-# Запуск миграции базы данных
+# Function to run database migrations
 run_database_migration() {
-    echo "Запуск миграции базы данных..."
-    # Создать каталог миграций, если он не существует
-    mkdir -p "$APP_DIR/migrations"
+    echo "Running database migrations..."
     flask db upgrade || {
-        echo "Миграция не удалась. Попытка создания новой миграции..."
+        echo "Migration failed. Attempting to create a new migration..."
         flask db init
         flask db migrate
         flask db upgrade
     }
 }
 
-# ... предыдущий код ...
-
-# Деактивация виртуальной среды
+# Function to deactivate the Python virtual environment
 deactivate_virtualenv() {
-    echo "Деактивация виртуальной среды..."
-    deactivate || true  # Деактивация не должна вызывать ошибку, если не активирована
+    echo "Deactivating the Python virtual environment..."
+    deactivate || true
 }
 
-# Перезапуск приложения
+# Function to restart the Flask application
 restart_application() {
-    echo "Перезапуск приложения..."
-    # Здесь вы должны добавить команду для запуска вашего приложения, например, с помощью gunicorn
-    # Замените 'app:app' на фактический объект приложения, если он отличается
-    pkill gunicorn || true  # Игнорировать ошибки, если gunicorn не запущен
+    echo "Restarting the Flask application..."
+    pkill gunicorn || true
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Приложение перезапущено."
+    echo "Application restarted."
 }
 
-# Основная последовательность выполнения
-echo "Запуск скрипта."
+# Main execution sequence
+echo "Script execution started."
 create_database_backup
 cleanup
 setup
-# Опционально вызвать restore_database, если вы реализовали его
-# restore_database
+restore_database
 update_repository
 activate_virtualenv
-install_python_packages
 run_database_migration
 deactivate_virtualenv
 restart_application
-echo "Скрипт выполнен."
+echo "Script execution completed successfully."
 
-# Конец скрипта
+# End of the script
