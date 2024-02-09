@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template  # Добавил render_template для работы с шаблонами HTML
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
@@ -26,6 +26,10 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+@app.route('/')
+def index():
+    return render_template('index.html')  # Возвращаем шаблон HTML для главной страницы
 
 @app.route('/register', methods=['POST'])
 def register():
