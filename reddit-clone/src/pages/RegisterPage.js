@@ -80,7 +80,7 @@ function RegisterPage() {
   return (
     <div className="register-page">
       <h1>Register</h1>
-      <p>Create TEST 55 a new account to join the community.</p>
+      <p>Create TEST 555 a new account to join the community.</p>
       {errors.form && <div className="form-error">{errors.form}</div>}
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
