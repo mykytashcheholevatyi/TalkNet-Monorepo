@@ -28,7 +28,6 @@ install_dependencies() {
 # Функция настройки PostgreSQL
 setup_postgresql() {
     echo "Настройка PostgreSQL..."
-    # Укажите свои значения для переменных
     PG_USER="your_username"
     PG_DB="prod_db"
     PG_PASSWORD="your_password"
@@ -55,7 +54,9 @@ clone_or_update_repository() {
         git clone "$REPO_URL" "$APP_DIR"
     else
         cd "$APP_DIR"
-        git pull -f
+        # Установка стратегии слияния для git pull
+        git config pull.rebase true
+        git pull --rebase
     fi
 }
 
@@ -84,7 +85,6 @@ backup_database() {
 push_to_repository() {
     echo "Проверка изменений..."
     cd "$APP_DIR"
-    # Проверяем, есть ли изменения в файлах, кроме директории backups
     if git status --porcelain | grep -v "^?? backups/" ; then
         echo "Отправка изменений в Git репозиторий..."
         git add .
