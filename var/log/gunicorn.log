@@ -59,3 +59,16 @@
 [2024-02-09 16:55:13 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
 [2024-02-09 16:55:13 +0000] [94334] [ERROR] Retrying in 1 second.
 [2024-02-09 16:55:14 +0000] [94334] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-09 16:55:26 +0000] [94696] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:26 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:26 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:27 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:27 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:28 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:28 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:29 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:29 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:30 +0000] [94696] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:30 +0000] [94696] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:31 +0000] [94696] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-09 16:55:38 +0000] [92581] [INFO] Shutting down: Master
