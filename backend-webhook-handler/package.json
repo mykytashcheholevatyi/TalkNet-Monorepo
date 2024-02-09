@@ -2,10 +2,10 @@
   "name": "backend-webhook-handler",
   "version": "1.0.0",
   "description": "",
-  "main": "backend_update_server.js",
+  "main": "backend_webhook_server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend_update_server.js"
+    "start": "node backend_webhook_server.js"
   },
   "keywords": [],
   "author": "",
