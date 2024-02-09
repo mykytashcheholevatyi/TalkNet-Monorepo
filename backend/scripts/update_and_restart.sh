@@ -108,12 +108,12 @@ start_flask_application() {
 }
 
 # Основная последовательность выполнения
-install_dependencies
-setup_postgresql
-clone_or_update_repository
-setup_python_environment
-backup_database
-push_to_repository
-start_flask_application
+install_dependencies || true
+setup_postgresql || true
+clone_or_update_repository || true
+setup_python_environment || true
+backup_database || true
+push_to_repository || true
+start_flask_application || true
 
 echo "Выполнение скрипта успешно завершено: $(date)"
