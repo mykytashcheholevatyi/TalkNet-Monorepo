@@ -28,3 +28,18 @@
 [2024-02-09 23:26:01 +0000] [131545] [INFO] Using worker: sync
 [2024-02-09 23:26:01 +0000] [131559] [INFO] Booting worker with pid: 131559
 [2024-02-09 23:26:01 +0000] [131082] [INFO] Shutting down: Master
+[2024-02-09 23:27:42 +0000] [131545] [INFO] Handling signal: term
+[2024-02-09 23:27:42 +0000] [132519] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 23:27:42 +0000] [132519] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 23:27:42 +0000] [132519] [ERROR] Retrying in 1 second.
+[2024-02-09 23:27:43 +0000] [132519] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 23:27:43 +0000] [132519] [ERROR] Retrying in 1 second.
+[2024-02-09 23:27:44 +0000] [132519] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 23:27:44 +0000] [132519] [ERROR] Retrying in 1 second.
+[2024-02-09 23:27:45 +0000] [132519] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 23:27:45 +0000] [132519] [ERROR] Retrying in 1 second.
+[2024-02-09 23:27:46 +0000] [131559] [INFO] Worker exiting (pid: 131559)
+[2024-02-09 23:27:46 +0000] [131545] [INFO] Shutting down: Master
+[2024-02-09 23:27:46 +0000] [132519] [INFO] Listening at: http://0.0.0.0:8000 (132519)
+[2024-02-09 23:27:46 +0000] [132519] [INFO] Using worker: sync
+[2024-02-09 23:27:46 +0000] [132594] [INFO] Booting worker with pid: 132594
