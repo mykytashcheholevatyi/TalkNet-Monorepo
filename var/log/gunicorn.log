@@ -20,3 +20,29 @@
 [2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1
 [2024-02-09 16:38:16 +0000] [91092] [ERROR] Worker (pid:91387) exited with code 1.
 [2024-02-09 16:38:16 +0000] [91620] [INFO] Booting worker with pid: 91620
+[2024-02-09 16:47:59 +0000] [91092] [INFO] Handling signal: term
+[2024-02-09 16:47:59 +0000] [92581] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:47:59 +0000] [92581] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:47:59 +0000] [92581] [ERROR] Retrying in 1 second.
+[2024-02-09 16:48:00 +0000] [92581] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:48:00 +0000] [92581] [ERROR] Retrying in 1 second.
+[2024-02-09 16:48:01 +0000] [91620] [INFO] Worker exiting (pid: 91620)
+[2024-02-09 16:48:01 +0000] [92581] [INFO] Listening at: http://0.0.0.0:8000 (92581)
+[2024-02-09 16:48:01 +0000] [92581] [INFO] Using worker: sync
+[2024-02-09 16:48:01 +0000] [92646] [INFO] Booting worker with pid: 92646
+[2024-02-09 16:48:02 +0000] [91092] [INFO] Shutting down: Master
+[2024-02-09 16:48:49 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:92646)
+[2024-02-09 16:48:49 +0000] [92646] [INFO] Worker exiting (pid: 92646)
+[2024-02-09 16:48:49 +0000] [92581] [ERROR] Worker (pid:92646) exited with code 1
+[2024-02-09 16:48:49 +0000] [92581] [ERROR] Worker (pid:92646) exited with code 1.
+[2024-02-09 16:48:49 +0000] [92812] [INFO] Booting worker with pid: 92812
+[2024-02-09 16:49:45 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:92812)
+[2024-02-09 16:49:45 +0000] [92812] [INFO] Worker exiting (pid: 92812)
+[2024-02-09 16:49:45 +0000] [92581] [ERROR] Worker (pid:92812) exited with code 1
+[2024-02-09 16:49:45 +0000] [92581] [ERROR] Worker (pid:92812) exited with code 1.
+[2024-02-09 16:49:45 +0000] [93082] [INFO] Booting worker with pid: 93082
+[2024-02-09 16:51:32 +0000] [92581] [CRITICAL] WORKER TIMEOUT (pid:93082)
+[2024-02-09 16:51:32 +0000] [93082] [INFO] Worker exiting (pid: 93082)
+[2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1
+[2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1.
+[2024-02-09 16:51:32 +0000] [93483] [INFO] Booting worker with pid: 93483
