@@ -46,3 +46,16 @@
 [2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1
 [2024-02-09 16:51:32 +0000] [92581] [ERROR] Worker (pid:93082) exited with code 1.
 [2024-02-09 16:51:32 +0000] [93483] [INFO] Booting worker with pid: 93483
+[2024-02-09 16:55:08 +0000] [92581] [INFO] Handling signal: term
+[2024-02-09 16:55:09 +0000] [94334] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:09 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:09 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:10 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:10 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:11 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:11 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:12 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:12 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:13 +0000] [94334] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:55:13 +0000] [94334] [ERROR] Retrying in 1 second.
+[2024-02-09 16:55:14 +0000] [94334] [ERROR] Can't connect to ('0.0.0.0', 8000)
