@@ -9,6 +9,12 @@ pip install Flask Flask-SQLAlchemy psycopg2-binary
 Запуск обновы
 /srv/talknet/backend/scripts/update_and_restart.sh
 
+
+отправить сервер в гит
+git add .
+git commit -m "Краткое описание ваших изменений"
+git push -u origin main
+
 Установите обновленную версию blinker
 pip install --upgrade --user blinker
 
@@ -35,6 +41,7 @@ git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 cd /srv/talknet
 git checkout main
 git pull
+/srv/talknet/backend/scripts/update_and_restart.sh
 
 
 Ставим веб сервер гуникорн
