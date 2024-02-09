@@ -15,3 +15,102 @@
 [2024-02-09 16:23:01 +0000] [87793] [ERROR] Worker (pid:87795) exited with code 1
 [2024-02-09 16:23:01 +0000] [87793] [ERROR] Worker (pid:87795) exited with code 1.
 [2024-02-09 16:23:01 +0000] [88086] [INFO] Booting worker with pid: 88086
+[2024-02-09 16:24:50 +0000] [87793] [INFO] Handling signal: term
+[2024-02-09 16:24:50 +0000] [88531] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:24:50 +0000] [88531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:24:50 +0000] [88531] [ERROR] Retrying in 1 second.
+[2024-02-09 16:24:51 +0000] [88531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:24:51 +0000] [88531] [ERROR] Retrying in 1 second.
+[2024-02-09 16:24:52 +0000] [88086] [INFO] Worker exiting (pid: 88086)
+[2024-02-09 16:24:52 +0000] [88531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 16:24:52 +0000] [88531] [ERROR] Retrying in 1 second.
+[2024-02-09 16:24:53 +0000] [87793] [INFO] Shutting down: Master
+[2024-02-09 16:24:53 +0000] [88531] [INFO] Listening at: http://0.0.0.0:8000 (88531)
+[2024-02-09 16:24:53 +0000] [88531] [INFO] Using worker: sync
+[2024-02-09 16:24:53 +0000] [88633] [INFO] Booting worker with pid: 88633
+[2024-02-09 16:24:54,630] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 32, in index
+    return render_template('index.html')  # Возвращаем шаблон HTML для главной страницы
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+[2024-02-09 16:24:56,741] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 32, in index
+    return render_template('index.html')  # Возвращаем шаблон HTML для главной страницы
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+[2024-02-09 16:25:26 +0000] [88531] [CRITICAL] WORKER TIMEOUT (pid:88633)
+[2024-02-09 16:25:26 +0000] [88633] [INFO] Worker exiting (pid: 88633)
+[2024-02-09 16:25:26 +0000] [88531] [ERROR] Worker (pid:88633) exited with code 1
+[2024-02-09 16:25:26 +0000] [88531] [ERROR] Worker (pid:88633) exited with code 1.
+[2024-02-09 16:25:26 +0000] [88817] [INFO] Booting worker with pid: 88817
+[2024-02-09 16:27:18,166] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 32, in index
+    return render_template('index.html')  # Возвращаем шаблон HTML для главной страницы
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
