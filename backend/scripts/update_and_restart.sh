@@ -44,7 +44,7 @@ clone_or_update_repository() {
     if [ ! -d "$APP_DIR" ]; then
         git clone "$REPO_URL" "$APP_DIR"
     else
-        cd "$APP_DIR" && git pull
+        cd "$APP_DIR" && git pull -f  # Принудительное обновление
     fi
 }
 
@@ -64,9 +64,9 @@ setup_python_environment() {
 # Function to backup the database
 backup_database() {
     BACKUP_DIR="/srv/talknet/backups"
-    mkdir -p "$APP_DIR/$BACKUP_DIR"
+    mkdir -p "$BACKUP_DIR"
     echo "Creating database backup..."
-    sudo -u postgres pg_dump "$PG_DB" > "$APP_DIR/$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
 # Function to push changes to the Git repository
@@ -74,7 +74,7 @@ push_to_repository() {
     echo "Pushing changes to the Git repository..."
     cd "$APP_DIR"
     git add .
-    git commit -m "Automatic deployment: $(date)"
+    git commit -m "Automatic database backup: $(date)"
     git push origin main  # Replace 'main' with your branch name if different
     echo "Changes pushed to the Git repository."
 }
