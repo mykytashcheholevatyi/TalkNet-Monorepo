@@ -76,3 +76,11 @@
 [2024-02-09 16:55:42 +0000] [94953] [INFO] Listening at: http://0.0.0.0:8000 (94953)
 [2024-02-09 16:55:42 +0000] [94953] [INFO] Using worker: sync
 [2024-02-09 16:55:42 +0000] [94954] [INFO] Booting worker with pid: 94954
+[2024-02-09 16:55:55 +0000] [94953] [INFO] Handling signal: term
+[2024-02-09 16:55:55 +0000] [94954] [INFO] Worker exiting (pid: 94954)
+[2024-02-09 16:55:55 +0000] [94953] [ERROR] Worker (pid:94954) was sent SIGTERM!
+[2024-02-09 16:55:55 +0000] [94953] [INFO] Shutting down: Master
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Listening at: http://0.0.0.0:8000 (95160)
+[2024-02-09 16:55:56 +0000] [95160] [INFO] Using worker: sync
+[2024-02-09 16:55:56 +0000] [95161] [INFO] Booting worker with pid: 95161
