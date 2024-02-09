@@ -1,0 +1,110 @@
+Документация по реакту
+
+Помещаем фронтент на реакте на сервер
+cd /var/www/
+sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git
+cd /var/www/TalkNet-Monorepo/reddit-clone
+
+Устанавливаем нпм
+sudo apt-get install npm
+
+И зависимости проекта
+npm install
+
+Можем запускать
+npm start
+
+Получаем фронт на порту 
+http://85.215.65.78:3000/
+
+Делаем автообновление React-проекта 
+в настройках репа добавляем Webhooks
+http://85.215.65.78:9000/webhook типа application/json
+
+Создаем скрипт update_and_restart.sh
+--начало--
+#!/bin/bash
+
+# Перейти в директорию монорепозитория
+cd /var/www/TalkNet-Monorepo
+
+# Сбросить все локальные изменения и заменить их содержимым репозитория
+git reset --hard origin/main
+
+# Обновить код из монорепозитория
+git pull
+
+# Перейти в директорию проекта reddit-clone
+cd reddit-clone
+
+# Установить права на выполнение скрипта (если необходимо)
+chmod +x update_and_restart.sh
+
+# Установить зависимости
+npm install
+
+# Построить production сборку
+npm run build
+
+# Завершить процесс, использующий порт 3000 (если он есть)
+kill $(lsof -t -i:3000)
+
+# Запустить React-проект на порту 3000
+npm start
+--конец--
+
+Сделаем скрипт исполняемым
+chmod +x /var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
+
+Дайте права 
+chmod +x update_and_restart.sh
+chmod +x /var/www/reddit-clone/update_and_restart.sh
+
+Запустим скрипт вручную
+cd /var/www/TalkNet-Monorepo/reddit-clone
+./update_and_restart.sh
+
+Установим pm2 для автоматического запуска обработчика Webhook
+npm install pm2 -g
+
+Создадим обработчик 
+--начало--
+const express = require('express');
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
+const app = express();
+const port = 9000; // Изменим порт на 9000
+
+app.use(bodyParser.json());
+
+app.post('/webhook', (req, res) => {
+  // Здесь можно добавить проверку секрета из webhook для безопасности
+  exec('/var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Server error');
+    }
+    console.log(stdout);
+    res.status(200).send('OK');
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Webhook handler running on port ${port}`);
+});
+--конец--
+
+Запустим наш обработчик
+pm2 start /var/www/TalkNet-Monorepo/webhook-handler/index.js --name webhook-handler
+pm2 startup
+pm2 save
+
+ДЕВОПС ФРОНТЕНДА НА ЭТОМ ГОТОВ
+
+ставим вебсокет реакту
+cd /var/www/TalkNet-Monorepo/reddit-clone
+npm install ws --save
+
+ставим аксиос для токенов в реакт
+cd /var/www/TalkNet-Monorepo/reddit-clone
+npm install axios jsonwebtoken --save
