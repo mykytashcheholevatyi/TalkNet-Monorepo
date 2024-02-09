@@ -163,3 +163,16 @@
 [2024-02-09 17:01:43 +0000] [99306] [INFO] Listening at: http://0.0.0.0:8000 (99306)
 [2024-02-09 17:01:43 +0000] [99306] [INFO] Using worker: sync
 [2024-02-09 17:01:43 +0000] [99307] [INFO] Booting worker with pid: 99307
+[2024-02-09 17:01:59 +0000] [99306] [INFO] Handling signal: term
+[2024-02-09 17:01:59 +0000] [99539] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 17:01:59 +0000] [99539] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 17:01:59 +0000] [99539] [ERROR] Retrying in 1 second.
+[2024-02-09 17:02:00 +0000] [99539] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 17:02:00 +0000] [99539] [ERROR] Retrying in 1 second.
+[2024-02-09 17:02:01 +0000] [99539] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 17:02:01 +0000] [99539] [ERROR] Retrying in 1 second.
+[2024-02-09 17:02:02 +0000] [99539] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 17:02:02 +0000] [99539] [ERROR] Retrying in 1 second.
+[2024-02-09 17:02:03 +0000] [99539] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-09 17:02:03 +0000] [99539] [ERROR] Retrying in 1 second.
+[2024-02-09 17:02:04 +0000] [99539] [ERROR] Can't connect to ('0.0.0.0', 8000)
