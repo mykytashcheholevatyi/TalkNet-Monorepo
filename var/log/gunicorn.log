@@ -193,3 +193,10 @@
 [2024-02-09 17:02:36 +0000] [99970] [INFO] Listening at: http://0.0.0.0:8000 (99970)
 [2024-02-09 17:02:36 +0000] [99970] [INFO] Using worker: sync
 [2024-02-09 17:02:36 +0000] [99971] [INFO] Booting worker with pid: 99971
+[2024-02-09 17:02:54 +0000] [99971] [INFO] Worker exiting (pid: 99971)
+[2024-02-09 17:02:54 +0000] [99970] [INFO] Handling signal: term
+[2024-02-09 17:02:54 +0000] [99970] [INFO] Shutting down: Master
+[2024-02-09 17:02:54 +0000] [100198] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 17:02:54 +0000] [100198] [INFO] Listening at: http://0.0.0.0:8000 (100198)
+[2024-02-09 17:02:54 +0000] [100198] [INFO] Using worker: sync
+[2024-02-09 17:02:54 +0000] [100199] [INFO] Booting worker with pid: 100199
