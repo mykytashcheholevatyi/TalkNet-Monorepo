@@ -2,134 +2,131 @@
 
 # Set strict execution mode and error handling
 set -euo pipefail
-trap 'echo "An error occurred on line $LINENO. Exiting with error code $?"' ERR
-
-# Initial message indicating the start of the process
-echo "Starting full cleanup, update, and restoration of the project: $(date)"
+trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2' ERR
 
 # Define configuration variables
-APP_DIR="/srv/talknet/backend/auth-service"  # Application directory path
-VENV_DIR="$APP_DIR/venv"                    # Python virtual environment directory
-LOG_DIR="/var/log/talknet"                   # Log directory
-BACKUP_DIR="/srv/talknet/backups"            # Database backups directory
-REQS_BACKUP_DIR="/tmp"                       # Temporary directory for requirements.txt backup
-PG_DB="prod_db"                              # PostgreSQL database name
-LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Log file for the current update process
-REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # Repository URL
-MAX_ATTEMPTS=3                               # Maximum number of attempts for retryable operations
-ATTEMPT=1                                    # Initial attempt counter
+APP_DIR="/srv/talknet/backend/auth-service"  # Путь к каталогу приложения
+VENV_DIR="$APP_DIR/venv"                    # Каталог виртуальной среды Python
+LOG_DIR="/var/log/talknet"                   # Каталог журналов
+BACKUP_DIR="/srv/talknet/backups"            # Каталог резервных копий базы данных
+REQS_BACKUP_DIR="/tmp"                       # Временный каталог для резервной копии requirements.txt
+PG_DB="prod_db"                              # Имя базы данных PostgreSQL
+LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Файл журнала для текущего процесса обновления
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # URL репозитория
+MAX_ATTEMPTS=3                               # Максимальное количество попыток для повторяемых операций
+ATTEMPT=1                                    # Счетчик попыток
 
-# Create directories for logs and backups
+# Создание каталогов для журналов и резервных копий
 mkdir -p "$LOG_DIR" "$BACKUP_DIR"
 
-# Redirect script output to log file
+# Перенаправление вывода скрипта в файл журнала
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-# Backup the database
+# Создание резервной копии базы данных
 create_database_backup() {
-    echo "Creating a backup of the database..."
+    echo "Создание резервной копии базы данных..."
     if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw "$PG_DB"; then
         sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/db_backup_$(date +%Y-%m-%d_%H-%M-%S).sql"
     else
-        echo "Database $PG_DB does not exist. Skipping backup."
+        echo "База данных $PG_DB не существует. Пропуск резервного копирования."
     fi
 }
 
-# Clean the current installation while preserving important files
+# Очистка текущей установки с сохранением важных файлов
 cleanup() {
-    echo "Cleaning the current installation..."
-    # Preserve the existing requirements.txt and app.py if they exist
+    echo "Очистка текущей установки..."
+    # Сохранить существующий requirements.txt и app.py, если они существуют
     [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
     [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
     rm -rf "$APP_DIR"
     mkdir -p "$APP_DIR"
 }
 
-# Clone the repository and install dependencies
+# Клонирование репозитория и установка зависимостей
 setup() {
-    echo "Cloning the repository and installing dependencies..."
+    echo "Клонирование репозитория и установка зависимостей..."
     git clone "$REPO_URL" "$APP_DIR"
     cd "$APP_DIR"
-    # Restore the preserved requirements.txt and app.py
+    # Восстановить сохраненный requirements.txt и app.py
     [ -f "$REQS_BACKUP_DIR/requirements.txt" ] && cp "$REQS_BACKUP_DIR/requirements.txt" "$APP_DIR"
     [ -f "$REQS_BACKUP_DIR/app.py" ] && cp "$REQS_BACKUP_DIR/app.py" "$APP_DIR"
-    # Set up a Python virtual environment
+    # Настройка виртуальной среды Python
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
-    # Check if the requirements.txt exists before installing
+    # Проверить, существует ли requirements.txt, перед установкой
     if [ -f "requirements.txt" ]; then
         pip install -r "requirements.txt"
     else
-        echo "requirements.txt not found. Cannot install Python dependencies."
+        echo "Файл requirements.txt не найден. Невозможно установить зависимости Python."
         return 1
     fi
 }
 
-# Optionally restore the database from a backup
+# Опционально восстановить базу данных из резервной копии
 restore_database() {
-    echo "Restoring the database from a backup..."
-    # This should contain the commands to restore the database if necessary
+    echo "Восстановление базы данных из резервной копии..."
+    # Здесь должны содержаться команды для восстановления базы данных, если это необходимо
 }
 
-# Update the repository
+# Обновление репозитория
 update_repository() {
-    echo "Fetching updates from the repository..."
+    echo "Получение обновлений из репозитория..."
     cd "$APP_DIR"
     git pull || {
-        echo "Attempting to recover the repository due to an error..."
+        echo "Попытка восстановления репозитория из-за ошибки..."
         git fetch --all
         git reset --hard origin/main
     }
 }
 
-# Activate the virtual environment
+# Активация виртуальной среды
 activate_virtualenv() {
-    echo "Activating the virtual environment..."
+    echo "Активация виртуальной среды..."
     source "$VENV_DIR/bin/activate"
 }
 
-# Install Python packages
+# Установка пакетов Python
 install_python_packages() {
-    echo "Installing Python packages..."
+    echo "Установка пакетов Python..."
     pip install --upgrade pip
     pip install -r "requirements.txt"
 }
 
-# Run database migrations
+# Запуск миграции базы данных
 run_database_migration() {
-    echo "Running database migrations..."
+    echo "Запуск миграции базы данных..."
     flask db upgrade || {
-        echo "Migration failed. Attempting to create a new migration..."
+        echo "Миграция не удалась. Попытка создания новой миграции..."
         flask db migrate
         flask db upgrade
     }
 }
 
-# ... previous code ...
+# ... предыдущий код ...
 
-# Deactivate the virtual environment
+# Деактивация виртуальной среды
 deactivate_virtualenv() {
-    echo "Deactivating the virtual environment..."
-    deactivate || true  # Deactivating should not cause the script to fail if not active
+    echo "Деактивация виртуальной среды..."
+    deactivate || true  # Деактивация не должна вызывать ошибку, если не активирована
 }
 
-# Restart the application
+# Перезапуск приложения
 restart_application() {
-    echo "Restarting the application..."
-    # Here you should add the command to start your application, for example using gunicorn
-    # Replace 'app:app' with your actual application object if it's different
-    pkill gunicorn || true  # Ignore errors if gunicorn is not running
+    echo "Перезапуск приложения..."
+    # Здесь вы должны добавить команду для запуска вашего приложения, например, с помощью gunicorn
+    # Замените 'app:app' на фактический объект приложения, если он отличается
+    pkill gunicorn || true  # Игнорировать ошибки, если gunicorn не запущен
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Application restarted."
+    echo "Приложение перезапущено."
 }
 
-# Main execution sequence
-echo "Script execution started."
+# Основная последовательность выполнения
+echo "Запуск скрипта."
 create_database_backup
 cleanup
 setup
-# Optionally call restore_database if you have implemented it
+# Опционально вызвать restore_database, если вы реализовали его
 # restore_database
 update_repository
 activate_virtualenv
@@ -137,6 +134,6 @@ install_python_packages
 run_database_migration
 deactivate_virtualenv
 restart_application
-echo "Script execution completed."
+echo "Скрипт выполнен."
 
-# End of script
+# Конец скрипта
