@@ -189,3 +189,7 @@
 [2024-02-09 17:02:22 +0000] [99750] [ERROR] Retrying in 1 second.
 [2024-02-09 17:02:23 +0000] [99750] [ERROR] Can't connect to ('0.0.0.0', 8000)
 [2024-02-09 17:02:29 +0000] [99306] [INFO] Shutting down: Master
+[2024-02-09 17:02:36 +0000] [99970] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 17:02:36 +0000] [99970] [INFO] Listening at: http://0.0.0.0:8000 (99970)
+[2024-02-09 17:02:36 +0000] [99970] [INFO] Using worker: sync
+[2024-02-09 17:02:36 +0000] [99971] [INFO] Booting worker with pid: 99971
