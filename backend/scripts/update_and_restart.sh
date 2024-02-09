@@ -5,7 +5,7 @@ set -euo pipefail
 trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2' ERR
 
 # Define configuration variables
-LOG_DIR="/var/log/talknet"
+LOG_DIR="/srv/talknet/var/log"
 mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
@@ -64,9 +64,9 @@ setup_python_environment() {
 # Function to backup the database
 backup_database() {
     BACKUP_DIR="/srv/talknet/backups"
-    mkdir -p "$BACKUP_DIR"
+    mkdir -p "$APP_DIR/$BACKUP_DIR"
     echo "Creating database backup..."
-    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
+    sudo -u postgres pg_dump "$PG_DB" > "$APP_DIR/$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
 # Function to start the Flask application
