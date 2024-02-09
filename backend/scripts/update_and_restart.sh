@@ -69,6 +69,16 @@ backup_database() {
     sudo -u postgres pg_dump "$PG_DB" > "$APP_DIR/$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
 }
 
+# Function to push changes to the Git repository
+push_to_repository() {
+    echo "Pushing changes to the Git repository..."
+    cd "$APP_DIR"
+    git add .
+    git commit -m "Automatic deployment: $(date)"
+    git push origin main  # Replace 'main' with your branch name if different
+    echo "Changes pushed to the Git repository."
+}
+
 # Function to start the Flask application
 start_flask_application() {
     export FLASK_APP="$APP_DIR/backend/auth-service/app.py"
@@ -86,6 +96,7 @@ setup_postgresql
 clone_or_update_repository
 setup_python_environment
 backup_database
+push_to_repository
 start_flask_application
 
 echo "Script execution completed successfully: $(date)"
