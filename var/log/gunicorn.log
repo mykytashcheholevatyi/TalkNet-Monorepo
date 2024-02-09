@@ -91,3 +91,10 @@
 [2024-02-09 16:56:10 +0000] [95398] [INFO] Using worker: sync
 [2024-02-09 16:56:10 +0000] [95399] [INFO] Booting worker with pid: 95399
 [2024-02-09 16:56:11 +0000] [95160] [INFO] Shutting down: Master
+[2024-02-09 16:56:28 +0000] [95398] [INFO] Handling signal: term
+[2024-02-09 16:56:28 +0000] [95399] [INFO] Worker exiting (pid: 95399)
+[2024-02-09 16:56:29 +0000] [95398] [INFO] Shutting down: Master
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Starting gunicorn 21.2.0
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Listening at: http://0.0.0.0:8000 (95659)
+[2024-02-09 16:56:29 +0000] [95659] [INFO] Using worker: sync
+[2024-02-09 16:56:29 +0000] [95660] [INFO] Booting worker with pid: 95660
