@@ -12,6 +12,7 @@ BACKUP_DIR="/srv/talknet/backups"           # Database backup directory
 PG_DB="prod_db"                              # PostgreSQL database name
 LOG_FILE="$LOG_DIR/update-$(date +%Y-%m-%d_%H-%M-%S).log"  # Log file for the current update process
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"  # Repository URL
+REQS_BACKUP_DIR="/tmp"                       # Temporary directory for requirements.txt backup
 
 # Create directories for logs and backups
 mkdir -p "$LOG_DIR" "$BACKUP_DIR"
@@ -32,22 +33,26 @@ create_database_backup() {
 # Function to cleanup the current installation while preserving important files
 cleanup() {
     echo "Cleaning up the current installation..."
-    [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$BACKUP_DIR"
-    [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$BACKUP_DIR"
-    rm -rf "$APP_DIR"
-    mkdir -p "$APP_DIR"
+    [ -f "$APP_DIR/requirements.txt" ] && cp "$APP_DIR/requirements.txt" "$REQS_BACKUP_DIR"
+    [ -f "$APP_DIR/app.py" ] && cp "$APP_DIR/app.py" "$REQS_BACKUP_DIR"
+    rm -rf "$APP_DIR"/*
 }
 
 # Function to clone the repository and install dependencies
 setup() {
     echo "Cloning the repository and installing dependencies..."
-    git clone "$REPO_URL" "$APP_DIR"
+    # Clean up the application directory and clone the repository
+    mkdir -p "$APP_DIR"
     cd "$APP_DIR"
-    [ -f "$BACKUP_DIR/requirements.txt" ] && cp "$BACKUP_DIR/requirements.txt" "$APP_DIR"
-    [ -f "$BACKUP_DIR/app.py" ] && cp "$BACKUP_DIR/app.py" "$APP_DIR"
+    git clone "$REPO_URL" .
+    # Restore the saved requirements.txt and app.py files, if they exist
+    [ -f "$REQS_BACKUP_DIR/requirements.txt" ] && cp "$REQS_BACKUP_DIR/requirements.txt" .
+    [ -f "$REQS_BACKUP_DIR/app.py" ] && cp "$REQS_BACKUP_DIR/app.py" .
+    # Set up the Python virtual environment
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
+    # Check if requirements.txt exists before installing dependencies
     if [ -f "requirements.txt" ]; then
         pip install -r "requirements.txt"
     else
