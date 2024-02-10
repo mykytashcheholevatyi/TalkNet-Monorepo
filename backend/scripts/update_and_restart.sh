@@ -1,25 +1,37 @@
 #!/bin/bash
 
-# Set strict execution mode and error handling
+# Set strict execution mode, error handling, and traceability
 set -euo pipefail
 trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2; exit 1' ERR
 
-# Configuration variables
+# Define directory paths
 LOG_DIR="/srv/talknet/var/log"
 STATS_DIR="/srv/talknet/var/stats"
-mkdir -p "$LOG_DIR" "$STATS_DIR"
+BACKUP_DIR="/srv/talknet/backups"
+APP_DIR="/srv/talknet"
+VENV_DIR="$APP_DIR/backend/auth-service/venv"
+
+# Ensure required directories exist
+mkdir -p "$LOG_DIR" "$STATS_DIR" "$BACKUP_DIR"
+
+# Set filenames with timestamps
 LOG_FILE="$LOG_DIR/deploy.log"
 STATS_FILE="$STATS_DIR/deploy_stats_$(date +%Y-%m-%d_%H-%M-%S).log"
+
+# Redirect stdout and stderr to log file
 exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Script execution started: $(date)"
 
 # Rotate and archive old Flask logs
-FLASK_LOG_FILE="flask_app.log"
-if [ -f "$FLASK_LOG_FILE" ]; then
-    mv "$FLASK_LOG_FILE" "$LOG_DIR/flask_app_$(date +%Y-%m-%d_%H-%M-%S).log"
-fi
+rotate_flask_logs() {
+    echo "Rotating and archiving old Flask logs..."
+    FLASK_LOG_FILE="flask_app.log"
+    if [ -f "$FLASK_LOG_FILE" ]; then
+        mv "$FLASK_LOG_FILE" "$LOG_DIR/flask_app_$(date +%Y-%m-%d_%H-%M-%S).log"
+    fi
+}
 
-# Function to install required packages
+# Install required packages if not already installed
 install_dependencies() {
     echo "Installing required packages..."
     DEPS="python3 python3-pip python3-venv git postgresql postgresql-contrib nginx"
@@ -33,7 +45,7 @@ install_dependencies() {
     done
 }
 
-# Function to setup PostgreSQL
+# Setup PostgreSQL if not already configured
 setup_postgresql() {
     echo "Setting up PostgreSQL..."
     PG_USER="your_username"
@@ -53,11 +65,10 @@ setup_postgresql() {
     fi
 }
 
-# Function to clone or update repository
+# Clone or update repository
 clone_or_update_repository() {
     echo "Cloning or updating repository..."
     REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo"
-    APP_DIR="/srv/talknet"
     if [ ! -d "$APP_DIR" ]; then
         git clone "$REPO_URL" "$APP_DIR"
     else
@@ -68,10 +79,9 @@ clone_or_update_repository() {
     fi
 }
 
-# Function to setup Python virtual environment and install dependencies
+# Setup Python virtual environment and install dependencies
 setup_python_environment() {
     echo "Setting up Python virtual environment..."
-    VENV_DIR="$APP_DIR/backend/auth-service/venv"
     if [ ! -d "$VENV_DIR" ]; then
         python3 -m venv "$VENV_DIR"
     fi
@@ -81,10 +91,9 @@ setup_python_environment() {
     pip install -r "$APP_DIR/backend/auth-service/requirements.txt"
 }
 
-# Function to backup database and collect stats
+# Backup database and collect system stats
 backup_database_and_collect_stats() {
     echo "Creating database backup and collecting stats..."
-    BACKUP_DIR="/srv/talknet/backups"
     mkdir -p "$BACKUP_DIR"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
     # Collect system stats
@@ -94,11 +103,24 @@ backup_database_and_collect_stats() {
     free -m >> "$STATS_FILE"
 }
 
-# Function to push changes to repository
+# Apply database migrations with Flask-Migrate
+apply_database_migrations() {
+    echo "Applying database migrations with Flask-Migrate..."
+    source "$VENV_DIR/bin/activate"
+    cd "$APP_DIR/backend/auth-service"
+    if [ ! -d "migrations" ]; then
+        echo "Initializing Flask-Migrate..."
+        flask db init
+    fi
+    flask db migrate -m "Initial migration."
+    flask db upgrade
+    echo "Database migrations applied successfully."
+}
+
+# Push changes to repository if there are any
 push_to_repository() {
     echo "Checking for changes..."
     cd "$APP_DIR"
-    # Check for changes in files excluding the backups directory
     if git status --porcelain | grep -v "^?? backups/" | grep -v "\[LOGS_UPDATE\]"; then
         echo "Pushing changes to Git repository..."
         git add .
@@ -110,7 +132,7 @@ push_to_repository() {
     fi
 }
 
-# Function to start Flask application
+# Start Flask application
 start_flask_application() {
     echo "Starting Flask application..."
     export FLASK_APP="$APP_DIR/backend/auth-service/app.py"
@@ -122,11 +144,13 @@ start_flask_application() {
 }
 
 # Main execution sequence
+rotate_flask_logs
 install_dependencies
 setup_postgresql
 clone_or_update_repository
 setup_python_environment
 backup_database_and_collect_stats
+apply_database_migrations
 push_to_repository
 start_flask_application
 
