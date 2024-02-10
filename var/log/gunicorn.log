@@ -1104,3 +1104,16 @@ WHERE user.email = ?
  LIMIT ? OFFSET ?]
 [parameters: ('mykytashch@hotmail.com', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:49:10 +0000] [9082] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:49:10 +0000] [9082] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:49:10 +0000] [9082] [ERROR] Retrying in 1 second.
+[2024-02-10 01:49:11 +0000] [9082] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:49:11 +0000] [9082] [ERROR] Retrying in 1 second.
+[2024-02-10 01:49:12 +0000] [9082] [INFO] Listening at: http://0.0.0.0:8000 (9082)
+[2024-02-10 01:49:12 +0000] [9082] [INFO] Using worker: sync
+[2024-02-10 01:49:12 +0000] [9128] [INFO] Booting worker with pid: 9128
+[2024-02-10 01:50:03 +0000] [9082] [CRITICAL] WORKER TIMEOUT (pid:9128)
+[2024-02-10 01:50:03 +0000] [9128] [INFO] Worker exiting (pid: 9128)
+[2024-02-10 01:50:03 +0000] [9082] [ERROR] Worker (pid:9128) exited with code 1
+[2024-02-10 01:50:03 +0000] [9082] [ERROR] Worker (pid:9128) exited with code 1.
+[2024-02-10 01:50:03 +0000] [9305] [INFO] Booting worker with pid: 9305
