@@ -160,3 +160,15 @@
 [2024-02-10 00:24:36 +0000] [165978] [ERROR] Worker (pid:166742) exited with code 1
 [2024-02-10 00:24:36 +0000] [165978] [ERROR] Worker (pid:166742) exited with code 1.
 [2024-02-10 00:24:36 +0000] [167430] [INFO] Booting worker with pid: 167430
+[2024-02-10 00:25:24 +0000] [168254] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:25:24 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:24 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:25 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:25 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:26 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:26 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:27 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:27 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:28 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:28 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:29 +0000] [168254] [ERROR] Can't connect to ('0.0.0.0', 8000)
