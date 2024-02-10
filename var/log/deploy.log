@@ -1446,3 +1446,16 @@ nginx is already the newest version (1.18.0-6ubuntu14.4).
 Пользователь PostgreSQL your_username уже существует.
 База данных PostgreSQL prod_db уже существует.
 Клонирование или обновление репозитория...
+Script execution started: Sat Feb 10 00:21:40 UTC 2024
+Installing required packages...
+python3 is already installed.
+python3-pip is already installed.
+python3-venv is already installed.
+git is already installed.
+postgresql is already installed.
+postgresql-contrib is already installed.
+nginx is already installed.
+Setting up PostgreSQL...
+PostgreSQL user your_username already exists.
+PostgreSQL database prod_db already exists.
+Cloning or updating repository...
