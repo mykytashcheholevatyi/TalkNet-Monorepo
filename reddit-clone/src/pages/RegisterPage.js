@@ -40,7 +40,7 @@ function RegisterPage() {
     if (Object.values(formErrors).some(error => error)) return;
 
     try {
-      const response = await fetch('http://85.215.65.78:8000/register', {
+      const response = await fetch('http://localhost:5000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -61,7 +61,26 @@ function RegisterPage() {
     <div className="register-page">
       <h1>Register</h1>
       <form onSubmit={handleSubmit} noValidate>
-        {/* Form fields */}
+        <div>
+          <label>Username</label>
+          <input type="text" name="username" value={formData.username} onChange={handleInputChange} />
+          {errors.username && <div>{errors.username}</div>}
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
+          {errors.email && <div>{errors.email}</div>}
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" value={formData.password} onChange={handleInputChange} />
+          {errors.password && <div>{errors.password}</div>}
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
+          {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
+        </div>
         <button type="submit">Register</button>
       </form>
       {errors.form && <div>{errors.form}</div>}
