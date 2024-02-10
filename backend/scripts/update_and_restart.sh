@@ -6,8 +6,10 @@ trap 'echo "Произошла ошибка на строке $LINENO. Заве�
 
 # Определение переменных конфигурации
 LOG_DIR="/srv/talknet/var/log"
-mkdir -p "$LOG_DIR"
+STATS_DIR="/srv/talknet/var/stats"
+mkdir -p "$LOG_DIR" "$STATS_DIR"
 LOG_FILE="$LOG_DIR/deploy.log"
+STATS_FILE="$STATS_DIR/deploy_stats_$(date +%Y-%m-%d_%H-%M-%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Начало выполнения скрипта: $(date)"
 
@@ -54,9 +56,9 @@ clone_or_update_repository() {
         git clone "$REPO_URL" "$APP_DIR"
     else
         cd "$APP_DIR"
-        # Спрятать непринятые изменения
         git stash
         git pull --rebase
+        git stash pop || true
     fi
 }
 
@@ -73,18 +75,24 @@ setup_python_environment() {
     pip install -r "$APP_DIR/backend/auth-service/requirements.txt"
 }
 
-# Функция резервного копирования базы данных
-backup_database() {
-    echo "Создание резервной копии базы данных..."
+# Функция резервного копирования базы данных и сбора статистики
+backup_database_and_collect_stats() {
+    echo "Создание резервной копии базы данных и сбор статистики..."
     BACKUP_DIR="/srv/talknet/backups"
     mkdir -p "$BACKUP_DIR"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
+    # Сбор статистики
+    echo "Сбор системной статистики..." > "$STATS_FILE"
+    top -b -n 1 >> "$STATS_FILE"
+    df -h >> "$STATS_FILE"
+    free -m >> "$STATS_FILE"
 }
 
 # Функция отправки изменений в Git репозиторий
 push_to_repository() {
     echo "Проверка изменений..."
     cd "$APP_DIR"
+    # Проверяем, есть ли изменения в файлах, кроме директории backups
     if git status --porcelain | grep -v "^?? backups/" ; then
         echo "Отправка изменений в Git репозиторий..."
         git add .
@@ -92,9 +100,21 @@ push_to_repository() {
         git push origin main
         echo "Изменения отправлены в Git репозиторий."
     else
-        echo "Изменения касаются только бекапов. Отправка в Git репозиторий пропущена."
+        echo "Изменения касаются только бекапов. Отправка изменений в Git репозиторий пропущена."
+    fi
+    # Независимо от предыдущего условия отправляем логи и статистику
+    echo "Отправка логов и статистики..."
+    git add "$LOG_DIR" "$STATS_DIR"
+    # Проверяем, есть ли что коммитить
+    if ! git diff --cached --quiet; then
+        git commit -m "Логи и статистика деплоя: $(date)"
+        git push origin main
+        echo "Логи и статистика отправлены в Git репозиторий."
+    else
+        echo "Нет новых логов или статистики для отправки."
     fi
 }
+
 
 # Функция запуска Flask приложения
 start_flask_application() {
@@ -112,7 +132,7 @@ install_dependencies
 setup_postgresql
 clone_or_update_repository
 setup_python_environment
-backup_database
+backup_database_and_collect_stats
 push_to_repository
 start_flask_application
 
