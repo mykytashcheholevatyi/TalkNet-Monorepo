@@ -1,0 +1,4 @@
+167.248.133.183 - - [10/Feb/2024:02:10:41 +0000] "GET / HTTP/1.1" 200 447 "-" "-"
+167.248.133.183 - - [10/Feb/2024:02:10:45 +0000] "GET / HTTP/1.1" 200 447 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+167.248.133.183 - - [10/Feb/2024:02:10:45 +0000] "PRI * HTTP/2.0" 404 207 "-" "-"
+167.248.133.183 - - [10/Feb/2024:02:10:46 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
