@@ -41,12 +41,36 @@ install_dependencies() {
 # Setup PostgreSQL if not already configured
 setup_postgresql() {
     echo "Ensuring PostgreSQL user and database are set up..."
-    sudo -u postgres psql -c "SELECT 1 FROM pg_roles WHERE rolname = '$PG_USER';" | grep -q 1 || \
-    sudo -u postgres psql -c "CREATE ROLE $PG_USER WITH LOGIN PASSWORD '$PG_PASSWORD';"
-    sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = '$PG_DB';" | grep -q 1 || \
-    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+    SCHEMA_PATH="$APP_DIR/backend/auth-service/database/forum_schema.sql"
+    # Проверка существования базы данных и пользователя
+    DB_EXISTS=$(sudo -u postgres psql -tAc "SELECT 1 FROM pg_database WHERE datname='$PG_DB'")
+    USER_EXISTS=$(sudo -u postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$PG_USER'")
+    
+    # Если база данных существует
+    if [ "$DB_EXISTS" = "1" ]; then
+        # Попытка применить миграции
+        if ! flask db upgrade; then
+            # В случае ошибки - восстановление базы данных из последнего бэкапа
+            echo "Restoring the latest backup due to migration failure..."
+            LATEST_BACKUP=$(ls -t $BACKUP_DIR/*.sql | head -1)
+            if [ -n "$LATEST_BACKUP" ]; then
+                sudo -u postgres psql "$PG_DB" < "$LATEST_BACKUP"
+            else
+                echo "No backup found. Recreating the database..."
+                sudo -u postgres psql -c "DROP DATABASE IF EXISTS $PG_DB;"
+                sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+                sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH"
+            fi
+        fi
+    else
+        # Если база данных и пользователь не существуют, создаем их
+        if [ "$USER_EXISTS" != "1" ]; then
+            sudo -u postgres psql -c "CREATE ROLE $PG_USER WITH LOGIN PASSWORD '$PG_PASSWORD';"
+        fi
+        sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+        sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH"
+    fi
 }
-
 
 # Clone or update repository
 clone_or_update_repository() {
@@ -88,18 +112,9 @@ apply_database_migrations() {
     echo "Applying database migrations with Flask-Migrate..."
     source "$VENV_DIR/bin/activate"
     cd "$APP_DIR/backend/auth-service"
-    # Check if the migrations directory exists, if not, initialize Flask-Migrate
-    if [ ! -d "migrations" ]; then
-        echo "Initializing Flask-Migrate..."
-        flask db init
-    fi
-    # Now that the migrations directory is guaranteed to exist, generate new migrations and apply them
-    echo "Generating and applying migrations..."
-    flask db migrate -m "Generated migration"
     flask db upgrade
     echo "Database migrations applied successfully."
 }
-
 
 # Push changes to repository if there are any
 push_to_repository() {
