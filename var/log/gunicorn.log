@@ -1150,3 +1150,7 @@ WHERE user.email = ?
 [2024-02-10 01:59:50 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
 [2024-02-10 01:59:50 +0000] [11907] [ERROR] Retrying in 1 second.
 [2024-02-10 01:59:51 +0000] [11907] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Listening at: http://0.0.0.0:8000 (12753)
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Using worker: sync
+[2024-02-10 02:02:15 +0000] [12754] [INFO] Booting worker with pid: 12754
