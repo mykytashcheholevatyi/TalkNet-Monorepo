@@ -2051,3 +2051,16 @@ Setting up PostgreSQL...
 PostgreSQL user your_username already exists.
 PostgreSQL database prod_db already exists.
 Cloning or updating repository...
+Script execution started: Sat Feb 10 01:43:00 UTC 2024
+Installing required packages...
+python3 is already installed.
+python3-pip is already installed.
+python3-venv is already installed.
+git is already installed.
+postgresql is already installed.
+postgresql-contrib is already installed.
+nginx is already installed.
+Setting up PostgreSQL...
+PostgreSQL user your_username already exists.
+PostgreSQL database prod_db already exists.
+Cloning or updating repository...
