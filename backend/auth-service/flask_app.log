@@ -1,76 +1,56 @@
-2024-02-10 05:55:50,425 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,431 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,435 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,450 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,463 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,465 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,482 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,562 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,591 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,598 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,614 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,640 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,647 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,653 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,680 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,728 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,753 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,763 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,782 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,816 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,821 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,828 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,847 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,900 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,907 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,923 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,967 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,976 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,986 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:50,992 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,011 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,036 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,045 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,049 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,097 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,116 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,164 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,185 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,190 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,225 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:51,229 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,162 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,217 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,222 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,230 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,281 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,333 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,335 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,338 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,367 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,436 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,441 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,469 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,471 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,557 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,669 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:55:56,850 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:56:02,522 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:56:27,063 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:56:27,124 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:56:38,058 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:56:38,115 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:58:08,717 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:58:08,721 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:58:43,970 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 05:58:43,976 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 06:04:01,308 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 06:04:01,312 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 06:04:36,554 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 06:04:36,559 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 07:11:58,316 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 10:37:07,582 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 10:37:22,279 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 12:39:37,722 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 12:39:40,970 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
-2024-02-10 18:01:47,516 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:46]
+2024-02-10 18:08:03,614 ERROR: Exception on /register [POST] [in /srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
