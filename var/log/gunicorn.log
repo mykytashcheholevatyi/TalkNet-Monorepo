@@ -2641,3 +2641,13 @@ WHERE user.email = ?
 [2024-02-10 10:37:22,279] INFO in app: Accessed index page
 [2024-02-10 12:39:37,722] INFO in app: Accessed index page
 [2024-02-10 12:39:40,970] INFO in app: Accessed index page
+[2024-02-10 18:01:43 +0000] [33613] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 18:01:43 +0000] [33613] [INFO] Listening at: http://0.0.0.0:8000 (33613)
+[2024-02-10 18:01:43 +0000] [33613] [INFO] Using worker: sync
+[2024-02-10 18:01:43 +0000] [33618] [INFO] Booting worker with pid: 33618
+[2024-02-10 18:01:47,516] INFO in app: Accessed index page
+[2024-02-10 18:02:17 +0000] [33613] [CRITICAL] WORKER TIMEOUT (pid:33618)
+[2024-02-10 18:02:17 +0000] [33618] [INFO] Worker exiting (pid: 33618)
+[2024-02-10 18:02:18 +0000] [33613] [ERROR] Worker (pid:33618) exited with code 1
+[2024-02-10 18:02:18 +0000] [33613] [ERROR] Worker (pid:33618) exited with code 1.
+[2024-02-10 18:02:18 +0000] [33776] [INFO] Booting worker with pid: 33776

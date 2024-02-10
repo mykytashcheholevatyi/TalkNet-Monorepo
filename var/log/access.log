@@ -3404,3 +3404,4 @@
 167.94.138.50 - - [10/Feb/2024:12:39:41 +0000] "PRI * HTTP/2.0" 404 207 "-" "-"
 167.94.138.50 - - [10/Feb/2024:12:39:41 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
 52.80.126.145 - - [10/Feb/2024:17:29:42 +0000] "GET /.DS_Store HTTP/1.1" 404 207 "-" "Go-http-client/1.1"
+80.113.5.242 - - [10/Feb/2024:18:01:47 +0000] "GET / HTTP/1.1" 200 451 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
