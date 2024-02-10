@@ -41,9 +41,12 @@ install_dependencies() {
 # Setup PostgreSQL if not already configured
 setup_postgresql() {
     echo "Ensuring PostgreSQL user and database are set up..."
-    sudo -u postgres psql -c "SELECT 1 FROM pg_roles WHERE rolname = '$PG_USER';" | grep -q 1 || sudo -u postgres createuser -P "$PG_USER"
-    sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = '$PG_DB';" | grep -q 1 || sudo -u postgres createdb -O "$PG_USER" "$PG_DB"
+    sudo -u postgres psql -c "SELECT 1 FROM pg_roles WHERE rolname = '$PG_USER';" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE ROLE $PG_USER WITH LOGIN PASSWORD '$PG_PASSWORD';"
+    sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = '$PG_DB';" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
 }
+
 
 # Clone or update repository
 clone_or_update_repository() {
