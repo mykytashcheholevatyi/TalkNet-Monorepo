@@ -6,39 +6,29 @@ function RegisterPage() {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const validateField = (name, value) => {
-    switch (name) {
-      case 'username':
-        return !value.trim() ? 'Username is required' : '';
-      case 'email':
-        return !/\S+@\S+\.\S+/.test(value) ? 'Email is invalid' : '';
-      case 'password':
-        return value.length < 6 ? 'Password must be at least 6 characters' : '';
-      case 'confirmPassword':
-        return value !== formData.password ? 'Passwords do not match' : '';
-      default:
-        return '';
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
     }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    const error = validateField(name, value);
-    setErrors(prev => ({ ...prev, [name]: error }));
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formErrors = Object.keys(formData).reduce((acc, key) => {
-      const error = validateField(key, formData[key]);
-      if (error) acc[key] = error;
-      return acc;
-    }, {});
-
-    setErrors(formErrors);
-    if (Object.values(formErrors).some(error => error)) return;
-
+    if (!validateForm()) {
+      return;
+    }
     try {
       const response = await fetch('http://85.215.65.78:8000/register', {
         method: 'POST',
@@ -57,9 +47,14 @@ function RegisterPage() {
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
   return (
     <div className="register-page">
-      <h1>Reg2222ister</h1>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit} noValidate>
         <div>
           <label>Username</label>
