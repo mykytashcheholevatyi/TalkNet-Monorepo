@@ -1,0 +1,2643 @@
+[2024-02-10 00:02:52 +0000] [147379] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:02:52 +0000] [147379] [INFO] Listening at: http://0.0.0.0:8000 (147379)
+[2024-02-10 00:02:52 +0000] [147379] [INFO] Using worker: sync
+[2024-02-10 00:02:52 +0000] [147380] [INFO] Booting worker with pid: 147380
+[2024-02-10 00:03:39 +0000] [147953] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:03:39 +0000] [147953] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:03:39 +0000] [147953] [ERROR] Retrying in 1 second.
+[2024-02-10 00:03:40 +0000] [147953] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:03:40 +0000] [147953] [ERROR] Retrying in 1 second.
+[2024-02-10 00:03:41 +0000] [147953] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:03:41 +0000] [147953] [ERROR] Retrying in 1 second.
+[2024-02-10 00:03:42 +0000] [147953] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:03:42 +0000] [147953] [ERROR] Retrying in 1 second.
+[2024-02-10 00:03:43 +0000] [147953] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:03:43 +0000] [147953] [ERROR] Retrying in 1 second.
+[2024-02-10 00:03:44 +0000] [147953] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 00:04:01 +0000] [148445] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:04:01 +0000] [148445] [INFO] Listening at: http://0.0.0.0:8000 (148445)
+[2024-02-10 00:04:01 +0000] [148445] [INFO] Using worker: sync
+[2024-02-10 00:04:01 +0000] [148446] [INFO] Booting worker with pid: 148446
+[2024-02-10 00:04:34 +0000] [148992] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:04:34 +0000] [148992] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:04:34 +0000] [148992] [ERROR] Retrying in 1 second.
+[2024-02-10 00:04:35 +0000] [148992] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:04:35 +0000] [148992] [ERROR] Retrying in 1 second.
+[2024-02-10 00:04:36 +0000] [148992] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:04:36 +0000] [148992] [ERROR] Retrying in 1 second.
+[2024-02-10 00:04:37 +0000] [148992] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:04:37 +0000] [148992] [ERROR] Retrying in 1 second.
+[2024-02-10 00:04:38 +0000] [148992] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:04:38 +0000] [148992] [ERROR] Retrying in 1 second.
+[2024-02-10 00:04:39 +0000] [148992] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 00:05:13 +0000] [149559] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:05:13 +0000] [149559] [INFO] Listening at: http://0.0.0.0:8000 (149559)
+[2024-02-10 00:05:13 +0000] [149559] [INFO] Using worker: sync
+[2024-02-10 00:05:13 +0000] [149566] [INFO] Booting worker with pid: 149566
+[2024-02-10 00:05:45 +0000] [150116] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:05:45 +0000] [150116] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:05:45 +0000] [150116] [ERROR] Retrying in 1 second.
+[2024-02-10 00:05:46 +0000] [150116] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:05:46 +0000] [150116] [ERROR] Retrying in 1 second.
+[2024-02-10 00:05:47 +0000] [150116] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:05:47 +0000] [150116] [ERROR] Retrying in 1 second.
+[2024-02-10 00:05:48 +0000] [150116] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:05:48 +0000] [150116] [ERROR] Retrying in 1 second.
+[2024-02-10 00:05:49 +0000] [150116] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:05:49 +0000] [150116] [ERROR] Retrying in 1 second.
+[2024-02-10 00:05:50 +0000] [150116] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 00:06:18 +0000] [150681] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:06:18 +0000] [150681] [INFO] Listening at: http://0.0.0.0:8000 (150681)
+[2024-02-10 00:06:18 +0000] [150681] [INFO] Using worker: sync
+[2024-02-10 00:06:18 +0000] [150696] [INFO] Booting worker with pid: 150696
+[2024-02-10 00:06:51 +0000] [151313] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:06:51 +0000] [151313] [INFO] Listening at: http://0.0.0.0:8000 (151313)
+[2024-02-10 00:06:51 +0000] [151313] [INFO] Using worker: sync
+[2024-02-10 00:06:51 +0000] [151314] [INFO] Booting worker with pid: 151314
+[2024-02-10 00:07:38 +0000] [151972] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:07:38 +0000] [151972] [INFO] Listening at: http://0.0.0.0:8000 (151972)
+[2024-02-10 00:07:38 +0000] [151972] [INFO] Using worker: sync
+[2024-02-10 00:07:38 +0000] [151976] [INFO] Booting worker with pid: 151976
+[2024-02-10 00:08:29 +0000] [152542] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:08:29 +0000] [152542] [INFO] Listening at: http://0.0.0.0:8000 (152542)
+[2024-02-10 00:08:29 +0000] [152542] [INFO] Using worker: sync
+[2024-02-10 00:08:29 +0000] [152543] [INFO] Booting worker with pid: 152543
+[2024-02-10 00:09:10 +0000] [153114] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:09:10 +0000] [153114] [INFO] Listening at: http://0.0.0.0:8000 (153114)
+[2024-02-10 00:09:10 +0000] [153114] [INFO] Using worker: sync
+[2024-02-10 00:09:10 +0000] [153115] [INFO] Booting worker with pid: 153115
+[2024-02-10 00:09:45 +0000] [153668] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:09:45 +0000] [153668] [INFO] Listening at: http://0.0.0.0:8000 (153668)
+[2024-02-10 00:09:45 +0000] [153668] [INFO] Using worker: sync
+[2024-02-10 00:09:45 +0000] [153669] [INFO] Booting worker with pid: 153669
+[2024-02-10 00:10:16 +0000] [154228] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:10:16 +0000] [154228] [INFO] Listening at: http://0.0.0.0:8000 (154228)
+[2024-02-10 00:10:16 +0000] [154228] [INFO] Using worker: sync
+[2024-02-10 00:10:16 +0000] [154229] [INFO] Booting worker with pid: 154229
+[2024-02-10 00:10:49 +0000] [154779] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:10:49 +0000] [154779] [INFO] Listening at: http://0.0.0.0:8000 (154779)
+[2024-02-10 00:10:49 +0000] [154779] [INFO] Using worker: sync
+[2024-02-10 00:10:49 +0000] [154780] [INFO] Booting worker with pid: 154780
+[2024-02-10 00:11:23 +0000] [155342] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:11:23 +0000] [155342] [INFO] Listening at: http://0.0.0.0:8000 (155342)
+[2024-02-10 00:11:23 +0000] [155342] [INFO] Using worker: sync
+[2024-02-10 00:11:23 +0000] [155343] [INFO] Booting worker with pid: 155343
+[2024-02-10 00:11:58 +0000] [155900] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:11:58 +0000] [155900] [INFO] Listening at: http://0.0.0.0:8000 (155900)
+[2024-02-10 00:11:58 +0000] [155900] [INFO] Using worker: sync
+[2024-02-10 00:11:58 +0000] [155901] [INFO] Booting worker with pid: 155901
+[2024-02-10 00:12:31 +0000] [156458] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:12:31 +0000] [156458] [INFO] Listening at: http://0.0.0.0:8000 (156458)
+[2024-02-10 00:12:31 +0000] [156458] [INFO] Using worker: sync
+[2024-02-10 00:12:31 +0000] [156459] [INFO] Booting worker with pid: 156459
+[2024-02-10 00:13:01 +0000] [157005] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:13:01 +0000] [157005] [INFO] Listening at: http://0.0.0.0:8000 (157005)
+[2024-02-10 00:13:01 +0000] [157005] [INFO] Using worker: sync
+[2024-02-10 00:13:01 +0000] [157006] [INFO] Booting worker with pid: 157006
+[2024-02-10 00:13:28 +0000] [157527] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:13:28 +0000] [157527] [INFO] Listening at: http://0.0.0.0:8000 (157527)
+[2024-02-10 00:13:28 +0000] [157527] [INFO] Using worker: sync
+[2024-02-10 00:13:28 +0000] [157528] [INFO] Booting worker with pid: 157528
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Listening at: http://0.0.0.0:8000 (158126)
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Using worker: sync
+[2024-02-10 00:14:06 +0000] [158127] [INFO] Booting worker with pid: 158127
+[2024-02-10 00:14:42 +0000] [158715] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:14:42 +0000] [158715] [INFO] Listening at: http://0.0.0.0:8000 (158715)
+[2024-02-10 00:14:42 +0000] [158715] [INFO] Using worker: sync
+[2024-02-10 00:14:42 +0000] [158716] [INFO] Booting worker with pid: 158716
+[2024-02-10 00:15:19 +0000] [159275] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:15:19 +0000] [159275] [INFO] Listening at: http://0.0.0.0:8000 (159275)
+[2024-02-10 00:15:19 +0000] [159275] [INFO] Using worker: sync
+[2024-02-10 00:15:19 +0000] [159277] [INFO] Booting worker with pid: 159277
+[2024-02-10 00:15:52 +0000] [159832] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:15:52 +0000] [159832] [INFO] Listening at: http://0.0.0.0:8000 (159832)
+[2024-02-10 00:15:52 +0000] [159832] [INFO] Using worker: sync
+[2024-02-10 00:15:52 +0000] [159833] [INFO] Booting worker with pid: 159833
+[2024-02-10 00:16:25 +0000] [160383] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:16:25 +0000] [160383] [INFO] Listening at: http://0.0.0.0:8000 (160383)
+[2024-02-10 00:16:25 +0000] [160383] [INFO] Using worker: sync
+[2024-02-10 00:16:25 +0000] [160384] [INFO] Booting worker with pid: 160384
+[2024-02-10 00:16:53 +0000] [160934] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:16:53 +0000] [160934] [INFO] Listening at: http://0.0.0.0:8000 (160934)
+[2024-02-10 00:16:53 +0000] [160934] [INFO] Using worker: sync
+[2024-02-10 00:16:53 +0000] [160935] [INFO] Booting worker with pid: 160935
+[2024-02-10 00:17:24 +0000] [161462] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:17:24 +0000] [161462] [INFO] Listening at: http://0.0.0.0:8000 (161462)
+[2024-02-10 00:17:24 +0000] [161462] [INFO] Using worker: sync
+[2024-02-10 00:17:24 +0000] [161463] [INFO] Booting worker with pid: 161463
+[2024-02-10 00:18:02 +0000] [162045] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:18:02 +0000] [162045] [INFO] Listening at: http://0.0.0.0:8000 (162045)
+[2024-02-10 00:18:02 +0000] [162045] [INFO] Using worker: sync
+[2024-02-10 00:18:02 +0000] [162046] [INFO] Booting worker with pid: 162046
+[2024-02-10 00:18:36 +0000] [162601] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:18:36 +0000] [162601] [INFO] Listening at: http://0.0.0.0:8000 (162601)
+[2024-02-10 00:18:36 +0000] [162601] [INFO] Using worker: sync
+[2024-02-10 00:18:36 +0000] [162613] [INFO] Booting worker with pid: 162613
+[2024-02-10 00:19:12 +0000] [163161] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:19:12 +0000] [163161] [INFO] Listening at: http://0.0.0.0:8000 (163161)
+[2024-02-10 00:19:12 +0000] [163161] [INFO] Using worker: sync
+[2024-02-10 00:19:12 +0000] [163165] [INFO] Booting worker with pid: 163165
+[2024-02-10 00:19:41 +0000] [163680] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:19:41 +0000] [163680] [INFO] Listening at: http://0.0.0.0:8000 (163680)
+[2024-02-10 00:19:41 +0000] [163680] [INFO] Using worker: sync
+[2024-02-10 00:19:41 +0000] [163681] [INFO] Booting worker with pid: 163681
+[2024-02-10 00:20:15 +0000] [164239] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:20:15 +0000] [164239] [INFO] Listening at: http://0.0.0.0:8000 (164239)
+[2024-02-10 00:20:15 +0000] [164239] [INFO] Using worker: sync
+[2024-02-10 00:20:15 +0000] [164240] [INFO] Booting worker with pid: 164240
+[2024-02-10 00:21:54 +0000] [165978] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:21:54 +0000] [165978] [INFO] Listening at: http://0.0.0.0:8000 (165978)
+[2024-02-10 00:21:54 +0000] [165978] [INFO] Using worker: sync
+[2024-02-10 00:21:54 +0000] [165979] [INFO] Booting worker with pid: 165979
+[2024-02-10 00:23:22 +0000] [165978] [CRITICAL] WORKER TIMEOUT (pid:165979)
+[2024-02-10 00:23:22 +0000] [165979] [INFO] Worker exiting (pid: 165979)
+[2024-02-10 00:23:23 +0000] [165978] [ERROR] Worker (pid:165979) exited with code 1
+[2024-02-10 00:23:23 +0000] [165978] [ERROR] Worker (pid:165979) exited with code 1.
+[2024-02-10 00:23:23 +0000] [166742] [INFO] Booting worker with pid: 166742
+[2024-02-10 00:24:36 +0000] [165978] [CRITICAL] WORKER TIMEOUT (pid:166742)
+[2024-02-10 00:24:36 +0000] [166742] [INFO] Worker exiting (pid: 166742)
+[2024-02-10 00:24:36 +0000] [165978] [ERROR] Worker (pid:166742) exited with code 1
+[2024-02-10 00:24:36 +0000] [165978] [ERROR] Worker (pid:166742) exited with code 1.
+[2024-02-10 00:24:36 +0000] [167430] [INFO] Booting worker with pid: 167430
+[2024-02-10 00:25:24 +0000] [168254] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:25:24 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:24 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:25 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:25 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:26 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:26 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:27 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:27 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:28 +0000] [168254] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:25:28 +0000] [168254] [ERROR] Retrying in 1 second.
+[2024-02-10 00:25:29 +0000] [168254] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 00:26:58 +0000] [169232] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:26:58 +0000] [169232] [INFO] Listening at: http://0.0.0.0:8000 (169232)
+[2024-02-10 00:26:58 +0000] [169232] [INFO] Using worker: sync
+[2024-02-10 00:26:58 +0000] [169233] [INFO] Booting worker with pid: 169233
+[2024-02-10 00:27:42 +0000] [169889] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:27:42 +0000] [169889] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 00:27:42 +0000] [169889] [ERROR] Retrying in 1 second.
+[2024-02-10 00:27:43 +0000] [169889] [INFO] Listening at: http://0.0.0.0:8000 (169889)
+[2024-02-10 00:27:43 +0000] [169889] [INFO] Using worker: sync
+[2024-02-10 00:27:43 +0000] [169906] [INFO] Booting worker with pid: 169906
+[2024-02-10 00:28:19 +0000] [169889] [CRITICAL] WORKER TIMEOUT (pid:169906)
+[2024-02-10 00:28:19 +0000] [169906] [INFO] Worker exiting (pid: 169906)
+[2024-02-10 00:28:20 +0000] [169889] [ERROR] Worker (pid:169906) exited with code 1
+[2024-02-10 00:28:20 +0000] [169889] [ERROR] Worker (pid:169906) exited with code 1.
+[2024-02-10 00:28:20 +0000] [170132] [INFO] Booting worker with pid: 170132
+[2024-02-10 00:28:57 +0000] [170745] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:28:57 +0000] [170745] [INFO] Listening at: http://0.0.0.0:8000 (170745)
+[2024-02-10 00:28:57 +0000] [170745] [INFO] Using worker: sync
+[2024-02-10 00:28:57 +0000] [170747] [INFO] Booting worker with pid: 170747
+[2024-02-10 00:29:27 +0000] [171330] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:29:27 +0000] [171330] [INFO] Listening at: http://0.0.0.0:8000 (171330)
+[2024-02-10 00:29:27 +0000] [171330] [INFO] Using worker: sync
+[2024-02-10 00:29:27 +0000] [171332] [INFO] Booting worker with pid: 171332
+[2024-02-10 00:29:59 +0000] [171330] [CRITICAL] WORKER TIMEOUT (pid:171332)
+[2024-02-10 00:29:59 +0000] [171332] [INFO] Worker exiting (pid: 171332)
+[2024-02-10 00:29:59 +0000] [171330] [ERROR] Worker (pid:171332) exited with code 1
+[2024-02-10 00:29:59 +0000] [171330] [ERROR] Worker (pid:171332) exited with code 1.
+[2024-02-10 00:29:59 +0000] [171468] [INFO] Booting worker with pid: 171468
+[2024-02-10 01:25:05 +0000] [171330] [CRITICAL] WORKER TIMEOUT (pid:171468)
+[2024-02-10 01:25:05 +0000] [171468] [INFO] Worker exiting (pid: 171468)
+[2024-02-10 01:25:05 +0000] [171330] [ERROR] Worker (pid:171468) exited with code 1
+[2024-02-10 01:25:05 +0000] [171330] [ERROR] Worker (pid:171468) exited with code 1.
+[2024-02-10 01:25:05 +0000] [173337] [INFO] Booting worker with pid: 173337
+[2024-02-10 01:25:16 +0000] [173337] [INFO] Worker exiting (pid: 173337)
+[2024-02-10 01:25:16 +0000] [171330] [INFO] Handling signal: term
+[2024-02-10 01:25:16 +0000] [171330] [ERROR] Worker (pid:173337) was sent SIGTERM!
+[2024-02-10 01:25:17 +0000] [171330] [INFO] Shutting down: Master
+[2024-02-10 01:29:51 +0000] [2662] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:29:51 +0000] [2662] [INFO] Listening at: http://0.0.0.0:8000 (2662)
+[2024-02-10 01:29:51 +0000] [2662] [INFO] Using worker: sync
+[2024-02-10 01:29:51 +0000] [2664] [INFO] Booting worker with pid: 2664
+[2024-02-10 01:30:47 +0000] [3385] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:30:47 +0000] [3385] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:30:47 +0000] [3385] [ERROR] Retrying in 1 second.
+[2024-02-10 01:30:48 +0000] [3385] [INFO] Listening at: http://0.0.0.0:8000 (3385)
+[2024-02-10 01:30:48 +0000] [3385] [INFO] Using worker: sync
+[2024-02-10 01:30:48 +0000] [3394] [INFO] Booting worker with pid: 3394
+[2024-02-10 01:31:19 +0000] [3385] [CRITICAL] WORKER TIMEOUT (pid:3394)
+[2024-02-10 01:31:19 +0000] [3394] [INFO] Worker exiting (pid: 3394)
+[2024-02-10 01:31:19 +0000] [3385] [ERROR] Worker (pid:3394) exited with code 1
+[2024-02-10 01:31:19 +0000] [3385] [ERROR] Worker (pid:3394) exited with code 1.
+[2024-02-10 01:31:19 +0000] [3545] [INFO] Booting worker with pid: 3545
+[2024-02-10 01:31:50 +0000] [3385] [CRITICAL] WORKER TIMEOUT (pid:3545)
+[2024-02-10 01:31:50 +0000] [3545] [INFO] Worker exiting (pid: 3545)
+[2024-02-10 01:31:50 +0000] [3385] [ERROR] Worker (pid:3545) exited with code 1
+[2024-02-10 01:31:50 +0000] [3385] [ERROR] Worker (pid:3545) exited with code 1.
+[2024-02-10 01:31:50 +0000] [3618] [INFO] Booting worker with pid: 3618
+[2024-02-10 01:33:30 +0000] [3385] [CRITICAL] WORKER TIMEOUT (pid:3618)
+[2024-02-10 01:33:30 +0000] [3618] [INFO] Worker exiting (pid: 3618)
+[2024-02-10 01:33:30 +0000] [3385] [ERROR] Worker (pid:3618) exited with code 1
+[2024-02-10 01:33:30 +0000] [3385] [ERROR] Worker (pid:3618) exited with code 1.
+[2024-02-10 01:33:30 +0000] [3694] [INFO] Booting worker with pid: 3694
+[2024-02-10 01:42:14 +0000] [6636] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:42:14 +0000] [6636] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:42:14 +0000] [6636] [ERROR] Retrying in 1 second.
+[2024-02-10 01:42:15 +0000] [6636] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:42:15 +0000] [6636] [ERROR] Retrying in 1 second.
+[2024-02-10 01:42:16 +0000] [6636] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:42:16 +0000] [6636] [ERROR] Retrying in 1 second.
+[2024-02-10 01:42:17 +0000] [6636] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:42:17 +0000] [6636] [ERROR] Retrying in 1 second.
+[2024-02-10 01:42:18 +0000] [6636] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:42:18 +0000] [6636] [ERROR] Retrying in 1 second.
+[2024-02-10 01:42:19 +0000] [6636] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 01:43:03 +0000] [7329] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:43:03 +0000] [7329] [INFO] Listening at: http://0.0.0.0:8000 (7329)
+[2024-02-10 01:43:03 +0000] [7329] [INFO] Using worker: sync
+[2024-02-10 01:43:03 +0000] [7330] [INFO] Booting worker with pid: 7330
+[2024-02-10 01:43:38 +0000] [7329] [CRITICAL] WORKER TIMEOUT (pid:7330)
+[2024-02-10 01:43:38 +0000] [7330] [INFO] Worker exiting (pid: 7330)
+[2024-02-10 01:43:39 +0000] [7329] [ERROR] Worker (pid:7330) exited with code 1
+[2024-02-10 01:43:39 +0000] [7329] [ERROR] Worker (pid:7330) exited with code 1.
+[2024-02-10 01:43:39 +0000] [7525] [INFO] Booting worker with pid: 7525
+[2024-02-10 01:43:39,448] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,457] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,460] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,462] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,470] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,472] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,481] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,484] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,486] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,488] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,504] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,506] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,516] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:43:39,518] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 50, in login
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:44:19 +0000] [8166] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:44:19 +0000] [8166] [INFO] Listening at: http://0.0.0.0:8000 (8166)
+[2024-02-10 01:44:19 +0000] [8166] [INFO] Using worker: sync
+[2024-02-10 01:44:19 +0000] [8172] [INFO] Booting worker with pid: 8172
+[2024-02-10 01:44:56 +0000] [8166] [CRITICAL] WORKER TIMEOUT (pid:8172)
+[2024-02-10 01:44:56 +0000] [8172] [INFO] Worker exiting (pid: 8172)
+[2024-02-10 01:44:56 +0000] [8166] [ERROR] Worker (pid:8172) exited with code 1
+[2024-02-10 01:44:56 +0000] [8166] [ERROR] Worker (pid:8172) exited with code 1.
+[2024-02-10 01:44:56 +0000] [8401] [INFO] Booting worker with pid: 8401
+[2024-02-10 01:45:12,427] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 38, in register
+    user = User.query.filter_by(email=data['email']).first()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 01:49:10 +0000] [9082] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:49:10 +0000] [9082] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:49:10 +0000] [9082] [ERROR] Retrying in 1 second.
+[2024-02-10 01:49:11 +0000] [9082] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:49:11 +0000] [9082] [ERROR] Retrying in 1 second.
+[2024-02-10 01:49:12 +0000] [9082] [INFO] Listening at: http://0.0.0.0:8000 (9082)
+[2024-02-10 01:49:12 +0000] [9082] [INFO] Using worker: sync
+[2024-02-10 01:49:12 +0000] [9128] [INFO] Booting worker with pid: 9128
+[2024-02-10 01:50:03 +0000] [9082] [CRITICAL] WORKER TIMEOUT (pid:9128)
+[2024-02-10 01:50:03 +0000] [9128] [INFO] Worker exiting (pid: 9128)
+[2024-02-10 01:50:03 +0000] [9082] [ERROR] Worker (pid:9128) exited with code 1
+[2024-02-10 01:50:03 +0000] [9082] [ERROR] Worker (pid:9128) exited with code 1.
+[2024-02-10 01:50:03 +0000] [9305] [INFO] Booting worker with pid: 9305
+[2024-02-10 01:54:16 +0000] [9930] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:54:16 +0000] [9930] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:54:16 +0000] [9930] [ERROR] Retrying in 1 second.
+[2024-02-10 01:54:17 +0000] [9930] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:54:17 +0000] [9930] [ERROR] Retrying in 1 second.
+[2024-02-10 01:54:18 +0000] [9930] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:54:18 +0000] [9930] [ERROR] Retrying in 1 second.
+[2024-02-10 01:54:19 +0000] [9930] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:54:19 +0000] [9930] [ERROR] Retrying in 1 second.
+[2024-02-10 01:54:20 +0000] [9930] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:54:20 +0000] [9930] [ERROR] Retrying in 1 second.
+[2024-02-10 01:54:21 +0000] [9930] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 01:55:09 +0000] [10565] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:55:09 +0000] [10565] [INFO] Listening at: http://0.0.0.0:8000 (10565)
+[2024-02-10 01:55:09 +0000] [10565] [INFO] Using worker: sync
+[2024-02-10 01:55:09 +0000] [10566] [INFO] Booting worker with pid: 10566
+[2024-02-10 01:56:07 +0000] [10565] [CRITICAL] WORKER TIMEOUT (pid:10566)
+[2024-02-10 01:56:07 +0000] [10566] [INFO] Worker exiting (pid: 10566)
+[2024-02-10 01:56:07 +0000] [10565] [ERROR] Worker (pid:10566) exited with code 1
+[2024-02-10 01:56:07 +0000] [10565] [ERROR] Worker (pid:10566) exited with code 1.
+[2024-02-10 01:56:07 +0000] [10738] [INFO] Booting worker with pid: 10738
+[2024-02-10 01:59:46 +0000] [11907] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 01:59:46 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:59:46 +0000] [11907] [ERROR] Retrying in 1 second.
+[2024-02-10 01:59:47 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:59:47 +0000] [11907] [ERROR] Retrying in 1 second.
+[2024-02-10 01:59:48 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:59:48 +0000] [11907] [ERROR] Retrying in 1 second.
+[2024-02-10 01:59:49 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:59:49 +0000] [11907] [ERROR] Retrying in 1 second.
+[2024-02-10 01:59:50 +0000] [11907] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 01:59:50 +0000] [11907] [ERROR] Retrying in 1 second.
+[2024-02-10 01:59:51 +0000] [11907] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Listening at: http://0.0.0.0:8000 (12753)
+[2024-02-10 02:02:15 +0000] [12753] [INFO] Using worker: sync
+[2024-02-10 02:02:15 +0000] [12754] [INFO] Booting worker with pid: 12754
+[2024-02-10 02:06:18 +0000] [13503] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:06:18 +0000] [13503] [INFO] Listening at: http://0.0.0.0:8000 (13503)
+[2024-02-10 02:06:18 +0000] [13503] [INFO] Using worker: sync
+[2024-02-10 02:06:18 +0000] [13504] [INFO] Booting worker with pid: 13504
+[2024-02-10 02:07:11 +0000] [14192] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:07:11 +0000] [14192] [INFO] Listening at: http://0.0.0.0:8000 (14192)
+[2024-02-10 02:07:11 +0000] [14192] [INFO] Using worker: sync
+[2024-02-10 02:07:11 +0000] [14193] [INFO] Booting worker with pid: 14193
+[2024-02-10 02:11:26 +0000] [14942] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:11:26 +0000] [14942] [INFO] Listening at: http://0.0.0.0:8000 (14942)
+[2024-02-10 02:11:26 +0000] [14942] [INFO] Using worker: sync
+[2024-02-10 02:11:26 +0000] [14943] [INFO] Booting worker with pid: 14943
+[2024-02-10 02:12:37,316] INFO in app: Accessed index page
+[2024-02-10 02:12:39,743] INFO in app: Accessed index page
+[2024-02-10 02:12:40,611] INFO in app: Accessed index page
+[2024-02-10 02:12:48 +0000] [15704] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 02:12:48 +0000] [15704] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-10 02:12:48 +0000] [15704] [ERROR] Retrying in 1 second.
+[2024-02-10 02:12:49 +0000] [15704] [INFO] Listening at: http://0.0.0.0:8000 (15704)
+[2024-02-10 02:12:49 +0000] [15704] [INFO] Using worker: sync
+[2024-02-10 02:12:49 +0000] [15713] [INFO] Booting worker with pid: 15713
+[2024-02-10 02:12:49,734] INFO in app: Accessed index page
+[2024-02-10 02:13:20 +0000] [15704] [CRITICAL] WORKER TIMEOUT (pid:15713)
+[2024-02-10 02:13:20 +0000] [15713] [INFO] Worker exiting (pid: 15713)
+[2024-02-10 02:13:20 +0000] [15704] [ERROR] Worker (pid:15713) exited with code 1
+[2024-02-10 02:13:20 +0000] [15704] [ERROR] Worker (pid:15713) exited with code 1.
+[2024-02-10 02:13:20 +0000] [15848] [INFO] Booting worker with pid: 15848
+[2024-02-10 02:13:52 +0000] [15704] [CRITICAL] WORKER TIMEOUT (pid:15848)
+[2024-02-10 02:13:52 +0000] [15848] [INFO] Worker exiting (pid: 15848)
+[2024-02-10 02:13:52 +0000] [15704] [ERROR] Worker (pid:15848) exited with code 1
+[2024-02-10 02:13:52 +0000] [15704] [ERROR] Worker (pid:15848) exited with code 1.
+[2024-02-10 02:13:52 +0000] [15909] [INFO] Booting worker with pid: 15909
+[2024-02-10 02:13:53,160] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 02:13:53,165] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 02:13:53,167] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 02:13:53,171] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 02:13:53,172] ERROR in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/srv/talknet/backend/auth-service/app.py", line 56, in register
+    if User.query.filter_by(email=data['email']).first():
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 517, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/srv/talknet/backend/auth-service/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('mykytashch@hotmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-10 02:52:37,643] INFO in app: Accessed index page
+[2024-02-10 02:52:41,101] INFO in app: Accessed index page
+[2024-02-10 03:12:31 +0000] [15909] [WARNING] Invalid request from ip=152.32.226.8: Invalid HTTP request line: ''
+[2024-02-10 03:53:19,700] INFO in app: Accessed index page
+[2024-02-10 03:53:23,192] INFO in app: Accessed index page
+[2024-02-10 05:47:52,080] INFO in app: Accessed index page
+[2024-02-10 05:47:57,085] INFO in app: Accessed index page
+[2024-02-10 05:47:57,087] INFO in app: Accessed index page
+[2024-02-10 05:47:59,004] INFO in app: Accessed index page
+[2024-02-10 05:47:59,005] INFO in app: Accessed index page
+[2024-02-10 05:47:59,006] INFO in app: Accessed index page
+[2024-02-10 05:47:59,010] INFO in app: Accessed index page
+[2024-02-10 05:47:59,040] INFO in app: Accessed index page
+[2024-02-10 05:47:59,045] INFO in app: Accessed index page
+[2024-02-10 05:47:59,056] INFO in app: Accessed index page
+[2024-02-10 05:47:59,057] INFO in app: Accessed index page
+[2024-02-10 05:48:04,060] INFO in app: Accessed index page
+[2024-02-10 05:48:09,748] INFO in app: Accessed index page
+[2024-02-10 05:48:14,664] INFO in app: Accessed index page
+[2024-02-10 05:48:14,666] INFO in app: Accessed index page
+[2024-02-10 05:48:15,759] INFO in app: Accessed index page
+[2024-02-10 05:48:15,761] INFO in app: Accessed index page
+[2024-02-10 05:48:15,761] INFO in app: Accessed index page
+[2024-02-10 05:48:20,680] INFO in app: Accessed index page
+[2024-02-10 05:48:20,681] INFO in app: Accessed index page
+[2024-02-10 05:48:30,764] INFO in app: Accessed index page
+[2024-02-10 05:48:30,765] INFO in app: Accessed index page
+[2024-02-10 05:48:30,766] INFO in app: Accessed index page
+[2024-02-10 05:48:35,680] INFO in app: Accessed index page
+[2024-02-10 05:48:35,682] INFO in app: Accessed index page
+[2024-02-10 05:48:35,684] INFO in app: Accessed index page
+[2024-02-10 05:48:35,685] INFO in app: Accessed index page
+[2024-02-10 05:48:36,257] INFO in app: Accessed index page
+[2024-02-10 05:48:37,044] INFO in app: Accessed index page
+[2024-02-10 05:48:37,755] INFO in app: Accessed index page
+[2024-02-10 05:48:37,768] INFO in app: Accessed index page
+[2024-02-10 05:48:37 +0000] [15909] [WARNING] Invalid request from ip=18.194.95.84: Invalid HTTP request line: 'GNUTELLA CONNECT/0.6'
+[2024-02-10 05:48:37 +0000] [15909] [WARNING] Invalid request from ip=18.194.95.84: Invalid HTTP request line: 'GNUTELLA CONNECT/0.4'
+[2024-02-10 05:48:38,038] INFO in app: Accessed index page
+[2024-02-10 05:48:38,355] INFO in app: Accessed index page
+[2024-02-10 05:48:50,765] INFO in app: Accessed index page
+[2024-02-10 05:48:50,767] INFO in app: Accessed index page
+[2024-02-10 05:48:50 +0000] [15909] [WARNING] Invalid request from ip=18.194.95.84: Invalid HTTP method: 'Secure'
+[2024-02-10 05:48:50 +0000] [15909] [WARNING] Invalid request from ip=18.194.95.84: Invalid HTTP method: 'some'
+[2024-02-10 05:48:55,683] INFO in app: Accessed index page
+[2024-02-10 05:48:55,685] INFO in app: Accessed index page
+[2024-02-10 05:48:55,686] INFO in app: Accessed index page
+[2024-02-10 05:48:55,687] INFO in app: Accessed index page
+[2024-02-10 05:48:55,695] INFO in app: Accessed index page
+[2024-02-10 05:48:55,769] INFO in app: Accessed index page
+[2024-02-10 05:48:55,783] INFO in app: Accessed index page
+[2024-02-10 05:48:55,785] INFO in app: Accessed index page
+[2024-02-10 05:48:55,825] INFO in app: Accessed index page
+[2024-02-10 05:48:55,830] INFO in app: Accessed index page
+[2024-02-10 05:48:56,626] INFO in app: Accessed index page
+[2024-02-10 05:48:56,631] INFO in app: Accessed index page
+[2024-02-10 05:48:58,958] INFO in app: Accessed index page
+[2024-02-10 05:48:58,963] INFO in app: Accessed index page
+[2024-02-10 05:48:59,040] INFO in app: Accessed index page
+[2024-02-10 05:48:59,842] INFO in app: Accessed index page
+[2024-02-10 05:48:59,907] INFO in app: Accessed index page
+[2024-02-10 05:48:59,912] INFO in app: Accessed index page
+[2024-02-10 05:49:00,041] INFO in app: Accessed index page
+[2024-02-10 05:49:00,108] INFO in app: Accessed index page
+[2024-02-10 05:49:00,113] INFO in app: Accessed index page
+[2024-02-10 05:49:00,117] INFO in app: Accessed index page
+[2024-02-10 05:49:00,243] INFO in app: Accessed index page
+[2024-02-10 05:49:00,337] INFO in app: Accessed index page
+[2024-02-10 05:49:00,548] INFO in app: Accessed index page
+[2024-02-10 05:49:00,652] INFO in app: Accessed index page
+[2024-02-10 05:49:00,716] INFO in app: Accessed index page
+[2024-02-10 05:49:00,816] INFO in app: Accessed index page
+[2024-02-10 05:49:00,882] INFO in app: Accessed index page
+[2024-02-10 05:49:00,964] INFO in app: Accessed index page
+[2024-02-10 05:49:01,096] INFO in app: Accessed index page
+[2024-02-10 05:49:02,833] INFO in app: Accessed index page
+[2024-02-10 05:49:02,919] INFO in app: Accessed index page
+[2024-02-10 05:49:02,986] INFO in app: Accessed index page
+[2024-02-10 05:49:03,719] INFO in app: Accessed index page
+[2024-02-10 05:49:03,766] INFO in app: Accessed index page
+[2024-02-10 05:49:03,843] INFO in app: Accessed index page
+[2024-02-10 05:49:03,929] INFO in app: Accessed index page
+[2024-02-10 05:49:03,967] INFO in app: Accessed index page
+[2024-02-10 05:49:04,051] INFO in app: Accessed index page
+[2024-02-10 05:49:04,091] INFO in app: Accessed index page
+[2024-02-10 05:49:04,167] INFO in app: Accessed index page
+[2024-02-10 05:49:04,172] INFO in app: Accessed index page
+[2024-02-10 05:49:04,250] INFO in app: Accessed index page
+[2024-02-10 05:49:04,254] INFO in app: Accessed index page
+[2024-02-10 05:49:04,355] INFO in app: Accessed index page
+[2024-02-10 05:49:04,360] INFO in app: Accessed index page
+[2024-02-10 05:49:04,528] INFO in app: Accessed index page
+[2024-02-10 05:49:04,532] INFO in app: Accessed index page
+[2024-02-10 05:49:04,643] INFO in app: Accessed index page
+[2024-02-10 05:49:04,818] INFO in app: Accessed index page
+[2024-02-10 05:49:05,156] INFO in app: Accessed index page
+[2024-02-10 05:49:05,750] INFO in app: Accessed index page
+[2024-02-10 05:49:05,857] INFO in app: Accessed index page
+[2024-02-10 05:49:06,017] INFO in app: Accessed index page
+[2024-02-10 05:49:06,580] INFO in app: Accessed index page
+[2024-02-10 05:49:06,671] INFO in app: Accessed index page
+[2024-02-10 05:49:06,676] INFO in app: Accessed index page
+[2024-02-10 05:49:06,757] INFO in app: Accessed index page
+[2024-02-10 05:49:19,770] INFO in app: Accessed index page
+[2024-02-10 05:49:24,686] INFO in app: Accessed index page
+[2024-02-10 05:49:24,688] INFO in app: Accessed index page
+[2024-02-10 05:49:24,761] INFO in app: Accessed index page
+[2024-02-10 05:49:24,776] INFO in app: Accessed index page
+[2024-02-10 05:49:24,824] INFO in app: Accessed index page
+[2024-02-10 05:49:24,893] INFO in app: Accessed index page
+[2024-02-10 05:49:24,917] INFO in app: Accessed index page
+[2024-02-10 05:49:24,921] INFO in app: Accessed index page
+[2024-02-10 05:49:25,018] INFO in app: Accessed index page
+[2024-02-10 05:49:25,161] INFO in app: Accessed index page
+[2024-02-10 05:49:25,218] INFO in app: Accessed index page
+[2024-02-10 05:49:25,357] INFO in app: Accessed index page
+[2024-02-10 05:49:25,466] INFO in app: Accessed index page
+[2024-02-10 05:49:25,480] INFO in app: Accessed index page
+[2024-02-10 05:49:25,638] INFO in app: Accessed index page
+[2024-02-10 05:49:25,652] INFO in app: Accessed index page
+[2024-02-10 05:49:25,657] INFO in app: Accessed index page
+[2024-02-10 05:49:25,856] INFO in app: Accessed index page
+[2024-02-10 05:49:25,892] INFO in app: Accessed index page
+[2024-02-10 05:49:26,019] INFO in app: Accessed index page
+[2024-02-10 05:49:26,029] INFO in app: Accessed index page
+[2024-02-10 05:49:26,141] INFO in app: Accessed index page
+[2024-02-10 05:49:26,170] INFO in app: Accessed index page
+[2024-02-10 05:49:26,176] INFO in app: Accessed index page
+[2024-02-10 05:49:26,182] INFO in app: Accessed index page
+[2024-02-10 05:49:26,217] INFO in app: Accessed index page
+[2024-02-10 05:49:26,263] INFO in app: Accessed index page
+[2024-02-10 05:49:26,271] INFO in app: Accessed index page
+[2024-02-10 05:49:26,335] INFO in app: Accessed index page
+[2024-02-10 05:49:26,350] INFO in app: Accessed index page
+[2024-02-10 05:49:26,353] INFO in app: Accessed index page
+[2024-02-10 05:49:26,446] INFO in app: Accessed index page
+[2024-02-10 05:49:26,546] INFO in app: Accessed index page
+[2024-02-10 05:49:26,726] INFO in app: Accessed index page
+[2024-02-10 05:49:26,752] INFO in app: Accessed index page
+[2024-02-10 05:49:26,896] INFO in app: Accessed index page
+[2024-02-10 05:49:26,898] INFO in app: Accessed index page
+[2024-02-10 05:49:26,934] INFO in app: Accessed index page
+[2024-02-10 05:49:26,971] INFO in app: Accessed index page
+[2024-02-10 05:49:27,041] INFO in app: Accessed index page
+[2024-02-10 05:49:27,043] INFO in app: Accessed index page
+[2024-02-10 05:49:27,050] INFO in app: Accessed index page
+[2024-02-10 05:49:27,170] INFO in app: Accessed index page
+[2024-02-10 05:49:27,177] INFO in app: Accessed index page
+[2024-02-10 05:49:27,373] INFO in app: Accessed index page
+[2024-02-10 05:49:27,400] INFO in app: Accessed index page
+[2024-02-10 05:49:27,419] INFO in app: Accessed index page
+[2024-02-10 05:49:27,511] INFO in app: Accessed index page
+[2024-02-10 05:49:27,522] INFO in app: Accessed index page
+[2024-02-10 05:49:41,543] INFO in app: Accessed index page
+[2024-02-10 05:49:41,545] INFO in app: Accessed index page
+[2024-02-10 05:49:41,546] INFO in app: Accessed index page
+[2024-02-10 05:49:41,591] INFO in app: Accessed index page
+[2024-02-10 05:49:42,456] INFO in app: Accessed index page
+[2024-02-10 05:49:42,521] INFO in app: Accessed index page
+[2024-02-10 05:49:42,651] INFO in app: Accessed index page
+[2024-02-10 05:49:42,817] INFO in app: Accessed index page
+[2024-02-10 05:49:42,839] INFO in app: Accessed index page
+[2024-02-10 05:49:42,930] INFO in app: Accessed index page
+[2024-02-10 05:49:43,144] INFO in app: Accessed index page
+[2024-02-10 05:49:43,148] INFO in app: Accessed index page
+[2024-02-10 05:49:43,256] INFO in app: Accessed index page
+[2024-02-10 05:49:43,363] INFO in app: Accessed index page
+[2024-02-10 05:49:43,818] INFO in app: Accessed index page
+[2024-02-10 05:49:43,933] INFO in app: Accessed index page
+[2024-02-10 05:49:44,119] INFO in app: Accessed index page
+[2024-02-10 05:49:44,148] INFO in app: Accessed index page
+[2024-02-10 05:49:44,161] INFO in app: Accessed index page
+[2024-02-10 05:49:44,162] INFO in app: Accessed index page
+[2024-02-10 05:49:44,519] INFO in app: Accessed index page
+[2024-02-10 05:49:44,817] INFO in app: Accessed index page
+[2024-02-10 05:49:44,931] INFO in app: Accessed index page
+[2024-02-10 05:49:45,118] INFO in app: Accessed index page
+[2024-02-10 05:49:45,519] INFO in app: Accessed index page
+[2024-02-10 05:49:45,527] INFO in app: Accessed index page
+[2024-02-10 05:49:45,641] INFO in app: Accessed index page
+[2024-02-10 05:49:45,646] INFO in app: Accessed index page
+[2024-02-10 05:49:45,817] INFO in app: Accessed index page
+[2024-02-10 05:49:45,819] INFO in app: Accessed index page
+[2024-02-10 05:49:45,848] INFO in app: Accessed index page
+[2024-02-10 05:49:45,946] INFO in app: Accessed index page
+[2024-02-10 05:49:46,056] INFO in app: Accessed index page
+[2024-02-10 05:49:46,427] INFO in app: Accessed index page
+[2024-02-10 05:49:46,430] INFO in app: Accessed index page
+[2024-02-10 05:49:46,431] INFO in app: Accessed index page
+[2024-02-10 05:49:46 +0000] [15909] [WARNING] Invalid request from ip=3.124.123.210: Invalid HTTP request line: 'GNUTELLA CONNECT/0.6'
+[2024-02-10 05:49:46 +0000] [15909] [WARNING] Invalid request from ip=3.124.123.210: Invalid HTTP request line: 'GNUTELLA CONNECT/0.4'
+[2024-02-10 05:49:46,528] INFO in app: Accessed index page
+[2024-02-10 05:49:46,543] INFO in app: Accessed index page
+[2024-02-10 05:49:46,559] INFO in app: Accessed index page
+[2024-02-10 05:49:46,630] INFO in app: Accessed index page
+[2024-02-10 05:49:46,650] INFO in app: Accessed index page
+[2024-02-10 05:49:46,971] INFO in app: Accessed index page
+[2024-02-10 05:49:47,228] INFO in app: Accessed index page
+[2024-02-10 05:49:47,335] INFO in app: Accessed index page
+[2024-02-10 05:49:47,439] INFO in app: Accessed index page
+[2024-02-10 05:49:47,631] INFO in app: Accessed index page
+[2024-02-10 05:49:47,854] INFO in app: Accessed index page
+[2024-02-10 05:49:47,863] INFO in app: Accessed index page
+[2024-02-10 05:49:47,960] INFO in app: Accessed index page
+[2024-02-10 05:49:48,033] INFO in app: Accessed index page
+[2024-02-10 05:49:48,044] INFO in app: Accessed index page
+[2024-02-10 05:49:48,120] INFO in app: Accessed index page
+[2024-02-10 05:49:48,135] INFO in app: Accessed index page
+[2024-02-10 05:49:48 +0000] [15909] [WARNING] Invalid request from ip=3.124.123.210: Invalid HTTP method: 'Secure'
+[2024-02-10 05:49:48,161] INFO in app: Accessed index page
+[2024-02-10 05:49:48 +0000] [15909] [WARNING] Invalid request from ip=3.124.123.210: Invalid HTTP method: 'some'
+[2024-02-10 05:49:48,239] INFO in app: Accessed index page
+[2024-02-10 05:49:48,250] INFO in app: Accessed index page
+[2024-02-10 05:49:48,272] INFO in app: Accessed index page
+[2024-02-10 05:49:48,331] INFO in app: Accessed index page
+[2024-02-10 05:49:48,333] INFO in app: Accessed index page
+[2024-02-10 05:49:48,356] INFO in app: Accessed index page
+[2024-02-10 05:49:48,446] INFO in app: Accessed index page
+[2024-02-10 05:49:48,534] INFO in app: Accessed index page
+[2024-02-10 05:49:48,660] INFO in app: Accessed index page
+[2024-02-10 05:49:48,718] INFO in app: Accessed index page
+[2024-02-10 05:49:48,829] INFO in app: Accessed index page
+[2024-02-10 05:49:48,830] INFO in app: Accessed index page
+[2024-02-10 05:49:48,857] INFO in app: Accessed index page
+[2024-02-10 05:49:48,949] INFO in app: Accessed index page
+[2024-02-10 05:49:48,957] INFO in app: Accessed index page
+[2024-02-10 05:49:48,977] INFO in app: Accessed index page
+[2024-02-10 05:49:49,020] INFO in app: Accessed index page
+[2024-02-10 05:49:49,022] INFO in app: Accessed index page
+[2024-02-10 05:49:49,131] INFO in app: Accessed index page
+[2024-02-10 05:49:49,136] INFO in app: Accessed index page
+[2024-02-10 05:49:49,465] INFO in app: Accessed index page
+[2024-02-10 05:49:49,467] INFO in app: Accessed index page
+[2024-02-10 05:49:49,537] INFO in app: Accessed index page
+[2024-02-10 05:49:49,619] INFO in app: Accessed index page
+[2024-02-10 05:49:49,643] INFO in app: Accessed index page
+[2024-02-10 05:49:49,667] INFO in app: Accessed index page
+[2024-02-10 05:49:49,748] INFO in app: Accessed index page
+[2024-02-10 05:49:49,847] INFO in app: Accessed index page
+[2024-02-10 05:49:49,922] INFO in app: Accessed index page
+[2024-02-10 05:49:49,940] INFO in app: Accessed index page
+[2024-02-10 05:49:49,956] INFO in app: Accessed index page
+[2024-02-10 05:49:49,958] INFO in app: Accessed index page
+[2024-02-10 05:49:50,119] INFO in app: Accessed index page
+[2024-02-10 05:49:50,129] INFO in app: Accessed index page
+[2024-02-10 05:49:50,244] INFO in app: Accessed index page
+[2024-02-10 05:49:50,249] INFO in app: Accessed index page
+[2024-02-10 05:49:50,260] INFO in app: Accessed index page
+[2024-02-10 05:49:50,317] INFO in app: Accessed index page
+[2024-02-10 05:49:50,361] INFO in app: Accessed index page
+[2024-02-10 05:49:50,443] INFO in app: Accessed index page
+[2024-02-10 05:49:50,573] INFO in app: Accessed index page
+[2024-02-10 05:49:50,632] INFO in app: Accessed index page
+[2024-02-10 05:49:50,636] INFO in app: Accessed index page
+[2024-02-10 05:49:50,751] INFO in app: Accessed index page
+[2024-02-10 05:49:50,755] INFO in app: Accessed index page
+[2024-02-10 05:49:50,857] INFO in app: Accessed index page
+[2024-02-10 05:49:50,929] INFO in app: Accessed index page
+[2024-02-10 05:49:50,936] INFO in app: Accessed index page
+[2024-02-10 05:49:51,033] INFO in app: Accessed index page
+[2024-02-10 05:49:51,038] INFO in app: Accessed index page
+[2024-02-10 05:49:51,058] INFO in app: Accessed index page
+[2024-02-10 05:49:51,250] INFO in app: Accessed index page
+[2024-02-10 05:49:51,343] INFO in app: Accessed index page
+[2024-02-10 05:49:51,348] INFO in app: Accessed index page
+[2024-02-10 05:49:51,445] INFO in app: Accessed index page
+[2024-02-10 05:49:51,461] INFO in app: Accessed index page
+[2024-02-10 05:49:51,631] INFO in app: Accessed index page
+[2024-02-10 05:49:51,747] INFO in app: Accessed index page
+[2024-02-10 05:49:51,831] INFO in app: Accessed index page
+[2024-02-10 05:49:51,837] INFO in app: Accessed index page
+[2024-02-10 05:49:51,863] INFO in app: Accessed index page
+[2024-02-10 05:49:51,959] INFO in app: Accessed index page
+[2024-02-10 05:49:51,963] INFO in app: Accessed index page
+[2024-02-10 05:49:52,052] INFO in app: Accessed index page
+[2024-02-10 05:49:52,058] INFO in app: Accessed index page
+[2024-02-10 05:49:52,235] INFO in app: Accessed index page
+[2024-02-10 05:49:52,318] INFO in app: Accessed index page
+[2024-02-10 05:49:52,345] INFO in app: Accessed index page
+[2024-02-10 05:49:52,348] INFO in app: Accessed index page
+[2024-02-10 05:49:52,349] INFO in app: Accessed index page
+[2024-02-10 05:49:52,352] INFO in app: Accessed index page
+[2024-02-10 05:49:54,141] INFO in app: Accessed index page
+[2024-02-10 05:49:54,245] INFO in app: Accessed index page
+[2024-02-10 05:49:54,363] INFO in app: Accessed index page
+[2024-02-10 05:49:54,551] INFO in app: Accessed index page
+[2024-02-10 05:49:54,555] INFO in app: Accessed index page
+[2024-02-10 05:49:54,742] INFO in app: Accessed index page
+[2024-02-10 05:49:54,918] INFO in app: Accessed index page
+[2024-02-10 05:49:54,920] INFO in app: Accessed index page
+[2024-02-10 05:49:55,017] INFO in app: Accessed index page
+[2024-02-10 05:49:55,018] INFO in app: Accessed index page
+[2024-02-10 05:49:55,154] INFO in app: Accessed index page
+[2024-02-10 05:49:55,156] INFO in app: Accessed index page
+[2024-02-10 05:49:55,257] INFO in app: Accessed index page
+[2024-02-10 05:49:55,258] INFO in app: Accessed index page
+[2024-02-10 05:49:55,419] INFO in app: Accessed index page
+[2024-02-10 05:49:55,429] INFO in app: Accessed index page
+[2024-02-10 05:49:55,533] INFO in app: Accessed index page
+[2024-02-10 05:49:55,539] INFO in app: Accessed index page
+[2024-02-10 05:49:55,642] INFO in app: Accessed index page
+[2024-02-10 05:49:55,834] INFO in app: Accessed index page
+[2024-02-10 05:49:55,838] INFO in app: Accessed index page
+[2024-02-10 05:49:55,849] INFO in app: Accessed index page
+[2024-02-10 05:49:55,853] INFO in app: Accessed index page
+[2024-02-10 05:49:55,958] INFO in app: Accessed index page
+[2024-02-10 05:49:56,061] INFO in app: Accessed index page
+[2024-02-10 05:49:57,263] INFO in app: Accessed index page
+[2024-02-10 05:49:57,322] INFO in app: Accessed index page
+[2024-02-10 05:49:57,441] INFO in app: Accessed index page
+[2024-02-10 05:49:57,539] INFO in app: Accessed index page
+[2024-02-10 05:49:57,718] INFO in app: Accessed index page
+[2024-02-10 05:49:57,834] INFO in app: Accessed index page
+[2024-02-10 05:49:58,017] INFO in app: Accessed index page
+[2024-02-10 05:49:58,133] INFO in app: Accessed index page
+[2024-02-10 05:49:59,359] INFO in app: Accessed index page
+[2024-02-10 05:49:59,364] INFO in app: Accessed index page
+[2024-02-10 05:49:59,518] INFO in app: Accessed index page
+[2024-02-10 05:49:59,851] INFO in app: Accessed index page
+[2024-02-10 05:49:59,957] INFO in app: Accessed index page
+[2024-02-10 05:49:59,962] INFO in app: Accessed index page
+[2024-02-10 05:50:00,119] INFO in app: Accessed index page
+[2024-02-10 05:50:00,235] INFO in app: Accessed index page
+[2024-02-10 05:50:01,018] INFO in app: Accessed index page
+[2024-02-10 05:50:01,042] INFO in app: Accessed index page
+[2024-02-10 05:50:01,117] INFO in app: Accessed index page
+[2024-02-10 05:50:01,121] INFO in app: Accessed index page
+[2024-02-10 05:50:01,219] INFO in app: Accessed index page
+[2024-02-10 05:50:01,317] INFO in app: Accessed index page
+[2024-02-10 05:50:01,431] INFO in app: Accessed index page
+[2024-02-10 05:50:01,435] INFO in app: Accessed index page
+[2024-02-10 05:50:01,440] INFO in app: Accessed index page
+[2024-02-10 05:50:01,556] INFO in app: Accessed index page
+[2024-02-10 05:50:01,561] INFO in app: Accessed index page
+[2024-02-10 05:50:01,656] INFO in app: Accessed index page
+[2024-02-10 05:50:01,679] INFO in app: Accessed index page
+[2024-02-10 05:50:01,745] INFO in app: Accessed index page
+[2024-02-10 05:50:01,759] INFO in app: Accessed index page
+[2024-02-10 05:50:01,769] INFO in app: Accessed index page
+[2024-02-10 05:50:01,837] INFO in app: Accessed index page
+[2024-02-10 05:50:01,922] INFO in app: Accessed index page
+[2024-02-10 05:50:01,926] INFO in app: Accessed index page
+[2024-02-10 05:50:02,010] INFO in app: Accessed index page
+[2024-02-10 05:50:02,020] INFO in app: Accessed index page
+[2024-02-10 05:50:02,025] INFO in app: Accessed index page
+[2024-02-10 05:50:02,069] INFO in app: Accessed index page
+[2024-02-10 05:50:02,143] INFO in app: Accessed index page
+[2024-02-10 05:50:02,150] INFO in app: Accessed index page
+[2024-02-10 05:50:02,207] INFO in app: Accessed index page
+[2024-02-10 05:50:02,210] INFO in app: Accessed index page
+[2024-02-10 05:50:02,265] INFO in app: Accessed index page
+[2024-02-10 05:50:02,359] INFO in app: Accessed index page
+[2024-02-10 05:50:02,366] INFO in app: Accessed index page
+[2024-02-10 05:50:02,389] INFO in app: Accessed index page
+[2024-02-10 05:50:02,415] INFO in app: Accessed index page
+[2024-02-10 05:50:02,454] INFO in app: Accessed index page
+[2024-02-10 05:50:02,477] INFO in app: Accessed index page
+[2024-02-10 05:50:02,549] INFO in app: Accessed index page
+[2024-02-10 05:50:02,661] INFO in app: Accessed index page
+[2024-02-10 05:50:02,831] INFO in app: Accessed index page
+[2024-02-10 05:50:02,930] INFO in app: Accessed index page
+[2024-02-10 05:50:02,935] INFO in app: Accessed index page
+[2024-02-10 05:50:03,048] INFO in app: Accessed index page
+[2024-02-10 05:50:03,082] INFO in app: Accessed index page
+[2024-02-10 05:50:03,119] INFO in app: Accessed index page
+[2024-02-10 05:50:03,131] INFO in app: Accessed index page
+[2024-02-10 05:50:03,153] INFO in app: Accessed index page
+[2024-02-10 05:50:11,198] INFO in app: Accessed index page
+[2024-02-10 05:50:11,199] INFO in app: Accessed index page
+[2024-02-10 05:50:11,200] INFO in app: Accessed index page
+[2024-02-10 05:50:11,271] INFO in app: Accessed index page
+[2024-02-10 05:50:11,273] INFO in app: Accessed index page
+[2024-02-10 05:50:11,319] INFO in app: Accessed index page
+[2024-02-10 05:50:11,431] INFO in app: Accessed index page
+[2024-02-10 05:50:11,435] INFO in app: Accessed index page
+[2024-02-10 05:50:11,440] INFO in app: Accessed index page
+[2024-02-10 05:50:11,523] INFO in app: Accessed index page
+[2024-02-10 05:50:11,528] INFO in app: Accessed index page
+[2024-02-10 05:50:11,617] INFO in app: Accessed index page
+[2024-02-10 05:50:11,634] INFO in app: Accessed index page
+[2024-02-10 05:50:11,643] INFO in app: Accessed index page
+[2024-02-10 05:50:11,731] INFO in app: Accessed index page
+[2024-02-10 05:50:11,842] INFO in app: Accessed index page
+[2024-02-10 05:50:11,846] INFO in app: Accessed index page
+[2024-02-10 05:50:11,943] INFO in app: Accessed index page
+[2024-02-10 05:50:12,129] INFO in app: Accessed index page
+[2024-02-10 05:50:12,130] INFO in app: Accessed index page
+[2024-02-10 05:50:12,134] INFO in app: Accessed index page
+[2024-02-10 05:50:12,231] INFO in app: Accessed index page
+[2024-02-10 05:50:12,233] INFO in app: Accessed index page
+[2024-02-10 05:50:12,255] INFO in app: Accessed index page
+[2024-02-10 05:50:12,352] INFO in app: Accessed index page
+[2024-02-10 05:50:12,444] INFO in app: Accessed index page
+[2024-02-10 05:50:12,856] INFO in app: Accessed index page
+[2024-02-10 05:50:13,463] INFO in app: Accessed index page
+[2024-02-10 05:50:13,468] INFO in app: Accessed index page
+[2024-02-10 05:50:13,472] INFO in app: Accessed index page
+[2024-02-10 05:50:13,569] INFO in app: Accessed index page
+[2024-02-10 05:50:13,572] INFO in app: Accessed index page
+[2024-02-10 05:50:13,578] INFO in app: Accessed index page
+[2024-02-10 05:50:18,642] INFO in app: Accessed index page
+[2024-02-10 05:50:18,643] INFO in app: Accessed index page
+[2024-02-10 05:50:18,644] INFO in app: Accessed index page
+[2024-02-10 05:50:18,683] INFO in app: Accessed index page
+[2024-02-10 05:50:18,758] INFO in app: Accessed index page
+[2024-02-10 05:50:18,819] INFO in app: Accessed index page
+[2024-02-10 05:50:18,845] INFO in app: Accessed index page
+[2024-02-10 05:50:18,856] INFO in app: Accessed index page
+[2024-02-10 05:50:18,954] INFO in app: Accessed index page
+[2024-02-10 05:50:18,955] INFO in app: Accessed index page
+[2024-02-10 05:50:18,961] INFO in app: Accessed index page
+[2024-02-10 05:50:19,028] INFO in app: Accessed index page
+[2024-02-10 05:50:19,071] INFO in app: Accessed index page
+[2024-02-10 05:50:19,077] INFO in app: Accessed index page
+[2024-02-10 05:50:19,135] INFO in app: Accessed index page
+[2024-02-10 05:50:19,177] INFO in app: Accessed index page
+[2024-02-10 05:50:19,180] INFO in app: Accessed index page
+[2024-02-10 05:50:19,217] INFO in app: Accessed index page
+[2024-02-10 05:50:19,272] INFO in app: Accessed index page
+[2024-02-10 05:50:19,418] INFO in app: Accessed index page
+[2024-02-10 05:50:19,519] INFO in app: Accessed index page
+[2024-02-10 05:50:19,529] INFO in app: Accessed index page
+[2024-02-10 05:50:19,567] INFO in app: Accessed index page
+[2024-02-10 05:50:19,719] INFO in app: Accessed index page
+[2024-02-10 05:50:19,819] INFO in app: Accessed index page
+[2024-02-10 05:50:19,932] INFO in app: Accessed index page
+[2024-02-10 05:50:20,041] INFO in app: Accessed index page
+[2024-02-10 05:50:20,154] INFO in app: Accessed index page
+[2024-02-10 05:50:20,155] INFO in app: Accessed index page
+[2024-02-10 05:50:20,243] INFO in app: Accessed index page
+[2024-02-10 05:50:20,269] INFO in app: Accessed index page
+[2024-02-10 05:50:20,275] INFO in app: Accessed index page
+[2024-02-10 05:50:20,286] INFO in app: Accessed index page
+[2024-02-10 05:50:20,314] INFO in app: Accessed index page
+[2024-02-10 05:50:20,320] INFO in app: Accessed index page
+[2024-02-10 05:50:20,345] INFO in app: Accessed index page
+[2024-02-10 05:50:20,417] INFO in app: Accessed index page
+[2024-02-10 05:50:20,468] INFO in app: Accessed index page
+[2024-02-10 05:50:20,531] INFO in app: Accessed index page
+[2024-02-10 05:50:20,617] INFO in app: Accessed index page
+[2024-02-10 05:50:20,618] INFO in app: Accessed index page
+[2024-02-10 05:50:20,639] INFO in app: Accessed index page
+[2024-02-10 05:50:20,654] INFO in app: Accessed index page
+[2024-02-10 05:50:20,683] INFO in app: Accessed index page
+[2024-02-10 05:50:20,698] INFO in app: Accessed index page
+[2024-02-10 05:50:20,719] INFO in app: Accessed index page
+[2024-02-10 05:50:20,724] INFO in app: Accessed index page
+[2024-02-10 05:50:35,769] INFO in app: Accessed index page
+[2024-02-10 05:50:35,770] INFO in app: Accessed index page
+[2024-02-10 05:50:35,771] INFO in app: Accessed index page
+[2024-02-10 05:50:35,773] INFO in app: Accessed index page
+[2024-02-10 05:50:35,802] INFO in app: Accessed index page
+[2024-02-10 05:50:35,826] INFO in app: Accessed index page
+[2024-02-10 05:50:35,837] INFO in app: Accessed index page
+[2024-02-10 05:50:35,870] INFO in app: Accessed index page
+[2024-02-10 05:50:35,875] INFO in app: Accessed index page
+[2024-02-10 05:50:35,881] INFO in app: Accessed index page
+[2024-02-10 05:50:35,945] INFO in app: Accessed index page
+[2024-02-10 05:50:36,025] INFO in app: Accessed index page
+[2024-02-10 05:50:36,037] INFO in app: Accessed index page
+[2024-02-10 05:50:36,133] INFO in app: Accessed index page
+[2024-02-10 05:50:36,139] INFO in app: Accessed index page
+[2024-02-10 05:50:36,259] INFO in app: Accessed index page
+[2024-02-10 05:50:36,340] INFO in app: Accessed index page
+[2024-02-10 05:50:36,455] INFO in app: Accessed index page
+[2024-02-10 05:50:36,558] INFO in app: Accessed index page
+[2024-02-10 05:50:36,819] INFO in app: Accessed index page
+[2024-02-10 05:50:36,838] INFO in app: Accessed index page
+[2024-02-10 05:50:36,848] INFO in app: Accessed index page
+[2024-02-10 05:50:36,859] INFO in app: Accessed index page
+[2024-02-10 05:50:36,963] INFO in app: Accessed index page
+[2024-02-10 05:50:37,042] INFO in app: Accessed index page
+[2024-02-10 05:50:37,043] INFO in app: Accessed index page
+[2024-02-10 05:50:37,261] INFO in app: Accessed index page
+[2024-02-10 05:50:37,322] INFO in app: Accessed index page
+[2024-02-10 05:50:37,444] INFO in app: Accessed index page
+[2024-02-10 05:50:37,670] INFO in app: Accessed index page
+[2024-02-10 05:50:37,756] INFO in app: Accessed index page
+[2024-02-10 05:50:38,026] INFO in app: Accessed index page
+[2024-02-10 05:50:38,027] INFO in app: Accessed index page
+[2024-02-10 05:50:38,130] INFO in app: Accessed index page
+[2024-02-10 05:50:38,249] INFO in app: Accessed index page
+[2024-02-10 05:50:38,250] INFO in app: Accessed index page
+[2024-02-10 05:50:53,363] INFO in app: Accessed index page
+[2024-02-10 05:50:53,365] INFO in app: Accessed index page
+[2024-02-10 05:50:53,366] INFO in app: Accessed index page
+[2024-02-10 05:50:53,367] INFO in app: Accessed index page
+[2024-02-10 05:50:53,372] INFO in app: Accessed index page
+[2024-02-10 05:50:53,411] INFO in app: Accessed index page
+[2024-02-10 05:50:53,444] INFO in app: Accessed index page
+[2024-02-10 05:50:53,446] INFO in app: Accessed index page
+[2024-02-10 05:50:53,560] INFO in app: Accessed index page
+[2024-02-10 05:50:53,562] INFO in app: Accessed index page
+[2024-02-10 05:50:53,719] INFO in app: Accessed index page
+[2024-02-10 05:50:53,720] INFO in app: Accessed index page
+[2024-02-10 05:50:53,857] INFO in app: Accessed index page
+[2024-02-10 05:50:53,858] INFO in app: Accessed index page
+[2024-02-10 05:50:53,867] INFO in app: Accessed index page
+[2024-02-10 05:50:54,019] INFO in app: Accessed index page
+[2024-02-10 05:50:54,021] INFO in app: Accessed index page
+[2024-02-10 05:50:54,142] INFO in app: Accessed index page
+[2024-02-10 05:50:54,157] INFO in app: Accessed index page
+[2024-02-10 05:50:54,449] INFO in app: Accessed index page
+[2024-02-10 05:50:54,464] INFO in app: Accessed index page
+[2024-02-10 05:50:54,546] INFO in app: Accessed index page
+[2024-02-10 05:50:54,563] INFO in app: Accessed index page
+[2024-02-10 05:50:54,717] INFO in app: Accessed index page
+[2024-02-10 05:50:54,749] INFO in app: Accessed index page
+[2024-02-10 05:50:54,847] INFO in app: Accessed index page
+[2024-02-10 05:50:54,959] INFO in app: Accessed index page
+[2024-02-10 05:50:55,228] INFO in app: Accessed index page
+[2024-02-10 05:50:55,540] INFO in app: Accessed index page
+[2024-02-10 05:50:55,550] INFO in app: Accessed index page
+[2024-02-10 05:50:55,559] INFO in app: Accessed index page
+[2024-02-10 05:50:55,752] INFO in app: Accessed index page
+[2024-02-10 05:50:55,840] INFO in app: Accessed index page
+[2024-02-10 05:50:55,845] INFO in app: Accessed index page
+[2024-02-10 05:50:55,947] INFO in app: Accessed index page
+[2024-02-10 05:50:56,045] INFO in app: Accessed index page
+[2024-02-10 05:50:56,319] INFO in app: Accessed index page
+[2024-02-10 05:50:56,320] INFO in app: Accessed index page
+[2024-02-10 05:50:56,442] INFO in app: Accessed index page
+[2024-02-10 05:50:56,445] INFO in app: Accessed index page
+[2024-02-10 05:50:56,451] INFO in app: Accessed index page
+[2024-02-10 05:50:56,553] INFO in app: Accessed index page
+[2024-02-10 05:50:56,568] INFO in app: Accessed index page
+[2024-02-10 05:50:56,572] INFO in app: Accessed index page
+[2024-02-10 05:50:56,625] INFO in app: Accessed index page
+[2024-02-10 05:50:56,626] INFO in app: Accessed index page
+[2024-02-10 05:50:56,749] INFO in app: Accessed index page
+[2024-02-10 05:50:57,119] INFO in app: Accessed index page
+[2024-02-10 05:50:57,232] INFO in app: Accessed index page
+[2024-02-10 05:50:57,347] INFO in app: Accessed index page
+[2024-02-10 05:50:57,843] INFO in app: Accessed index page
+[2024-02-10 05:50:57,952] INFO in app: Accessed index page
+[2024-02-10 05:50:57,957] INFO in app: Accessed index page
+[2024-02-10 05:50:58,062] INFO in app: Accessed index page
+[2024-02-10 05:50:58,119] INFO in app: Accessed index page
+[2024-02-10 05:50:58,218] INFO in app: Accessed index page
+[2024-02-10 05:50:58,246] INFO in app: Accessed index page
+[2024-02-10 05:50:58,356] INFO in app: Accessed index page
+[2024-02-10 05:50:58,417] INFO in app: Accessed index page
+[2024-02-10 05:50:58,419] INFO in app: Accessed index page
+[2024-02-10 05:50:58,421] INFO in app: Accessed index page
+[2024-02-10 05:50:58,456] INFO in app: Accessed index page
+[2024-02-10 05:50:58,458] INFO in app: Accessed index page
+[2024-02-10 05:50:58,487] INFO in app: Accessed index page
+[2024-02-10 05:50:58,522] INFO in app: Accessed index page
+[2024-02-10 05:50:58,556] INFO in app: Accessed index page
+[2024-02-10 05:50:58,557] INFO in app: Accessed index page
+[2024-02-10 05:50:58,681] INFO in app: Accessed index page
+[2024-02-10 05:50:58,738] INFO in app: Accessed index page
+[2024-02-10 05:50:58,742] INFO in app: Accessed index page
+[2024-02-10 05:50:58,766] INFO in app: Accessed index page
+[2024-02-10 05:50:58,779] INFO in app: Accessed index page
+[2024-02-10 05:50:58,857] INFO in app: Accessed index page
+[2024-02-10 05:50:58,872] INFO in app: Accessed index page
+[2024-02-10 05:50:58,965] INFO in app: Accessed index page
+[2024-02-10 05:50:59,061] INFO in app: Accessed index page
+[2024-02-10 05:50:59,190] INFO in app: Accessed index page
+[2024-02-10 05:50:59,224] INFO in app: Accessed index page
+[2024-02-10 05:50:59,236] INFO in app: Accessed index page
+[2024-02-10 05:50:59,239] INFO in app: Accessed index page
+[2024-02-10 05:50:59,242] INFO in app: Accessed index page
+[2024-02-10 05:50:59,347] INFO in app: Accessed index page
+[2024-02-10 05:50:59,358] INFO in app: Accessed index page
+[2024-02-10 05:50:59,432] INFO in app: Accessed index page
+[2024-02-10 05:50:59,556] INFO in app: Accessed index page
+[2024-02-10 05:50:59,955] INFO in app: Accessed index page
+[2024-02-10 05:51:00,033] INFO in app: Accessed index page
+[2024-02-10 05:51:00,132] INFO in app: Accessed index page
+[2024-02-10 05:51:00,219] INFO in app: Accessed index page
+[2024-02-10 05:51:00,245] INFO in app: Accessed index page
+[2024-02-10 05:51:00,249] INFO in app: Accessed index page
+[2024-02-10 05:51:00,332] INFO in app: Accessed index page
+[2024-02-10 05:51:00,350] INFO in app: Accessed index page
+[2024-02-10 05:51:00,354] INFO in app: Accessed index page
+[2024-02-10 05:51:00,432] INFO in app: Accessed index page
+[2024-02-10 05:51:00,465] INFO in app: Accessed index page
+[2024-02-10 05:51:00,474] INFO in app: Accessed index page
+[2024-02-10 05:51:00,517] INFO in app: Accessed index page
+[2024-02-10 05:51:00,536] INFO in app: Accessed index page
+[2024-02-10 05:51:00,550] INFO in app: Accessed index page
+[2024-02-10 05:51:00,573] INFO in app: Accessed index page
+[2024-02-10 05:51:00,644] INFO in app: Accessed index page
+[2024-02-10 05:51:00,651] INFO in app: Accessed index page
+[2024-02-10 05:51:00,717] INFO in app: Accessed index page
+[2024-02-10 05:51:00,725] INFO in app: Accessed index page
+[2024-02-10 05:51:00,734] INFO in app: Accessed index page
+[2024-02-10 05:51:00,741] INFO in app: Accessed index page
+[2024-02-10 05:51:00,830] INFO in app: Accessed index page
+[2024-02-10 05:51:00,837] INFO in app: Accessed index page
+[2024-02-10 05:51:00,840] INFO in app: Accessed index page
+[2024-02-10 05:51:00,852] INFO in app: Accessed index page
+[2024-02-10 05:51:00,934] INFO in app: Accessed index page
+[2024-02-10 05:51:00,949] INFO in app: Accessed index page
+[2024-02-10 05:51:01,118] INFO in app: Accessed index page
+[2024-02-10 05:51:01,120] INFO in app: Accessed index page
+[2024-02-10 05:51:01,176] INFO in app: Accessed index page
+[2024-02-10 05:51:01,221] INFO in app: Accessed index page
+[2024-02-10 05:51:01,245] INFO in app: Accessed index page
+[2024-02-10 05:51:01,270] INFO in app: Accessed index page
+[2024-02-10 05:51:01,326] INFO in app: Accessed index page
+[2024-02-10 05:51:01,369] INFO in app: Accessed index page
+[2024-02-10 05:51:01,419] INFO in app: Accessed index page
+[2024-02-10 05:51:01,422] INFO in app: Accessed index page
+[2024-02-10 05:51:01,450] INFO in app: Accessed index page
+[2024-02-10 05:51:01,520] INFO in app: Accessed index page
+[2024-02-10 05:51:01,556] INFO in app: Accessed index page
+[2024-02-10 05:51:01,561] INFO in app: Accessed index page
+[2024-02-10 05:51:01,632] INFO in app: Accessed index page
+[2024-02-10 05:51:01,754] INFO in app: Accessed index page
+[2024-02-10 05:51:01,938] INFO in app: Accessed index page
+[2024-02-10 05:51:01,983] INFO in app: Accessed index page
+[2024-02-10 05:51:01,988] INFO in app: Accessed index page
+[2024-02-10 05:51:02,045] INFO in app: Accessed index page
+[2024-02-10 05:51:02,051] INFO in app: Accessed index page
+[2024-02-10 05:51:02,122] INFO in app: Accessed index page
+[2024-02-10 05:51:02,145] INFO in app: Accessed index page
+[2024-02-10 05:51:02,157] INFO in app: Accessed index page
+[2024-02-10 05:51:02,175] INFO in app: Accessed index page
+[2024-02-10 05:51:02,228] INFO in app: Accessed index page
+[2024-02-10 05:51:02,267] INFO in app: Accessed index page
+[2024-02-10 05:51:02,269] INFO in app: Accessed index page
+[2024-02-10 05:51:02,328] INFO in app: Accessed index page
+[2024-02-10 05:51:02,417] INFO in app: Accessed index page
+[2024-02-10 05:51:02,420] INFO in app: Accessed index page
+[2024-02-10 05:51:02,430] INFO in app: Accessed index page
+[2024-02-10 05:51:02,451] INFO in app: Accessed index page
+[2024-02-10 05:51:02,626] INFO in app: Accessed index page
+[2024-02-10 05:51:02,737] INFO in app: Accessed index page
+[2024-02-10 05:51:02,743] INFO in app: Accessed index page
+[2024-02-10 05:51:02,761] INFO in app: Accessed index page
+[2024-02-10 05:51:02,770] INFO in app: Accessed index page
+[2024-02-10 05:51:02,854] INFO in app: Accessed index page
+[2024-02-10 05:51:02,918] INFO in app: Accessed index page
+[2024-02-10 05:51:03,032] INFO in app: Accessed index page
+[2024-02-10 05:51:03,119] INFO in app: Accessed index page
+[2024-02-10 05:51:03,127] INFO in app: Accessed index page
+[2024-02-10 05:51:03,219] INFO in app: Accessed index page
+[2024-02-10 05:51:03,224] INFO in app: Accessed index page
+[2024-02-10 05:51:03,338] INFO in app: Accessed index page
+[2024-02-10 05:51:03,344] INFO in app: Accessed index page
+[2024-02-10 05:51:03,349] INFO in app: Accessed index page
+[2024-02-10 05:51:03,446] INFO in app: Accessed index page
+[2024-02-10 05:51:03,454] INFO in app: Accessed index page
+[2024-02-10 05:51:03,455] INFO in app: Accessed index page
+[2024-02-10 05:51:03,564] INFO in app: Accessed index page
+[2024-02-10 05:51:03,650] INFO in app: Accessed index page
+[2024-02-10 05:51:03,654] INFO in app: Accessed index page
+[2024-02-10 05:51:03,656] INFO in app: Accessed index page
+[2024-02-10 05:51:03,659] INFO in app: Accessed index page
+[2024-02-10 05:51:03,737] INFO in app: Accessed index page
+[2024-02-10 05:51:03,759] INFO in app: Accessed index page
+[2024-02-10 05:51:03,869] INFO in app: Accessed index page
+[2024-02-10 05:51:03,939] INFO in app: Accessed index page
+[2024-02-10 05:51:04,051] INFO in app: Accessed index page
+[2024-02-10 05:51:04,150] INFO in app: Accessed index page
+[2024-02-10 05:51:04,156] INFO in app: Accessed index page
+[2024-02-10 05:51:04,221] INFO in app: Accessed index page
+[2024-02-10 05:51:04,269] INFO in app: Accessed index page
+[2024-02-10 05:51:04,273] INFO in app: Accessed index page
+[2024-02-10 05:51:04,333] INFO in app: Accessed index page
+[2024-02-10 05:51:04,340] INFO in app: Accessed index page
+[2024-02-10 05:51:04,444] INFO in app: Accessed index page
+[2024-02-10 05:51:04,552] INFO in app: Accessed index page
+[2024-02-10 05:51:04,557] INFO in app: Accessed index page
+[2024-02-10 05:51:05,419] INFO in app: Accessed index page
+[2024-02-10 05:51:05,519] INFO in app: Accessed index page
+[2024-02-10 05:51:05,647] INFO in app: Accessed index page
+[2024-02-10 05:51:05,750] INFO in app: Accessed index page
+[2024-02-10 05:51:05,860] INFO in app: Accessed index page
+[2024-02-10 05:51:06,041] INFO in app: Accessed index page
+[2024-02-10 05:51:06,119] INFO in app: Accessed index page
+[2024-02-10 05:51:06,146] INFO in app: Accessed index page
+[2024-02-10 05:51:06,236] INFO in app: Accessed index page
+[2024-02-10 05:51:06,258] INFO in app: Accessed index page
+[2024-02-10 05:51:06,263] INFO in app: Accessed index page
+[2024-02-10 05:51:06,362] INFO in app: Accessed index page
+[2024-02-10 05:51:06,420] INFO in app: Accessed index page
+[2024-02-10 05:51:06,421] INFO in app: Accessed index page
+[2024-02-10 05:51:06,519] INFO in app: Accessed index page
+[2024-02-10 05:51:06,546] INFO in app: Accessed index page
+[2024-02-10 05:51:06,637] INFO in app: Accessed index page
+[2024-02-10 05:51:06,719] INFO in app: Accessed index page
+[2024-02-10 05:51:06,832] INFO in app: Accessed index page
+[2024-02-10 05:51:06,859] INFO in app: Accessed index page
+[2024-02-10 05:51:06,954] INFO in app: Accessed index page
+[2024-02-10 05:51:07,033] INFO in app: Accessed index page
+[2024-02-10 05:51:07,119] INFO in app: Accessed index page
+[2024-02-10 05:51:07,145] INFO in app: Accessed index page
+[2024-02-10 05:51:07,249] INFO in app: Accessed index page
+[2024-02-10 05:51:07,254] INFO in app: Accessed index page
+[2024-02-10 05:51:07,360] INFO in app: Accessed index page
+[2024-02-10 05:51:07,630] INFO in app: Accessed index page
+[2024-02-10 05:51:07,635] INFO in app: Accessed index page
+[2024-02-10 05:51:07,648] INFO in app: Accessed index page
+[2024-02-10 05:51:07,653] INFO in app: Accessed index page
+[2024-02-10 05:51:07,750] INFO in app: Accessed index page
+[2024-02-10 05:51:07,860] INFO in app: Accessed index page
+[2024-02-10 05:51:08,026] INFO in app: Accessed index page
+[2024-02-10 05:51:08,135] INFO in app: Accessed index page
+[2024-02-10 05:51:08,248] INFO in app: Accessed index page
+[2024-02-10 05:51:08,417] INFO in app: Accessed index page
+[2024-02-10 05:51:08,422] INFO in app: Accessed index page
+[2024-02-10 05:51:08,472] INFO in app: Accessed index page
+[2024-02-10 05:51:08,643] INFO in app: Accessed index page
+[2024-02-10 05:51:09,030] INFO in app: Accessed index page
+[2024-02-10 05:51:09,035] INFO in app: Accessed index page
+[2024-02-10 05:51:09,149] INFO in app: Accessed index page
+[2024-02-10 05:51:09,318] INFO in app: Accessed index page
+[2024-02-10 05:51:09,429] INFO in app: Accessed index page
+[2024-02-10 05:51:09,548] INFO in app: Accessed index page
+[2024-02-10 05:51:09,752] INFO in app: Accessed index page
+[2024-02-10 05:51:09,761] INFO in app: Accessed index page
+[2024-02-10 05:51:09,918] INFO in app: Accessed index page
+[2024-02-10 05:51:09,930] INFO in app: Accessed index page
+[2024-02-10 05:51:11,437] INFO in app: Accessed index page
+[2024-02-10 05:51:11,442] INFO in app: Accessed index page
+[2024-02-10 05:51:11,553] INFO in app: Accessed index page
+[2024-02-10 05:51:11,739] INFO in app: Accessed index page
+[2024-02-10 05:51:11,742] INFO in app: Accessed index page
+[2024-02-10 05:51:11,848] INFO in app: Accessed index page
+[2024-02-10 05:51:11,852] INFO in app: Accessed index page
+[2024-02-10 05:51:11,952] INFO in app: Accessed index page
+[2024-02-10 05:51:12,069] INFO in app: Accessed index page
+[2024-02-10 05:51:29,055] INFO in app: Accessed index page
+[2024-02-10 05:51:29,058] INFO in app: Accessed index page
+[2024-02-10 05:51:29,061] INFO in app: Accessed index page
+[2024-02-10 05:51:29,062] INFO in app: Accessed index page
+[2024-02-10 05:51:29,063] INFO in app: Accessed index page
+[2024-02-10 05:51:29,067] INFO in app: Accessed index page
+[2024-02-10 05:51:29,119] INFO in app: Accessed index page
+[2024-02-10 05:51:29,125] INFO in app: Accessed index page
+[2024-02-10 05:51:29,140] INFO in app: Accessed index page
+[2024-02-10 05:51:29,145] INFO in app: Accessed index page
+[2024-02-10 05:51:29,182] INFO in app: Accessed index page
+[2024-02-10 05:51:29,272] INFO in app: Accessed index page
+[2024-02-10 05:51:29,320] INFO in app: Accessed index page
+[2024-02-10 05:51:29,358] INFO in app: Accessed index page
+[2024-02-10 05:51:29,449] INFO in app: Accessed index page
+[2024-02-10 05:51:29,453] INFO in app: Accessed index page
+[2024-02-10 05:51:29,532] INFO in app: Accessed index page
+[2024-02-10 05:51:29,645] INFO in app: Accessed index page
+[2024-02-10 05:51:29,847] INFO in app: Accessed index page
+[2024-02-10 05:51:30,332] INFO in app: Accessed index page
+[2024-02-10 05:51:30,446] INFO in app: Accessed index page
+[2024-02-10 05:51:30,456] INFO in app: Accessed index page
+[2024-02-10 05:51:30,549] INFO in app: Accessed index page
+[2024-02-10 05:51:30,561] INFO in app: Accessed index page
+[2024-02-10 05:51:30,752] INFO in app: Accessed index page
+[2024-02-10 05:51:30,863] INFO in app: Accessed index page
+[2024-02-10 05:51:31,019] INFO in app: Accessed index page
+[2024-02-10 05:51:31,049] INFO in app: Accessed index page
+[2024-02-10 05:51:31,050] INFO in app: Accessed index page
+[2024-02-10 05:51:31,054] INFO in app: Accessed index page
+[2024-02-10 05:51:31,149] INFO in app: Accessed index page
+[2024-02-10 05:51:31,168] INFO in app: Accessed index page
+[2024-02-10 05:51:39,244] INFO in app: Accessed index page
+[2024-02-10 05:51:39,246] INFO in app: Accessed index page
+[2024-02-10 05:51:39,340] INFO in app: Accessed index page
+[2024-02-10 05:51:39,525] INFO in app: Accessed index page
+[2024-02-10 05:51:39,645] INFO in app: Accessed index page
+[2024-02-10 05:51:39,649] INFO in app: Accessed index page
+[2024-02-10 05:51:39,753] INFO in app: Accessed index page
+[2024-02-10 05:51:39,852] INFO in app: Accessed index page
+[2024-02-10 05:51:40,126] INFO in app: Accessed index page
+[2024-02-10 05:51:40,130] INFO in app: Accessed index page
+[2024-02-10 05:51:40,238] INFO in app: Accessed index page
+[2024-02-10 05:51:40,353] INFO in app: Accessed index page
+[2024-02-10 05:51:40,456] INFO in app: Accessed index page
+[2024-02-10 05:51:40,619] INFO in app: Accessed index page
+[2024-02-10 05:51:41,253] INFO in app: Accessed index page
+[2024-02-10 05:51:41,258] INFO in app: Accessed index page
+[2024-02-10 05:51:41,419] INFO in app: Accessed index page
+[2024-02-10 05:51:41,423] INFO in app: Accessed index page
+[2024-02-10 05:51:41,532] INFO in app: Accessed index page
+[2024-02-10 05:51:41,538] INFO in app: Accessed index page
+[2024-02-10 05:51:46,742] INFO in app: Accessed index page
+[2024-02-10 05:51:46,743] INFO in app: Accessed index page
+[2024-02-10 05:51:46,789] INFO in app: Accessed index page
+[2024-02-10 05:51:46,825] INFO in app: Accessed index page
+[2024-02-10 05:51:46,930] INFO in app: Accessed index page
+[2024-02-10 05:51:47,052] INFO in app: Accessed index page
+[2024-02-10 05:51:47,233] INFO in app: Accessed index page
+[2024-02-10 05:51:47,347] INFO in app: Accessed index page
+[2024-02-10 05:51:47,462] INFO in app: Accessed index page
+[2024-02-10 05:51:47,518] INFO in app: Accessed index page
+[2024-02-10 05:51:47,643] INFO in app: Accessed index page
+[2024-02-10 05:51:48,031] INFO in app: Accessed index page
+[2024-02-10 05:51:48,162] INFO in app: Accessed index page
+[2024-02-10 05:51:48,248] INFO in app: Accessed index page
+[2024-02-10 05:51:48,353] INFO in app: Accessed index page
+[2024-02-10 05:51:48,455] INFO in app: Accessed index page
+[2024-02-10 05:51:48,540] INFO in app: Accessed index page
+[2024-02-10 05:51:48,617] INFO in app: Accessed index page
+[2024-02-10 05:51:48,719] INFO in app: Accessed index page
+[2024-02-10 05:51:48,757] INFO in app: Accessed index page
+[2024-02-10 05:51:48,763] INFO in app: Accessed index page
+[2024-02-10 05:51:48,860] INFO in app: Accessed index page
+[2024-02-10 05:51:48,937] INFO in app: Accessed index page
+[2024-02-10 05:51:48,964] INFO in app: Accessed index page
+[2024-02-10 05:51:49,049] INFO in app: Accessed index page
+[2024-02-10 05:51:49,119] INFO in app: Accessed index page
+[2024-02-10 05:51:49,218] INFO in app: Accessed index page
+[2024-02-10 05:51:49,220] INFO in app: Accessed index page
+[2024-02-10 05:52:05,336] INFO in app: Accessed index page
+[2024-02-10 05:52:05,337] INFO in app: Accessed index page
+[2024-02-10 05:52:05,340] INFO in app: Accessed index page
+[2024-02-10 05:52:05,341] INFO in app: Accessed index page
+[2024-02-10 05:52:05,342] INFO in app: Accessed index page
+[2024-02-10 05:52:05,350] INFO in app: Accessed index page
+[2024-02-10 05:52:05,410] INFO in app: Accessed index page
+[2024-02-10 05:52:05,419] INFO in app: Accessed index page
+[2024-02-10 05:52:05,420] INFO in app: Accessed index page
+[2024-02-10 05:52:05,480] INFO in app: Accessed index page
+[2024-02-10 05:52:05,489] INFO in app: Accessed index page
+[2024-02-10 05:52:05,490] INFO in app: Accessed index page
+[2024-02-10 05:52:05,492] INFO in app: Accessed index page
+[2024-02-10 05:52:05,512] INFO in app: Accessed index page
+[2024-02-10 05:52:05,513] INFO in app: Accessed index page
+[2024-02-10 05:52:05,561] INFO in app: Accessed index page
+[2024-02-10 05:52:05,636] INFO in app: Accessed index page
+[2024-02-10 05:52:05,638] INFO in app: Accessed index page
+[2024-02-10 05:52:05,643] INFO in app: Accessed index page
+[2024-02-10 05:52:05,668] INFO in app: Accessed index page
+[2024-02-10 05:52:05 +0000] [15909] [WARNING] Invalid request from ip=18.194.95.84: Invalid HTTP Header: 'CONTENT-LENGTH'
+[2024-02-10 05:52:05,679] INFO in app: Accessed index page
+[2024-02-10 05:52:05,694] INFO in app: Accessed index page
+[2024-02-10 05:52:05,701] INFO in app: Accessed index page
+[2024-02-10 05:52:06,245] INFO in app: Accessed index page
+[2024-02-10 05:52:06,612] INFO in app: Accessed index page
+[2024-02-10 05:52:06,633] INFO in app: Accessed index page
+[2024-02-10 05:52:06,634] INFO in app: Accessed index page
+[2024-02-10 05:52:06,857] INFO in app: Accessed index page
+[2024-02-10 05:52:07,230] INFO in app: Accessed index page
+[2024-02-10 05:52:07,235] INFO in app: Accessed index page
+[2024-02-10 05:52:07,459] INFO in app: Accessed index page
+[2024-02-10 05:52:07,468] INFO in app: Accessed index page
+[2024-02-10 05:52:08,404] INFO in app: Accessed index page
+[2024-02-10 05:52:08,561] INFO in app: Accessed index page
+[2024-02-10 05:52:09,296] INFO in app: Accessed index page
+[2024-02-10 05:52:09,308] INFO in app: Accessed index page
+[2024-02-10 05:52:09,355] INFO in app: Accessed index page
+[2024-02-10 05:52:09,364] INFO in app: Accessed index page
+[2024-02-10 05:52:09,536] INFO in app: Accessed index page
+[2024-02-10 05:52:09,539] INFO in app: Accessed index page
+[2024-02-10 05:52:09,593] INFO in app: Accessed index page
+[2024-02-10 05:52:09,601] INFO in app: Accessed index page
+[2024-02-10 05:52:09,608] INFO in app: Accessed index page
+[2024-02-10 05:52:09,684] INFO in app: Accessed index page
+[2024-02-10 05:52:10,178] INFO in app: Accessed index page
+[2024-02-10 05:52:10,218] INFO in app: Accessed index page
+[2024-02-10 05:52:10,368] INFO in app: Accessed index page
+[2024-02-10 05:52:10,430] INFO in app: Accessed index page
+[2024-02-10 05:52:10,633] INFO in app: Accessed index page
+[2024-02-10 05:52:10,638] INFO in app: Accessed index page
+[2024-02-10 05:52:10,648] INFO in app: Accessed index page
+[2024-02-10 05:52:10,654] INFO in app: Accessed index page
+[2024-02-10 05:52:10,738] INFO in app: Accessed index page
+[2024-02-10 05:52:10,766] INFO in app: Accessed index page
+[2024-02-10 05:52:11,257] INFO in app: Accessed index page
+[2024-02-10 05:52:11,995] INFO in app: Accessed index page
+[2024-02-10 05:52:12,013] INFO in app: Accessed index page
+[2024-02-10 05:52:12,069] INFO in app: Accessed index page
+[2024-02-10 05:52:12,350] INFO in app: Accessed index page
+[2024-02-10 05:52:12,355] INFO in app: Accessed index page
+[2024-02-10 05:52:12,806] INFO in app: Accessed index page
+[2024-02-10 05:52:12,813] INFO in app: Accessed index page
+[2024-02-10 05:52:12,840] INFO in app: Accessed index page
+[2024-02-10 05:52:12,844] INFO in app: Accessed index page
+[2024-02-10 05:52:12,885] INFO in app: Accessed index page
+[2024-02-10 05:52:13,051] INFO in app: Accessed index page
+[2024-02-10 05:52:13,076] INFO in app: Accessed index page
+[2024-02-10 05:52:13,085] INFO in app: Accessed index page
+[2024-02-10 05:52:13,165] INFO in app: Accessed index page
+[2024-02-10 05:52:13,170] INFO in app: Accessed index page
+[2024-02-10 05:52:13,181] INFO in app: Accessed index page
+[2024-02-10 05:52:13,390] INFO in app: Accessed index page
+[2024-02-10 05:52:13,426] INFO in app: Accessed index page
+[2024-02-10 05:52:13,456] INFO in app: Accessed index page
+[2024-02-10 05:52:13,645] INFO in app: Accessed index page
+[2024-02-10 05:52:13,741] INFO in app: Accessed index page
+[2024-02-10 05:52:13,917] INFO in app: Accessed index page
+[2024-02-10 05:52:13,922] INFO in app: Accessed index page
+[2024-02-10 05:52:13,962] INFO in app: Accessed index page
+[2024-02-10 05:52:13,981] INFO in app: Accessed index page
+[2024-02-10 05:52:13,987] INFO in app: Accessed index page
+[2024-02-10 05:52:14,371] INFO in app: Accessed index page
+[2024-02-10 05:52:14,379] INFO in app: Accessed index page
+[2024-02-10 05:52:14,384] INFO in app: Accessed index page
+[2024-02-10 05:52:14,435] INFO in app: Accessed index page
+[2024-02-10 05:52:14,495] INFO in app: Accessed index page
+[2024-02-10 05:52:14,626] INFO in app: Accessed index page
+[2024-02-10 05:52:14,662] INFO in app: Accessed index page
+[2024-02-10 05:52:14,695] INFO in app: Accessed index page
+[2024-02-10 05:52:14,726] INFO in app: Accessed index page
+[2024-02-10 05:52:15,571] INFO in app: Accessed index page
+[2024-02-10 05:52:15,680] INFO in app: Accessed index page
+[2024-02-10 05:52:16,215] INFO in app: Accessed index page
+[2024-02-10 05:52:16,252] INFO in app: Accessed index page
+[2024-02-10 05:52:16,283] INFO in app: Accessed index page
+[2024-02-10 05:52:16,342] INFO in app: Accessed index page
+[2024-02-10 05:52:16,343] INFO in app: Accessed index page
+[2024-02-10 05:52:16,550] INFO in app: Accessed index page
+[2024-02-10 05:52:16,552] INFO in app: Accessed index page
+[2024-02-10 05:52:16,554] INFO in app: Accessed index page
+[2024-02-10 05:52:16,556] INFO in app: Accessed index page
+[2024-02-10 05:52:17,327] INFO in app: Accessed index page
+[2024-02-10 05:52:17,969] INFO in app: Accessed index page
+[2024-02-10 05:52:18,039] INFO in app: Accessed index page
+[2024-02-10 05:52:18,161] INFO in app: Accessed index page
+[2024-02-10 05:52:18,257] INFO in app: Accessed index page
+[2024-02-10 05:52:18,417] INFO in app: Accessed index page
+[2024-02-10 05:52:18,528] INFO in app: Accessed index page
+[2024-02-10 05:52:18,719] INFO in app: Accessed index page
+[2024-02-10 05:52:18,835] INFO in app: Accessed index page
+[2024-02-10 05:52:18,841] INFO in app: Accessed index page
+[2024-02-10 05:52:18,933] INFO in app: Accessed index page
+[2024-02-10 05:52:19,045] INFO in app: Accessed index page
+[2024-02-10 05:52:19,158] INFO in app: Accessed index page
+[2024-02-10 05:52:19,163] INFO in app: Accessed index page
+[2024-02-10 05:52:19,267] INFO in app: Accessed index page
+[2024-02-10 05:52:19,271] INFO in app: Accessed index page
+[2024-02-10 05:52:19,417] INFO in app: Accessed index page
+[2024-02-10 05:52:19,526] INFO in app: Accessed index page
+[2024-02-10 05:52:19,652] INFO in app: Accessed index page
+[2024-02-10 05:52:19,846] INFO in app: Accessed index page
+[2024-02-10 05:52:20,549] INFO in app: Accessed index page
+[2024-02-10 05:52:20,553] INFO in app: Accessed index page
+[2024-02-10 05:52:20,670] INFO in app: Accessed index page
+[2024-02-10 05:52:20,728] INFO in app: Accessed index page
+[2024-02-10 05:52:37,776] INFO in app: Accessed index page
+[2024-02-10 05:52:37,779] INFO in app: Accessed index page
+[2024-02-10 05:52:37,780] INFO in app: Accessed index page
+[2024-02-10 05:52:37,781] INFO in app: Accessed index page
+[2024-02-10 05:52:37,785] INFO in app: Accessed index page
+[2024-02-10 05:52:37,842] INFO in app: Accessed index page
+[2024-02-10 05:52:37,847] INFO in app: Accessed index page
+[2024-02-10 05:52:37,881] INFO in app: Accessed index page
+[2024-02-10 05:52:37,894] INFO in app: Accessed index page
+[2024-02-10 05:52:37,921] INFO in app: Accessed index page
+[2024-02-10 05:52:37,974] INFO in app: Accessed index page
+[2024-02-10 05:52:37,978] INFO in app: Accessed index page
+[2024-02-10 05:52:38,058] INFO in app: Accessed index page
+[2024-02-10 05:52:38,147] INFO in app: Accessed index page
+[2024-02-10 05:52:38,154] INFO in app: Accessed index page
+[2024-02-10 05:52:38,353] INFO in app: Accessed index page
+[2024-02-10 05:52:38,518] INFO in app: Accessed index page
+[2024-02-10 05:52:38,619] INFO in app: Accessed index page
+[2024-02-10 05:52:38,732] INFO in app: Accessed index page
+[2024-02-10 05:52:38,850] INFO in app: Accessed index page
+[2024-02-10 05:52:38,937] INFO in app: Accessed index page
+[2024-02-10 05:52:38,971] INFO in app: Accessed index page
+[2024-02-10 05:52:39,019] INFO in app: Accessed index page
+[2024-02-10 05:52:39,455] INFO in app: Accessed index page
+[2024-02-10 05:52:39,471] INFO in app: Accessed index page
+[2024-02-10 05:52:39,736] INFO in app: Accessed index page
+[2024-02-10 05:52:39,918] INFO in app: Accessed index page
+[2024-02-10 05:52:40,518] INFO in app: Accessed index page
+[2024-02-10 05:52:40,524] INFO in app: Accessed index page
+[2024-02-10 05:52:40,618] INFO in app: Accessed index page
+[2024-02-10 05:52:40,623] INFO in app: Accessed index page
+[2024-02-10 05:52:41,409] INFO in app: Accessed index page
+[2024-02-10 05:52:41,437] INFO in app: Accessed index page
+[2024-02-10 05:52:42,351] INFO in app: Accessed index page
+[2024-02-10 05:52:42,469] INFO in app: Accessed index page
+[2024-02-10 05:52:42,576] INFO in app: Accessed index page
+[2024-02-10 05:52:42,750] INFO in app: Accessed index page
+[2024-02-10 05:52:42,940] INFO in app: Accessed index page
+[2024-02-10 05:52:43,119] INFO in app: Accessed index page
+[2024-02-10 05:52:43,227] INFO in app: Accessed index page
+[2024-02-10 05:52:43,244] INFO in app: Accessed index page
+[2024-02-10 05:52:43,256] INFO in app: Accessed index page
+[2024-02-10 05:52:43,346] INFO in app: Accessed index page
+[2024-02-10 05:52:43,362] INFO in app: Accessed index page
+[2024-02-10 05:52:43,645] INFO in app: Accessed index page
+[2024-02-10 05:52:43,935] INFO in app: Accessed index page
+[2024-02-10 05:52:43,940] INFO in app: Accessed index page
+[2024-02-10 05:52:44,082] INFO in app: Accessed index page
+[2024-02-10 05:52:44,092] INFO in app: Accessed index page
+[2024-02-10 05:52:44,154] INFO in app: Accessed index page
+[2024-02-10 05:52:44,229] INFO in app: Accessed index page
+[2024-02-10 05:52:44,234] INFO in app: Accessed index page
+[2024-02-10 05:52:44,288] INFO in app: Accessed index page
+[2024-02-10 05:52:44,357] INFO in app: Accessed index page
+[2024-02-10 05:52:44,362] INFO in app: Accessed index page
+[2024-02-10 05:52:51,453] INFO in app: Accessed index page
+[2024-02-10 05:52:51,458] INFO in app: Accessed index page
+[2024-02-10 05:52:54,397] INFO in app: Accessed index page
+[2024-02-10 05:52:56,496] INFO in app: Accessed index page
+[2024-02-10 05:53:07,258] INFO in app: Accessed index page
+[2024-02-10 05:53:07 +0000] [15909] [WARNING] Invalid request from ip=3.124.123.210: Invalid HTTP Header: 'CONTENT-LENGTH'
+[2024-02-10 05:53:07,270] INFO in app: Accessed index page
+[2024-02-10 05:53:15,712] INFO in app: Accessed index page
+[2024-02-10 05:53:15,787] INFO in app: Accessed index page
+[2024-02-10 05:53:26,421] INFO in app: Accessed index page
+[2024-02-10 05:53:37,815] INFO in app: Accessed index page
+[2024-02-10 05:53:37,881] INFO in app: Accessed index page
+[2024-02-10 05:53:37,886] INFO in app: Accessed index page
+[2024-02-10 05:53:37,940] INFO in app: Accessed index page
+[2024-02-10 05:53:37,999] INFO in app: Accessed index page
+[2024-02-10 05:53:38,089] INFO in app: Accessed index page
+[2024-02-10 05:53:38,224] INFO in app: Accessed index page
+[2024-02-10 05:53:38,280] INFO in app: Accessed index page
+[2024-02-10 05:53:38,333] INFO in app: Accessed index page
+[2024-02-10 05:53:38,391] INFO in app: Accessed index page
+[2024-02-10 05:53:38,449] INFO in app: Accessed index page
+[2024-02-10 05:53:38,507] INFO in app: Accessed index page
+[2024-02-10 05:53:38,571] INFO in app: Accessed index page
+[2024-02-10 05:53:39,024] INFO in app: Accessed index page
+[2024-02-10 05:53:39,221] INFO in app: Accessed index page
+[2024-02-10 05:53:39,226] INFO in app: Accessed index page
+[2024-02-10 05:53:39,295] INFO in app: Accessed index page
+[2024-02-10 05:53:39,300] INFO in app: Accessed index page
+[2024-02-10 05:54:06,870] INFO in app: Accessed index page
+[2024-02-10 05:54:06,876] INFO in app: Accessed index page
+[2024-02-10 05:54:40,398] INFO in app: Accessed index page
+[2024-02-10 05:54:40,402] INFO in app: Accessed index page
+[2024-02-10 05:54:40,459] INFO in app: Accessed index page
+[2024-02-10 05:54:40,464] INFO in app: Accessed index page
+[2024-02-10 05:54:40,469] INFO in app: Accessed index page
+[2024-02-10 05:54:45,810] INFO in app: Accessed index page
+[2024-02-10 05:54:45,814] INFO in app: Accessed index page
+[2024-02-10 05:54:45,815] INFO in app: Accessed index page
+[2024-02-10 05:54:45,877] INFO in app: Accessed index page
+[2024-02-10 05:54:45,882] INFO in app: Accessed index page
+[2024-02-10 05:54:45,886] INFO in app: Accessed index page
+[2024-02-10 05:54:51,148] INFO in app: Accessed index page
+[2024-02-10 05:55:06,918] INFO in app: Accessed index page
+[2024-02-10 05:55:07,021] INFO in app: Accessed index page
+[2024-02-10 05:55:12,249] INFO in app: Accessed index page
+[2024-02-10 05:55:12,403] INFO in app: Accessed index page
+[2024-02-10 05:55:12,516] INFO in app: Accessed index page
+[2024-02-10 05:55:12,682] INFO in app: Accessed index page
+[2024-02-10 05:55:12,702] INFO in app: Accessed index page
+[2024-02-10 05:55:12,739] INFO in app: Accessed index page
+[2024-02-10 05:55:12,822] INFO in app: Accessed index page
+[2024-02-10 05:55:12,826] INFO in app: Accessed index page
+[2024-02-10 05:55:12,917] INFO in app: Accessed index page
+[2024-02-10 05:55:12,977] INFO in app: Accessed index page
+[2024-02-10 05:55:13,059] INFO in app: Accessed index page
+[2024-02-10 05:55:13,165] INFO in app: Accessed index page
+[2024-02-10 05:55:13,199] INFO in app: Accessed index page
+[2024-02-10 05:55:13,258] INFO in app: Accessed index page
+[2024-02-10 05:55:13,347] INFO in app: Accessed index page
+[2024-02-10 05:55:13,352] INFO in app: Accessed index page
+[2024-02-10 05:55:13,431] INFO in app: Accessed index page
+[2024-02-10 05:55:13,486] INFO in app: Accessed index page
+[2024-02-10 05:55:13,563] INFO in app: Accessed index page
+[2024-02-10 05:55:13,654] INFO in app: Accessed index page
+[2024-02-10 05:55:13,682] INFO in app: Accessed index page
+[2024-02-10 05:55:13,709] INFO in app: Accessed index page
+[2024-02-10 05:55:13,765] INFO in app: Accessed index page
+[2024-02-10 05:55:13,851] INFO in app: Accessed index page
+[2024-02-10 05:55:13,951] INFO in app: Accessed index page
+[2024-02-10 05:55:14,183] INFO in app: Accessed index page
+[2024-02-10 05:55:14,240] INFO in app: Accessed index page
+[2024-02-10 05:55:14,301] INFO in app: Accessed index page
+[2024-02-10 05:55:14,336] INFO in app: Accessed index page
+[2024-02-10 05:55:14,364] INFO in app: Accessed index page
+[2024-02-10 05:55:14,403] INFO in app: Accessed index page
+[2024-02-10 05:55:14,428] INFO in app: Accessed index page
+[2024-02-10 05:55:14,487] INFO in app: Accessed index page
+[2024-02-10 05:55:14,559] INFO in app: Accessed index page
+[2024-02-10 05:55:14,672] INFO in app: Accessed index page
+[2024-02-10 05:55:14,724] INFO in app: Accessed index page
+[2024-02-10 05:55:14,777] INFO in app: Accessed index page
+[2024-02-10 05:55:14,786] INFO in app: Accessed index page
+[2024-02-10 05:55:14,790] INFO in app: Accessed index page
+[2024-02-10 05:55:14,795] INFO in app: Accessed index page
+[2024-02-10 05:55:14,841] INFO in app: Accessed index page
+[2024-02-10 05:55:14,864] INFO in app: Accessed index page
+[2024-02-10 05:55:14,868] INFO in app: Accessed index page
+[2024-02-10 05:55:14,873] INFO in app: Accessed index page
+[2024-02-10 05:55:14,919] INFO in app: Accessed index page
+[2024-02-10 05:55:14,933] INFO in app: Accessed index page
+[2024-02-10 05:55:14,998] INFO in app: Accessed index page
+[2024-02-10 05:55:15,000] INFO in app: Accessed index page
+[2024-02-10 05:55:32,070] INFO in app: Accessed index page
+[2024-02-10 05:55:32,071] INFO in app: Accessed index page
+[2024-02-10 05:55:32,074] INFO in app: Accessed index page
+[2024-02-10 05:55:32,075] INFO in app: Accessed index page
+[2024-02-10 05:55:32,075] INFO in app: Accessed index page
+[2024-02-10 05:55:32,082] INFO in app: Accessed index page
+[2024-02-10 05:55:32,083] INFO in app: Accessed index page
+[2024-02-10 05:55:32,087] INFO in app: Accessed index page
+[2024-02-10 05:55:32,132] INFO in app: Accessed index page
+[2024-02-10 05:55:32,135] INFO in app: Accessed index page
+[2024-02-10 05:55:32,140] INFO in app: Accessed index page
+[2024-02-10 05:55:50,178] INFO in app: Accessed index page
+[2024-02-10 05:55:50,180] INFO in app: Accessed index page
+[2024-02-10 05:55:50,184] INFO in app: Accessed index page
+[2024-02-10 05:55:50,185] INFO in app: Accessed index page
+[2024-02-10 05:55:50,186] INFO in app: Accessed index page
+[2024-02-10 05:55:50,190] INFO in app: Accessed index page
+[2024-02-10 05:55:50,211] INFO in app: Accessed index page
+[2024-02-10 05:55:50,214] INFO in app: Accessed index page
+[2024-02-10 05:55:50,261] INFO in app: Accessed index page
+[2024-02-10 05:55:50,364] INFO in app: Accessed index page
+[2024-02-10 05:55:50,425] INFO in app: Accessed index page
+[2024-02-10 05:55:50,431] INFO in app: Accessed index page
+[2024-02-10 05:55:50,435] INFO in app: Accessed index page
+[2024-02-10 05:55:50,450] INFO in app: Accessed index page
+[2024-02-10 05:55:50,463] INFO in app: Accessed index page
+[2024-02-10 05:55:50,465] INFO in app: Accessed index page
+[2024-02-10 05:55:50,482] INFO in app: Accessed index page
+[2024-02-10 05:55:50,562] INFO in app: Accessed index page
+[2024-02-10 05:55:50,591] INFO in app: Accessed index page
+[2024-02-10 05:55:50,598] INFO in app: Accessed index page
+[2024-02-10 05:55:50,614] INFO in app: Accessed index page
+[2024-02-10 05:55:50,640] INFO in app: Accessed index page
+[2024-02-10 05:55:50,647] INFO in app: Accessed index page
+[2024-02-10 05:55:50,653] INFO in app: Accessed index page
+[2024-02-10 05:55:50,680] INFO in app: Accessed index page
+[2024-02-10 05:55:50,728] INFO in app: Accessed index page
+[2024-02-10 05:55:50,753] INFO in app: Accessed index page
+[2024-02-10 05:55:50,763] INFO in app: Accessed index page
+[2024-02-10 05:55:50,782] INFO in app: Accessed index page
+[2024-02-10 05:55:50,816] INFO in app: Accessed index page
+[2024-02-10 05:55:50,821] INFO in app: Accessed index page
+[2024-02-10 05:55:50,828] INFO in app: Accessed index page
+[2024-02-10 05:55:50,847] INFO in app: Accessed index page
+[2024-02-10 05:55:50,900] INFO in app: Accessed index page
+[2024-02-10 05:55:50,907] INFO in app: Accessed index page
+[2024-02-10 05:55:50,923] INFO in app: Accessed index page
+[2024-02-10 05:55:50,967] INFO in app: Accessed index page
+[2024-02-10 05:55:50,976] INFO in app: Accessed index page
+[2024-02-10 05:55:50,986] INFO in app: Accessed index page
+[2024-02-10 05:55:50,992] INFO in app: Accessed index page
+[2024-02-10 05:55:51,011] INFO in app: Accessed index page
+[2024-02-10 05:55:51,036] INFO in app: Accessed index page
+[2024-02-10 05:55:51,045] INFO in app: Accessed index page
+[2024-02-10 05:55:51,049] INFO in app: Accessed index page
+[2024-02-10 05:55:51,097] INFO in app: Accessed index page
+[2024-02-10 05:55:51,116] INFO in app: Accessed index page
+[2024-02-10 05:55:51,164] INFO in app: Accessed index page
+[2024-02-10 05:55:51,185] INFO in app: Accessed index page
+[2024-02-10 05:55:51,190] INFO in app: Accessed index page
+[2024-02-10 05:55:51,225] INFO in app: Accessed index page
+[2024-02-10 05:55:51,229] INFO in app: Accessed index page
+[2024-02-10 05:55:56,162] INFO in app: Accessed index page
+[2024-02-10 05:55:56,217] INFO in app: Accessed index page
+[2024-02-10 05:55:56,222] INFO in app: Accessed index page
+[2024-02-10 05:55:56,230] INFO in app: Accessed index page
+[2024-02-10 05:55:56,281] INFO in app: Accessed index page
+[2024-02-10 05:55:56,333] INFO in app: Accessed index page
+[2024-02-10 05:55:56,335] INFO in app: Accessed index page
+[2024-02-10 05:55:56,338] INFO in app: Accessed index page
+[2024-02-10 05:55:56,367] INFO in app: Accessed index page
+[2024-02-10 05:55:56,436] INFO in app: Accessed index page
+[2024-02-10 05:55:56,441] INFO in app: Accessed index page
+[2024-02-10 05:55:56,469] INFO in app: Accessed index page
+[2024-02-10 05:55:56,471] INFO in app: Accessed index page
+[2024-02-10 05:55:56,557] INFO in app: Accessed index page
+[2024-02-10 05:55:56,669] INFO in app: Accessed index page
+[2024-02-10 05:55:56,850] INFO in app: Accessed index page
+[2024-02-10 05:56:02,522] INFO in app: Accessed index page
+[2024-02-10 05:56:27,063] INFO in app: Accessed index page
+[2024-02-10 05:56:27,124] INFO in app: Accessed index page
+[2024-02-10 05:56:38,058] INFO in app: Accessed index page
+[2024-02-10 05:56:38,115] INFO in app: Accessed index page
+[2024-02-10 05:58:08,717] INFO in app: Accessed index page
+[2024-02-10 05:58:08,721] INFO in app: Accessed index page
+[2024-02-10 05:58:43,970] INFO in app: Accessed index page
+[2024-02-10 05:58:43,976] INFO in app: Accessed index page
+[2024-02-10 06:04:01,308] INFO in app: Accessed index page
+[2024-02-10 06:04:01,312] INFO in app: Accessed index page
+[2024-02-10 06:04:36,554] INFO in app: Accessed index page
+[2024-02-10 06:04:36,559] INFO in app: Accessed index page
+[2024-02-10 07:11:58,316] INFO in app: Accessed index page
+[2024-02-10 10:37:07,582] INFO in app: Accessed index page
+[2024-02-10 10:37:22,279] INFO in app: Accessed index page
+[2024-02-10 12:39:37,722] INFO in app: Accessed index page
+[2024-02-10 12:39:40,970] INFO in app: Accessed index page
