@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify, render_template  # Добавил render_template для работы с шаблонами HTML
-from flask_cors import CORS
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS  # Импортируем CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,6 +8,7 @@ import os
 from flask_migrate import Migrate
 
 app = Flask(__name__)
+CORS(app)  # Применяем CORS к вашему Flask приложению
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -15,7 +16,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.init_app(app)
-migrate = Migrate(app, db)  # Добавляем расширение Flask-Migrate
+migrate = Migrate(app, db)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,7 +30,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')  # Возвращаем шаблон HTML для главной страницы
+    return render_template('index.html')
 
 @app.route('/register', methods=['POST'])
 def register():

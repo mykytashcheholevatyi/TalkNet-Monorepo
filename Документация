@@ -25,12 +25,16 @@ git config --global user.name "mykytashch"
 git config --global user.email "mikitosik777@gmail.com"
 git config --global credential.helper 'cache --timeout=31536000'
 
-github _pat_ 11A6Y3X5Q0n3TTLBGVkz64_QKafdunZxqxMVlyRXcJ7tFG00grlhzOcx2IShAbKZ1CFXRDN6QPjincYpaP
+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
 
 После настройки автоматической интеграции фронта и бекенда
 
 
+Запустить бекенд
+/srv/talknet/backend/scripts/update_and_restart.sh
 
+Запустить фронт
+/var/www/TalkNet-Monorepo/reddit-clone/update_and_restart.sh
 
 
 
