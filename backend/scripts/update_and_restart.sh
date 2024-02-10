@@ -13,6 +13,12 @@ STATS_FILE="$STATS_DIR/deploy_stats_$(date +%Y-%m-%d_%H-%M-%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Script execution started: $(date)"
 
+# Rotate and archive old Flask logs
+FLASK_LOG_FILE="flask_app.log"
+if [ -f "$FLASK_LOG_FILE" ]; then
+    mv "$FLASK_LOG_FILE" "$LOG_DIR/flask_app_$(date +%Y-%m-%d_%H-%M-%S).log"
+fi
+
 # Function to install required packages
 install_dependencies() {
     echo "Installing required packages..."

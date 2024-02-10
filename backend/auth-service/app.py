@@ -1,3 +1,5 @@
+import logging
+from logging.handlers import RotatingFileHandler
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -6,26 +8,39 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import random
 
+# Set up Flask app
 app = Flask(__name__)
 CORS(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Set up logging
+if not app.debug:
+    log_handler = RotatingFileHandler('flask_app.log', maxBytes=10240, backupCount=10)
+    log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+    log_handler.setLevel(logging.INFO)
+    app.logger.addHandler(log_handler)
+    app.logger.setLevel(logging.INFO)
+
+# Set up database
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+# User model
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
 
+# User loader
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+# Routes
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -63,6 +78,7 @@ def login():
 def debug_number():
     return jsonify({'debugNumber': random.randint(1, 100)})
 
+# Main
 if __name__ == '__main__':
     db.create_all()
     app.run(host='0.0.0.0', port=8000, debug=True)
