@@ -88,9 +88,18 @@ apply_database_migrations() {
     echo "Applying database migrations with Flask-Migrate..."
     source "$VENV_DIR/bin/activate"
     cd "$APP_DIR/backend/auth-service"
+    # Check if the migrations directory exists, if not, initialize Flask-Migrate
+    if [ ! -d "migrations" ]; then
+        echo "Initializing Flask-Migrate..."
+        flask db init
+    fi
+    # Now that the migrations directory is guaranteed to exist, generate new migrations and apply them
+    echo "Generating and applying migrations..."
+    flask db migrate -m "Generated migration"
     flask db upgrade
     echo "Database migrations applied successfully."
 }
+
 
 # Push changes to repository if there are any
 push_to_repository() {
