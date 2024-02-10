@@ -3681,3 +3681,7 @@ WHERE user.email = ?
 [parameters: ('mykytashch@hotmail.com', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [2024-02-10 18:16:11,624] INFO in app: Accessed index page
+[2024-02-10 18:26:31 +0000] [37827] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 18:26:31 +0000] [37827] [INFO] Listening at: http://0.0.0.0:8000 (37827)
+[2024-02-10 18:26:31 +0000] [37827] [INFO] Using worker: sync
+[2024-02-10 18:26:31 +0000] [37828] [INFO] Booting worker with pid: 37828
