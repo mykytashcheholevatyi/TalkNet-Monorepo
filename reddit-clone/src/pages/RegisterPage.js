@@ -40,7 +40,7 @@ function RegisterPage() {
     if (Object.values(formErrors).some(error => error)) return;
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('http://85.215.65.78:8000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

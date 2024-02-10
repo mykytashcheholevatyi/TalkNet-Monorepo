@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -64,4 +65,4 @@ def debug_number():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
