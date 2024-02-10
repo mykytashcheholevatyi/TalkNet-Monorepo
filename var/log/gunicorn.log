@@ -98,3 +98,7 @@
 [2024-02-10 00:13:28 +0000] [157527] [INFO] Listening at: http://0.0.0.0:8000 (157527)
 [2024-02-10 00:13:28 +0000] [157527] [INFO] Using worker: sync
 [2024-02-10 00:13:28 +0000] [157528] [INFO] Booting worker with pid: 157528
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Starting gunicorn 21.2.0
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Listening at: http://0.0.0.0:8000 (158126)
+[2024-02-10 00:14:06 +0000] [158126] [INFO] Using worker: sync
+[2024-02-10 00:14:06 +0000] [158127] [INFO] Booting worker with pid: 158127
