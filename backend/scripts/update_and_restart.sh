@@ -82,7 +82,7 @@ recreate_db() {
 apply_schema() {
     echo "Applying database schema..."
     if [ -f "$SCHEMA_PATH" ]; then
-        sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH" || echo "Problem applying database schema."
+        sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH" || { echo "Problem applying database schema."; exit 1; }
     else
         echo "Schema file not found at $SCHEMA_PATH. Exiting..."
         exit 1
@@ -92,7 +92,7 @@ apply_schema() {
 backup_db() {
     echo "Backing up the database..."
     BACKUP_FILE="$BACKUP_DIR/${PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
-    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE"
+    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE" || { echo "Failed to backup database."; exit 1; }
     echo "Database backed up to $BACKUP_FILE."
 }
 
@@ -101,19 +101,19 @@ clone_update_repo() {
     if [ ! -d "$FLASK_APP_DIR/.git" ]; then
         git clone "$REPO_URL" "$FLASK_APP_DIR"
     else
-        cd "$FLASK_APP_DIR" && git pull
+        cd "$FLASK_APP_DIR" && git pull || { echo "Failed to update repository."; exit 1; }
     fi
     echo "Repository updated."
 }
 
 setup_venv() {
     echo "Setting up the Python virtual environment..."
-    python3 -m venv "$VENV_DIR"
+    python3 -m venv "$VENV_DIR" || { echo "Failed to create virtual environment."; exit 1; }
     source "$VENV_DIR/bin/activate"
-    pip install --upgrade pip
+    pip install --upgrade pip || { echo "Failed to upgrade pip."; exit 1; }
     REQUIREMENTS_PATH="$FLASK_APP_DIR/requirements.txt"
     if [ -f "$REQUIREMENTS_PATH" ]; then
-        pip install -r "$REQUIREMENTS_PATH"
+        pip install -r "$REQUIREMENTS_PATH" || { echo "Failed to install dependencies."; exit 1; }
         echo "Dependencies from $REQUIREMENTS_PATH installed."
     else
         echo "requirements.txt not found in $FLASK_APP_DIR, skipping pip install."
@@ -123,14 +123,14 @@ setup_venv() {
 apply_migrations() {
     echo "Applying database migrations..."
     source "$VENV_DIR/bin/activate"
-    flask db upgrade || echo "Failed to apply migrations."
+    flask db upgrade || { echo "Failed to apply migrations."; exit 1; }
 }
 
 restart_services() {
     echo "Restarting application services..."
     pkill gunicorn || true
-    gunicorn --chdir "$FLASK_APP_DIR" app:app --daemon
-    sudo systemctl restart nginx
+    gunicorn --chdir "$FLASK_APP_DIR" app:app --daemon || { echo "Failed to start gunicorn."; exit 1; }
+    sudo systemctl restart nginx || { echo "Failed to restart nginx."; exit 1; }
     echo "Services restarted."
 }
 
