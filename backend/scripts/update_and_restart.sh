@@ -42,12 +42,33 @@ reinstall_postgresql() {
     sudo rm -rf /var/lib/postgresql/
     sudo apt-get install -y postgresql postgresql-contrib
     echo "PostgreSQL reinstalled."
+}
 
-    # PostgreSQL database and user setup
+# Initialize PostgreSQL Database Cluster
+init_db_cluster() {
+    sudo pg_dropcluster --stop $(pg_lsclusters | awk '/main/ {print $1}') main || true  # Remove default cluster if exists
+    sudo pg_createcluster $(pg_lsclusters | awk '/main/ {print $1}') main --start  # Create a new cluster
+    echo "PostgreSQL cluster initialized."
+}
+
+# Configure PostgreSQL to accept connections
+configure_postgresql() {
+    # Replace listen_addresses and port in postgresql.conf
+    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/postgresql.conf
+    sudo sed -i "/^#port = 5432/c\port = 5432" /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/postgresql.conf
+
+    # Allow all connections in pg_hba.conf
+    echo "host all all all md5" | sudo tee /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/pg_hba.conf
+    sudo systemctl restart postgresql
+    echo "PostgreSQL configured to accept connections."
+}
+
+# Create PostgreSQL user and database
+create_db_user_and_database() {
     sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
     sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
     sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
-    echo "Database $PG_DB and user $PG_USER created and configured."
+    echo "Database and user created."
 }
 
 # Install required dependencies
@@ -138,6 +159,9 @@ restart_services() {
 rotate_logs
 install_dependencies
 reinstall_postgresql
+init_db_cluster
+configure_postgresql
+create_db_user_and_database
 test_db_connection || { echo "Database configuration issue. Aborting."; exit 1; }
 backup_db
 clone_update_repo
