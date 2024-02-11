@@ -70,9 +70,9 @@ configure_postgresql() {
 
 # Создание пользователя и базы данных PostgreSQL
 create_db_user_and_database() {
-    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
-    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
-    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
+    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';" || true
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;" || true
+    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;" || true
     echo "База данных и пользователь созданы."
 }
 
