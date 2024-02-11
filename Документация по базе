@@ -5,9 +5,9 @@ git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 cd /srv/talknet
 git checkout main
 git pull
-cd /srv/talknet/backend/scripts/
+cd /srv/talknet/backend/scripts/database/
 chmod +x setup_postgres.sh
-/srv/talknet/backend/scripts/setup_postgres.sh
+/srv/talknet/backend/scripts/database/setup_postgres.sh
 
 
 
