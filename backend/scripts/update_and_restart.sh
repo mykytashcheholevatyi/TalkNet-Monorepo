@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# можно добавить функции проверки состояния и восстановления для каждого критического шага
+
+
 # Инициализация и строгий режим
 set -euo pipefail
 trap 'echo "Ошибка на строке $LINENO. Завершение с кодом $?" >&2; exit 1' ERR
@@ -38,6 +41,18 @@ rotate_logs() {
     echo "Старые журналы очищены."
 }
 
+# Функция для проверки состояния сервиса PostgreSQL
+check_postgres_status() {
+    systemctl is-active --quiet postgresql && echo "PostgreSQL активен" || restart_postgresql
+}
+
+# Функция для перезапуска сервиса PostgreSQL
+restart_postgresql() {
+    echo "Перезапуск PostgreSQL..."
+    sudo systemctl restart postgresql
+    echo "PostgreSQL перезапущен."
+}
+
 # Жесткая установка PostgreSQL
 install_postgresql() {
     echo "Установка PostgreSQL..."
@@ -72,32 +87,34 @@ init_db_cluster() {
 
 # Настройка PostgreSQL для приема подключений
 configure_postgresql() {
-    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/14/main/postgresql.conf"
+    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '85.215.65.78'" "/etc/postgresql/14/main/postgresql.conf"
     sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/14/main/postgresql.conf"
-    echo "host all all 0.0.0.0/0 md5" | sudo tee -a "/etc/postgresql/14/main/pg_hba.conf"
-    sudo systemctl restart postgresql
+    echo "host all all 85.215.65.78/32 md5" | sudo tee -a "/etc/postgresql/14/main/pg_hba.conf"
+    check_postgres_status
     echo "PostgreSQL настроен для приема подключений."
 }
 
-
-# Создание пользователя и базы данных PostgreSQL
+# Создание пользователя и базы данных PostgreSQL с проверкой и попыткой восстановления
 create_db_user_and_database() {
     set +e # Отключаем прерывание скрипта при ошибках
-    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
-    if [ $? -ne 0 ]; then
-        echo "Ошибка при создании пользователя $PG_USER."
+    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';" && user_created=true || user_created=false
+    if [ "$user_created" = false ]; then
+        echo "Ошибка при создании пользователя $PG_USER. Попытка повторного создания..."
+        sudo -u postgres psql -c "DROP USER IF EXISTS $PG_USER;" # Удаляем пользователя, если он существует
+        sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';" # Повторно создаем пользователя
     fi
-    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
-    if [ $? -ne 0 ]; then
-        echo "Ошибка при создании базы данных $PG_DB."
-    fi
-    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
-    if [ $? -ne 0 ]; then
-        echo "Ошибка при назначении привилегий пользователю $PG_USER на базу данных $PG_DB."
+
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;" && db_created=true || db_created=false
+    if [ "$db_created" = false ]; then
+        echo "Ошибка при создании базы данных $PG_DB. Попытка повторного создания..."
+        sudo -u postgres psql -c "DROP DATABASE IF EXISTS $PG_DB;" # Удаляем базу данных, если она существует
+        sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;" # Повторно создаем базу данных
     fi
     set -e # Включаем обратно прерывание скрипта при ошибках
     echo "База данных и пользователь созданы."
 }
+
+
 
 
 # Установка необходимых зависимостей
@@ -107,14 +124,17 @@ install_dependencies() {
     echo "Зависимости установлены."
 }
 
-# Тестирование подключения к базе данных
+# Тестирование подключения к базе данных с попыткой восстановления
 test_db_connection() {
-    if ! PGPASSWORD=$PG_PASSWORD psql -h $PG_HOST -U $PG_USER -d $PG_DB -c '\q'; then
-        echo "Ошибка подключения к базе данных."
-        exit 1
-    else
-        echo "Подключение к базе данных успешно."
+    if ! PGPASSWORD=$PG_PASSWORD psql -h 85.215.65.78 -U $PG_USER -d $PG_DB -c '\q'; then
+        echo "Ошибка подключения к базе данных. Перезапуск PostgreSQL и повторная проверка..."
+        restart_postgresql
+        if ! PGPASSWORD=$PG_PASSWORD psql -h 85.215.65.78 -U $PG_USER -d $PG_DB -c '\q'; then
+            echo "Ошибка подключения к базе данных после перезапуска PostgreSQL."
+            exit 1
+        fi
     fi
+    echo "Подключение к базе данных успешно."
 }
 
 # Применение схемы базы данных
