@@ -46,19 +46,21 @@ reinstall_postgresql() {
 
 # Initialize PostgreSQL Database Cluster
 init_db_cluster() {
-    sudo pg_dropcluster --stop $(pg_lsclusters | awk '/main/ {print $1}') main || true  # Remove default cluster if exists
-    sudo pg_createcluster $(pg_lsclusters | awk '/main/ {print $1}') main --start  # Create a new cluster
+    local version=$(pg_lsclusters | awk '/main/ {print $1}')
+    sudo pg_dropcluster --stop "$version" main || true  # Remove default cluster if exists
+    sudo pg_createcluster "$version" main --start  # Create a new cluster
     echo "PostgreSQL cluster initialized."
 }
 
 # Configure PostgreSQL to accept connections
 configure_postgresql() {
+    local version=$(pg_lsclusters | awk '/main/ {print $1}')
     # Replace listen_addresses and port in postgresql.conf
-    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/postgresql.conf
-    sudo sed -i "/^#port = 5432/c\port = 5432" /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/postgresql.conf
+    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/$version/main/postgresql.conf"
+    sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/$version/main/postgresql.conf"
 
     # Allow all connections in pg_hba.conf
-    echo "host all all all md5" | sudo tee /etc/postgresql/$(pg_lsclusters | awk '/main/ {print $1}')/main/pg_hba.conf
+    echo "host all all all md5" | sudo tee -a "/etc/postgresql/$version/main/pg_hba.conf"
     sudo systemctl restart postgresql
     echo "PostgreSQL configured to accept connections."
 }
