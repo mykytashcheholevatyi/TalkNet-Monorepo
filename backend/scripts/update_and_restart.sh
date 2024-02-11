@@ -38,16 +38,20 @@ rotate_logs() {
 # Reinstall PostgreSQL
 reinstall_postgresql() {
     echo "Reinstalling PostgreSQL..."
+    local available_version=$(apt-cache policy postgresql | grep 'Candidate' | awk '{print $2}')
+    if [ -z "$available_version" ]; then
+        echo "Error: PostgreSQL version not available in package repositories."
+        exit 1
+    fi
+
     sudo apt-get remove --purge -y postgresql postgresql-contrib
     sudo rm -rf /var/lib/postgresql/
 
-    # Get PostgreSQL version
-    local version=$(apt-cache policy postgresql | grep Installed | awk '{print $2}')
-
-    # Install PostgreSQL with the extracted version
-    sudo apt-get install -y postgresql="$version" postgresql-contrib="$version"
+    # Install the available version of PostgreSQL
+    sudo apt-get install -y "postgresql=$available_version" "postgresql-contrib=$available_version"
     echo "PostgreSQL reinstalled."
 }
+
 
 # Initialize PostgreSQL Database Cluster
 init_db_cluster() {
