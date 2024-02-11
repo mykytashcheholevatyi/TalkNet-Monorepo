@@ -41,12 +41,13 @@ install_postgresql() {
 
     local installed_version="14" # Желаемая версия PostgreSQL
 
-    sudo apt-get remove --purge -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+    sudo apt-get remove --purge -qq -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     sudo rm -rf /var/lib/postgresql/
 
-    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+    sudo apt-get install -qq -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     echo "PostgreSQL успешно установлен."
 }
+
 
 # Инициализация кластера базы данных PostgreSQL
 init_db_cluster() {
