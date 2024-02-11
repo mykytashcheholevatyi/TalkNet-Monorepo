@@ -164,6 +164,7 @@ restart_services() {
 # Основная логика
 rotate_logs
 install_dependencies
+sudo dpkg --configure -a
 install_postgresql
 init_db_cluster
 configure_postgresql
