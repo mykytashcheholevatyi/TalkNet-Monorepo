@@ -1,184 +1,188 @@
 #!/bin/bash
 
-# Initialization and strict mode
+# Инициализация и строгий режим
 set -euo pipefail
-trap 'echo "Error on line $LINENO. Exiting with code $?" >&2; exit 1' ERR
+trap 'echo "Ошибка на строке $LINENO. Завершение с кодом $?" >&2; exit 1' ERR
 
-# Load environment variables
+# Загрузка переменных окружения
 ENV_FILE="/srv/talknet/.env"
 if [ -f "$ENV_FILE" ]; then
     source "$ENV_FILE"
 else
-    echo "Environment file $ENV_FILE not found, exiting..."
+    echo "Файл окружения $ENV_FILE не найден, завершение..."
     exit 1
 fi
 
-# Directory paths
+# Пути к каталогам
 LOG_DIR="/srv/talknet/var/log"
 BACKUP_DIR="/srv/talknet/backups"
 APP_DIR="/srv/talknet"
 FLASK_APP_DIR="$APP_DIR/backend/auth-service"
 VENV_DIR="$FLASK_APP_DIR/venv"
 
-# Ensure directories exist
+# Проверка существования каталогов
 mkdir -p "$LOG_DIR" "$BACKUP_DIR" "$FLASK_APP_DIR"
 
-# Log file setup
+# Настройка файла журнала
 LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-echo "Deployment started: $(date)"
+echo "Начало развёртывания: $(date)"
 
-# Rotate logs
+# Поворот журналов
 rotate_logs() {
     find "$LOG_DIR" -type f -name '*.log' -mtime +30 -exec rm {} \;
-    echo "Old logs cleaned up."
+    echo "Старые журналы удалены."
 }
 
-# Reinstall PostgreSQL
-reinstall_postgresql() {
-    echo "Reinstalling PostgreSQL..."
+# Переустановка PostgreSQL при неудачном обновлении
+reinstall_postgresql_if_update_failed() {
+    echo "Переустановка PostgreSQL при неудачном обновлении..."
 
-    # Get the installed version of PostgreSQL
-    local installed_version=$(apt-cache policy postgresql | awk '/Installed/ {print $2}')
+    # Попытка обновления PostgreSQL
+    if ! sudo apt-get update && sudo apt-get upgrade -y postgresql postgresql-contrib; then
+        echo "Не удалось обновить PostgreSQL, переустановка..."
 
-    if [ -z "$installed_version" ]; then
-        echo "Error: PostgreSQL is not installed."
-        exit 1
+        # Попытка переустановки PostgreSQL
+        local installed_version=$(apt-cache policy postgresql | awk '/Installed/ {print $2}')
+        if [ -z "$installed_version" ]; then
+            echo "Ошибка: PostgreSQL не установлен."
+            exit 1
+        fi
+
+        sudo apt-get remove --purge -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+        sudo rm -rf /var/lib/postgresql/
+
+        sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+        echo "PostgreSQL переустановлен."
+    else
+        echo "Обновление PostgreSQL выполнено успешно."
     fi
-
-    sudo apt-get remove --purge -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
-    sudo rm -rf /var/lib/postgresql/
-
-    # Install the same version of PostgreSQL
-    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
-    echo "PostgreSQL reinstalled."
 }
 
-# Initialize PostgreSQL Database Cluster
+# Инициализация кластера базы данных PostgreSQL
 init_db_cluster() {
-    # Get PostgreSQL version
     local version=$(apt-cache policy postgresql | awk '/Installed/ {print $2}')
 
-    # Initialize PostgreSQL cluster with the extracted version
-    sudo pg_dropcluster --stop "$version" main || true  # Remove default cluster if exists
-    sudo pg_createcluster "$version" main --start  # Create a new cluster
-    echo "PostgreSQL cluster initialized."
+    # Инициализация кластера PostgreSQL с указанной версией
+    sudo pg_dropcluster --stop "$version" main || true  # Удаление существующего кластера, если есть
+    sudo pg_createcluster "$version" main --start  # Создание нового кластера
+    echo "Кластер PostgreSQL инициализирован."
 }
 
-# Configure PostgreSQL to accept connections
+# Настройка PostgreSQL для приёма соединений
 configure_postgresql() {
     local version=$(pg_lsclusters | awk '/main/ {print $1}')
-    # Replace listen_addresses and port in postgresql.conf
+    # Замена параметров listen_addresses и port в postgresql.conf
     sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/$version/main/postgresql.conf"
     sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/$version/main/postgresql.conf"
 
-    # Allow all connections in pg_hba.conf
+    # Разрешение всех соединений в pg_hba.conf
     echo "host all all all md5" | sudo tee -a "/etc/postgresql/$version/main/pg_hba.conf"
     sudo systemctl restart postgresql
-    echo "PostgreSQL configured to accept connections."
+    echo "PostgreSQL настроен для приёма соединений."
 }
 
-# Create PostgreSQL user and database
+# Создание пользователя и базы данных PostgreSQL
 create_db_user_and_database() {
     sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
     sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
     sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
-    echo "Database and user created."
+    echo "Пользователь и база данных созданы."
 }
 
-# Install required dependencies
+# Установка необходимых зависимостей
 install_dependencies() {
     sudo apt-get update
     sudo apt-get install -y python3 python3-pip python3-venv git nginx
-    echo "Dependencies installed."
+    echo "Зависимости установлены."
 }
 
-# Test database connection
+# Проверка соединения с базой данных
 test_db_connection() {
     if ! PGPASSWORD=$PG_PASSWORD psql -h localhost -U $PG_USER -d $PG_DB -c '\q' 2>/dev/null; then
-        echo "Database connection failed."
+        echo "Соединение с базой данных не удалось."
         return 1
     else
-        echo "Database connection succeeded."
+        echo "Соединение с базой данных успешно установлено."
         return 0
     fi
 }
 
-# Apply database schema
+# Применение схемы базы данных
 apply_schema() {
-    echo "Applying database schema..."
+    echo "Применение схемы базы данных..."
     SCHEMA_PATH="$FLASK_APP_DIR/database/schema.sql"
     if [ -f "$SCHEMA_PATH" ]; then
         sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH"
-        echo "Schema applied from $SCHEMA_PATH."
+        echo "Схема применена из $SCHEMA_PATH."
     else
-        echo "Schema file not found at $SCHEMA_PATH. Please check the path and try again."
+        echo "Файл схемы не найден по пути $SCHEMA_PATH. Проверьте путь и повторите попытку."
     fi
 }
 
-# Backup the database
+# Резервное копирование базы данных
 backup_db() {
-    echo "Backing up the database..."
+    echo "Резервное копирование базы данных..."
     BACKUP_FILE="$BACKUP_DIR/${PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE"
-    echo "Database backed up to $BACKUP_FILE."
+    echo "База данных скопирована в $BACKUP_FILE."
 }
 
-# Update or clone the repository
+# Обновление или клонирование репозитория
 clone_update_repo() {
-    echo "Updating repository..."
+    echo "Обновление репозитория..."
     if [ -d "$FLASK_APP_DIR/.git" ]; then
         cd "$FLASK_APP_DIR" && git fetch --all && git reset --hard origin/main
     else
         git clone "$REPO_URL" "$FLASK_APP_DIR" && cd "$FLASK_APP_DIR"
     fi
-    echo "Repository updated."
+    echo "Репозиторий обновлён."
 }
 
-# Set up the Python virtual environment and install dependencies
+# Настройка виртуального окружения Python и установка зависимостей
 setup_venv() {
-    echo "Setting up the Python virtual environment..."
+    echo "Настройка виртуального окружения Python..."
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
     pip install -r "$FLASK_APP_DIR/requirements.txt"
-    echo "Dependencies installed."
+    echo "Зависимости установлены."
 }
 
-# Apply Flask database migrations
+# Применение миграций базы данных Flask
 apply_migrations() {
-    echo "Applying Flask database migrations..."
+    echo "Применение миграций базы данных Flask..."
     source "$VENV_DIR/bin/activate"
-    export FLASK_APP="$FLASK_APP_DIR/app.py"  # Adjust this to your Flask app's entry point
+    export FLASK_APP="$FLASK_APP_DIR/app.py"  # Измените на точку входа вашего приложения Flask
 
     if [ ! -d "$FLASK_APP_DIR/migrations" ]; then
         flask db init
     fi
 
-    flask db migrate -m "Auto-generated migration."
-    flask db upgrade || echo "No migrations to apply or migration failed."
+    flask db migrate -m "Автоматически созданная миграция."
+    flask db upgrade || echo "Нет миграций для применения или миграция завершилась неудачно."
 }
 
-# Restart the Flask application and Nginx
+# Перезапуск приложения Flask и Nginx
 restart_services() {
-    echo "Restarting Flask application and Nginx..."
-    # Replace with your actual commands to restart Flask and Nginx
+    echo "Перезапуск приложения Flask и Nginx..."
+    # Замените на фактические команды для перезапуска Flask и Nginx
     pkill gunicorn || true
     cd "$FLASK_APP_DIR"
     gunicorn --bind 0.0.0.0:8000 "app:create_app()" --daemon
     sudo systemctl restart nginx
-    echo "Flask application and Nginx restarted."
+    echo "Приложение Flask и Nginx перезапущены."
 }
 
-# Main logic
+# Основная логика
 rotate_logs
 install_dependencies
-reinstall_postgresql
+reinstall_postgresql_if_update_failed
 init_db_cluster
 configure_postgresql
 create_db_user_and_database
-test_db_connection || { echo "Database configuration issue. Aborting."; exit 1; }
+test_db_connection || { echo "Проблема с настройкой базы данных. Прерывание."; exit 1; }
 backup_db
 clone_update_repo
 setup_venv
@@ -186,4 +190,4 @@ apply_schema
 apply_migrations
 restart_services
 
-echo "Deployment completed: $(date)"
+echo "Развёртывание завершено: $(date)"
