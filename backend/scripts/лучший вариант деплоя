@@ -1,0 +1,83 @@
+лучший вариант деплоя
+
+#!/bin/bash
+
+# Advanced Deployment Script for Global Scale Flask & PostgreSQL Application
+
+# Инициализация строгих параметров для обработки ошибок
+set -euo pipefail
+trap 'echo "Ошибка на строке $LINENO. Выход с кодом ошибки $?" >&2; exit 1' ERR
+
+# Функция для загрузки и верификации переменных окружения
+load_env() {
+    if [ -f /srv/global-forum/.env ]; then
+        source /srv/global-forum/.env
+        echo "Переменные окружения загружены."
+    else
+        echo "Файл .env не найден. Остановка скрипта."
+        exit 1
+    fi
+}
+
+# Функция для установки и обновления необходимых зависимостей
+install_dependencies() {
+    echo "Установка и обновление зависимостей..."
+    sudo apt-get update && sudo apt-get install -y \
+        python3 python3-pip python3-venv \
+        git \
+        postgresql postgresql-contrib \
+        nginx \
+        docker.io \
+        docker-compose
+}
+
+# Функция для настройки и обеспечения масштабируемости PostgreSQL с использованием Docker и Patroni
+setup_postgresql() {
+    echo "Настройка масштабируемого кластера PostgreSQL с Patroni..."
+    # Используйте docker-compose с предварительно сконфигурированным образом Patroni
+    docker-compose -f /srv/global-forum/infra/postgres-patroni/docker-compose.yml up -d
+}
+
+# Функция для обеспечения высокой доступности и масштабируемости Flask приложения
+deploy_flask_app() {
+    echo "Развертывание Flask приложения с использованием Kubernetes..."
+    # Используйте Helm chart или Kubernetes манифесты для развертывания
+    kubectl apply -f /srv/global-forum/infra/k8s/flask-app-deployment.yml
+}
+
+# Функция для мониторинга и логирования на глобальном уровне
+setup_monitoring_and_logging() {
+    echo "Настройка мониторинга и логирования с Prometheus, Grafana и ELK Stack..."
+    # Развертывание Prometheus и Grafana для мониторинга
+    kubectl apply -f /srv/global-forum/infra/monitoring/prometheus-grafana.yml
+    # Развертывание ELK Stack для агрегирования и анализа логов
+    docker-compose -f /srv/global-forum/infra/logging/elk-stack/docker-compose.yml up -d
+}
+
+# Функция для настройки CI/CD с использованием GitLab CI/CD или Jenkins
+setup_cicd_pipeline() {
+    echo "Настройка CI/CD пайплайнов..."
+    # Настройка пайплайнов в .gitlab-ci.yml или Jenkinsfile для автоматического тестирования и деплоя
+}
+
+# Функция для создания резервных копий и восстановления
+setup_backup_and_recovery() {
+    echo "Настройка системы резервного копирования и восстановления..."
+    # Развертывание системы резервного копирования, например, с использованием Velero для Kubernetes
+    kubectl apply -f /srv/global-forum/infra/backup/velero-deployment.yml
+}
+
+# Главная функция, координирующая выполнение всех операций
+main() {
+    load_env
+    install_dependencies
+    setup_postgresql
+    deploy_flask_app
+    setup_monitoring_and_logging
+    setup_cicd_pipeline
+    setup_backup_and_recovery
+    echo "Развертывание завершено успешно."
+}
+
+# Запуск главной функции
+main
