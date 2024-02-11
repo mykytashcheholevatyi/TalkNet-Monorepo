@@ -55,18 +55,21 @@ install_postgresql() {
 
     local installed_version="14" # Желаемая версия PostgreSQL
 
-    # Автоматическое подтверждение удаления директорий PostgreSQL
-    echo "postgresql-$installed_version postgresql/$installed_version/postrm_purge_databases boolean true" | sudo debconf-set-selections
+    # Использование expect для автоматического ответа "Yes" на вопросы при удалении PostgreSQL
+    expect -c "
+    set timeout 10
+    spawn sudo apt-get remove --purge -y postgresql-$installed_version postgresql-contrib-$installed_version
+    expect \"Remove PostgreSQL directories when package is purged?\"
+    send -- \"Yes\r\"
+    expect eof
+    "
 
-    # Удаление существующей версии, если она установлена
-    sudo apt-get remove --purge -qq -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
-    
     # Удаление оставшихся файлов конфигурации и данных
     sudo rm -rf /var/lib/postgresql/
     sudo rm -rf /etc/postgresql/
 
     # Установка желаемой версии PostgreSQL
-    sudo apt-get install -qq -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     echo "PostgreSQL успешно установлен."
 }
 
