@@ -24,15 +24,6 @@ else
 fi
 
 # Пути к каталогам
-LOG_DIR="/srv/talknet/var/log"
-BACKUP_DIR="/srv/talknet/backups"
-APP_DIR="/srv/talknet"
-FLASK_APP_DIR="$APP_DIR/backend/auth-service"
-VENV_DIR="$FLASK_APP_DIR/venv"
-
-# Остальная часть скрипта...
-
-# Проверка существования каталогов
 mkdir -p "$LOG_DIR" "$BACKUP_DIR" "$FLASK_APP_DIR"
 
 # Настройка файла журнала
@@ -40,8 +31,6 @@ LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 echo "Начало развёртывания: $(date)"
-
-
 
 # Поворот журналов
 rotate_logs() {
@@ -53,47 +42,28 @@ rotate_logs() {
 install_postgresql() {
     echo "Установка PostgreSQL..."
 
-    local installed_version="14" # Желаемая версия PostgreSQL
-
-    # Использование expect для автоматического ответа "Yes" на вопросы при удалении PostgreSQL
-    expect -c "
-    set timeout 10
-    spawn sudo apt-get remove --purge -y postgresql-$installed_version postgresql-contrib-$installed_version
-    expect \"Remove PostgreSQL directories when package is purged?\"
-    send -- \"Yes\r\"
-    expect eof
-    "
-
-    # Удаление оставшихся файлов конфигурации и данных
+    sudo apt-get remove --purge -qq -y "postgresql-14" "postgresql-contrib-14"
     sudo rm -rf /var/lib/postgresql/
-    sudo rm -rf /etc/postgresql/
-
-    # Установка желаемой версии PostgreSQL
-    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
+    sudo apt-get install -qq -y "postgresql-14" "postgresql-contrib-14"
     echo "PostgreSQL успешно установлен."
 }
 
-
-
 # Инициализация кластера базы данных PostgreSQL
 init_db_cluster() {
-    local version="14" # Версия PostgreSQL
-
-    sudo pg_dropcluster --stop "$version" main || true  # Удалить существующий кластер, если существует
-    sudo pg_createcluster "$version" main --start  # Создать новый кластер
+    sudo pg_dropcluster --stop 14 main || true
+    sudo pg_createcluster 14 main --start
     echo "Кластер PostgreSQL инициализирован."
 }
 
 # Настройка PostgreSQL для приема подключений
 configure_postgresql() {
-    local version=$(pg_lsclusters | awk '/main/ {print $1}')
-    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/$version/main/postgresql.conf"
-    sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/$version/main/postgresql.conf"
-
-    echo "host all all all md5" | sudo tee -a "/etc/postgresql/$version/main/pg_hba.conf"
+    sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/14/main/postgresql.conf"
+    sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/14/main/postgresql.conf"
+    echo "host all all $PG_HOST md5" | sudo tee -a "/etc/postgresql/14/main/pg_hba.conf"
     sudo systemctl restart postgresql
     echo "PostgreSQL настроен для приема подключений."
 }
+
 
 # Создание пользователя и базы данных PostgreSQL
 create_db_user_and_database() {
@@ -124,12 +94,11 @@ install_dependencies() {
 
 # Тестирование подключения к базе данных
 test_db_connection() {
-    if ! PGPASSWORD=$PG_PASSWORD psql -h localhost -U $PG_USER -d $PG_DB -c '\q' 2>/dev/null; then
+    if ! PGPASSWORD=$PG_PASSWORD psql -h $PG_HOST -U $PG_USER -d $PG_DB -c '\q'; then
         echo "Ошибка подключения к базе данных."
-        return 1
+        exit 1
     else
         echo "Подключение к базе данных успешно."
-        return 0
     fi
 }
 
@@ -147,26 +116,24 @@ apply_schema() {
 
 # Резервное копирование базы данных
 backup_db() {
-    echo "Резервное копирование базы данных..."
     BACKUP_FILE="$BACKUP_DIR/${PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
-    sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE"
+    PGPASSWORD=$PG_PASSWORD pg_dump -h $PG_HOST -U $PG_USER $PG_DB > "$BACKUP_FILE"
     echo "База данных скопирована в $BACKUP_FILE."
 }
 
 # Обновление или клонирование репозитория
 clone_update_repo() {
-    echo "Обновление репозитория..."
     if [ -d "$FLASK_APP_DIR/.git" ]; then
-        cd "$FLASK_APP_DIR" && git fetch --all && git reset --hard origin/main
+        cd "$FLASK_APP_DIR" && git fetch --all && git reset --hard $REPO_BRANCH
     else
-        git clone "$REPO_URL" "$FLASK_APP_DIR" && cd "$FLASK_APP_DIR"
+        git clone $REPO_URL "$FLASK_APP_DIR" && cd "$FLASK_APP_DIR"
+        git checkout $REPO_BRANCH
     fi
     echo "Репозиторий обновлен."
 }
 
 # Настройка виртуального окружения Python и установка зависимостей
 setup_venv() {
-    echo "Настройка виртуального окружения Python..."
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
@@ -188,13 +155,12 @@ apply_migrations() {
     flask db upgrade || echo "Нет миграций для применения или миграция не удалась."
 }
 
+
 # Перезапуск приложения Flask и Nginx
 restart_services() {
-    echo "Перезапуск приложения Flask и Nginx..."
-    # Замените на ваши фактические команды для перезапуска Flask и Nginx
     pkill gunicorn || true
     cd "$FLASK_APP_DIR"
-    gunicorn --bind 0.0.0.0:8000 "app:create_app()" --daemon
+    gunicorn --workers $GUNICORN_WORKERS --bind $GUNICORN_BIND "app:create_app()" --daemon
     sudo systemctl restart nginx
     echo "Приложение Flask и Nginx перезапущены."
 }
@@ -202,20 +168,16 @@ restart_services() {
 # Основная логика
 rotate_logs
 install_dependencies
-sudo dpkg --configure -a
 install_postgresql
 init_db_cluster
 configure_postgresql
 create_db_user_and_database
-test_db_connection || { echo "Ошибка конфигурации базы данных. Прерывание."; exit 1; }
+test_db_connection
 backup_db
 clone_update_repo
 setup_venv
 apply_schema
 apply_migrations
 restart_services
-# Вызов функции исправления прерванных установок
-fix_interrupted_package_installation
-
 
 echo "Развёртывание завершено: $(date)"
