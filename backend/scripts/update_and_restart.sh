@@ -47,7 +47,7 @@ reinstall_postgresql() {
         exit 1
     fi
 
-    sudo apt-get remove --purge -y postgresql-"$installed_version" postgresql-contrib-"$installed_version"
+    sudo apt-get remove --purge -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     sudo rm -rf /var/lib/postgresql/
 
     # Install the same version of PostgreSQL
