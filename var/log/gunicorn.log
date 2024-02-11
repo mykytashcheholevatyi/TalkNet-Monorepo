@@ -3702,3 +3702,26 @@ WHERE user.email = ?
 [2024-02-11 16:13:52 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
 [2024-02-11 16:13:52 +0000] [76145] [ERROR] Retrying in 1 second.
 [2024-02-11 16:13:53 +0000] [76145] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-02-11 16:16:53 +0000] [77188] [INFO] Starting gunicorn 21.2.0
+[2024-02-11 16:16:53 +0000] [77188] [INFO] Listening at: http://0.0.0.0:8000 (77188)
+[2024-02-11 16:16:53 +0000] [77188] [INFO] Using worker: sync
+[2024-02-11 16:16:53 +0000] [77189] [INFO] Booting worker with pid: 77189
+[2024-02-11 16:16:53,850] INFO in app: Accessed index page
+[2024-02-11 16:17:24 +0000] [77188] [CRITICAL] WORKER TIMEOUT (pid:77189)
+[2024-02-11 16:17:24 +0000] [77189] [INFO] Worker exiting (pid: 77189)
+[2024-02-11 16:17:24 +0000] [77188] [ERROR] Worker (pid:77189) exited with code 1
+[2024-02-11 16:17:24 +0000] [77188] [ERROR] Worker (pid:77189) exited with code 1.
+[2024-02-11 16:17:24 +0000] [77789] [INFO] Booting worker with pid: 77789
+[2024-02-11 16:17:28,944] INFO in app: Accessed index page
+[2024-02-11 16:17:37,710] INFO in app: Accessed index page
+[2024-02-11 16:17:37,728] ERROR in app: Registration error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "username"
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "username"
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-02-11 16:17:40,285] INFO in app: Accessed index page
+[2024-02-11 16:17:41,228] INFO in app: Accessed index page
+[2024-02-11 16:18:11 +0000] [77188] [CRITICAL] WORKER TIMEOUT (pid:77789)
+[2024-02-11 16:18:11 +0000] [77789] [INFO] Worker exiting (pid: 77789)
+[2024-02-11 16:18:11 +0000] [77188] [ERROR] Worker (pid:77789) exited with code 1
+[2024-02-11 16:18:11 +0000] [77188] [ERROR] Worker (pid:77789) exited with code 1.
+[2024-02-11 16:18:11 +0000] [77797] [INFO] Booting worker with pid: 77797
