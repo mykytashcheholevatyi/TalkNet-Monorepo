@@ -3,19 +3,14 @@
 # Set strict execution mode, error handling, and traceability
 set -euo pipefail
 trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2; exit 1' ERR
-# Установка строгого режима выполнения, обработка ошибок и отслеживаемость
-set -uo pipefail
-trap 'echo "Произошла ошибка на строке $LINENO. Выйти с кодом ошибки $?" >&2' ERR
 
 # Load environment variables
-# Загрузка переменных окружения
 if [ -f /srv/talknet/.env ]; then
     export $(cat /srv/talknet/.env | xargs)
     source /srv/talknet/.env
 fi
 
 # Define directory paths
-# Определение путей к директориям
 LOG_DIR="/srv/talknet/var/log"
 STATS_DIR="/srv/talknet/var/stats"
 BACKUP_DIR="/srv/talknet/backups"
@@ -24,25 +19,20 @@ VENV_DIR="$APP_DIR/backend/auth-service/venv"
 SCHEMA_PATH="$APP_DIR/backend/auth-service/database/forum_schema.sql"
 
 # Ensure required directories exist
-# Создание необходимых директорий
 mkdir -p "$LOG_DIR" "$STATS_DIR" "$BACKUP_DIR"
 
 # Redirect stdout and stderr to log file
-# Перенаправление stdout и stderr в файл журнала
 LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Script execution started: $(date)"
-echo "Начало выполнения скрипта: $(date)"
 
 # Function to rotate Flask logs
-# Функция для ротации логов Flask
 rotate_flask_logs() {
     echo "Rotating and archiving old Flask logs..."
     find "$LOG_DIR" -name 'flask_app*.log' -mtime +30 -exec rm {} \;
 }
 
 # Function to install dependencies
-# Функция для установки зависимостей
 install_dependencies() {
     echo "Installing necessary packages..."
     sudo apt-get update
@@ -50,7 +40,6 @@ install_dependencies() {
 }
 
 # Function to setup PostgreSQL
-# Функция для настройки PostgreSQL
 setup_postgresql() {
     echo "Setting up PostgreSQL user and database..."
     sudo -u postgres psql -c "DROP DATABASE IF EXISTS $PG_DB;"
@@ -62,7 +51,6 @@ setup_postgresql() {
 }
 
 # Function to clone or update repository
-# Функция для клонирования или обновления репозитория
 clone_or_update_repository() {
     echo "Cloning or updating repository..."
     if [ ! -d "$APP_DIR/.git" ]; then
@@ -73,7 +61,6 @@ clone_or_update_repository() {
 }
 
 # Function to setup Python environment
-# Функция для настройки Python окружения
 setup_python_environment() {
     echo "Setting up Python virtual environment and installing dependencies..."
     python3 -m venv "$VENV_DIR"
@@ -83,7 +70,6 @@ setup_python_environment() {
 }
 
 # Function to backup database and collect stats
-# Функция для создания резервной копии базы данных и сбора статистики
 backup_database_and_collect_stats() {
     echo "Creating database backup and collecting stats..."
     BACKUP_FILE="$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
@@ -95,7 +81,6 @@ backup_database_and_collect_stats() {
 }
 
 # Function to apply database migrations
-# Функция для применения миграций базы данных
 apply_database_migrations() {
     echo "Applying database migrations..."
     source "$VENV_DIR/bin/activate"
@@ -104,7 +89,6 @@ apply_database_migrations() {
 }
 
 # Function to push changes to repository
-# Функция для отправки изменений в репозиторий
 push_to_repository() {
     echo "Checking for changes and pushing to repository..."
     cd "$APP_DIR"
@@ -119,7 +103,6 @@ push_to_repository() {
 }
 
 # Function to start Flask application
-# Функция для запуска Flask приложения
 start_flask_application() {
     echo "Starting Flask application..."
     source "$VENV_DIR/bin/activate"
@@ -127,20 +110,29 @@ start_flask_application() {
     export FLASK_ENV=production
     export DATABASE_URL="postgresql://$PG_USER:$PG_PASSWORD@localhost/$PG_DB"
     pkill gunicorn || true
-    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR/backend/auth-service" --daemon --log-file="$LOG_DIR/gunicorn.log" --access-logfile="$LOG_DIR/access.log"
-    echo "Flask application started."
+    gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR/backend/auth-service" --daemon
 }
 
-# Main sequence of execution
-# Основная последовательность выполнения
-rotate_flask_logs
-install_dependencies
-setup_postgresql
-clone_or_update_repository
-setup_python_environment
-backup_database_and_collect_stats
-apply_database_migrations
-push_to_repository
-start_flask_application
+# Function to restart NGINX
+restart_nginx() {
+    echo "Restarting NGINX..."
+    sudo systemctl restart nginx
+}
 
-echo "Script execution completed: $(date)"
+# Main function
+main() {
+    rotate_flask_logs
+    install_dependencies
+    setup_postgresql
+    clone_or_update_repository
+    setup_python_environment
+    backup_database_and_collect_stats
+    apply_database_migrations
+    push_to_repository
+    start_flask_application
+    restart_nginx
+    echo "Script execution completed: $(date)"
+}
+
+# Execute main function
+main
