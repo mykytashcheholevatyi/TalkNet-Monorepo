@@ -810,3 +810,101 @@ Checking for changes and pushing to repository...
  M backend/auth-service/venv/lib/python3.10/site-packages/werkzeug/wrappers/__pycache__/__init__.cpython-310.pyc
  M backend/auth-service/venv/lib/python3.10/site-packages/werkzeug/wrappers/__pycache__/request.cpython-310.pyc
  M backend/auth-service/venv/lib/python3.10/site-packages/werkzeug/wrappers/__pycache__/response.cpython-310.pyc
+[main b0dd55e9] Automated database backup: Sun Feb 11 16:29:37 UTC 2024
+ 699 files changed, 1491 insertions(+)
+ create mode 100644 backups/talknet_db-2024-02-11_16-29-33.sql
+ create mode 100644 var/log/deploy.log
+ create mode 100644 var/stats/deploy_stats_2024-02-11_16-29-33.log
+To https://github.com/mykytashch/TalkNet-Monorepo
+   2cb76711..b0dd55e9  main -> main
+Changes pushed to repository.
+Starting Flask application...
+Restarting NGINX...
+Script execution completed: Sun Feb 11 16:29:43 UTC 2024
+Script execution started: Sun Feb 11 16:30:14 UTC 2024
+Rotating and archiving old Flask logs...
+Installing necessary packages...
+Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Ign:2 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu jammy InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:5 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 Release
+Hit:6 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Reading package lists...
+W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/4.4/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+postgresql is already the newest version (14+238).
+postgresql-contrib is already the newest version (14+238).
+git is already the newest version (1:2.34.1-1ubuntu1.10).
+nginx is already the newest version (1.18.0-6ubuntu14.4).
+python3 is already the newest version (3.10.6-1~22.04).
+python3-pip is already the newest version (22.0.2+dfsg-1ubuntu0.4).
+python3-venv is already the newest version (3.10.6-1~22.04).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Checking PostgreSQL user and database...
+Database talknet_db already exists
+User talknet_admin already exists
+Applying database schema...
+-- Создание таблицы пользователей
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    language VARCHAR(50) NOT NULL,
+    is_seller BOOLEAN DEFAULT FALSE
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:10: ERROR:  relation "users" already exists
+-- Создание таблицы постов
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    language VARCHAR(50) NOT NULL,
+    category_id INTEGER REFERENCES categories(id)
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:21: ERROR:  relation "posts" already exists
+-- Создание таблицы комментариев
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    post_id INTEGER NOT NULL REFERENCES posts(id),
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:30: ERROR:  relation "comments" already exists
+-- Создание таблицы категорий
+CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:37: ERROR:  relation "categories" already exists
+-- Создание таблицы продуктов
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    seller_id INTEGER NOT NULL REFERENCES users(id),
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    currency VARCHAR(3) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:48: ERROR:  relation "products" already exists
+-- Создание таблицы заказов
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    buyer_id INTEGER NOT NULL REFERENCES users(id),
+    product_id INTEGER NOT NULL REFERENCES products(id),
+    quantity INTEGER NOT NULL,
+    total_price NUMERIC(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:59: ERROR:  relation "orders" already exists
+Cloning or updating repository...
