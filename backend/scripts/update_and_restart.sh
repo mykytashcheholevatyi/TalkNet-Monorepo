@@ -97,11 +97,23 @@ configure_postgresql() {
 
 # Создание пользователя и базы данных PostgreSQL
 create_db_user_and_database() {
-    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';" || true
-    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;" || true
-    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;" || true
+    set +e # Отключаем прерывание скрипта при ошибках
+    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при создании пользователя $PG_USER."
+    fi
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при создании базы данных $PG_DB."
+    fi
+    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при назначении привилегий пользователю $PG_USER на базу данных $PG_DB."
+    fi
+    set -e # Включаем обратно прерывание скрипта при ошибках
     echo "База данных и пользователь созданы."
 }
+
 
 # Установка необходимых зависимостей
 install_dependencies() {
