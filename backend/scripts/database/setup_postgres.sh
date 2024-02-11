@@ -3,6 +3,18 @@
 # Загрузка переменных окружения
 source .env
 
+# Проверка установки Docker
+if ! command -v docker &> /dev/null
+then
+    echo "Docker не установлен. Установка Docker..."
+    # Установка Docker на Ubuntu
+    sudo apt update
+    sudo apt install -y docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    echo "Docker установлен и запущен."
+fi
+
 # Строгий режим
 set -euo pipefail
 trap 'echo "Ошибка на строке $LINENO. Завершение с кодом $?" >&2; exit 1' ERR
