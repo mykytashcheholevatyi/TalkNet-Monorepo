@@ -8,6 +8,9 @@ trap 'echo "An error occurred on line $LINENO. Exiting with error code $?" >&2; 
 if [ -f /srv/talknet/.env ]; then
     export $(cat /srv/talknet/.env | xargs)
     source /srv/talknet/.env
+else
+    echo "Environment file not found, exiting..."
+    exit 1
 fi
 
 # Define directory paths
@@ -26,31 +29,44 @@ LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Script execution started: $(date)"
 
-# Function to rotate Flask logs
+# Rotate Flask logs
 rotate_flask_logs() {
     echo "Rotating and archiving old Flask logs..."
     find "$LOG_DIR" -name 'flask_app*.log' -mtime +30 -exec rm {} \;
 }
 
-# Function to install dependencies
+# Install dependencies
 install_dependencies() {
     echo "Installing necessary packages..."
     sudo apt-get update
     sudo apt-get install -y python3 python3-pip python3-venv git postgresql postgresql-contrib nginx
 }
 
-# Function to setup PostgreSQL
+# Setup PostgreSQL
 setup_postgresql() {
-    echo "Setting up PostgreSQL user and database..."
-    sudo -u postgres psql -c "DROP DATABASE IF EXISTS $PG_DB;"
-    sudo -u postgres psql -c "DROP USER IF EXISTS $PG_USER;"
-    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
-    sudo -u postgres psql -c "CREATE DATABASE $PG_DB OWNER $PG_USER;"
-    sudo -u postgres psql -d "$PG_DB" -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
+    echo "Checking PostgreSQL user and database..."
+    DB_EXISTS=$(sudo -u postgres psql -tAc "SELECT 1 FROM pg_database WHERE datname='$PG_DB'")
+    USER_EXISTS=$(sudo -u postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$PG_USER'")
+
+    if [ "$DB_EXISTS" = "1" ]; then
+        echo "Database $PG_DB already exists"
+    else
+        echo "Creating database $PG_DB..."
+        sudo -u postgres psql -c "CREATE DATABASE $PG_DB OWNER $PG_USER;"
+    fi
+
+    if [ "$USER_EXISTS" = "1" ]; then
+        echo "User $PG_USER already exists"
+    else
+        echo "Creating user $PG_USER..."
+        sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
+    fi
+
+    echo "Applying database schema..."
     sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH" || echo "Warning: Problem applying database schema."
 }
 
-# Function to clone or update repository
+# Clone or update repository
 clone_or_update_repository() {
     echo "Cloning or updating repository..."
     if [ ! -d "$APP_DIR/.git" ]; then
@@ -60,7 +76,7 @@ clone_or_update_repository() {
     fi
 }
 
-# Function to setup Python environment
+# Setup Python environment
 setup_python_environment() {
     echo "Setting up Python virtual environment and installing dependencies..."
     python3 -m venv "$VENV_DIR"
@@ -69,7 +85,7 @@ setup_python_environment() {
     pip install -r "$APP_DIR/backend/auth-service/requirements.txt"
 }
 
-# Function to backup database and collect stats
+# Backup database and collect stats
 backup_database_and_collect_stats() {
     echo "Creating database backup and collecting stats..."
     BACKUP_FILE="$BACKUP_DIR/$PG_DB-$(date +%Y-%m-%d_%H-%M-%S).sql"
@@ -80,7 +96,7 @@ backup_database_and_collect_stats() {
     free -m >> "$STATS_FILE"
 }
 
-# Function to apply database migrations
+# Apply database migrations
 apply_database_migrations() {
     echo "Applying database migrations..."
     source "$VENV_DIR/bin/activate"
@@ -88,7 +104,7 @@ apply_database_migrations() {
     cd "$APP_DIR/backend/auth-service" && flask db upgrade || echo "Warning: Failed to apply database migrations."
 }
 
-# Function to push changes to repository
+# Push changes to repository
 push_to_repository() {
     echo "Checking for changes and pushing to repository..."
     cd "$APP_DIR"
@@ -102,7 +118,7 @@ push_to_repository() {
     fi
 }
 
-# Function to start Flask application
+# Start Flask application
 start_flask_application() {
     echo "Starting Flask application..."
     source "$VENV_DIR/bin/activate"
@@ -113,13 +129,13 @@ start_flask_application() {
     gunicorn --bind 0.0.0.0:8000 app:app --chdir "$APP_DIR/backend/auth-service" --daemon
 }
 
-# Function to restart NGINX
+# Restart NGINX
 restart_nginx() {
     echo "Restarting NGINX..."
     sudo systemctl restart nginx
 }
 
-# Main function
+# Main sequence of execution
 main() {
     rotate_flask_logs
     install_dependencies
