@@ -13,6 +13,7 @@ else
     exit 1
 fi
 
+
 # Пути к каталогам
 LOG_DIR="/srv/talknet/var/log"
 BACKUP_DIR="/srv/talknet/backups"
@@ -28,6 +29,15 @@ LOG_FILE="$LOG_DIR/deploy.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 echo "Начало развёртывания: $(date)"
+
+# Исправление прерванных установок пакетов
+fix_interrupted_package_installation() {
+    echo "Проверка и исправление прерванных установок пакетов..."
+    sudo dpkg --configure -a
+    echo "Прерванные установки пакетов исправлены."
+}
+
+
 
 # Поворот журналов
 rotate_logs() {
@@ -176,5 +186,8 @@ setup_venv
 apply_schema
 apply_migrations
 restart_services
+# Вызов функции исправления прерванных установок
+fix_interrupted_package_installation
+
 
 echo "Развёртывание завершено: $(date)"
