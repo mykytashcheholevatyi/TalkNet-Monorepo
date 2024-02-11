@@ -3,23 +3,27 @@
 # Загрузка переменных окружения
 source .env
 
-# Проверка установки Docker
-if ! command -v docker &> /dev/null
-then
-    echo "Docker не установлен. Установка Docker..."
-    # Установка Docker на Ubuntu
-    sudo apt update
-    sudo apt install -y docker.io
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    echo "Docker установлен и запущен."
-fi
-
 # Строгий режим
 set -euo pipefail
 trap 'echo "Ошибка на строке $LINENO. Завершение с кодом $?" >&2; exit 1' ERR
 
-# Использование Docker для изоляции и управления версиями PostgreSQL
+# Функция для остановки существующего процесса PostgreSQL
+function stop_existing_postgres() {
+    echo "Проверка на существующие процессы PostgreSQL..."
+    if lsof -i:5432; then
+        echo "Обнаружен процесс, использующий порт 5432. Попытка остановить..."
+        sudo systemctl stop postgresql || true
+        echo "Ожидание освобождения порта 5432..."
+        sleep 5
+        if lsof -i:5432; then
+            echo "Порт все еще занят. Принудительное завершение процесса..."
+            sudo fuser -k 5432/tcp || true
+        fi
+    fi
+    echo "Порт 5432 свободен."
+}
+
+# Функция для запуска PostgreSQL в Docker
 function setup_postgres_docker() {
     echo "Запуск PostgreSQL в Docker..."
     docker run --name postgres -d \
@@ -31,23 +35,26 @@ function setup_postgres_docker() {
     echo "PostgreSQL запущен в Docker."
 }
 
-# Использование Flyway или Liquibase для управления миграциями схемы
+# Функция для применения обновлений схемы базы данных
 function apply_schema_updates() {
     echo "Применение обновлений схемы базы данных..."
-    # Замените на команду запуска миграций через Flyway или Liquibase
+    # Здесь должна быть логика для применения обновлений схемы базы данных
+    # Например, использование Flyway или Liquibase
     flyway migrate
     echo "Обновления схемы базы данных применены."
 }
 
-# Настройка резервного копирования с использованием Barman или pgBackRest
+# Функция для настройки резервного копирования базы данных
 function setup_backup() {
     echo "Настройка резервного копирования базы данных..."
-    # Конфигурация Barman или pgBackRest для автоматического резервного копирования
+    # Здесь должна быть логика для настройки резервного копирования
+    # Например, настройка Barman или pgBackRest
     barman backup all
     echo "Резервное копирование настроено."
 }
 
 # Основная логика скрипта
+stop_existing_postgres
 setup_postgres_docker
 apply_schema_updates
 setup_backup
