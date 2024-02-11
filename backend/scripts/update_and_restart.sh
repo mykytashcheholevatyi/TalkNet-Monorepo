@@ -34,10 +34,19 @@ rotate_logs() {
     echo "Logs rotated."
 }
 
+# Reinstall PostgreSQL
+reinstall_postgresql() {
+    echo "Reinstalling PostgreSQL..."
+    sudo apt-get remove --purge -y postgresql postgresql-contrib
+    sudo rm -rf /var/lib/postgresql/
+    sudo apt-get install -y postgresql postgresql-contrib
+    echo "PostgreSQL reinstalled."
+}
+
 # Install required dependencies
 install_dependencies() {
     sudo apt-get update
-    sudo apt-get install -y python3 python3-pip python3-venv git postgresql postgresql-contrib nginx
+    sudo apt-get install -y python3 python3-pip python3-venv git nginx
     echo "Dependencies installed."
 }
 
@@ -70,6 +79,14 @@ backup_db() {
     BACKUP_FILE="$BACKUP_DIR/${PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE"
     echo "Database backed up to $BACKUP_FILE."
+    # Push backup to repository
+    cd "$BACKUP_DIR" && git add "$BACKUP_FILE" && git commit -m "Database backup $(date +%Y-%m-%d_%H-%M-%S)" && git push origin main
+}
+
+# Push logs to repository
+push_logs() {
+    echo "Pushing logs to repository..."
+    cd "$LOG_DIR" && git add . && git commit -m "Log rotation $(date +%Y-%m-%d_%H-%M-%S)" && git push origin main
 }
 
 # Update or clone the repository
@@ -124,6 +141,7 @@ restart_services() {
 
 # Main logic
 rotate_logs
+reinstall_postgresql
 install_dependencies
 
 if ! test_db_connection; then
@@ -132,6 +150,7 @@ if ! test_db_connection; then
 fi
 
 backup_db
+push_logs
 apply_schema
 clone_update_repo
 setup_venv
