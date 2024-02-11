@@ -40,7 +40,7 @@ reinstall_postgresql() {
     echo "Reinstalling PostgreSQL..."
 
     # Get the installed version of PostgreSQL
-    local installed_version=$(apt list --installed | grep "postgresql" | awk '{print $2}' | cut -d'-' -f1)
+    local installed_version=$(apt-cache policy postgresql | awk '/Installed/ {print $2}')
 
     if [ -z "$installed_version" ]; then
         echo "Error: PostgreSQL is not installed."
@@ -55,13 +55,10 @@ reinstall_postgresql() {
     echo "PostgreSQL reinstalled."
 }
 
-
-
-
 # Initialize PostgreSQL Database Cluster
 init_db_cluster() {
     # Get PostgreSQL version
-    local version=$(apt-cache policy postgresql | grep Installed | awk '{print $2}')
+    local version=$(apt-cache policy postgresql | awk '/Installed/ {print $2}')
 
     # Initialize PostgreSQL cluster with the extracted version
     sudo pg_dropcluster --stop "$version" main || true  # Remove default cluster if exists
