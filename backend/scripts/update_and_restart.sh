@@ -98,8 +98,20 @@ apply_migrations() {
     echo "Applying Flask database migrations..."
     source "$VENV_DIR/bin/activate"
     export FLASK_APP="$FLASK_APP_DIR/app.py"  # Ensure this points to your Flask app's entry point
+
+    # Initialize migrations directory if it doesn't exist
+    if [ ! -d "$FLASK_APP_DIR/migrations" ]; then
+        echo "Initializing Flask-Migrate directory..."
+        flask db init
+    fi
+
+    # Generate a new migration if there are model changes
+    flask db migrate -m "Auto-generated migration."
+
+    # Apply migrations to the database
     flask db upgrade || echo "Failed to apply migrations or no migrations found."
 }
+
 
 # Restart the Flask application and Nginx
 restart_services() {
