@@ -5,10 +5,11 @@ set -euo pipefail
 trap 'echo "Error on line $LINENO. Exiting with code $?" >&2; exit 1' ERR
 
 # Load environment variables
-if [ -f /srv/talknet/.env ]; then
-    source /srv/talknet/.env
+ENV_FILE="/srv/talknet/.env"
+if [ -f "$ENV_FILE" ]; then
+    source "$ENV_FILE"
 else
-    echo "Environment file not found, exiting..."
+    echo "Environment file $ENV_FILE not found, exiting..."
     exit 1
 fi
 
@@ -30,8 +31,8 @@ echo "Deployment started: $(date)"
 
 # Rotate logs
 rotate_logs() {
-    find "$LOG_DIR" -name '*.log' -mtime +30 -exec rm {} \;
-    echo "Logs rotated."
+    find "$LOG_DIR" -type f -name '*.log' -mtime +30 -exec rm {} \;
+    echo "Old logs cleaned up."
 }
 
 # Reinstall PostgreSQL
@@ -41,6 +42,12 @@ reinstall_postgresql() {
     sudo rm -rf /var/lib/postgresql/
     sudo apt-get install -y postgresql postgresql-contrib
     echo "PostgreSQL reinstalled."
+
+    # PostgreSQL database and user setup
+    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $PG_DB TO $PG_USER;"
+    echo "Database $PG_DB and user $PG_USER created and configured."
 }
 
 # Install required dependencies
@@ -63,11 +70,11 @@ test_db_connection() {
 
 # Apply database schema
 apply_schema() {
-    echo "Checking and applying database schema if necessary..."
+    echo "Applying database schema..."
     SCHEMA_PATH="$FLASK_APP_DIR/database/schema.sql"
     if [ -f "$SCHEMA_PATH" ]; then
-        echo "Applying schema from $SCHEMA_PATH..."
-        sudo -u postgres psql -d "$PG_DB" -f "$SCHEMA_PATH" || true  # Ignore errors for existing relations
+        sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH"
+        echo "Schema applied from $SCHEMA_PATH."
     else
         echo "Schema file not found at $SCHEMA_PATH. Please check the path and try again."
     fi
@@ -79,14 +86,6 @@ backup_db() {
     BACKUP_FILE="$BACKUP_DIR/${PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
     sudo -u postgres pg_dump "$PG_DB" > "$BACKUP_FILE"
     echo "Database backed up to $BACKUP_FILE."
-    # Push backup to repository
-    cd "$BACKUP_DIR" && git add "$BACKUP_FILE" && git commit -m "Database backup $(date +%Y-%m-%d_%H-%M-%S)" && git push origin main
-}
-
-# Push logs to repository
-push_logs() {
-    echo "Pushing logs to repository..."
-    cd "$LOG_DIR" && git add . && git commit -m "Log rotation $(date +%Y-%m-%d_%H-%M-%S)" && git push origin main
 }
 
 # Update or clone the repository
@@ -114,46 +113,36 @@ setup_venv() {
 apply_migrations() {
     echo "Applying Flask database migrations..."
     source "$VENV_DIR/bin/activate"
-    export FLASK_APP="$FLASK_APP_DIR/app.py"  # Ensure this points to your Flask app's entry point
+    export FLASK_APP="$FLASK_APP_DIR/app.py"  # Adjust this to your Flask app's entry point
 
-    # Initialize migrations directory if it doesn't exist
     if [ ! -d "$FLASK_APP_DIR/migrations" ]; then
-        echo "Initializing Flask-Migrate directory..."
         flask db init
     fi
 
-    # Generate a new migration if there are model changes
     flask db migrate -m "Auto-generated migration."
-
-    # Apply migrations to the database
-    flask db upgrade || echo "Failed to apply migrations or no migrations found."
+    flask db upgrade || echo "No migrations to apply or migration failed."
 }
 
 # Restart the Flask application and Nginx
 restart_services() {
     echo "Restarting Flask application and Nginx..."
-    pkill gunicorn || true  # Stop any existing gunicorn processes
+    # Replace with your actual commands to restart Flask and Nginx
+    pkill gunicorn || true
     cd "$FLASK_APP_DIR"
-    gunicorn --bind 0.0.0.0:8000 "app:create_app()" --daemon  # Adjust to match your Flask app's factory function
+    gunicorn --bind 0.0.0.0:8000 "app:create_app()" --daemon
     sudo systemctl restart nginx
-    echo "Services restarted."
+    echo "Flask application and Nginx restarted."
 }
 
 # Main logic
 rotate_logs
-reinstall_postgresql
 install_dependencies
-
-if ! test_db_connection; then
-    echo "Database connection test failed. Please check your database configuration."
-    exit 1
-fi
-
+reinstall_postgresql
+test_db_connection || { echo "Database configuration issue. Aborting."; exit 1; }
 backup_db
-push_logs
-apply_schema
 clone_update_repo
 setup_venv
+apply_schema
 apply_migrations
 restart_services
 
