@@ -40,13 +40,21 @@ reinstall_postgresql() {
     echo "Reinstalling PostgreSQL..."
     sudo apt-get remove --purge -y postgresql postgresql-contrib
     sudo rm -rf /var/lib/postgresql/
-    sudo apt-get install -y postgresql postgresql-contrib
+
+    # Get PostgreSQL version
+    local version=$(apt-cache policy postgresql | grep Installed | awk '{print $2}')
+
+    # Install PostgreSQL with the extracted version
+    sudo apt-get install -y postgresql="$version" postgresql-contrib="$version"
     echo "PostgreSQL reinstalled."
 }
 
 # Initialize PostgreSQL Database Cluster
 init_db_cluster() {
-    local version=$(pg_lsclusters | awk '/main/ {print $1}')
+    # Get PostgreSQL version
+    local version=$(apt-cache policy postgresql | grep Installed | awk '{print $2}')
+
+    # Initialize PostgreSQL cluster with the extracted version
     sudo pg_dropcluster --stop "$version" main || true  # Remove default cluster if exists
     sudo pg_createcluster "$version" main --start  # Create a new cluster
     echo "PostgreSQL cluster initialized."
