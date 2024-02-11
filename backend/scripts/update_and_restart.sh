@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 # Строгий режим
 set -euo pipefail
@@ -31,30 +31,30 @@ rotate_logs() {
 postgres() {
   local action="$1"
   case "$action" in
-    "install")
-      echo "Установка PostgreSQL..."
-      sudo apt-get update
-      sudo apt-get install -y "postgresql-$PG_VERSION" "postgresql-contrib-$PG_VERSION"
-      echo "PostgreSQL успешно установлен."
-      ;;
-    "init")
-      echo "Инициализация кластера базы данных PostgreSQL..."
-      sudo pg_dropcluster --stop $PG_VERSION main || true
-      sudo pg_createcluster $PG_VERSION main --start
-      echo "Кластер PostgreSQL инициализирован."
-      ;;
-    "configure")
-      echo "Настройка PostgreSQL для приема подключений..."
-      sudo sed -i "s|#listen_addresses = 'localhost'|listen_addresses = '85.215.65.78'|" "/etc/postgresql/$PG_VERSION/main/postgresql.conf"
-      sudo sed -i "s|#port = 5432|port = 5432|" "/etc/postgresql/$PG_VERSION/main/postgresql.conf"
-      echo "host all all 85.215.65.78/32 md5" | sudo tee -a "/etc/postgresql/$PG_VERSION/main/pg_hba.conf"
-      echo "PostgreSQL настроен для приема подключений."
-      ;;
-    "restart")
-      echo "Перезапуск PostgreSQL..."
-      sudo systemctl restart postgresql
-      echo "PostgreSQL перезапущен."
-      ;;
+  "install")
+    echo "Установка PostgreSQL..."
+    sudo apt-get update
+    sudo apt-get install -y "postgresql-$PG_VERSION" "postgresql-contrib-$PG_VERSION"
+    echo "PostgreSQL успешно установлен."
+    ;;
+  "init")
+    echo "Инициализация кластера базы данных PostgreSQL..."
+    sudo pg_dropcluster --stop $PG_VERSION main || true
+    sudo pg_createcluster $PG_VERSION main --start
+    echo "Кластер PostgreSQL инициализирован."
+    ;;
+  "configure")
+    echo "Настройка PostgreSQL для приема подключений..."
+    sudo sed -i "s|#listen_addresses = 'localhost'|listen_addresses = '*'" "/etc/postgresql/$PG_VERSION/main/postgresql.conf"
+    sudo sed -i "s|#port = 5432|port = 5432|" "/etc/postgresql/$PG_VERSION/main/postgresql.conf"
+    echo "host all all 0.0.0.0/0 md5" | sudo tee -a "/etc/postgresql/$PG_VERSION/main/pg_hba.conf"
+    echo "PostgreSQL настроен для приема подключений."
+    ;;
+  "restart")
+    echo "Перезапуск PostgreSQL..."
+    sudo systemctl restart postgresql
+    echo "PostgreSQL перезапущен."
+    ;;
   esac
 }
 
@@ -62,21 +62,21 @@ postgres() {
 db() {
   local action="$1"
   case "$action" in
-    "create-user")
-      echo "Создание пользователя PostgreSQL..."
-      sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
-      echo "Пользователь PostgreSQL создан."
-      ;;
-    "create-database")
-      echo "Создание базы данных PostgreSQL..."
-      sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
-      echo "База данных PostgreSQL создана."
-      ;;
-    "backup")
-      BACKUP_FILE="<span class="math-inline">BACKUP\_DIR/</span>{PG_DB}_$(date +%Y-%m-%d_%H-%M-%S).sql"
-      PGPASSWORD=$PG_PASSWORD pg_dump -h $PG_HOST -U $PG_USER $PG_DB > "$BACKUP_FILE"
-      echo "База данных скопирована в $BACKUP_FILE."
-      ;;
+  "create-user")
+    echo "Создание пользователя PostgreSQL..."
+    sudo -u postgres psql -c "CREATE USER $PG_USER WITH PASSWORD '$PG_PASSWORD';"
+    echo "Пользователь PostgreSQL создан."
+    ;;
+  "create-database")
+    echo "Создание базы данных PostgreSQL..."
+    sudo -u postgres psql -c "CREATE DATABASE $PG_DB WITH OWNER $PG_USER;"
+    echo "База данных PostgreSQL создана."
+    ;;
+  "backup")
+    BACKUP_FILE="$BACKUP_DIR/<span class="math-inline">PG\_DB\_</span>(date +%Y-%m-%d_%H-%M-%S).sql"
+    PGPASSWORD=$PG_PASSWORD pg_dump -h $PG_HOST -U $PG_USER $PG_DB > "$BACKUP_FILE"
+    echo "База данных скопирована в $BACKUP_FILE."
+    ;;
   esac
 }
 
@@ -88,10 +88,10 @@ install_dependencies() {
 
 # Подключение к базе данных
 test_db_connection() {
-  if ! PGPASSWORD=$PG_PASSWORD psql -h 85.215.65.78 -U $PG_USER -d $PG_DB -c '\q'; then
+  if ! PGPASSWORD=$PG_PASSWORD psql -h $PG_HOST -U $PG_USER -d $PG_DB -c '\q'; then
     echo "Ошибка подключения к базе данных. Перезапуск PostgreSQL и повторная проверка..."
     postgres restart
-    if ! PGPASSWORD=$PG_PASSWORD psql -h 85.215.65.78 -U $PG_USER -d $PG_DB -c '\q'; then
+    if ! PGPASSWORD=$PG_PASSWORD psql -h $PG_HOST -U $PG_USER -d $PG_DB -c '\q'; then
       echo "Ошибка подключения к базе данных после перезапуска PostgreSQL."
       exit 1
     fi
