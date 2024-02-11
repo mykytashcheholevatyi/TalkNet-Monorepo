@@ -3690,3 +3690,15 @@ WHERE user.email = ?
 [2024-02-11 16:04:46 +0000] [72621] [INFO] Using worker: sync
 [2024-02-11 16:04:46 +0000] [72623] [INFO] Booting worker with pid: 72623
 [2024-02-11 16:05:03,953] INFO in app: Accessed index page
+[2024-02-11 16:13:48 +0000] [76145] [INFO] Starting gunicorn 21.2.0
+[2024-02-11 16:13:48 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-11 16:13:48 +0000] [76145] [ERROR] Retrying in 1 second.
+[2024-02-11 16:13:49 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-11 16:13:49 +0000] [76145] [ERROR] Retrying in 1 second.
+[2024-02-11 16:13:50 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-11 16:13:50 +0000] [76145] [ERROR] Retrying in 1 second.
+[2024-02-11 16:13:51 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-11 16:13:51 +0000] [76145] [ERROR] Retrying in 1 second.
+[2024-02-11 16:13:52 +0000] [76145] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-02-11 16:13:52 +0000] [76145] [ERROR] Retrying in 1 second.
+[2024-02-11 16:13:53 +0000] [76145] [ERROR] Can't connect to ('0.0.0.0', 8000)
