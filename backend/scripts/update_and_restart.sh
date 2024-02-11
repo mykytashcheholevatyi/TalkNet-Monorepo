@@ -42,11 +42,26 @@ rotate_logs() {
 install_postgresql() {
     echo "Установка PostgreSQL..."
 
-    sudo apt-get remove --purge -qq -y "postgresql-14" "postgresql-contrib-14"
+    local installed_version="14" # Желаемая версия PostgreSQL
+
+    # Использование expect для автоматического ответа "Yes" на вопросы при удалении PostgreSQL
+    expect -c "
+    set timeout 10
+    spawn sudo apt-get remove --purge -y postgresql-$installed_version postgresql-contrib-$installed_version
+    expect \"Remove PostgreSQL directories when package is purged?\"
+    send -- \"Yes\r\"
+    expect eof
+    "
+
+    # Удаление оставшихся файлов конфигурации и данных
     sudo rm -rf /var/lib/postgresql/
-    sudo apt-get install -qq -y "postgresql-14" "postgresql-contrib-14"
+    sudo rm -rf /etc/postgresql/
+
+    # Установка желаемой версии PostgreSQL
+    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     echo "PostgreSQL успешно установлен."
 }
+
 
 # Инициализация кластера базы данных PostgreSQL
 init_db_cluster() {
