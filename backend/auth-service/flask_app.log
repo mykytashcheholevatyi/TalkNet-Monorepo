@@ -1,7 +1,0 @@
-2024-02-11 16:30:26,131 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:99]
-2024-02-11 16:30:46,454 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:99]
-2024-02-11 16:30:46,529 ERROR: Registration error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "username"
-connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "username"
-
-(Background on this error at: https://sqlalche.me/e/20/e3q8) [in /srv/talknet/backend/auth-service/app.py:121]
-2024-02-11 16:30:47,518 INFO: Accessed index page [in /srv/talknet/backend/auth-service/app.py:99]
