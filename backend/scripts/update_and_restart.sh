@@ -52,13 +52,13 @@ test_db_connection() {
     fi
 }
 
-# Apply schema if not already applied
+# Apply database schema
 apply_schema() {
     echo "Checking and applying database schema if necessary..."
     SCHEMA_PATH="$FLASK_APP_DIR/database/schema.sql"
     if [ -f "$SCHEMA_PATH" ]; then
         echo "Applying schema from $SCHEMA_PATH..."
-        sudo -u postgres psql -d "$PG_DB" -f "$SCHEMA_PATH" || true  # Ignore errors in case tables already exist
+        sudo -u postgres psql -d "$PG_DB" -f "$SCHEMA_PATH" || true  # Ignore errors for existing relations
     else
         echo "Schema file not found at $SCHEMA_PATH. Please check the path and try again."
     fi
@@ -89,27 +89,24 @@ setup_venv() {
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
     pip install --upgrade pip
-    REQUIREMENTS_PATH="$FLASK_APP_DIR/requirements.txt"
-    if [ -f "$REQUIREMENTS_PATH" ]; then
-        pip install -r "$REQUIREMENTS_PATH"
-        echo "Dependencies installed."
-    else
-        echo "Requirements file not found. Skipping dependency installation."
-    fi
+    pip install -r "$FLASK_APP_DIR/requirements.txt"
+    echo "Dependencies installed."
 }
 
 # Apply Flask database migrations
 apply_migrations() {
     echo "Applying Flask database migrations..."
     source "$VENV_DIR/bin/activate"
-    flask db upgrade || echo "Flask migrations applied or no migrations found."
+    export FLASK_APP="$FLASK_APP_DIR/app.py"  # Ensure this points to your Flask app's entry point
+    flask db upgrade || echo "Failed to apply migrations or no migrations found."
 }
 
 # Restart the Flask application and Nginx
 restart_services() {
     echo "Restarting Flask application and Nginx..."
     pkill gunicorn || true  # Stop any existing gunicorn processes
-    gunicorn --bind 0.0.0.0:8000 --chdir "$FLASK_APP_DIR" "app:create_app()" --daemon  # Adjust the gunicorn command as needed
+    cd "$FLASK_APP_DIR"
+    gunicorn --bind 0.0.0.0:8000 "app:create_app()" --daemon  # Adjust to match your Flask app's factory function
     sudo systemctl restart nginx
     echo "Services restarted."
 }
