@@ -81,7 +81,12 @@ recreate_db() {
 
 apply_schema() {
     echo "Applying database schema..."
-    sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH" || echo "Problem applying database schema."
+    if [ -f "$SCHEMA_PATH" ]; then
+        sudo -u postgres psql -d "$PG_DB" -a -f "$SCHEMA_PATH" || echo "Problem applying database schema."
+    else
+        echo "Schema file not found at $SCHEMA_PATH. Exiting..."
+        exit 1
+    fi
 }
 
 backup_db() {
