@@ -74,7 +74,7 @@ init_db_cluster() {
 configure_postgresql() {
     sudo sed -i "/^#listen_addresses = 'localhost'/c\listen_addresses = '*'" "/etc/postgresql/14/main/postgresql.conf"
     sudo sed -i "/^#port = 5432/c\port = 5432" "/etc/postgresql/14/main/postgresql.conf"
-    echo "host all all $PG_HOST md5" | sudo tee -a "/etc/postgresql/14/main/pg_hba.conf"
+    echo "host all all 0.0.0.0/0 md5" | sudo tee -a "/etc/postgresql/14/main/pg_hba.conf"
     sudo systemctl restart postgresql
     echo "PostgreSQL настроен для приема подключений."
 }
