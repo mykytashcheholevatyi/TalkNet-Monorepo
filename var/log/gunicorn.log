@@ -3685,3 +3685,8 @@ WHERE user.email = ?
 [2024-02-10 18:26:31 +0000] [37827] [INFO] Listening at: http://0.0.0.0:8000 (37827)
 [2024-02-10 18:26:31 +0000] [37827] [INFO] Using worker: sync
 [2024-02-10 18:26:31 +0000] [37828] [INFO] Booting worker with pid: 37828
+[2024-02-11 16:04:46 +0000] [72621] [INFO] Starting gunicorn 21.2.0
+[2024-02-11 16:04:46 +0000] [72621] [INFO] Listening at: http://0.0.0.0:8000 (72621)
+[2024-02-11 16:04:46 +0000] [72621] [INFO] Using worker: sync
+[2024-02-11 16:04:46 +0000] [72623] [INFO] Booting worker with pid: 72623
+[2024-02-11 16:05:03,953] INFO in app: Accessed index page

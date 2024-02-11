@@ -2966,3 +2966,93 @@ CREATE TABLE orders (
 );
 CREATE TABLE
 Cloning or updating repository...
+Script execution started: Sun Feb 11 16:05:42 UTC 2024
+Начало выполнения скрипта: Sun Feb 11 16:05:42 UTC 2024
+Rotating and archiving old Flask logs...
+Installing necessary packages...
+Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Ign:3 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:6 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 Release
+Reading package lists...
+W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/4.4/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+postgresql is already the newest version (14+238).
+postgresql-contrib is already the newest version (14+238).
+git is already the newest version (1:2.34.1-1ubuntu1.10).
+nginx is already the newest version (1.18.0-6ubuntu14.4).
+python3 is already the newest version (3.10.6-1~22.04).
+python3-pip is already the newest version (22.0.2+dfsg-1ubuntu0.4).
+python3-venv is already the newest version (3.10.6-1~22.04).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Setting up PostgreSQL user and database...
+DROP DATABASE
+DROP ROLE
+CREATE ROLE
+CREATE DATABASE
+CREATE EXTENSION
+-- Создание таблицы пользователей
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    language VARCHAR(50) NOT NULL,
+    is_seller BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE
+-- Создание таблицы постов
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    language VARCHAR(50) NOT NULL,
+    category_id INTEGER REFERENCES categories(id)
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:21: ERROR:  relation "categories" does not exist
+-- Создание таблицы комментариев
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    post_id INTEGER NOT NULL REFERENCES posts(id),
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+psql:/srv/talknet/backend/auth-service/database/forum_schema.sql:30: ERROR:  relation "posts" does not exist
+-- Создание таблицы категорий
+CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
+);
+CREATE TABLE
+-- Создание таблицы продуктов
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    seller_id INTEGER NOT NULL REFERENCES users(id),
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    currency VARCHAR(3) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE
+-- Создание таблицы заказов
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    buyer_id INTEGER NOT NULL REFERENCES users(id),
+    product_id INTEGER NOT NULL REFERENCES products(id),
+    quantity INTEGER NOT NULL,
+    total_price NUMERIC(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE
+Cloning or updating repository...
