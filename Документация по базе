@@ -1,0 +1,14 @@
+Переустановка репа
+rm -rf /srv/talknet
+cd /srv
+git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+cd /srv/talknet
+git checkout main
+git pull
+cd /srv/talknet/backend/scripts/
+chmod +x setup_postgres.sh
+/srv/talknet/backend/scripts/setup_postgres.sh
+
+
+
+
