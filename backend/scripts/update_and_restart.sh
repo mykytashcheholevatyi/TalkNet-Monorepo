@@ -112,7 +112,6 @@ apply_migrations() {
     flask db upgrade || echo "Failed to apply migrations or no migrations found."
 }
 
-
 # Restart the Flask application and Nginx
 restart_services() {
     echo "Restarting Flask application and Nginx..."
