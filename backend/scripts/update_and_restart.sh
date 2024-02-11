@@ -38,19 +38,23 @@ rotate_logs() {
 # Reinstall PostgreSQL
 reinstall_postgresql() {
     echo "Reinstalling PostgreSQL..."
-    local available_version=$(apt-cache policy postgresql | awk '/Candidate/ {print $2}' | cut -d'+' -f1)
-    if [ -z "$available_version" ]; then
-        echo "Error: PostgreSQL version not available in package repositories."
+
+    # Get the installed version of PostgreSQL
+    local installed_version=$(apt list --installed | grep "postgresql" | awk '{print $2}' | cut -d'-' -f1)
+
+    if [ -z "$installed_version" ]; then
+        echo "Error: PostgreSQL is not installed."
         exit 1
     fi
 
-    sudo apt-get remove --purge -y postgresql postgresql-contrib
+    sudo apt-get remove --purge -y postgresql-"$installed_version" postgresql-contrib-"$installed_version"
     sudo rm -rf /var/lib/postgresql/
 
-    # Install the available version of PostgreSQL
-    sudo apt-get install -y "postgresql=$available_version" "postgresql-contrib=$available_version"
+    # Install the same version of PostgreSQL
+    sudo apt-get install -y "postgresql-$installed_version" "postgresql-contrib-$installed_version"
     echo "PostgreSQL reinstalled."
 }
+
 
 
 
