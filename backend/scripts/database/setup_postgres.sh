@@ -45,18 +45,27 @@ function setup_postgres_docker() {
     echo "PostgreSQL запущен в Docker."
 }
 
-# Клонирование репозитория и применение миграций
-function clone_repo_and_apply_migrations() {
-    echo "Клонирование репозитория и применение миграций..."
+# Клонирование репозитория и применение схемы базы данных
+function clone_repo_and_apply_schema() {
+    echo "Клонирование репозитория..."
     TMP_DIR=$(mktemp -d)
     git clone "$REPO_URL" "$TMP_DIR" --branch "$REPO_BRANCH"
-    pushd "$TMP_DIR/database/schema"
-    # Здесь должна быть команда запуска миграций, возможно, через Flyway или Liquibase
-    # Пример: flyway -url=jdbc:postgresql://localhost/$PG_DB -user=$PG_USER -password=$PG_PASSWORD migrate
-    popd
+    echo "Репозиторий клонирован."
+
+    SCHEMA_FILE="$TMP_DIR/backend/scripts/database/schema/schema.sql"
+    if [ -f "$SCHEMA_FILE" ]; then
+        echo "Применение схемы базы данных..."
+        docker cp "$SCHEMA_FILE" postgres:/schema.sql
+        docker exec postgres psql -U "$PG_USER" -d "$PG_DB" -f /schema.sql
+        echo "Схема базы данных применена."
+    else
+        echo "Файл схемы не найден: $SCHEMA_FILE"
+    fi
+
     rm -rf "$TMP_DIR"
-    echo "Миграции применены."
+    echo "Временный каталог удален."
 }
+
 
 # Настройка резервного копирования
 function setup_backup() {
