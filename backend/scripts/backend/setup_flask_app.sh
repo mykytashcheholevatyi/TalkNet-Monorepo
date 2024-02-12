@@ -8,10 +8,6 @@ APP_DIR="src/TalkNet-Monorepo"  # Директория для клонирова
 function install_docker() {
     echo "Установка Docker и Docker Compose..."
 
-# Установка Docker
-function install_docker() {
-    echo "Установка Docker и Docker Compose..."
-
     # Установка Docker
     sudo apt-get update
     sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -19,12 +15,8 @@ function install_docker() {
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-}
 
-
-
-# Установка Docker Compose
-function install_docker_compose() {
+    # Установка Docker Compose
     if ! type docker-compose > /dev/null 2>&1; then
         echo "Установка Docker Compose..."
         sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -40,7 +32,6 @@ function install_docker_compose() {
         echo "Docker Compose уже установлен."
     fi
 }
-
 
 # Загрузка переменных окружения
 source .env
@@ -74,24 +65,24 @@ function setup_flask_docker() {
 }
 
 # Интеграция с CI/CD для автоматического обновления и развертывания
-function ci_cd_integration() {
-    echo "Интеграция с CI/CD..."
-    # Настройка webhook'ов GitHub Actions, GitLab CI или Jenkins для автоматического развертывания
-    echo "CI/CD интеграция выполнена."
-}
+#function ci_cd_integration() {
+#    echo "Интеграция с CI/CD..."
+#    # Настройка webhook'ов GitHub Actions, GitLab CI или Jenkins для автоматического развертывания
+#    echo "CI/CD интеграция выполнена."
+#}
 
 # Настройка мониторинга и логирования с Prometheus, Grafana и ELK Stack
-function setup_monitoring_logging() {
-    echo "Настройка мониторинга и логирования..."
-    # Запуск и конфигурация Prometheus, Grafana и ELK Stack
-    echo "Мониторинг и логирование настроены."
-}
+#function setup_monitoring_logging() {
+#    echo "Настройка мониторинга и логирования..."
+#    # Запуск и конфигурация Prometheus, Grafana и ELK Stack
+#    echo "Мониторинг и логирование настроены."
+#}
 
 # Основная логика скрипта
 install_docker
 clone_repo
 setup_flask_docker
-ci_cd_integration
-setup_monitoring_logging
+#ci_cd_integration
+#setup_monitoring_logging
 
 echo "Настройка и запуск Flask приложения завершены."
