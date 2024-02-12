@@ -11,9 +11,9 @@ trap 'echo "Ошибка на строке $LINENO. Завершение с ко
 function install_dependencies() {
     echo "Установка Docker, Flyway и Barman..."
     sudo apt-get update
-    sudo apt-get install -y docker.io
+    sudo apt-get install -y docker.io git
     # Добавьте команды установки для Flyway и Barman, если они доступны через apt или требуют отдельной установки
-    echo "Docker, Flyway и Barman установлены."
+    echo "Docker, Git, Flyway и Barman установлены."
 }
 
 # Остановка существующих процессов PostgreSQL
@@ -45,12 +45,17 @@ function setup_postgres_docker() {
     echo "PostgreSQL запущен в Docker."
 }
 
-# Применение обновлений схемы базы данных
-function apply_schema_updates() {
-    echo "Применение обновлений схемы базы данных..."
-    # Здесь должна быть команда запуска миграций через Flyway или Liquibase
-    # Пример: flyway -configFiles=/path/to/flyway.conf migrate
-    echo "Обновления схемы базы данных применены."
+# Клонирование репозитория и применение миграций
+function clone_repo_and_apply_migrations() {
+    echo "Клонирование репозитория и применение миграций..."
+    TMP_DIR=$(mktemp -d)
+    git clone "$REPO_URL" "$TMP_DIR" --branch "$REPO_BRANCH"
+    pushd "$TMP_DIR/database/schema"
+    # Здесь должна быть команда запуска миграций, возможно, через Flyway или Liquibase
+    # Пример: flyway -url=jdbc:postgresql://localhost/$PG_DB -user=$PG_USER -password=$PG_PASSWORD migrate
+    popd
+    rm -rf "$TMP_DIR"
+    echo "Миграции применены."
 }
 
 # Настройка резервного копирования
@@ -65,7 +70,7 @@ function setup_backup() {
 install_dependencies
 stop_existing_postgres
 setup_postgres_docker
-apply_schema_updates
+clone_repo_and_apply_migrations
 setup_backup
 
 echo "Настройка и обновление PostgreSQL завершены."
