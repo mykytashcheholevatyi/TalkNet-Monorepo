@@ -79,7 +79,7 @@ function setup_backup() {
 install_dependencies
 stop_existing_postgres
 setup_postgres_docker
-clone_repo_and_apply_migrations
+clone_repo_and_apply_schema
 setup_backup
 
 echo "Настройка и обновление PostgreSQL завершены."
