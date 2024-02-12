@@ -8,6 +8,10 @@ APP_DIR="src/TalkNet-Monorepo"  # Директория для клонирова
 function install_docker() {
     echo "Установка Docker и Docker Compose..."
 
+# Установка Docker
+function install_docker() {
+    echo "Установка Docker и Docker Compose..."
+
     # Установка Docker
     sudo apt-get update
     sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -15,6 +19,9 @@ function install_docker() {
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+}
+
+
 
 # Установка Docker Compose
 function install_docker_compose() {
