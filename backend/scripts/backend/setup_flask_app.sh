@@ -16,13 +16,24 @@ function install_docker() {
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-    # Установка Docker Compose
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
-    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
-    echo "Docker и Docker Compose успешно установлены."
+# Установка Docker Compose
+function install_docker_compose() {
+    if ! type docker-compose > /dev/null 2>&1; then
+        echo "Установка Docker Compose..."
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        # Проверяем, существует ли уже символическая ссылка
+        if [ ! -L /usr/bin/docker-compose ]; then
+            sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+        else
+            echo "Символическая ссылка для docker-compose уже существует."
+        fi
+        echo "Docker Compose установлен."
+    else
+        echo "Docker Compose уже установлен."
+    fi
 }
+
 
 # Загрузка переменных окружения
 source .env
