@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Определение переменных
+REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo.git"  # URL вашего репозитория
+APP_DIR="src/TalkNet-Monorepo"  # Директория для клонирования
+
 # Загрузка переменных окружения
 source .env
 
@@ -7,10 +11,27 @@ source .env
 set -euo pipefail
 trap 'echo "Ошибка на строке $LINENO. Завершение с кодом $?" >&2; exit 1' ERR
 
+# Клонирование репозитория
+function clone_repo() {
+    echo "Клонирование репозитория..."
+    if [ -d "$APP_DIR" ]; then
+        echo "Директория $APP_DIR уже существует. Попытка обновления репозитория..."
+        cd "$APP_DIR"
+        git pull
+        cd -
+    else
+        mkdir -p src
+        git clone "$REPO_URL" "$APP_DIR"
+    fi
+    echo "Репозиторий успешно клонирован/обновлен."
+}
+
 # Использование Docker и Docker Compose для развертывания Flask приложения
 function setup_flask_docker() {
     echo "Настройка Flask приложения в Docker..."
+    cd "$APP_DIR"
     docker-compose up -d
+    cd -
     echo "Flask приложение запущено в Docker."
 }
 
@@ -29,8 +50,9 @@ function setup_monitoring_logging() {
 }
 
 # Основная логика скрипта
+clone_repo
 setup_flask_docker
 ci_cd_integration
 setup_monitoring_logging
 
-echo "Настройка Flask приложения завершена."
+echo "Настройка и запуск Flask приложения завершены."
