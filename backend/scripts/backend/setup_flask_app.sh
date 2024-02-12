@@ -3,6 +3,7 @@
 # Определение переменных
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo.git"  # URL вашего репозитория
 APP_DIR="src/TalkNet-Monorepo"  # Директория для клонирования
+SERVICE_DIR="backend/auth-service" # Папка, где находится сервис Auth
 
 # Функция для установки Docker и Docker Compose
 function install_docker() {
@@ -58,7 +59,7 @@ function clone_repo() {
 # Использование Docker и Docker Compose для развертывания Flask приложения
 function setup_flask_docker() {
     echo "Настройка Flask приложения в Docker..."
-    cd "$APP_DIR"
+    cd "$APP_DIR/$SERVICE_DIR"
     docker-compose up -d
     cd -
     echo "Flask приложение запущено в Docker."
