@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  web:
+    build: ./path/to/your/dockerfile  # Путь к вашему Dockerfile
+    ports:
+      - "5000:5000"  # Проброс портов
+    environment:
+      - FLASK_ENV=development  # Переменные окружения
+    volumes:
+      - .:/code  # Монтирование тома
