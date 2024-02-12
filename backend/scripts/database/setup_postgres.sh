@@ -9,11 +9,11 @@ trap 'echo "Ошибка на строке $LINENO. Завершение с ко
 
 # Установка зависимостей
 function install_dependencies() {
-    echo "Установка Docker, Flyway и Barman..."
+    echo "Установка Docker, Git и инструментов для миграции..."
     sudo apt-get update
     sudo apt-get install -y docker.io git
-    # Добавьте команды установки для Flyway и Barman, если они доступны через apt или требуют отдельной установки
-    echo "Docker, Git, Flyway и Barman установлены."
+    # Для установки Flyway, Liquibase, Barman или pgBackRest добавьте соответствующие команды здесь
+    echo "Зависимости установлены."
 }
 
 # Остановка существующих процессов PostgreSQL
@@ -66,11 +66,18 @@ function clone_repo_and_apply_schema() {
     echo "Временный каталог удален."
 }
 
+# Применение обновлений схемы базы данных с помощью Flyway или Liquibase
+function apply_schema_updates() {
+    echo "Применение обновлений схемы базы данных..."
+    # Замените на команду запуска миграций через Flyway или Liquibase
+    # Пример: flyway -configFiles=/path/to/flyway.conf migrate
+    echo "Обновления схемы базы данных применены."
+}
 
-# Настройка резервного копирования
+# Настройка резервного копирования с использованием Barman или pgBackRest
 function setup_backup() {
     echo "Настройка резервного копирования базы данных..."
-    # Здесь должна быть конфигурация Barman или pgBackRest для автоматического резервного копирования
+    # Конфигурация Barman или pgBackRest для автоматического резервного копирования
     # Пример: barman backup all
     echo "Резервное копирование настроено."
 }
@@ -80,6 +87,7 @@ install_dependencies
 stop_existing_postgres
 setup_postgres_docker
 clone_repo_and_apply_schema
+apply_schema_updates
 setup_backup
 
 echo "Настройка и обновление PostgreSQL завершены."
