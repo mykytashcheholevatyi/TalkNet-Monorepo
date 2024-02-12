@@ -4,6 +4,26 @@
 REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo.git"  # URL вашего репозитория
 APP_DIR="src/TalkNet-Monorepo"  # Директория для клонирования
 
+# Функция для установки Docker и Docker Compose
+function install_docker() {
+    echo "Установка Docker и Docker Compose..."
+
+    # Установка Docker
+    sudo apt-get update
+    sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+    # Установка Docker Compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+    echo "Docker и Docker Compose успешно установлены."
+}
+
 # Загрузка переменных окружения
 source .env
 
@@ -50,6 +70,7 @@ function setup_monitoring_logging() {
 }
 
 # Основная логика скрипта
+install_docker
 clone_repo
 setup_flask_docker
 ci_cd_integration
