@@ -1,4 +1,9 @@
 Переустановка репа
+
+
+
+
+
 rm -rf /srv/talknet
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
@@ -12,3 +17,4 @@ chmod +x setup_postgres.sh
 
 
 
+Проверка с терминала создание юзера
