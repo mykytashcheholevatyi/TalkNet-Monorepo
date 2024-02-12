@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  flask-app:
+    build: 
+      context: ./src/talknet/backend/auth-service  # Уточнение пути к Dockerfile
+      dockerfile: Dockerfile  # Уточнение имени Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src/talknet/backend/auth-service:/srv/talknet/backend/src/TalkNet-Monorepo/backend/auth-service   # Уточнение пути к коду приложения
+    environment:
+      - FLASK_ENV=development

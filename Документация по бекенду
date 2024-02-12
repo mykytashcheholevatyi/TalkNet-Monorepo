@@ -10,6 +10,26 @@ pip install Flask Flask-SQLAlchemy psycopg2-binary
 /srv/talknet/backend/scripts/update_and_restart.sh
 
 
+
+Переустановка репа
+rm -rf /srv/talknet
+cd /srv
+git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+cd /srv/talknet
+git checkout main
+git pull
+cd /srv/talknet/backend/scripts/backend/
+chmod +x setup_flask_app.sh
+/srv/talknet/backend/scripts/backend/setup_flask_app.sh
+
+
+
+
+
+
+
+
+
 отправить сервер в гит
 git add .
 git commit -m "Краткое описание ваших изменений"
