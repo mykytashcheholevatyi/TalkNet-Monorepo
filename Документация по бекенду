@@ -18,9 +18,9 @@ git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
 cd /srv/talknet
 git checkout main
 git pull
-cd /srv/talknet/backend/scripts/database/
+cd /srv/talknet/backend/scripts/backend/
 chmod +x setup_flask_app.sh
-/srv/talknet/backend/scripts/database/setup_flask_app.sh
+/srv/talknet/backend/scripts/backend/setup_flask_app.sh
 
 
 
