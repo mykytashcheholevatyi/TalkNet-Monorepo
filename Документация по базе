@@ -1,9 +1,6 @@
 Переустановка репа
 
 
-
-
-
 rm -rf /srv/talknet
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
@@ -18,3 +15,14 @@ chmod +x setup_postgres.sh
 
 
 Проверка с терминала создание юзера
+
+
+
+Создание dbaas на чистом сервере
+
+sudo rm -rf /srv/talknet
+cd /srv
+sudo git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+cd /srv/talknet
+sudo git checkout main
+sudo git pull
