@@ -31,8 +31,9 @@ sudo git pull
 
 # Переустановка и клонирование репозитория
 
-sudo rm -rf /srv/dbaas  # Удаление предыдущей директории, если она существует
-sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git /srv/dbaas  # Клонирование репозитория
-cd /srv/dbaas/DBaaS  # Переход в директорию с DBaaS
-sudo chmod +x dbaas.sh  # Настройка прав на выполнение скрипта
-sudo ./dbaas.sh setup  # Запуск скрипта настройки
+sudo rm -rf /srv/dbaas
+sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git /srv/dbaas
+
+cd /srv/dbaas/DBaaS  
+sudo chmod +x dbaas.sh  
+sudo ./dbaas.sh setup
