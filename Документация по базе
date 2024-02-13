@@ -32,8 +32,15 @@ sudo git pull
 # Переустановка и клонирование репозитория
 
 sudo rm -rf /srv/dbaas
+cd /
+
 sudo git clone https://github.com/mykytashch/TalkNet-Monorepo.git /srv/dbaas
 
-cd /srv/dbaas/DBaaS  
-sudo chmod +x dbaas.sh  
+cd /srv/dbaas
+ls
+
+
+cd /srv/dbaas/DBaaS
+sudo chmod +x dbaas.sh
 sudo ./dbaas.sh setup
+
