@@ -6,21 +6,19 @@ REPO_URL="https://github.com/mykytashch/TalkNet-Monorepo.git"
 BACKUP_DIR="$DBAAS_DIR/backups"
 LOG_DIR="$DBAAS_DIR/logs"
 LOG_FILE="$LOG_DIR/dbaas.log"
+DOCKER_COMPOSE_FILE="$DBAAS_DIR/docker-compose.yml"
 
-# Удаление существующей директории и клонирование репозитория
-initialize_repo() {
-    sudo rm -rf "$DBAAS_DIR"
-    echo "Клонирование репозитория $REPO_URL в $DBAAS_DIR..."
-    sudo git clone "$REPO_URL" "$DBAAS_DIR"
-    sudo mkdir -p "$BACKUP_DIR" "$LOG_DIR"
-}
+# Название и пользователь базы данных
+DB_CONTAINER_NAME="postgres_container"
+DB_USER="postgres"
 
 # Функция для записи логов
 log_message() {
+    mkdir -p "$LOG_DIR"
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 
-# Функция для установки Docker и Docker Compose
+# Установка Docker и Docker Compose
 install_docker() {
     log_message "Установка Docker и Docker Compose..."
     sudo apt-get update
@@ -34,11 +32,29 @@ install_docker() {
     log_message "Docker и Docker Compose установлены."
 }
 
-# Функция для настройки и запуска DBaaS
+# Создание бэкапов и их отправка в репозиторий
+backup_and_push() {
+    log_message "Создание бэкапов и отправка их в репозиторий..."
+    
+    # Создание бэкапа базы данных
+    TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
+    DB_BACKUP_PATH="$BACKUP_DIR/db_backup_$TIMESTAMP.sql"
+    sudo docker exec "$DB_CONTAINER_NAME" pg_dumpall -c -U "$DB_USER" > "$DB_BACKUP_PATH"
+
+    # Добавление бэкапа в репозиторий и отправка
+    git add "$DB_BACKUP_PATH"
+    git commit -m "Database backup on $TIMESTAMP"
+    git push origin main
+
+    log_message "Бэкапы созданы и отправлены в репозиторий."
+}
+
+# Настройка и запуск DBaaS
 setup_dbaas() {
     log_message "Настройка и запуск DBaaS..."
-    if [ -f "$DBAAS_DIR/DBaaS/docker-compose.yml" ]; then
-        (cd "$DBAAS_DIR/DBaaS" && sudo docker-compose up -d)
+    sudo mkdir -p "$BACKUP_DIR"
+    if [ -f "$DOCKER_COMPOSE_FILE" ]; then
+        sudo docker-compose -f "$DOCKER_COMPOSE_FILE" up -d
         log_message "DBaaS запущен."
     else
         log_message "Файл docker-compose.yml не найден."
@@ -49,13 +65,16 @@ setup_dbaas() {
 case "$1" in
     setup)
         log_message "Начало настройки DBaaS..."
-        initialize_repo
         install_docker
         setup_dbaas
+        backup_and_push
         log_message "Настройка DBaaS завершена."
         ;;
+    backup)
+        backup_and_push
+        ;;
     *)
-        echo "Использование: $0 setup"
+        echo "Использование: $0 {setup|backup}"
         exit 1
         ;;
 esac
