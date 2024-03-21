@@ -24,12 +24,6 @@ chmod +x setup_flask_app.sh
 
 
 
-
-
-
-
-
-
 отправить сервер в гит
 git add .
 git commit -m "Краткое описание ваших изменений"
@@ -37,6 +31,7 @@ git push -u origin main
 
 Установите обновленную версию blinker
 pip install --upgrade --user blinker
+
 
 
 В папке backend-webhook-handler 
@@ -50,6 +45,8 @@ pm2 save
 # Перейдите в директорию /srv и клонируйте монорепозиторий
 cd /srv
 git clone https://github.com/mykytashch/TalkNet-Monorepo talknet
+
+
 
 Ручное обновление
 cd /srv/talknet
