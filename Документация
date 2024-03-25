@@ -25,7 +25,8 @@ git config --global user.name "mykytashch"
 git config --global user.email "mikitosik777@gmail.com"
 git config --global credential.helper 'cache --timeout=31536000'
 
-github_ pat_11A6Y3X5Q0yKEOZYuG8Vg6_OgEXWGAaJF1TsDV47fobYdCQh8wsVbaXML6GzfYNKlf6SLZPFS2A0Lyck5k
+github_pat_
+11A6Y3X5Q0yKEOZYuG8Vg6_OgEXWGAaJF1TsDV47fobYdCQh8wsVbaXML6GzfYNKlf6SLZPFS2A0Lyck5k
 Expires on Mon, Feb 10 2025.
 
 После настройки автоматической интеграции фронта и бекенда
